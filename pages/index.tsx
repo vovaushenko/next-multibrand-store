@@ -1,5 +1,6 @@
 import Head from "next/head";
-
+import Image from "next/image";
+const test = true;
 export default function Home() {
   return (
     <div>
@@ -14,6 +15,7 @@ export default function Home() {
 
       <footer>
         <p>footer details</p>
+        <Image src="/vercel.svg" width={72} height={72} alt={"hello"} />
       </footer>
     </div>
   );
