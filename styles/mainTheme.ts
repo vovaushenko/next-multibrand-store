@@ -11,7 +11,7 @@ export const mainTheme: DefaultTheme = {
   darkGray: '#8f8f8f',
   lightGray: '#9a9696',
   lightestGray: '#d0d0d0',
-  maxWidth: '1400px',
+  maxWidth: '1200px',
 
   media: {
     phone: '(max-width: 500px)',

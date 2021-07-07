@@ -1,3 +1,4 @@
+import NavbarHeader from '../NavbarHeader/NavbarHeader';
 /**
  *@function
  *@param {object} props - React.props
@@ -6,7 +7,7 @@
 const Navbar = (): JSX.Element => {
   return (
     <>
-      <h1>navbar</h1>
+      <NavbarHeader />
     </>
   );
 };
