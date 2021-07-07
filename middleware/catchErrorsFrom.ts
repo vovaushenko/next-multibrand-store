@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NextApiRequest, NextApiResponse } from 'next';
 
 /**
  * Custom Error Handling Middleware for catching errors in api route controllers
@@ -13,7 +13,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 type NextController = (
   req: NextApiRequest,
   res: NextApiResponse<unknown>
-) => Promise<unknown>
+) => Promise<unknown>;
 
 export default function catchErrorsFrom(controller: NextController) {
   return async (
@@ -21,8 +21,10 @@ export default function catchErrorsFrom(controller: NextController) {
     res: NextApiResponse
   ): Promise<unknown> => {
     return controller(req, res).catch((error) => {
-      console.error(error)
-      return res.status(500).send(error.message || error)
-    })
-  }
+      console.error(error);
+      return res
+        .status(500)
+        .json({ success: 'fail', error: error.message || error });
+    });
+  };
 }
