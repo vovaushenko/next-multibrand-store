@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 /**
  * Function to instantiate connection with database
@@ -8,19 +8,16 @@ import mongoose from 'mongoose'
 const connectWithDB = (): void => {
   // If mongoose connect is not ready
   if (mongoose.connection.readyState >= 1) {
-    return
+    return;
   }
   // If ready -> connect to DB
   mongoose
-    .connect(
-      process.env.DB_LOCAL_URI ?? 'mongodb://localhost:27017/multibrand-store',
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useFindAndModify: true,
-        useCreateIndex: true,
-      }
-    )
-    .then(() => console.log('♻️Connected to DB♻️'))
-}
-export default connectWithDB
+    .connect(process.env.DB_URI ?? '', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useFindAndModify: true,
+      useCreateIndex: true,
+    })
+    .then(() => console.log('♻️Connected to DB♻️'));
+};
+export default connectWithDB;
