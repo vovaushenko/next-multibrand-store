@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { FC, ReactNode } from 'react';
+import Navbar from '../Navbar/Navbar';
 
 interface Props {
   children: ReactNode;
@@ -18,7 +19,7 @@ const name: FC<Props> = ({ children, title }) => {
         <meta name="theme-color" content="#000000" />
         <title>{title}</title>
       </Head>
-      {/* TODO:NAVBAR */}
+      <Navbar />
       {children}
       {/* TODO:FOOTER */}
     </>

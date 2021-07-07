@@ -11,7 +11,7 @@ export const GlobalStyles = createGlobalStyle`
 }
 
  body {
-    font-family: 'IBM Plex Serif','Helvetica','Arial','sans-serif';
+    font-family: 'Roboto Condensed','sans-serif';
     color: ${({ theme }) => theme.primaryWhite};
     background: ${({ theme }) => theme.primaryBg};
     line-height: 1.4;
