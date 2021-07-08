@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { FC, ReactNode } from 'react';
+import React, { FC, ReactNode } from 'react';
 import Navbar from '../Navbar/Navbar';
 
 interface Props {
