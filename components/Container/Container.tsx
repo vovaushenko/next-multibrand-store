@@ -3,8 +3,8 @@ import { StyledContainer } from './styles';
 
 /**
  * Centered flex container - will center inner content and limit width by the value of theme.maxWidth
- *@function
- *@param {object} props - React.props
+ *@function Container
+ *@param {object} props - Children Components
  *@returns {JSX.Element} - Rendered Container wrapper with Children React Nodes
  */
 const Container: FC = ({ children }): JSX.Element => {

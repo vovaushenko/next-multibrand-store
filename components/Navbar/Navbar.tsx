@@ -1,6 +1,7 @@
 import NavbarHeader from '../NavbarHeader/NavbarHeader';
 /**
- *@function
+ * Renders navbar with its composed content
+ *@function Navbar
  *@param {object} props - React.props
  *@returns {JSX.Element} - Rendered Navbar
  */

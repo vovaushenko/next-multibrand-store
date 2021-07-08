@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 /**
  * Navbar header - contains MainLogo, Search Input and Action List with Cart and Log In/Out
- *@function
+ *@function NavbarHeader
  *@param {object} props - React.props
  *@returns {JSX.Element} - Rendered NavbarHeader
  */
