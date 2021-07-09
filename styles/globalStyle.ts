@@ -46,8 +46,8 @@ img {
 }
 
 input {
-  &::placeholder {
-    font-style:inherit;
+  ::placeholder {
+    font-family:'Roboto Condensed','sans-serif';
   }
 }
 
