@@ -8,4 +8,8 @@ export const StyledContainer = styled.section`
   max-width: ${({ theme }) => theme.maxWidth};
   margin: 0 auto;
   padding: 0 1rem;
+
+  a {
+    text-decoration: none;
+  }
 `;
