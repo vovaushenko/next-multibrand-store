@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import NavbarHeaderLogo from '../NavbarHeaderLogo/NavbarHeaderLogo';
+import NavHeaderActionList from '../NavHeaderActionList/NavHeaderActionList';
 import NavHeaderSearch from '../NavHeaderSearch/NavHeaderSearch';
 
 /**
@@ -14,9 +15,7 @@ const NavbarHeader = (): JSX.Element => {
     <StyledHeader>
       <NavbarHeaderLogo headerText={'Sneakers'} />
       <NavHeaderSearch />
-      {/* TODO: ACTION LIST */}
-      <h4>placeholder</h4>
-      <h4>cart</h4>
+      <NavHeaderActionList />
     </StyledHeader>
   );
 };
