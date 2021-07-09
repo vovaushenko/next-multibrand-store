@@ -18,6 +18,7 @@ const NavUserAccount = (): JSX.Element => {
 
 const UserAccount = styled.div`
   display: flex;
+  flex: 0.5;
   flex-direction: column;
   align-items: flex-start;
 

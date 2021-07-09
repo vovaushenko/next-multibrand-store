@@ -12,8 +12,8 @@ export const GlobalStyles = createGlobalStyle`
 
  body {
     font-family: 'Roboto Condensed','sans-serif';
-    color: ${({ theme }) => theme.primaryWhite};
-    background: ${({ theme }) => theme.primaryBg};
+    color: #ffffff;
+    background: #000000;
     line-height: 1.4;
     font-size: 1rem;
 }
@@ -64,6 +64,6 @@ button {
   
 }
 ::-webkit-scrollbar-thumb {
-  background:${({ theme }) => theme.primaryBg};;
+  background:#ffc130;
 }
  `;

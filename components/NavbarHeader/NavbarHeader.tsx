@@ -24,7 +24,7 @@ const StyledHeader = styled.header`
   display: grid;
   align-items: center;
   gap: 2rem;
-  grid-template-columns: 1fr 3fr 0.5fr 0.5fr;
+  grid-template-columns: 1fr 3fr 1fr;
   padding: 0.25rem 0.75rem;
 `;
 
