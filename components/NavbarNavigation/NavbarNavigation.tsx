@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Container from '../Container/Container';
 import NavLink from '../NavLink/NavLink';
 import { navLinks } from './navigationData';
 
@@ -11,13 +12,15 @@ import { navLinks } from './navigationData';
 const NavbarNavigation = (): JSX.Element => {
   return (
     <StyledNavigation>
-      <ul>
-        {navLinks.map((link, id) => (
-          <li key={id}>
-            <NavLink href={'/hi'} linkText={link.section} />
-          </li>
-        ))}
-      </ul>
+      <Container>
+        <ul>
+          {navLinks.map((link, id) => (
+            <li key={id}>
+              <NavLink href={'/hi'} linkText={link.section} />
+            </li>
+          ))}
+        </ul>
+      </Container>
     </StyledNavigation>
   );
 };
