@@ -13,6 +13,7 @@ declare module 'styled-components' {
     secondaryBgLighter: string;
     secondaryBgLightest: string;
     primaryGolden: string;
+    secondaryGolden: string;
     primaryWhite: string;
     primaryRed: string;
     darkGray: string;

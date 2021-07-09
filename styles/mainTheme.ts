@@ -6,6 +6,7 @@ export const mainTheme: DefaultTheme = {
   secondaryBgLighter: '#383838',
   secondaryBgLightest: '#444444',
   primaryGolden: '#ffc130',
+  secondaryGolden: '#ffa500',
   primaryWhite: '#ffffff',
   primaryRed: '#ff0000',
   darkGray: '#8f8f8f',
