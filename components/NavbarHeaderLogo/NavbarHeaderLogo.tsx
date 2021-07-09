@@ -1,6 +1,7 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import styled from 'styled-components';
+import { StyledHeaderLogo } from './styles';
 
 export type Props = {
   headerText: string;
@@ -8,26 +9,25 @@ export type Props = {
 /**
  * Renders navbar header logo
  *@function NavbarHeaderLogo
- *@param {string} headerText - logo text
+ *@param {string} headerText - logo text and alt attribute
  *@returns {JSX.Element} - Rendered NavbarHeaderLogo
  */
 const NavbarHeaderLogo = ({ headerText }: Props): JSX.Element => {
   return (
     <StyledHeaderLogo>
       <Link href="/">
-        {headerText}
-        {/* TODO:Custom SVG/icon component */}
+        <a>
+          <Image
+            className="brand-logo"
+            src={'/images/logo.png'}
+            alt={headerText}
+            height={66}
+            width={321}
+          />
+        </a>
       </Link>
     </StyledHeaderLogo>
   );
 };
-
-const StyledHeaderLogo = styled.h1`
-  a {
-    color: ${({ theme }) => theme.primaryWhite};
-    font-size: 1.5rem;
-    text-transform: uppercase;
-  }
-`;
 
 export default NavbarHeaderLogo;

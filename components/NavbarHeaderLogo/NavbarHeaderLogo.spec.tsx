@@ -1,16 +1,20 @@
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import 'jest-styled-components';
 import React from 'react';
 import NavbarHeaderLogo from './NavbarHeaderLogo';
 
 describe('Navbar Header Logo', () => {
-  const wrap = mount(<NavbarHeaderLogo headerText="tomato" />);
-  it('should render with no errors', () => {
-    expect(wrap);
-    expect(wrap.length).toBe(1);
+  const navHeader = mount(<NavbarHeaderLogo headerText="tomato" />);
+
+  it('Navbar header should render with no errors', () => {
+    expect(navHeader);
+    expect(navHeader.length).toBe(1);
   });
 
-  it('should render specified header text', () => {
-    expect(wrap.find('a').text()).toBe('tomato');
+  it('Navbar header LOGO should render with no errors and with specified alt attribute', () => {
+    const navHeader = shallow(<NavbarHeaderLogo headerText="tomato" />);
+    const brandLogo = navHeader.find('.brand-logo');
+    expect(brandLogo);
+    expect(brandLogo.prop('alt')).toEqual('tomato');
   });
 });

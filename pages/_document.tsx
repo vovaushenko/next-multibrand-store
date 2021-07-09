@@ -5,6 +5,7 @@ import Document, {
   Main,
   NextScript,
 } from 'next/document';
+import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
@@ -38,9 +39,10 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
-            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap"
             rel="stylesheet"
           />
 
@@ -50,10 +52,7 @@ export default class MyDocument extends Document {
           <link rel="manifest" href="/manifest.json" />
 
           <meta name="theme-color" content="#006340" />
-          <meta
-            name="description"
-            content="Кафедра Оптики та Видавничо-Поліграфічної Справи"
-          />
+          <meta name="description" content="Multibrand store" />
         </Head>
         <body>
           <Main />
