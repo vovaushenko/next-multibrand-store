@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import React, { FC, ReactNode } from 'react';
+import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar';
 
 interface Props {
@@ -21,7 +22,7 @@ const name: FC<Props> = ({ children, title }) => {
       </Head>
       <Navbar />
       {children}
-      {/* TODO:FOOTER */}
+      <Footer />
     </>
   );
 };

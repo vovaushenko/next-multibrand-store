@@ -1,6 +1,5 @@
 import { Story } from '@storybook/react';
 import React from 'react';
-import Container from '../Container/Container';
 import TestButton, { Props } from './Button';
 
 export default {
@@ -9,7 +8,6 @@ export default {
   // args: {
   //   children: 'Button',
   // },
-  decorators: [(story) => <Container>{story()}</Container>],
 };
 
 const Template: Story<Props> = (args) => <TestButton {...args} />;
