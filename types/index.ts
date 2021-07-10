@@ -25,3 +25,12 @@ export interface Product {
   size: number;
   styleCode: string;
 }
+
+/**
+ * Generic Router Link interface
+ *@interface RouterLink
+ */
+export interface RouterLinkType<T> {
+  text: T;
+  href: string;
+}
