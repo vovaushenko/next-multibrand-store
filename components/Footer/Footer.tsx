@@ -1,9 +1,15 @@
-const Footer = () => {
+import styled from 'styled-components';
+
+const Footer = (): JSX.Element => {
   return (
-    <div>
-      <h2>Footer</h2>
-    </div>
+    <StyledFooter>
+      {/* TODO:Footer social */}
+      {/* TODO: Footer links */}
+      {/* TODO: Footer policy */}
+    </StyledFooter>
   );
 };
+
+const StyledFooter = styled.footer``;
 
 export default Footer;
