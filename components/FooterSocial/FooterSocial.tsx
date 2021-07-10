@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import FooterSocialIcon from '../FooterSocialIcon/FooterSocialIcon';
 import HR from '../HR/HR';
 import SectionHeader from '../SectionHeader/SectionHeader';
 import { socialLinks } from './socialLinks';
@@ -12,7 +13,7 @@ const FooterSocial = (): JSX.Element => {
       <ul>
         {socialLinks.map((link, id) => (
           <li key={id}>
-            <a href={link.url}>{link.icon}</a>
+            <FooterSocialIcon href={link.url} icon={link.icon} />
           </li>
         ))}
       </ul>
@@ -24,10 +25,6 @@ const FooterSocial = (): JSX.Element => {
 const FooterSocialSection = styled.section`
   ul {
     display: flex;
-  }
-  .footer-social-icon {
-    color: red;
-    color: ${({ theme }) => theme.primaryWhite};
   }
 `;
 
