@@ -1,7 +1,9 @@
 import React from 'react';
 import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
 
-export const socialLinks = [
+export type SocialLink = { url: string; icon: JSX.Element };
+
+export const socialLinks: SocialLink[] = [
   {
     url: 'https://facebook.com/',
     icon: <FaFacebook className={'footer-social-icon'} />,

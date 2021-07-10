@@ -1,11 +1,13 @@
 import { Story } from '@storybook/react';
 import React from 'react';
-import FooterSocial from './FooterSocial';
+import FooterSocial, { Props } from './FooterSocial';
+import { socialLinks } from './socialLinks';
 
 export default {
   title: 'Footer/FooterSocial',
   component: FooterSocial,
 };
 
-const Template: Story = (args) => <FooterSocial {...args} />;
+const Template: Story<Props> = (args) => <FooterSocial {...args} />;
 export const Primary = Template.bind({});
+Primary.args = { footerSocialLinks: socialLinks };

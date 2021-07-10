@@ -23,7 +23,6 @@ const FooterSocialIcon = ({ href, icon }: Props): JSX.Element => {
 const StyledSocialLink = styled.a`
   color: ${({ theme }) => theme.darkGray};
   font-size: 2rem;
-  transition: color 0.2s ease-in-out;
   &:hover {
     color: ${({ theme }) => theme.secondaryGolden};
   }
