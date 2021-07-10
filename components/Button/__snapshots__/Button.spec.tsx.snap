@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button it applies default styles 1`] = `
+.c0 {
+  position: relative;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 3rem;
+  padding: 0 2rem;
+  font-family: inherit;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  background: transparent;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+.c0 > span {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.c0:focus {
+  box-shadow: 0 0 0 3px;
+}
+
+.c0:disabled {
+  cursor: not-allowed;
+}
+
+<button
+  className="c0 btn"
+/>
+`;

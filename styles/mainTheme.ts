@@ -12,6 +12,7 @@ export const mainTheme: DefaultTheme = {
   darkGray: '#8f8f8f',
   lightGray: '#9a9696',
   lightestGray: '#d0d0d0',
+  primaryGreen: '#4BB543',
   maxWidth: '1200px',
 
   media: {

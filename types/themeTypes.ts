@@ -20,6 +20,7 @@ declare module 'styled-components' {
     lightGray: string;
     lightestGray: string;
     maxWidth: string;
+    primaryGreen: string;
     media: media;
   }
 }

@@ -4,7 +4,7 @@ import Container from '../Container/Container';
 import TestButton, { Props } from './Button';
 
 export default {
-  title: 'test/FlexibleButton',
+  title: 'Button/FlexibleButton',
   component: TestButton,
   // args: {
   //   children: 'Button',

@@ -2,20 +2,19 @@ import styled, { css, keyframes } from 'styled-components';
 import { Props } from './Button';
 
 const defaultButton = css`
-  background: ${({ theme }) => theme.secondaryBgLighter};
-`;
-
-const hoveredButton = css`
   background: ${({ theme }) => theme.primaryGolden};
 `;
 
+const hoveredButton = css`
+  background: ${({ theme }) => theme.secondaryGolden};
+`;
+
 const focusedButton = css`
-  box-shadow: 0 0 0 3px #8659e9;
+  box-shadow: 0 0 0 3px ${({ theme }) => theme.secondaryGolden};
 `;
 
 const disabledButton = css`
-  color: #555455;
-  background: #302e30;
+  background: ${({ theme }) => theme.darkGray};
   cursor: not-allowed;
 `;
 
@@ -37,13 +36,13 @@ const loadingButton = css`
     left: -100%;
     width: 300%;
     height: 100%;
-    background: #5d2fdf
+    background: ${({ theme }) => theme.primaryGolden}
       repeating-linear-gradient(
         60deg,
         transparent,
         transparent 10px,
-        #5526c5 10px,
-        #5526c5 20px
+        #ffa500 10px,
+        #ffc130 20px
       );
     animation: ${loadingKeyframes} 1s infinite linear;
   }
@@ -54,9 +53,8 @@ const loadingButton = css`
 `;
 
 const completedButton = css`
-  padding: 0 2.5rem;
-  color: #0a5b3e;
-  background: #57aa8e;
+  padding: 0 2rem;
+  background: ${({ theme }) => theme.primaryGreen};
   cursor: default;
 `;
 
@@ -66,18 +64,18 @@ export const StyledButton = styled.button<Props>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 4.5rem;
-  padding: 0 3rem;
+  height: 3rem;
+  padding: 0 2rem;
   font-family: inherit;
-  font-size: 20px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 700;
   background: transparent;
   border: 0;
-  border-radius: 0.5rem;
-  color: #f7f7f7;
+  border-radius: 5px;
+  color: ${({ theme }) => theme.primaryWhite};
   cursor: pointer;
   outline: none;
-  transition-property: background, box-shadow;
-  transition-duration: 0.35s;
   & > span {
     position: relative;
     display: flex;
