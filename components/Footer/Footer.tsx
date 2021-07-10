@@ -1,5 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
+import FooterCopyright from '../FooterCopyright/FooterCopyright';
+import { footerCopyrightLinks } from '../FooterCopyright/footerCopyright';
 import FooterLinks from '../FooterLinks/FooterLinks';
 import { footerLinks, rewardLinks } from '../FooterLinks/footerLinks';
 import FooterSocial from '../FooterSocial/FooterSocial';
@@ -7,14 +8,12 @@ import { socialLinks } from '../FooterSocial/socialLinks';
 
 const Footer = (): JSX.Element => {
   return (
-    <StyledFooter>
+    <footer>
       <FooterSocial footerSocialLinks={socialLinks} />
       <FooterLinks footerLinks={footerLinks} rewardLinks={rewardLinks} />
-      {/* TODO: Footer policy */}
-    </StyledFooter>
+      <FooterCopyright footerCopyrightLinks={footerCopyrightLinks} />
+    </footer>
   );
 };
-
-const StyledFooter = styled.footer``;
 
 export default Footer;

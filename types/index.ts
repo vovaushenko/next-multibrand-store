@@ -29,6 +29,8 @@ export interface Product {
 /**
  * Generic Router Link interface
  *@interface RouterLink
+ *@param {genericType} text - router link content string or ReactNode
+ *@param {string} href - href of router link
  */
 export interface RouterLinkType<T> {
   text: T;
