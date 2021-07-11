@@ -1,16 +1,16 @@
 import { Story } from '@storybook/react';
 import React from 'react';
-import TestButton, { Props } from './Button';
+import Button, { Props } from './Button';
 
 export default {
-  title: 'Button/FlexibleButton',
-  component: TestButton,
+  title: 'utility/Button',
+  component: Button,
   // args: {
   //   children: 'Button',
   // },
 };
 
-const Template: Story<Props> = (args) => <TestButton {...args} />;
+const Template: Story<Props> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = { children: 'Primary' };

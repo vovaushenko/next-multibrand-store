@@ -19,13 +19,13 @@ export interface Props {
  *@param {children} ReactNode - set button children
  *@returns {JSX.Element} - rendered button
  */
-const Button: FC<Props> = ({
-  children,
-  isLoading,
-  isCompleted,
-  text,
-  ...rest
-}) => {
+const Button: FC<
+  React.DetailedHTMLProps<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > &
+    Props
+> = ({ children, isLoading, isCompleted, text, ...rest }: Props) => {
   return (
     <StyledButton
       isLoading={isLoading}
