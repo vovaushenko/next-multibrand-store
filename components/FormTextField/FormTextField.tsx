@@ -7,6 +7,7 @@ export interface Props {
   placeholder: string;
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
+  required?: boolean;
 }
 /**
  * Text input form control
@@ -16,7 +17,14 @@ export interface Props {
  *@param {string} placeholder - input placeholder
  *@returns {JSX.Element} - Rendered Form text control element
  */
-const Input: FC<Props> = ({ name, type, placeholder, value, setValue }) => {
+const Input: FC<Props> = ({
+  name,
+  type,
+  placeholder,
+  value,
+  setValue,
+  required = false,
+}) => {
   //TODO: Move placeholder on top after typing
   //TODO: implement value and onChange props
   return (
@@ -28,6 +36,7 @@ const Input: FC<Props> = ({ name, type, placeholder, value, setValue }) => {
           placeholder={placeholder}
           value={value}
           onChange={(e) => setValue(e.target.value)}
+          required={required}
         />
       </label>
     </TextField>

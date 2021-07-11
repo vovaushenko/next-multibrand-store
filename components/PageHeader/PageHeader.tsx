@@ -16,9 +16,10 @@ const PageHeader = ({ headerText }: Props): JSX.Element => {
 };
 
 const StyledHeader = styled.h1`
-  font-size: 1.5rem;
+  font-size: 2rem;
   text-transform: capitalize;
-  font-weight: 600;
+  font-weight: 700;
+  margin: 1rem 0;
 `;
 
 export default PageHeader;

@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import React, { FC } from 'react';
 import AdminNavigation from '../AdminNavigation/AdminNavigation';
+import { adminNavLinks } from '../AdminNavigation/adminNavLinks';
 import { LayoutContainer } from './styles';
 
 interface Props {
@@ -19,7 +20,7 @@ const AdminLayout: FC<Props> = ({ children, title }) => {
         <title>{title}</title>
       </Head>
       <LayoutContainer>
-        <AdminNavigation />
+        <AdminNavigation adminNavLinks={adminNavLinks} />
         {children}
       </LayoutContainer>
     </>
