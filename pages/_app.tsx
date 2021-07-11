@@ -1,9 +1,11 @@
 import type { AppProps } from 'next/app';
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
+import { wrapper } from '../store';
 import { GlobalStyles } from '../styles/globalStyle';
 import { mainTheme } from '../styles/mainTheme';
 
-function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+const WrappedApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
     <>
       <ThemeProvider theme={mainTheme}>
@@ -12,6 +14,6 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
       </ThemeProvider>
     </>
   );
-}
+};
 
-export default MyApp;
+export default wrapper.withRedux(WrappedApp);
