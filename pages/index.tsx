@@ -1,6 +1,7 @@
 import React from 'react';
 import Hero from '../components/Hero/Hero';
 import Layout from '../components/Layout/Layout';
+import NewsletterSignUp from '../components/NewsletterSignUp/NewsletterSignUp';
 
 export default function Home(): JSX.Element {
   return (
@@ -12,6 +13,7 @@ export default function Home(): JSX.Element {
         sneakerName={'Travis scott'}
         imgSrc="/images/hero-img.png"
       />
+      <NewsletterSignUp />
     </Layout>
   );
 }
