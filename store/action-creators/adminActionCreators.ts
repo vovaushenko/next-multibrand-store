@@ -24,8 +24,19 @@ export const uploadNewProduct = (product: Product) => {
     } catch (error) {
       dispatch({
         type: AdminActionTypes.PRODUCT_UPLOAD_ERROR,
-        payload: error.response.data.message,
+        payload: error.response.data.error,
       });
     }
+  };
+};
+
+/**
+ *@ADMIN async action creator, will clear state after successful||unsuccessful operations
+ *@function clearStatusOfOperations
+ *@returns {undefined}
+ */
+export const clearStatusOfAdminOperations = () => {
+  return async (dispatch: Dispatch<AdminAction>): Promise<void> => {
+    dispatch({ type: AdminActionTypes.CLEAR_STATE });
   };
 };

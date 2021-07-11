@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import Button from '../../components/Button/Button';
 import FormTextField from '../../components/FormTextField/FormTextField';
 import PageHeader from '../../components/PageHeader/PageHeader';
+import { useActions } from '../../hooks/useActions';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { StyledWrapper } from './styles';
 
 const AdminAddProduct = (): JSX.Element => {
@@ -14,22 +17,48 @@ const AdminAddProduct = (): JSX.Element => {
   const [styleCode, setStyleCode] = useState<string>('');
   const [productSize, setProductSize] = useState<string>('');
   const [description, setDescription] = useState<string>('');
+  //! global redux state
+  const { isLoading, isUploaded, error } = useTypedSelector(
+    (state) => state.admin
+  );
+  //! action creator import
+  const { uploadNewProduct, clearStatusOfAdminOperations } = useActions();
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+      clearStatusOfAdminOperations();
+    }
+    if (isUploaded) {
+      toast.success('🎉🎉🎉Successfully uploaded🎉🎉🎉');
+      clearStatusOfAdminOperations();
+    }
+  }, [isUploaded, error, clearStatusOfAdminOperations]);
 
   const handleAddNewProduct = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const newProduct = {
-      department,
-      colors,
       brand,
-      model,
-      price,
-      styleCode,
-      productSize,
+      colors: colors.split(' '),
+      department,
       description,
+      images: [{ public_id: 'test', url: 'test' }],
+      model,
+      price: Number(price),
+      size: Number(productSize),
+      styleCode,
     };
 
-    console.log(newProduct);
+    uploadNewProduct(newProduct);
   };
+
+  // TODO:move to separate helper function
+  const buttonText = (isLoading: boolean, isUploaded: boolean): string => {
+    if (isLoading) return '🕛 Uploading Product...';
+    if (isUploaded) return '🎉🎉🎉Successfully uploaded🎉🎉🎉';
+    return 'Add new product';
+  };
+
   return (
     <StyledWrapper>
       <PageHeader headerText="Add new product" />
@@ -104,7 +133,12 @@ const AdminAddProduct = (): JSX.Element => {
         />
         {/* TODO: images */}
 
-        <Button type="submit" text="Add new product" />
+        <Button
+          type="submit"
+          text={buttonText(isLoading, isUploaded)}
+          isLoading={isLoading}
+          isCompleted={isUploaded}
+        />
       </form>
     </StyledWrapper>
   );

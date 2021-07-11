@@ -35,6 +35,9 @@ export const adminReducer = (
         error: action.payload,
       };
 
+    case AdminActionTypes.CLEAR_STATE:
+      return initialState;
+
     default:
       return state;
   }
