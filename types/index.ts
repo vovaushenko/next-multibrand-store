@@ -36,3 +36,14 @@ export interface RouterLinkType<T> {
   text: T;
   href: string;
 }
+
+/**
+ * Generic Redux Interface for async actions
+ *@interface ReduxAsync
+ *@param {boolean} isLoading - loading status of async operation
+ *@param {string | null} error - error status of async operation
+ */
+export interface ReduxAsync {
+  isLoading: boolean;
+  error: string | null;
+}
