@@ -33,6 +33,9 @@ strong{
 ul {
   list-style-type: none;
 }
+li {
+  list-style:none;
+}
 
 a {
   

@@ -8,6 +8,9 @@ export interface Image {
   public_id: string;
   url: string;
 }
+
+export type Department = 'men' | 'women' | 'kid';
+
 /**
  * Product API response interface
  *@interface
@@ -17,7 +20,7 @@ export interface Product {
   _id?: string;
   brand: string;
   colors: string[];
-  department: string;
+  department: Department;
   description: string;
   images?: Image[];
   model: string;

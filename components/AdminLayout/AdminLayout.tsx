@@ -2,7 +2,7 @@ import Head from 'next/head';
 import React, { FC } from 'react';
 import AdminNavigation from '../AdminNavigation/AdminNavigation';
 import { adminNavLinks } from '../AdminNavigation/adminNavLinks';
-import { LayoutContainer } from './styles';
+import { ChildrenWrapper, LayoutContainer } from './styles';
 
 interface Props {
   title: string;
@@ -21,7 +21,7 @@ const AdminLayout: FC<Props> = ({ children, title }) => {
       </Head>
       <LayoutContainer>
         <AdminNavigation adminNavLinks={adminNavLinks} />
-        {children}
+        <ChildrenWrapper>{children}</ChildrenWrapper>
       </LayoutContainer>
     </>
   );
