@@ -1,3 +1,4 @@
+import { useRouter } from 'next/dist/client/router';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import Button from '../../components/Button/Button';
@@ -8,6 +9,7 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { StyledWrapper } from './styles';
 
 const AdminAddProduct = (): JSX.Element => {
+  const router = useRouter();
   // TODO: decide whether to use Formik or native validation
   const [department, setDepartment] = useState<string>('');
   const [colors, setColors] = useState<string>('');
@@ -32,6 +34,7 @@ const AdminAddProduct = (): JSX.Element => {
     if (isUploaded) {
       toast.success('🎉🎉🎉Successfully uploaded🎉🎉🎉');
       clearStatusOfAdminOperations();
+      router.reload();
     }
   }, [isUploaded, error, clearStatusOfAdminOperations]);
 

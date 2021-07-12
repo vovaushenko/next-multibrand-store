@@ -1,11 +1,14 @@
 import React from 'react';
-import { useActions } from '../../hooks/useActions';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { Product } from '../../types';
 import Button from '../Button/Button';
 import { StyledListItem } from './styles';
 
-export type Props = Product;
+export type Props = Product & {
+  isLoading: boolean;
+  isDeleted: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  deleteProduct: any;
+};
 /**
  *Product list item component used to display, delete, update products in Admin dashboard
  *@function ProductItem
@@ -13,12 +16,15 @@ export type Props = Product;
  *@returns {JSX.Element} - Rendered component ProductItem
  */
 
-const ProductItem = ({ brand, model, styleCode, _id }: Props): JSX.Element => {
-  //! redux action creators
-
-  const { deleteProduct } = useActions();
-  const { isLoading, isDeleted } = useTypedSelector((state) => state.admin);
-
+const ProductItem = ({
+  brand,
+  model,
+  styleCode,
+  _id,
+  deleteProduct,
+  isLoading,
+  isDeleted,
+}: Props): JSX.Element => {
   const handleDeleteProduct = () => {
     if (confirm('Do you want to delete this product?')) {
       if (_id !== undefined) deleteProduct(_id);
@@ -36,7 +42,7 @@ const ProductItem = ({ brand, model, styleCode, _id }: Props): JSX.Element => {
           isLoading={isLoading}
           isCompleted={isDeleted}
         >
-          Delete
+          {isDeleted ? 'Deleted' : 'Delete'}
         </Button>
         <Button>Update</Button>
       </article>
