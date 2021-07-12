@@ -21,6 +21,10 @@ export enum AdminActionTypes {
   PRODUCT_DID_UPLOAD = 'PRODUCT_DID_UPLOAD',
   PRODUCT_UPLOAD_ERROR = 'PRODUCT_UPLOAD_ERROR',
 
+  DELETE_PRODUCT = 'DELETE_PRODUCT',
+  PRODUCT_WAS_DELETED = 'PRODUCT_WAS_DELETED',
+  PRODUCT_DELETE_ERROR = 'PRODUCT_DELETE_ERROR',
+
   CLEAR_STATE = 'CLEAR_STATE',
 }
 
@@ -39,6 +43,20 @@ interface UploadProductFailAction {
   payload: string;
 }
 /**
+ * Admin DELETE action interfaces
+ */
+interface DeleteProductRequestAction {
+  type: AdminActionTypes.DELETE_PRODUCT;
+}
+interface DeleteProductSuccessAction {
+  type: AdminActionTypes.PRODUCT_WAS_DELETED;
+  payload: boolean;
+}
+interface DeleteProductFailAction {
+  type: AdminActionTypes.PRODUCT_DELETE_ERROR;
+  payload: string;
+}
+/**
  * Admin CLEAR state action interface
  */
 interface ClearStateAction {
@@ -53,4 +71,7 @@ export type AdminAction =
   | UploadProductRequestAction
   | UploadProductSuccessAction
   | UploadProductFailAction
-  | ClearStateAction;
+  | ClearStateAction
+  | DeleteProductRequestAction
+  | DeleteProductSuccessAction
+  | DeleteProductFailAction;

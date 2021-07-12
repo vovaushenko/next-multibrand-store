@@ -21,6 +21,7 @@ export const adminReducer = (
   action: AdminAction
 ): AdminState => {
   switch (action.type) {
+    // Upload Operations
     case AdminActionTypes.UPLOAD_PRODUCT:
       return { ...state, isLoading: true };
 
@@ -34,7 +35,19 @@ export const adminReducer = (
         isUploaded: false,
         error: action.payload,
       };
-
+    // Delete Operations
+    case AdminActionTypes.DELETE_PRODUCT:
+      return { ...state, isLoading: true };
+    case AdminActionTypes.PRODUCT_WAS_DELETED:
+      return { ...state, isLoading: false, isDeleted: action.payload };
+    case AdminActionTypes.PRODUCT_DELETE_ERROR:
+      return {
+        ...state,
+        isLoading: false,
+        isDeleted: false,
+        error: action.payload,
+      };
+    // Clear state Operations
     case AdminActionTypes.CLEAR_STATE:
       return initialState;
 

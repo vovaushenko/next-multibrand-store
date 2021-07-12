@@ -31,6 +31,29 @@ export const uploadNewProduct = (product: Product) => {
 };
 
 /**
+ * @Admin async action creator, will dispatch action to delete product from DB, also will dispatch error action if async operation fails
+ * @param {string} id - product id
+ * @DELETE /api/products/:id
+ */
+export const deleteProduct = (id: string) => {
+  return async (dispatch: Dispatch<AdminAction>): Promise<void> => {
+    dispatch({ type: AdminActionTypes.DELETE_PRODUCT });
+    try {
+      await axios.delete(`/api/products/${id}`);
+      dispatch({
+        type: AdminActionTypes.PRODUCT_WAS_DELETED,
+        payload: true,
+      });
+    } catch (error) {
+      dispatch({
+        type: AdminActionTypes.PRODUCT_DELETE_ERROR,
+        payload: error.response.data.error,
+      });
+    }
+  };
+};
+
+/**
  *@ADMIN async action creator, will clear state after successful||unsuccessful operations
  *@function clearStatusOfOperations
  *@returns {undefined}
