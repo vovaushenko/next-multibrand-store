@@ -10,7 +10,7 @@ interface Props {
 }
 
 const ProductList = ({ products }: Props): JSX.Element => {
-  const { deleteProduct } = useActions();
+  const { deleteProduct, openModal, loadProductDetails } = useActions();
   const { isDeleted, isLoading } = useTypedSelector((state) => state.admin);
   return (
     <StyledProductList>
@@ -21,6 +21,8 @@ const ProductList = ({ products }: Props): JSX.Element => {
           deleteProduct={deleteProduct}
           isDeleted={isDeleted}
           isLoading={isLoading}
+          openModal={openModal}
+          loadProductDetails={loadProductDetails}
         />
       ))}
     </StyledProductList>

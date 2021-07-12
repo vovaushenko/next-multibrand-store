@@ -4,27 +4,31 @@ import { toast } from 'react-toastify';
 import Button from '../../components/Button/Button';
 import FormFileField from '../../components/FormFileField/FormFileField';
 import FormTextField from '../../components/FormTextField/FormTextField';
-import PageHeader from '../../components/PageHeader/PageHeader';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { StyledWrapper } from './styles';
 
 const AdminAddProduct = (): JSX.Element => {
   const router = useRouter();
-  //! Images from FILE input element of form will be stored in images
+
+  //*Product details from redux
+  const { product } = useTypedSelector((state) => state.products);
+  /**
+   * All below useState params are from global state product
+   * it will be available here since we dispatch getProductDetails action before opening this component
+   */
+  const [department, setDepartment] = useState<string>(product.department);
+  const [colors, setColors] = useState<string>('');
+  const [brand, setBrand] = useState<string>(product.brand);
+  const [model, setModel] = useState<string>(product.model);
+  const [price, setPrice] = useState<string>(String(product.price));
+  const [styleCode, setStyleCode] = useState<string>(product.styleCode);
+  const [productSize, setProductSize] = useState<string>(String(product.size));
+  const [description, setDescription] = useState<string>(product.description);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [images, setImages] = useState<any[]>([]);
-  // TODO: decide whether to use Formik or native validation
-  const [department, setDepartment] = useState<string>('');
-  const [colors, setColors] = useState<string>('');
-  const [brand, setBrand] = useState<string>('');
-  const [model, setModel] = useState<string>('');
-  const [price, setPrice] = useState<string>('');
-  const [styleCode, setStyleCode] = useState<string>('');
-  const [productSize, setProductSize] = useState<string>('');
-  const [description, setDescription] = useState<string>('');
   //! global redux state
-  const { isLoading, isUploaded, error } = useTypedSelector(
+  const { isLoading, error, isUpdated } = useTypedSelector(
     (state) => state.admin
   );
   //! action creator import
@@ -35,11 +39,12 @@ const AdminAddProduct = (): JSX.Element => {
       toast.error(error);
       clearStatusOfAdminOperations();
     }
-    if (isUploaded) {
+    if (isUpdated) {
       toast.success('🎉 Successfully uploaded 🎉');
       router.reload();
     }
-  }, [isUploaded, error, clearStatusOfAdminOperations, router]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [error, isUpdated]);
 
   const handleAddNewProduct = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -78,14 +83,13 @@ const AdminAddProduct = (): JSX.Element => {
 
   // TODO:move to separate helper function
   const buttonText = (isLoading: boolean, isUploaded: boolean): string => {
-    if (isLoading) return '🕛 Uploading Product...';
-    if (isUploaded) return '🎉🎉🎉Successfully uploaded🎉🎉🎉';
-    return 'Add new product';
+    if (isLoading) return '🕛 Updating Product...';
+    if (isUploaded) return '🎉🎉🎉Successfully updated🎉🎉🎉';
+    return 'Update product details';
   };
 
   return (
     <StyledWrapper>
-      <PageHeader headerText="Add new product" />
       <form onSubmit={handleAddNewProduct}>
         <FormTextField
           name="department"
@@ -167,9 +171,9 @@ const AdminAddProduct = (): JSX.Element => {
 
         <Button
           type="submit"
-          text={buttonText(isLoading, isUploaded)}
+          text={buttonText(isLoading, isUpdated)}
           isLoading={isLoading}
-          isCompleted={isUploaded}
+          isCompleted={isUpdated}
         />
       </form>
     </StyledWrapper>

@@ -17,7 +17,9 @@ export const ModalOverlay = styled.div<ModalOverlayProps>`
   backdrop-filter: blur(4px);
 `;
 
-export const ModalBody = styled.main``;
+export const ModalBody = styled.main`
+  width: 100%;
+`;
 
 export const ModalHeader = styled.div`
   display: flex;
@@ -47,4 +49,6 @@ export const Modal = styled.section`
   animation: showModal 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 `;
 
-export const ModalWrapper = styled.div``;
+export const ModalWrapper = styled.div`
+  width: 100%;
+`;

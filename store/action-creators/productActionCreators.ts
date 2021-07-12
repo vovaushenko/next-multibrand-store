@@ -17,7 +17,7 @@ export const loadProductDetails = (id: string) => {
       const { data } = await axios.get(`/api/products/${id}`);
       dispatch({
         type: ProductActionTypes.PRODUCT_DETAILS_DID_LOAD,
-        payload: data.allProducts,
+        payload: data.product,
       });
     } catch (error) {
       dispatch({

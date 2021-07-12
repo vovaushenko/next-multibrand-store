@@ -1,6 +1,8 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { ReactNode } from 'react';
+import UpdateProduct from '../../components/AdminUpdateProduct/AdminUpdateProduct';
 import { Product } from '../../types';
+import { UiAction } from '../../types/uiTypes';
 import Button from '../Button/Button';
 import { StyledListItem } from './styles';
 
@@ -9,6 +11,12 @@ export type Props = Product & {
   isDeleted: boolean;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   deleteProduct: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  loadProductDetails: any;
+  openModal: (modalContent: {
+    modalYposition: number;
+    modalContent: ReactNode;
+  }) => UiAction;
 };
 /**
  *Product list item component used to display, delete, update products in Admin dashboard
@@ -23,6 +31,8 @@ const ProductItem = ({
   styleCode,
   _id,
   deleteProduct,
+  loadProductDetails,
+  openModal,
   isLoading,
   isDeleted,
   images,
@@ -30,6 +40,17 @@ const ProductItem = ({
   const handleDeleteProduct = () => {
     if (confirm('Do you want to delete this product?')) {
       if (_id !== undefined) deleteProduct(_id);
+    }
+  };
+
+  // will fetch product details to global state and then open modal (which will get product details from global state)
+  const handleUpdateProduct = async () => {
+    if (_id !== undefined) {
+      await loadProductDetails(_id);
+      openModal({
+        modalYposition: window.scrollY,
+        modalContent: <UpdateProduct />,
+      });
     }
   };
 
@@ -56,7 +77,7 @@ const ProductItem = ({
         >
           {isDeleted ? 'Deleted' : 'Delete'}
         </Button>
-        <Button>Update</Button>
+        <Button onClick={handleUpdateProduct}>Update</Button>
       </article>
     </StyledListItem>
   );
