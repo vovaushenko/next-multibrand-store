@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 import { Product } from '../../types';
 import Button from '../Button/Button';
@@ -24,6 +25,7 @@ const ProductItem = ({
   deleteProduct,
   isLoading,
   isDeleted,
+  images,
 }: Props): JSX.Element => {
   const handleDeleteProduct = () => {
     if (confirm('Do you want to delete this product?')) {
@@ -31,9 +33,19 @@ const ProductItem = ({
     }
   };
 
+  // image will always be specified, but to satisfy typescript will provide fallback
+  const imagePreview = images ? images[0].url : '/images/generic-sneaker.png';
+
   return (
     <StyledListItem>
       <article>
+        <Image
+          src={imagePreview}
+          alt={`${brand} ${model}`}
+          height={70}
+          width={70}
+          objectFit={'contain'}
+        />
         <p className="brand-name">{brand}</p>
         <p className="brand-model">{model}</p>
         <p className="style-code">Style-Code : {styleCode}</p>
