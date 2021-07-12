@@ -46,8 +46,8 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
 
-          <link rel="icon" href="/logo.gif" />
-          <link rel="apple-touch-icon" href="/logo.gif" />
+          <link rel="icon" href="/logo.png" />
+          <link rel="apple-touch-icon" href="/logo.png" />
 
           <link rel="manifest" href="/manifest.json" />
 

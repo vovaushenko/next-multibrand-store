@@ -10,6 +10,31 @@ import { ProductActionTypes, ProductsAction } from '../../types/productTypes';
  * @Will dispatch Error in the case of failure
  * @returns {undefined} void
  */
+export const loadProductDetails = (id: string) => {
+  return async (dispatch: Dispatch<ProductsAction>): Promise<void> => {
+    dispatch({ type: ProductActionTypes.LOAD_PRODUCT_DETAILS });
+    try {
+      const { data } = await axios.get(`/api/products/${id}`);
+      dispatch({
+        type: ProductActionTypes.PRODUCT_DETAILS_DID_LOAD,
+        payload: data.allProducts,
+      });
+    } catch (error) {
+      dispatch({
+        type: ProductActionTypes.PRODUCT_DETAILS_LOAD_ERROR,
+        payload: error.response.data.error,
+      });
+    }
+  };
+};
+
+/**
+ * async action creator, will dispatch action to get product details from DB, also will dispatch error action if async operation fails
+ * @function loadProductDetails
+ * @GET /api/products/:id
+ * @param {string} id - product ID
+ * @returns {undefined} void
+ */
 export const loadAllProducts = () => {
   return async (dispatch: Dispatch<ProductsAction>): Promise<void> => {
     dispatch({ type: ProductActionTypes.LOAD_PRODUCTS });
