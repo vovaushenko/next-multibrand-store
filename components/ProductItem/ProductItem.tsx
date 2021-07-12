@@ -1,0 +1,28 @@
+import React from 'react';
+import { Product } from '../../types';
+import Button from '../Button/Button';
+import { StyledListItem } from './styles';
+
+export type Props = Product;
+/**
+ *Product list item component used to display, delete, update products in Admin dashboard
+ *@function ProductItem
+ *@param {object} props - React.props point to global type Project
+ *@returns {JSX.Element} - Rendered component ProductItem
+ */
+
+const ProductItem = ({ brand, model, styleCode }: Props): JSX.Element => {
+  return (
+    <StyledListItem>
+      <article>
+        <p className="brand-name">{brand}</p>
+        <p className="brand-model">{model}</p>
+        <p className="style-code">Style-Code : {styleCode}</p>
+        <Button>Delete</Button>
+        <Button>Update</Button>
+      </article>
+    </StyledListItem>
+  );
+};
+
+export default ProductItem;
