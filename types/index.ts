@@ -28,6 +28,21 @@ export interface Product {
   size: number;
   styleCode: string;
 }
+/**
+ * Product Object that will be stored in DB
+ *@interface
+ */
+export interface UploadProduct {
+  brand: string;
+  colors: string[];
+  department: string;
+  description: string;
+  images: string[];
+  model: string;
+  price: string;
+  size: string;
+  styleCode: string;
+}
 
 /**
  * Generic Router Link interface

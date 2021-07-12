@@ -1,7 +1,18 @@
+import cloudinary from 'cloudinary';
 import { NextApiRequest, NextApiResponse } from 'next';
 import catchErrorsFrom from '../middleware/catchErrorsFrom';
 import Products from '../models/products';
 import ErrorHandler from '../utils/errorHandler';
+
+/**
+ *Cloudinary image CDN configuration
+ *more info https://cloudinary.com/documentation/node_integration
+ */
+cloudinary.v2.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 /**
  * Get all products route controller
@@ -34,7 +45,23 @@ export const getAllProducts = catchErrorsFrom(
 
 export const addNewProduct = catchErrorsFrom(
   async (req: NextApiRequest, res: NextApiResponse) => {
-    //TODO: @upload news images to Cloudinary CDN
+    //*images will be stored in Cloudinary CDN
+    const images = req.body.images;
+    const imagesLinks = [];
+    //*each image will be uploaded to CDN
+    for (let i = 0; i < images.length; i++) {
+      const result = await cloudinary.v2.uploader.upload(images[i], {
+        folder: 'sneaker-maniacs/products',
+      });
+      //*and image urls will be stored in imageLinks array
+      imagesLinks.push({
+        public_id: result.public_id,
+        url: result.secure_url,
+      });
+    }
+    //*don't gorget to add these newly generated CDN links to body
+    req.body.images = imagesLinks;
+
     const newProduct = await Products.create(req.body);
     res.status(200).json({
       success: true,
@@ -104,7 +131,7 @@ export const updateSingleProduct = catchErrorsFrom(
 );
 
 /**
- * Delete single product by ID
+ * Delete single product by ID and associated images in CDN
  * @DELETE /api/products/:id
  * @function
  * @param {Next.Request} req  The Next request
@@ -122,6 +149,11 @@ export const deleteSingleProduct = catchErrorsFrom(
         404
       );
     }
+    //* Will delete images associated with the room from the CDN
+    for (let i = 0; i < foundProduct.images.length; i++) {
+      await cloudinary.v2.uploader.destroy(foundProduct.images[i].public_id);
+    }
+
     foundProduct = await foundProduct.remove();
 
     res.status(204).json({ status: 'success', data: null });

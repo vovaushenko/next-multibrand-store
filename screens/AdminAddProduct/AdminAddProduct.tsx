@@ -2,6 +2,7 @@ import { useRouter } from 'next/dist/client/router';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import Button from '../../components/Button/Button';
+import FormFileField from '../../components/FormFileField/FormFileField';
 import FormTextField from '../../components/FormTextField/FormTextField';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import { useActions } from '../../hooks/useActions';
@@ -10,6 +11,9 @@ import { StyledWrapper } from './styles';
 
 const AdminAddProduct = (): JSX.Element => {
   const router = useRouter();
+  //! Images from FILE input element of form will be stored in images
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [images, setImages] = useState<any[]>([]);
   // TODO: decide whether to use Formik or native validation
   const [department, setDepartment] = useState<string>('');
   const [colors, setColors] = useState<string>('');
@@ -32,8 +36,7 @@ const AdminAddProduct = (): JSX.Element => {
       clearStatusOfAdminOperations();
     }
     if (isUploaded) {
-      toast.success('🎉🎉🎉Successfully uploaded🎉🎉🎉');
-      clearStatusOfAdminOperations();
+      toast.success('🎉 Successfully uploaded 🎉');
       router.reload();
     }
   }, [isUploaded, error, clearStatusOfAdminOperations]);
@@ -45,14 +48,32 @@ const AdminAddProduct = (): JSX.Element => {
       colors: colors.split(' '),
       department,
       description,
-      images: [{ public_id: 'test', url: 'test' }],
+      images,
       model,
-      price: Number(price),
-      size: Number(productSize),
+      price,
+      size: productSize,
       styleCode,
     };
 
     uploadNewProduct(newProduct);
+  };
+
+  const handleUploadImage = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    if (e.target.files) {
+      const files = Array.from(e.target.files);
+      setImages([]);
+
+      files.forEach((file) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          if (reader.readyState === 2) {
+            setImages((p) => [...p, reader.result]);
+          }
+        };
+
+        reader.readAsDataURL(file);
+      });
+    }
   };
 
   // TODO:move to separate helper function
@@ -135,6 +156,14 @@ const AdminAddProduct = (): JSX.Element => {
           required={true}
         />
         {/* TODO: images */}
+        <FormFileField
+          labelText="Upload Product Photos"
+          name="product-photo"
+          placeholder="Upload Product Photos"
+          onChange={handleUploadImage}
+          required={true}
+          multiple={true}
+        />
 
         <Button
           type="submit"

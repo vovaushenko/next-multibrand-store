@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
 import { AdminAction, AdminActionTypes } from './../../types/adminTypes';
-import { Product } from './../../types/index';
+import { UploadProduct } from './../../types/index';
 
 /**
  *@Admin async action creator, will dispatch action to save product in DB, also will dispatch error action if async operation fails
@@ -9,7 +9,7 @@ import { Product } from './../../types/index';
  *@param {object} product - product to be saved in DB
  *@returns {undefined}
  */
-export const uploadNewProduct = (product: Product) => {
+export const uploadNewProduct = (product: UploadProduct) => {
   return async (dispatch: Dispatch<AdminAction>): Promise<void> => {
     dispatch({ type: AdminActionTypes.UPLOAD_PRODUCT });
     try {
