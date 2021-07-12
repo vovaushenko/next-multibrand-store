@@ -3,6 +3,7 @@ import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ThemeProvider } from 'styled-components';
+import Modal from '../components/Modal/Modal';
 import { wrapper } from '../store';
 import { GlobalStyles } from '../styles/globalStyle';
 import { mainTheme } from '../styles/mainTheme';
@@ -23,6 +24,7 @@ const WrappedApp = ({ Component, pageProps }: AppProps): JSX.Element => {
           draggable
           pauseOnHover
         />
+        <Modal />
         <Component {...pageProps} />
       </ThemeProvider>
     </>

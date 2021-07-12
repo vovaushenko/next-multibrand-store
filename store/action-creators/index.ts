@@ -1,5 +1,6 @@
 import * as AdminActionCreators from './adminActionCreators';
 import * as ProductsActionCreators from './productActionCreators';
+import * as UIactionCreators from './uiActionCreators';
 
 /**
  * This object combines all available redux action creators
@@ -9,4 +10,5 @@ import * as ProductsActionCreators from './productActionCreators';
 export const CombinedActionCreators = {
   ...AdminActionCreators,
   ...ProductsActionCreators,
+  ...UIactionCreators,
 };
