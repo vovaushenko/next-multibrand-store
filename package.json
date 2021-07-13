@@ -12,7 +12,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "storybook": "start-storybook -p 6006"
+    "storybook": "start-storybook -s ./public -p 6006"
   },
   "dependencies": {
     "axios": "^0.21.1",

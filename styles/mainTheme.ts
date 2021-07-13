@@ -16,6 +16,7 @@ export const mainTheme: DefaultTheme = {
   dashboardGrayBg: '#242424',
   dashboardGrayCard: '#1b1b1b',
   borderRadius: '0.5rem',
+  borderGrayColor: 'rgba(143, 143, 143, 0.3)',
   maxWidth: '1500px',
 
   media: {

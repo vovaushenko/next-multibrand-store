@@ -22,7 +22,7 @@ export interface Product {
   colors: string[];
   department: Department;
   description: string;
-  images?: Image[];
+  images: Image[];
   model: string;
   price: number;
   size: number;
