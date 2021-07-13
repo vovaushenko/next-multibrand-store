@@ -32,7 +32,7 @@ const AdminAddProduct = (): JSX.Element => {
     (state) => state.admin
   );
   //! action creator import
-  const { uploadNewProduct, clearStatusOfAdminOperations } = useActions();
+  const { updateProduct, clearStatusOfAdminOperations } = useActions();
 
   useEffect(() => {
     if (error) {
@@ -40,13 +40,13 @@ const AdminAddProduct = (): JSX.Element => {
       clearStatusOfAdminOperations();
     }
     if (isUpdated) {
-      toast.success('🎉 Successfully uploaded 🎉');
+      toast.success('🎉 Successfully updated 🎉');
       router.reload();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [error, isUpdated]);
 
-  const handleAddNewProduct = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleProductUpdate = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const newProduct = {
       brand,
@@ -59,8 +59,9 @@ const AdminAddProduct = (): JSX.Element => {
       size: productSize,
       styleCode,
     };
-
-    uploadNewProduct(newProduct);
+    if (product._id !== undefined) {
+      updateProduct(product._id, newProduct);
+    }
   };
 
   const handleUploadImage = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -90,7 +91,7 @@ const AdminAddProduct = (): JSX.Element => {
 
   return (
     <StyledWrapper>
-      <form onSubmit={handleAddNewProduct}>
+      <form onSubmit={handleProductUpdate}>
         <FormTextField
           name="department"
           placeholder="product department"

@@ -115,7 +115,28 @@ export const updateSingleProduct = catchErrorsFrom(
       );
     }
 
-    //TODO: After integration with image CDN add image update feature
+    if (req.body.images) {
+      //* Delete images associated with the product
+      for (let i = 0; i < foundProduct.images.length; i++) {
+        await cloudinary.v2.uploader.destroy(foundProduct.images[i].public_id);
+      }
+      //* Prepare new images for the product
+      const imagesLinks = [];
+      const images = req.body.images;
+
+      for (let i = 0; i < images.length; i++) {
+        const result = await cloudinary.v2.uploader.upload(images[i], {
+          folder: 'sneaker-maniacs/products',
+        });
+
+        imagesLinks.push({
+          public_id: result.public_id,
+          url: result.secure_url,
+        });
+      }
+      //* Add newly uploaded images to body
+      req.body.images = imagesLinks;
+    }
 
     foundProduct = await Products.findByIdAndUpdate(req.query.id, req.body, {
       new: true,

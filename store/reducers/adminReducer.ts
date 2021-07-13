@@ -47,6 +47,18 @@ export const adminReducer = (
         isDeleted: false,
         error: action.payload,
       };
+    // Update Operations
+    case AdminActionTypes.UPDATE_PRODUCT:
+      return { ...state, isLoading: true };
+    case AdminActionTypes.PRODUCT_WAS_UPDATED:
+      return { ...state, isLoading: false, isUpdated: action.payload };
+    case AdminActionTypes.PRODUCT_UPDATE_ERROR:
+      return {
+        ...state,
+        isLoading: false,
+        isUpdated: false,
+        error: action.payload,
+      };
     // Clear state Operations
     case AdminActionTypes.CLEAR_STATE:
       return initialState;

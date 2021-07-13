@@ -54,6 +54,40 @@ export const deleteProduct = (id: string) => {
 };
 
 /**
+ * @Admin async action creator, will dispatch action to update product, also will dispatch error action if async operation fails
+ * @param {string} id - product id
+ * @param {object} updatedProduct - new product details of type UploadProduct
+ * @PUT /api/products/:id
+ */
+export const updateProduct = (
+  productId: string,
+  updatedProduct: UploadProduct
+) => {
+  return async (dispatch: Dispatch<AdminAction>): Promise<void> => {
+    dispatch({ type: AdminActionTypes.UPDATE_PRODUCT });
+    try {
+      const config = {
+        headers: { 'Content-Type': 'application/json' },
+      };
+      const { data } = await axios.put(
+        `/api/products/${productId}`,
+        updatedProduct,
+        config
+      );
+      dispatch({
+        type: AdminActionTypes.PRODUCT_WAS_UPDATED,
+        payload: data.success,
+      });
+    } catch (error) {
+      dispatch({
+        type: AdminActionTypes.PRODUCT_UPDATE_ERROR,
+        payload: error.response.data.error,
+      });
+    }
+  };
+};
+
+/**
  *@ADMIN async action creator, will clear state after successful||unsuccessful operations
  *@function clearStatusOfOperations
  *@returns {undefined}
