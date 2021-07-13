@@ -3,11 +3,11 @@ import 'jest-styled-components';
 import React from 'react';
 import SectionHeader from './SectionHeader';
 
-describe('Button', () => {
+describe('Section Header', () => {
   const wrap = mount(<SectionHeader headerText="tomato" />);
 
   it('should render text content without throwing an error', () => {
     expect(wrap);
-    expect(wrap.find('h3').text()).toBe('tomato');
+    expect(wrap.find('h2').text()).toBe('tomato');
   });
 });
