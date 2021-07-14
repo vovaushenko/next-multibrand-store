@@ -25,6 +25,7 @@ declare module 'styled-components' {
     dashboardGrayCard: string;
     borderRadius: string;
     borderGrayColor: string;
+    selectedOutline: string;
     media: media;
   }
 }
