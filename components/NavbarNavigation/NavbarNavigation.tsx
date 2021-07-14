@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Container from '../Container/Container';
 import NavigationDropdown from '../NavDropdown/NavDropdown';
 import NavLink from '../NavLink/NavLink';
+import NavPictureDropdown from '../NavPictureDropdown/NavPictureDropdown';
 import { navLinks } from './navigationData';
 import * as Styled from './styles';
 
@@ -24,7 +25,7 @@ const NavbarNavigation = (): JSX.Element => {
           ))}
         </ul>
       </Container>
-      {section === 'new arrivals' && <h1>HELLO WORLD</h1>}
+      {section === 'new arrivals' && <NavPictureDropdown />}
       {section && section !== 'new arrivals' && (
         <NavigationDropdown
           dropdownContent={navLinks.find((l) => l.section === section)!}
