@@ -2,6 +2,7 @@ import Head from 'next/head';
 import React, { FC, ReactNode } from 'react';
 import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar';
+import NewsletterSignUp from '../NewsletterSignUp/NewsletterSignUp';
 
 interface Props {
   children: ReactNode;
@@ -22,6 +23,7 @@ const name: FC<Props> = ({ children, title }) => {
       </Head>
       <Navbar />
       {children}
+      <NewsletterSignUp />
       <Footer />
     </>
   );

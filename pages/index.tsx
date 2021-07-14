@@ -3,7 +3,6 @@ import { GetStaticProps } from 'next';
 import React from 'react';
 import Hero from '../components/Hero/Hero';
 import Layout from '../components/Layout/Layout';
-import NewsletterSignUp from '../components/NewsletterSignUp/NewsletterSignUp';
 import WhatsHot from '../components/WhatsHotSection/WhatsHotSection';
 import { Product } from '../types';
 
@@ -22,7 +21,6 @@ export default function Home({ trendingProducts }: ServerProps): JSX.Element {
         imgSrc="/images/hero-img.png"
       />
       <WhatsHot products={trendingProducts} />
-      <NewsletterSignUp />
     </Layout>
   );
 }
