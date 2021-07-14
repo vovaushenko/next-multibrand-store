@@ -51,7 +51,7 @@ const AdminAddProduct = (): JSX.Element => {
       images,
       model,
       price,
-      size: productSize,
+      size: productSize.trim().split(' '),
       styleCode,
     };
 

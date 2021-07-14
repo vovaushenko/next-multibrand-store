@@ -45,7 +45,7 @@ const ProductDetails = ({ product }: Props): JSX.Element => {
             brand={brand}
             colors={colors}
             department={department}
-            size={[size, size, size, size]}
+            size={size}
             model={model}
             price={price}
             styleCode={styleCode}

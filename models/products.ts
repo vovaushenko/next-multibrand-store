@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 const productsSchema = new mongoose.Schema({
   department: {
@@ -32,10 +32,11 @@ const productsSchema = new mongoose.Schema({
       type: String,
     },
   ],
-  size: {
-    type: Number,
-    required: [true, 'Please add product size'],
-  },
+  size: [
+    {
+      type: String,
+    },
+  ],
   description: {
     type: String,
     required: [true, 'Please add product description'],
@@ -53,7 +54,7 @@ const productsSchema = new mongoose.Schema({
       },
     },
   ],
-})
+});
 
 export default mongoose.models.Products ||
-  mongoose.model('Products', productsSchema)
+  mongoose.model('Products', productsSchema);

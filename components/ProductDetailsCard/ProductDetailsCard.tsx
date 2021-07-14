@@ -13,7 +13,7 @@ export interface Props {
   department: Department;
   model: string;
   price: number;
-  size: number[];
+  size: string[];
   styleCode: string;
 }
 /**
@@ -53,15 +53,16 @@ const ProductDetailsCard = ({
 
       <SectionHeader headerText={`${department}'s`} />
       <Styled.SizesList>
-        {size.map((s, id) => (
-          <Styled.Size
-            key={s}
-            isSelected={id === selectedSize}
-            onClick={() => handleSelect(id)}
-          >
-            {s}
-          </Styled.Size>
-        ))}
+        {size &&
+          size.map((s, id) => (
+            <Styled.Size
+              key={s}
+              isSelected={id === selectedSize}
+              onClick={() => handleSelect(id)}
+            >
+              {s}
+            </Styled.Size>
+          ))}
       </Styled.SizesList>
 
       <NextLink href="sizing-help" passHref={true}>

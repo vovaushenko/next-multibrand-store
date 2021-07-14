@@ -25,7 +25,7 @@ export interface Product {
   images: Image[];
   model: string;
   price: number;
-  size: number;
+  size: string[];
   styleCode: string;
 }
 /**
@@ -40,7 +40,7 @@ export interface UploadProduct {
   images: string[];
   model: string;
   price: string;
-  size: string;
+  size: string[];
   styleCode: string;
 }
 
