@@ -17,7 +17,7 @@ export type Department = 'men' | 'women' | 'kid';
  *@param {images} images - cloudinary IMG object, use public_id in frontend
  */
 export interface Product {
-  _id?: string;
+  _id: string;
   brand: string;
   colors: string[];
   department: Department;

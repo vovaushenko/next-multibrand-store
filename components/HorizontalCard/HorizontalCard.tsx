@@ -6,6 +6,7 @@ import RouterLink from '../RouterLink/RouterLink';
 import * as Styled from './styles';
 
 export interface Props {
+  productID: string;
   brandName: string;
   productModel: string;
   productPrice: string;
@@ -24,6 +25,7 @@ const HorizontalCard = ({
   productModel,
   productPrice,
   images,
+  productID,
 }: Props): JSX.Element => {
   // We will use image ref to target Image of Card to change img.src on hovering
   const imageRef = useRef<HTMLElement>(null);
@@ -38,7 +40,7 @@ const HorizontalCard = ({
   return (
     <Styled.CardContainer>
       <Styled.CardImage ref={imageRef}>
-        <RouterLink href={`/products/${brandName}`}>
+        <RouterLink href={`/products/${productID}`}>
           <NextImage
             src={isHovering ? firstImage : secondImage}
             alt={`${brandName} ${productModel}`}
@@ -51,7 +53,7 @@ const HorizontalCard = ({
       </Styled.CardImage>
 
       <Styled.CardText>
-        <RouterLink href={`/products/${brandName}`}>
+        <RouterLink href={`/products/${productID}`}>
           {brandName} {productModel}
         </RouterLink>
 

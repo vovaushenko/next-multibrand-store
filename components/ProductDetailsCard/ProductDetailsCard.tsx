@@ -46,7 +46,7 @@ const ProductDetailsCard = ({
       <Styled.Price>{price}</Styled.Price>
       <Styled.List>
         <li>Style:{styleCode}</li>
-        <li>Colors:{colors.join('/')}</li>
+        <li>Colors:{colors && colors.join('/')}</li>
       </Styled.List>
 
       <HR />

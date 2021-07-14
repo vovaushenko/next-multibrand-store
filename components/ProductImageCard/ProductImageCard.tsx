@@ -14,7 +14,9 @@ export interface Props {
  */
 const ProductImageCard = ({ images, sneakerModel }: Props): JSX.Element => {
   // big image src will be controlled through local state
-  const [bigImageSrc, setBigImageSrc] = useState<string>(images[0].url);
+  const [bigImageSrc, setBigImageSrc] = useState<string>(
+    images && images[0].url
+  );
   // product list focus border will be also controlled here
   const [highlightedID, setHighlightedID] = useState<number>(0);
   // onClick we will change image src for big image and id for outline highlight
@@ -25,31 +27,38 @@ const ProductImageCard = ({ images, sneakerModel }: Props): JSX.Element => {
 
   return (
     <Styled.CardContainer>
-      <Styled.ImageList>
-        {images.map((image, id) => (
-          <Styled.ImageWrapper key={id} isHighlighted={id === highlightedID}>
+      {images && (
+        <>
+          <Styled.ImageList>
+            {images.map((image, id) => (
+              <Styled.ImageWrapper
+                key={id}
+                isHighlighted={id === highlightedID}
+              >
+                <NextImage
+                  src={image.url}
+                  height={70}
+                  width={70}
+                  alt={sneakerModel}
+                  objectFit="contain"
+                  onClick={() => handleChangeBigImage(image.url, id)}
+                  className="small-img"
+                />
+              </Styled.ImageWrapper>
+            ))}
+          </Styled.ImageList>
+          <Styled.BigImage>
             <NextImage
-              src={image.url}
-              height={50}
-              width={50}
+              src={bigImageSrc}
+              height={350}
+              width={350}
               alt={sneakerModel}
               objectFit="contain"
-              onClick={() => handleChangeBigImage(image.url, id)}
-              className="small-img"
+              className="big-img"
             />
-          </Styled.ImageWrapper>
-        ))}
-      </Styled.ImageList>
-      <Styled.BigImage>
-        <NextImage
-          src={bigImageSrc}
-          height={200}
-          width={200}
-          alt={sneakerModel}
-          objectFit="contain"
-          className="big-img"
-        />
-      </Styled.BigImage>
+          </Styled.BigImage>
+        </>
+      )}
     </Styled.CardContainer>
   );
 };

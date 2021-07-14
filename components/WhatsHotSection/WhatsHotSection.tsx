@@ -23,6 +23,7 @@ const WhatsHot = ({ products }: Props): JSX.Element => {
         {products.map((product) => (
           <HorizontalCard
             key={product._id}
+            productID={product._id}
             brandName={product.brand}
             images={product.images}
             productModel={product.model}

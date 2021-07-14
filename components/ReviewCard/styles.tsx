@@ -10,7 +10,7 @@ export const CardContainer = styled.article`
 
   button {
     justify-self: end;
-    width: 40%;
+    width: 70%;
   }
 `;
 
