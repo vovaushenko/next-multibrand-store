@@ -1,38 +1,40 @@
-export const navLinks = [
+import { NavDropdownItem } from '../../types';
+
+export const navLinks: NavDropdownItem[] = [
   {
     section: 'new arrivals',
-    men: ['adidas', 'nike', 'air jordan'],
-    women: ['adidas', 'nike', 'air jordan'],
-    kid: ['adidas', 'nike', 'air jordan'],
+    men: ['Adidas', 'Nike', 'Air Jordan'],
+    women: ['Adidas', 'Nike', 'Air Jordan'],
+    kid: ['Adidas', 'Nike', 'Air Jordan'],
   },
   {
     section: 'most wanted',
-    men: ['adidas', 'nike', 'air jordan'],
-    women: ['adidas', 'nike', 'air jordan'],
-    kid: ['adidas', 'nike', 'air jordan'],
+    men: ['Adidas', 'Nike', 'Air Jordan', 'Diadora', 'Asics', 'Asics'],
+    women: ['Adidas', 'Nike', 'Air Jordan'],
+    kid: ['Adidas', 'Nike', 'Air Jordan'],
   },
   {
     section: 'shoes',
-    men: ['adidas', 'nike', 'air jordan'],
-    women: ['adidas', 'nike', 'air jordan'],
-    kid: ['adidas', 'nike', 'air jordan'],
+    men: ['Adidas', 'Nike', 'Air Jordan'],
+    women: ['Adidas', 'Nike', 'Air Jordan'],
+    kid: ['Adidas', 'Nike', 'Air Jordan'],
   },
   {
     section: 'apparel',
-    men: ['adidas', 'nike', 'air jordan'],
-    women: ['adidas', 'nike', 'air jordan'],
-    kid: ['adidas', 'nike', 'air jordan'],
+    men: ['Adidas', 'Nike', 'Air Jordan'],
+    women: ['Adidas', 'Nike', 'Air Jordan'],
+    kid: ['Adidas', 'Nike', 'Air Jordan'],
   },
   {
     section: 'gear',
-    men: ['adidas', 'nike', 'air jordan'],
-    women: ['adidas', 'nike', 'air jordan'],
-    kid: ['adidas', 'nike', 'air jordan'],
+    men: ['Adidas', 'Nike', 'Air Jordan'],
+    women: ['Adidas', 'Nike', 'Air Jordan'],
+    kid: ['Adidas', 'Nike', 'Air Jordan'],
   },
   {
     section: 'sale',
-    men: ['adidas', 'nike', 'air jordan'],
-    women: ['adidas', 'nike', 'air jordan'],
-    kid: ['adidas', 'nike', 'air jordan'],
+    men: ['Adidas', 'Nike', 'Air Jordan'],
+    women: ['Adidas', 'Nike', 'Air Jordan'],
+    kid: ['Adidas', 'Nike', 'Air Jordan'],
   },
 ];

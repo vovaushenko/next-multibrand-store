@@ -1,6 +1,7 @@
 import React from 'react';
 import NavbarHeader from '../NavbarHeader/NavbarHeader';
 import NavbarNavigation from '../NavbarNavigation/NavbarNavigation';
+import * as Styled from './styles';
 
 /**
  * Renders navbar with its composed content
@@ -9,10 +10,10 @@ import NavbarNavigation from '../NavbarNavigation/NavbarNavigation';
  */
 const Navbar = (): JSX.Element => {
   return (
-    <>
+    <Styled.Container>
       <NavbarHeader />
       <NavbarNavigation />
-    </>
+    </Styled.Container>
   );
 };
 export default Navbar;

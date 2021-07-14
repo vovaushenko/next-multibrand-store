@@ -1,8 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
 import Container from '../Container/Container';
+import NavigationDropdown from '../NavDropdown/NavDropdown';
 import NavLink from '../NavLink/NavLink';
 import { navLinks } from './navigationData';
+import * as Styled from './styles';
 
 /**
  *Presentational Navbar Navigation Component
@@ -10,28 +11,27 @@ import { navLinks } from './navigationData';
  *@returns {JSX.Element} - Rendered list navigation links
  */
 const NavbarNavigation = (): JSX.Element => {
+  const [section, setSection] = useState('');
+
   return (
-    <StyledNavigation>
+    <Styled.Navigation onMouseLeave={() => setSection(() => '')}>
       <Container>
         <ul>
           {navLinks.map((link, id) => (
-            <li key={id}>
+            <li key={id} onMouseEnter={() => setSection(link.section)}>
               <NavLink href={'/hi'} linkText={link.section} />
             </li>
           ))}
         </ul>
       </Container>
-    </StyledNavigation>
+      {section === 'new arrivals' && <h1>HELLO WORLD</h1>}
+      {section && section !== 'new arrivals' && (
+        <NavigationDropdown
+          dropdownContent={navLinks.find((l) => l.section === section)!}
+        />
+      )}
+    </Styled.Navigation>
   );
 };
-
-const StyledNavigation = styled.nav`
-  background: ${({ theme }) => theme.secondaryBg};
-  padding: 1rem 0;
-  ul {
-    display: flex;
-    justify-content: center;
-  }
-`;
 
 export default NavbarNavigation;

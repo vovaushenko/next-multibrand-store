@@ -65,3 +65,30 @@ export interface ReduxAsync {
   isLoading: boolean;
   error: string | null;
 }
+
+/**
+ * All available sneak brands
+ *@type SneakerBrand
+ */
+export type SneakerBrand =
+  | 'Adidas'
+  | 'Air Jordan'
+  | 'Nike'
+  | 'Puma'
+  | 'Asics'
+  | 'Converse'
+  | 'Yeezy'
+  | 'Vans'
+  | 'Reebok'
+  | 'Supreme'
+  | 'Native'
+  | 'Diadora'
+  | 'Timberland'
+  | 'New Balance';
+
+export interface NavDropdownItem {
+  section: string;
+  men: SneakerBrand[];
+  women: SneakerBrand[];
+  kid: SneakerBrand[];
+}
