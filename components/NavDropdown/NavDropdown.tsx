@@ -1,5 +1,7 @@
 import React from 'react';
 import { NavDropdownItem } from '../../types';
+import RouterLink from '../RouterLink/RouterLink';
+import SectionHeader from '../SectionHeader/SectionHeader';
 import * as Styled from './styles';
 
 export interface Props {
@@ -7,8 +9,9 @@ export interface Props {
 }
 
 const NavigationDropdown = ({ dropdownContent }: Props): JSX.Element => {
+  // Will get array of Keys for headers in dropdown, also we should get rid of 'section' key since it has no corresponding value
   const sectionTitles = Object.keys(dropdownContent).filter(
-    (k) => k !== 'section'
+    (key) => key !== 'section'
   );
 
   const mapSectionToContent = (section: string) => {
@@ -19,13 +22,18 @@ const NavigationDropdown = ({ dropdownContent }: Props): JSX.Element => {
 
   return (
     <Styled.Container>
-      <ul>
+      <Styled.List>
         {sectionTitles.map((section) => (
-          <li key={section}>
-            {section} {dropdownContent[mapSectionToContent(section)].join(' ')}
-          </li>
+          <Styled.ListItem key={section}>
+            <SectionHeader headerText={section + `'s`} />
+            {dropdownContent[mapSectionToContent(section)].map((brand, id) => (
+              <RouterLink key={id} href={`/${section}/${brand}`}>
+                {brand}
+              </RouterLink>
+            ))}
+          </Styled.ListItem>
         ))}
-      </ul>
+      </Styled.List>
     </Styled.Container>
   );
 };

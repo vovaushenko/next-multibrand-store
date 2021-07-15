@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.nav`
-  position: fixed;
+  position: sticky;
+  top: 0;
   z-index: 5;
+  height: 6rem;
   background: ${({ theme }) => theme.primaryBg};
 `;

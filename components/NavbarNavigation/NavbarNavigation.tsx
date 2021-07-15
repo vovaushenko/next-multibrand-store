@@ -14,22 +14,25 @@ import * as Styled from './styles';
 const NavbarNavigation = (): JSX.Element => {
   const [section, setSection] = useState('');
 
+  const findDropdownContentBy = (section: string) =>
+    navLinks.find((link) => link.section === section);
+
   return (
     <Styled.Navigation onMouseLeave={() => setSection(() => '')}>
       <Container>
         <ul>
           {navLinks.map((link, id) => (
             <li key={id} onMouseEnter={() => setSection(link.section)}>
-              <NavLink href={'/hi'} linkText={link.section} />
+              <NavLink href={`/${link.section}`} linkText={link.section} />
             </li>
           ))}
         </ul>
       </Container>
+      {/* For NewArrivals section we will display Picture Dropdown */}
       {section === 'new arrivals' && <NavPictureDropdown />}
+      {/* For all other section - plain Navigation Dropdown */}
       {section && section !== 'new arrivals' && (
-        <NavigationDropdown
-          dropdownContent={navLinks.find((l) => l.section === section)!}
-        />
+        <NavigationDropdown dropdownContent={findDropdownContentBy(section)!} />
       )}
     </Styled.Navigation>
   );
