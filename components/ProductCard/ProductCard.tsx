@@ -51,13 +51,16 @@ const ProductCard = ({
           <NextImage
             src={isHovering ? firstImage : secondImage}
             alt={`${brandName} ${productModel}`}
-            height={80}
-            width={80}
+            height={200}
+            width={200}
             objectFit="contain"
             className="card-img"
           />
         </RouterLink>
       </Styled.CardImage>
+      <RouterLink href={`/products/${productID}`}>
+        <a>{brandName + ' ' + productModel}</a>
+      </RouterLink>
       <Styled.Price>${productPrice}</Styled.Price>
       <Button disabled={isAvailable === false} className="add-to-cart-btn">
         {isAvailable ? 'add to cart' : 'sold out'}

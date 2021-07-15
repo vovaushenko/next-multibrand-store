@@ -6,6 +6,14 @@ export const Card = styled.article`
   padding: 1.25rem;
   gap: 1rem;
   background: ${({ theme }) => theme.secondaryBg};
+  #quick-view-btn {
+    background: transparent;
+    border: 1px solid ${({ theme }) => theme.borderGrayColor};
+    :hover {
+      background: ${({ theme }) => theme.borderGrayColor};
+    }
+  }
+
   @media ${({ theme }) => theme.media.phone} {
     #quick-view-btn {
       display: none;
@@ -14,7 +22,10 @@ export const Card = styled.article`
 `;
 
 export const CardImage = styled.figure`
-  flex: 0.7;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Price = styled.p`
