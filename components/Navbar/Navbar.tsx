@@ -1,4 +1,5 @@
 import React from 'react';
+import MobileNavbar from '../MobileNavbar/MobileNavbar';
 import NavbarHeader from '../NavbarHeader/NavbarHeader';
 import NavbarNavigation from '../NavbarNavigation/NavbarNavigation';
 import * as Styled from './styles';
@@ -13,6 +14,8 @@ const Navbar = (): JSX.Element => {
     <Styled.Container>
       <NavbarHeader />
       <NavbarNavigation />
+      {/* Mobile Navbar will be shown only on mobile width */}
+      <MobileNavbar />
     </Styled.Container>
   );
 };

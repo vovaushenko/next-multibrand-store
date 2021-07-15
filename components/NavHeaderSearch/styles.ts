@@ -29,9 +29,5 @@ export const NavSearch = styled.div`
         font-size: 1.25rem;
       }
     }
-
-    @media ${({ theme }) => theme.media.phone} {
-      display: none;
-    }
   }
 `;

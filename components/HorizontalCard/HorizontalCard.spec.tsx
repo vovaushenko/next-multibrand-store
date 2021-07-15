@@ -16,6 +16,7 @@ describe('HorizontalCard', () => {
       productModel="Roche Run"
       productPrice="777"
       images={cardImages}
+      productID="xyz"
     />
   );
 

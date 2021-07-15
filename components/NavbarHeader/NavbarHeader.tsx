@@ -33,6 +33,10 @@ const StyledHeader = styled.header`
   padding: 0.25rem 0.75rem;
   width: 90%;
   margin: 0 auto;
+
+  @media ${({ theme }) => theme.media.phone} {
+    display: none;
+  }
 `;
 
 export default NavbarHeader;
