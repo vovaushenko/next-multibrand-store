@@ -1,32 +1,42 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { StyledHeaderLogo } from './styles';
+import * as Styled from './styles';
 
 export type Props = {
   headerText: string;
+  width: number;
+  height: number;
+  src: string;
 };
 /**
  * Renders navbar header logo
  *@function NavbarHeaderLogo
+ *@param {string} src - logo image src
  *@param {string} headerText - logo text and alt attribute
+ *@param {number} width - logo width
+ *@param {number} height - logo height
  *@returns {JSX.Element} - Rendered NavbarHeaderLogo
  */
-const NavbarHeaderLogo = ({ headerText }: Props): JSX.Element => {
+const NavbarHeaderLogo = ({
+  headerText,
+  height,
+  width,
+  src,
+}: Props): JSX.Element => {
   return (
-    <StyledHeaderLogo>
-      <Link href="/">
-        <a>
-          <Image
-            className="brand-logo"
-            src={'/images/logo.png'}
-            alt={headerText}
-            height={66}
-            width={321}
-          />
-        </a>
+    <Styled.HeaderLogo>
+      <Link href="/" passHref>
+        <Image
+          className="brand-logo"
+          src={src}
+          alt={headerText}
+          height={height}
+          width={width}
+          objectFit="contain"
+        />
       </Link>
-    </StyledHeaderLogo>
+    </Styled.HeaderLogo>
   );
 };
 

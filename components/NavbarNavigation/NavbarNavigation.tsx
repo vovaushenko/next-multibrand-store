@@ -27,13 +27,15 @@ const NavbarNavigation = (): JSX.Element => {
             </li>
           ))}
         </ul>
+        {/* For NewArrivals section we will display Picture Dropdown */}
+        {section === 'new arrivals' && <NavPictureDropdown />}
+        {/* For all other section - plain Navigation Dropdown */}
+        {section && section !== 'new arrivals' && (
+          <NavigationDropdown
+            dropdownContent={findDropdownContentBy(section)!}
+          />
+        )}
       </Container>
-      {/* For NewArrivals section we will display Picture Dropdown */}
-      {section === 'new arrivals' && <NavPictureDropdown />}
-      {/* For all other section - plain Navigation Dropdown */}
-      {section && section !== 'new arrivals' && (
-        <NavigationDropdown dropdownContent={findDropdownContentBy(section)!} />
-      )}
     </Styled.Navigation>
   );
 };

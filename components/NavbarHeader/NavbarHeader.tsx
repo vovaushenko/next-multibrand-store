@@ -13,7 +13,12 @@ import NavHeaderSearch from '../NavHeaderSearch/NavHeaderSearch';
 const NavbarHeader = (): JSX.Element => {
   return (
     <StyledHeader>
-      <NavbarHeaderLogo headerText={'Sneakers'} />
+      <NavbarHeaderLogo
+        headerText={'Sneakers'}
+        src="/images/logo.png"
+        width={321}
+        height={66}
+      />
       <NavHeaderSearch />
       <NavHeaderActionList />
     </StyledHeader>
@@ -26,6 +31,8 @@ const StyledHeader = styled.header`
   gap: 2rem;
   grid-template-columns: 1fr 3fr 1fr;
   padding: 0.25rem 0.75rem;
+  width: 90%;
+  margin: 0 auto;
 `;
 
 export default NavbarHeader;
