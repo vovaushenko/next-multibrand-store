@@ -3,7 +3,7 @@ import Button from '../Button/Button';
 import Container from '../Container/Container';
 import FormTextField from '../FormTextField/FormTextField';
 import SectionHeader from '../SectionHeader/SectionHeader';
-import { SignUpSection } from './styles';
+import * as Styled from './styles';
 
 /**
  * NewsletterSignUp component where user can subscribe to newsletter by submitting his email
@@ -20,10 +20,10 @@ const NewsletterSignUp = (): JSX.Element => {
   };
   return (
     <Container>
-      <SignUpSection>
+      <Styled.SignUP>
         <SectionHeader headerText={'newsletter sign up'} />
         <p>Get info on new drops, promos & more.</p>
-        <form className="signup-form" onSubmit={handleNewsletterSubmit}>
+        <Styled.Form className="signup-form" onSubmit={handleNewsletterSubmit}>
           <FormTextField
             name="email"
             placeholder="Your Email"
@@ -32,8 +32,8 @@ const NewsletterSignUp = (): JSX.Element => {
             setValue={setEmail}
           />
           <Button text="subscribe" type="submit" />
-        </form>
-      </SignUpSection>
+        </Styled.Form>
+      </Styled.SignUP>
     </Container>
   );
 };
