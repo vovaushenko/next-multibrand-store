@@ -16,6 +16,6 @@ Primary.args = {
   model: 'V (5) Retro (Raging Bull)',
   colors: ['red', 'black', 'white'],
   price: 150,
-  size: [7, 8, 9, 9.5, 10, 11, 11.5],
+  size: ['7', '8', '9', '9.5', '10', '11', '11.5'],
   styleCode: '440888-600',
 };
