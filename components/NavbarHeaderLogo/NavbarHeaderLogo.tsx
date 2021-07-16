@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import * as Styled from './styles';
+import * as Styled from './styles.NavbarHeader';
 
 export type Props = {
   headerText: string;

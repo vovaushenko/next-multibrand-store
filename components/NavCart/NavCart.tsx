@@ -1,37 +1,28 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
 import CartIcon from '../CartIcon/CartIcon';
+import NavMiniModal from '../NavMiniModal/NavMiniModal';
+import * as Styled from './styles.NavCart';
+
+const DummyContent = () => (
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti fuga
+    voluptatum, nostrum deleniti magnam illo laboriosam suscipit molestias
+    cumque dolore, illum optio harum a quam?
+  </p>
+);
 
 const NavCart = (): JSX.Element => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const toggleCartModal = () => setIsModalOpen((prev) => !prev);
   return (
-    <StyledNavCart>
-      <button className="cart-button">
+    <Styled.Container onClick={toggleCartModal}>
+      <Styled.CartButton className="cart-button">
         <CartIcon productAmount={1} />
         <span>Cart</span>
-      </button>
-    </StyledNavCart>
+      </Styled.CartButton>
+      <NavMiniModal isOpen={isModalOpen} modalContent={<DummyContent />} />
+    </Styled.Container>
   );
 };
-
-const StyledNavCart = styled.div`
-  flex: 0.5;
-  display: flex;
-  align-items: center;
-
-  .cart-button {
-    cursor: pointer;
-    background-color: transparent;
-    color: ${({ theme }) => theme.primaryWhite};
-    display: flex;
-    align-items: center;
-    border: none;
-
-    span {
-      margin-left: 1.25rem;
-      font-size: 1.125rem;
-      font-weight: 600;
-    }
-  }
-`;
 
 export default NavCart;

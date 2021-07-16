@@ -1,6 +1,6 @@
 import React from 'react';
 import { BiSearch } from 'react-icons/bi';
-import { NavSearch } from './styles';
+import * as Styled from './styles.NavHeaderSearch';
 
 /**
  * Renders Navbar Search Component
@@ -15,14 +15,18 @@ const NavHeaderSearch = (): JSX.Element => {
   };
 
   return (
-    <NavSearch>
-      <form onSubmit={handleSearch}>
-        <input className="search-input" type="text" placeholder="Search..." />
-        <button className="search-submit-btn" type="submit">
+    <Styled.Container>
+      <Styled.Form onSubmit={handleSearch}>
+        <Styled.Input
+          className="search-input"
+          type="text"
+          placeholder="Search..."
+        />
+        <Styled.SubmitButton className="search-submit-btn" type="submit">
           <BiSearch className="search-icon" />
-        </button>
-      </form>
-    </NavSearch>
+        </Styled.SubmitButton>
+      </Styled.Form>
+    </Styled.Container>
   );
 };
 

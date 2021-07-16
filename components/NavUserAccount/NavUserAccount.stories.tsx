@@ -3,7 +3,7 @@ import React from 'react';
 import NavUserAccount from './NavUserAccount';
 
 export default {
-  title: 'navbar/NavUserAccount',
+  title: 'navbar/header/Sign in|out User Account',
   component: NavUserAccount,
 };
 

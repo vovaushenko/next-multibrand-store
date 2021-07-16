@@ -1,19 +1,20 @@
 import React from 'react';
-import styled from 'styled-components';
 import NavCart from '../NavCart/NavCart';
 import NavUserAccount from '../NavUserAccount/NavUserAccount';
+import * as Styled from './styles.NavHeaderActionList';
 
+/**
+ * NavHeaderActionList renders UserAccount and Cart in Navbar
+ *@function NavHeaderActionList
+ *@returns {JSX.Element} - Rendered NavHeaderActionList component
+ */
 const NavHeaderActionList = (): JSX.Element => {
   return (
-    <ActionList>
+    <Styled.Container>
       <NavUserAccount />
       <NavCart />
-    </ActionList>
+    </Styled.Container>
   );
 };
-
-const ActionList = styled.div`
-  display: flex;
-`;
 
 export default NavHeaderActionList;

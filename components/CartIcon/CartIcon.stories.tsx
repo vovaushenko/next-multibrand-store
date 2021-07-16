@@ -3,7 +3,7 @@ import React from 'react';
 import CartIcon, { Props } from './CartIcon';
 
 export default {
-  title: 'navbar/NavCartIcon',
+  title: 'navbar/Header/Cart Icon',
   component: CartIcon,
 };
 
