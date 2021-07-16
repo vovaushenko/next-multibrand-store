@@ -2,10 +2,10 @@ import React from 'react';
 import MobileNavbar from '../MobileNavbar/MobileNavbar';
 import NavbarHeader from '../NavbarHeader/NavbarHeader';
 import NavbarNavigation from '../NavbarNavigation/NavbarNavigation';
-import * as Styled from './styles';
+import * as Styled from './styles.Navbar';
 
 /**
- * Renders navbar with its composed content
+ * Renders navbar with its specified content
  *@function Navbar
  *@returns {JSX.Element} - Rendered Navbar
  */
