@@ -1,5 +1,6 @@
 import cloudinary from 'cloudinary';
 import { NextApiRequest, NextApiResponse } from 'next';
+import catchErrorsFrom from '../middleware/catchErrorsFrom';
 import User from '../models/user';
 import { NextApiResponseWithAuth } from '../types/authTypes';
 
@@ -18,34 +19,33 @@ cloudinary.v2.config({
  * @param {Next.Response} res  Next API response
  * @return {undefined}
  */
-const registerUser = async (
-  req: NextApiRequest,
-  res: NextApiResponse
-): Promise<void> => {
-  // TODO: Cloudinary integration
-  // const result = await cloudinary.v2.uploader.upload(req.body.avatar, {
-  // 	folder: 'folder',
-  // 	width: '150',
-  // 	crop: 'scale',
-  // });
+const registerUser = catchErrorsFrom(
+  async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+    // TODO: Cloudinary integration
+    // const result = await cloudinary.v2.uploader.upload(req.body.avatar, {
+    // 	folder: 'folder',
+    // 	width: '150',
+    // 	crop: 'scale',
+    // });
 
-  const { name, email, password } = req.body;
+    const { name, email, password } = req.body;
 
-  await User.create({
-    name,
-    email,
-    password,
-    avatar: {
-      public_id: 'AVATAR',
-      url: 'AVATAR',
-    },
-  });
+    await User.create({
+      name,
+      email,
+      password,
+      avatar: {
+        public_id: 'AVATAR',
+        url: 'AVATAR',
+      },
+    });
 
-  res.status(200).json({
-    success: true,
-    message: 'Account was successfully created',
-  });
-};
+    res.status(200).json({
+      success: true,
+      message: 'Account was successfully created',
+    });
+  }
+);
 
 /**
  * Get user account details
