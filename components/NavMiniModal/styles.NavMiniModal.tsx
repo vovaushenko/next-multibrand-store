@@ -3,6 +3,7 @@ import { slideInKeyframes } from '../../styles/reusableStyles';
 
 interface Props {
   isOpen: boolean;
+  modalWidth: string;
 }
 
 export const Container = styled.div<Props>`
@@ -10,7 +11,7 @@ export const Container = styled.div<Props>`
   position: absolute;
   top: 4rem;
   right: 3rem;
-  min-width: 500px;
+  min-width: ${({ modalWidth }) => modalWidth || '250px'};
   border: 1px solid ${({ theme }) => theme.borderGrayColor};
   border-radius: ${({ theme }) => theme.borderRadius};
   background: ${({ theme }) => theme.secondaryBg};

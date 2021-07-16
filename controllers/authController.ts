@@ -21,12 +21,15 @@ cloudinary.v2.config({
  */
 const registerUser = catchErrorsFrom(
   async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
-    // TODO: Cloudinary integration
-    // const result = await cloudinary.v2.uploader.upload(req.body.avatar, {
-    // 	folder: 'folder',
-    // 	width: '150',
-    // 	crop: 'scale',
-    // });
+    //* Upload user avatar to cloudinary CDN
+    const cloudinaryAvatar = await cloudinary.v2.uploader.upload(
+      req.body.avatar,
+      {
+        folder: 'sneaker-maniacs/user_avatars',
+        width: '150',
+        crop: 'scale',
+      }
+    );
 
     const { name, email, password } = req.body;
 
@@ -35,8 +38,8 @@ const registerUser = catchErrorsFrom(
       email,
       password,
       avatar: {
-        public_id: 'AVATAR',
-        url: 'AVATAR',
+        public_id: cloudinaryAvatar.public_id,
+        url: cloudinaryAvatar.url,
       },
     });
 

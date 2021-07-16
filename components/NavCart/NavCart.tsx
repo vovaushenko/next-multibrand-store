@@ -20,7 +20,11 @@ const NavCart = (): JSX.Element => {
         <CartIcon productAmount={1} />
         <span>Cart</span>
       </Styled.CartButton>
-      <NavMiniModal isOpen={isModalOpen} modalContent={<DummyContent />} />
+      <NavMiniModal
+        isOpen={isModalOpen}
+        modalContent={<DummyContent />}
+        modalWidth={'200px'}
+      />
     </Styled.Container>
   );
 };

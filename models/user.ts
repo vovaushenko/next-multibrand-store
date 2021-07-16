@@ -1,4 +1,5 @@
 import bcrypt from 'bcryptjs';
+import crypto from 'crypto';
 import mongoose, { Document, Schema } from 'mongoose';
 import validator from 'validator';
 
@@ -64,26 +65,26 @@ userSchema.pre('save', async function (next) {
   this.password = await bcrypt.hash(this.password, 10);
 });
 
-// // Compare User password
-// userSchema.methods.comparePassword = async function (enteredPassword) {
-//   return await bcrypt.compare(enteredPassword, this.password);
-// };
+// Compare User password
+userSchema.methods.comparePassword = async function (enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password);
+};
 
-// // Generate Password Reset Token
-// userSchema.methods.getResetPasswordToken = function () {
-//   // Generate a password reset token
-//   const resetToken = crypto.randomBytes(20).toString('hex');
-//   // Hash the password
-//   this.resetPasswordToken = crypto
-//     .createHash('sha256')
-//     .update(resetToken)
-//     .digest('hex');
-//   // Set token's expiry time - 30 minutes
-//   const currentTimeStamp = Date.now;
-//   this.resetPasswordExpire = Number(currentTimeStamp) + 30 * 60 * 1000;
+// Generate Password Reset Token
+userSchema.methods.getResetPasswordToken = function () {
+  // Generate a password reset token
+  const resetToken = crypto.randomBytes(20).toString('hex');
+  // Hash the password
+  this.resetPasswordToken = crypto
+    .createHash('sha256')
+    .update(resetToken)
+    .digest('hex');
+  // Set token's expiry time - 30 minutes
+  const currentTimeStamp = Date.now;
+  this.resetPasswordExpire = Number(currentTimeStamp) + 30 * 60 * 1000;
 
-//   return resetToken;
-// };
+  return resetToken;
+};
 
 export default mongoose.models.User ||
   mongoose.model<IUser>('User', userSchema);
