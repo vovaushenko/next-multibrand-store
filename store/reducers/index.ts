@@ -1,9 +1,11 @@
 import { HYDRATE } from 'next-redux-wrapper';
 import { AnyAction, combineReducers } from 'redux';
 import { AdminState } from '../../types/adminTypes';
+import { AuthState } from '../../types/authReduxTypes';
 import { ProductsState } from '../../types/productTypes';
 import { UiActionsState } from '../../types/uiTypes';
 import { adminReducer } from './adminReducer';
+import { authReducer } from './authReducer';
 import { productsReducer } from './productsReducer';
 import { uiActionsReducer } from './uiActionsReducer';
 
@@ -11,12 +13,14 @@ const rootReducer = combineReducers({
   admin: adminReducer,
   products: productsReducer,
   ui: uiActionsReducer,
+  auth: authReducer,
 });
 
 export type State = {
   admin: AdminState;
   products: ProductsState;
   ui: UiActionsState;
+  auth: AuthState;
 };
 
 // https://stackoverflow.com/questions/64139344/how-to-use-typescript-next-redux-wrapper-getserversideprops
