@@ -1,18 +1,19 @@
 import React from 'react';
-import styled from 'styled-components';
 import NavbarHeaderLogo from '../NavbarHeaderLogo/NavbarHeaderLogo';
 import NavHeaderActionList from '../NavHeaderActionList/NavHeaderActionList';
 import NavHeaderSearch from '../NavHeaderSearch/NavHeaderSearch';
+import * as Styled from './styles.NavbarHeader';
 
 /**
- * Navbar header - contains MainLogo, Search Input and Action List with Cart and Log In/Out
+ * Navbar header - contains MainLogo, Search Input and Action List with Cart and Log In/Out,
+ * Will be hidden on mobile width's
  *@function NavbarHeader
  *@param {object} props - React.props
  *@returns {JSX.Element} - Rendered NavbarHeader
  */
 const NavbarHeader = (): JSX.Element => {
   return (
-    <StyledHeader>
+    <Styled.Container>
       <NavbarHeaderLogo
         headerText={'Sneakers'}
         src="/images/logo.png"
@@ -21,22 +22,8 @@ const NavbarHeader = (): JSX.Element => {
       />
       <NavHeaderSearch />
       <NavHeaderActionList />
-    </StyledHeader>
+    </Styled.Container>
   );
 };
-
-const StyledHeader = styled.header`
-  display: grid;
-  align-items: center;
-  gap: 2rem;
-  grid-template-columns: 1fr 3fr 1fr;
-  padding: 0.25rem 0.75rem;
-  width: 90%;
-  margin: 0 auto;
-
-  @media ${({ theme }) => theme.media.phone} {
-    display: none;
-  }
-`;
 
 export default NavbarHeader;
