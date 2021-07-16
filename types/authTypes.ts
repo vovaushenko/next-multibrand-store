@@ -1,6 +1,6 @@
 import { NextApiRequest } from 'next';
 
-export interface NextApiResponseWithAuth extends NextApiRequest {
+export interface NextApiRequestWithAuth extends NextApiRequest {
   user: User;
 }
 
@@ -12,5 +12,5 @@ export interface User {
   email: string;
   password: string;
   avatar?: { public_id: string; url: string };
-  role?: Role;
+  role: Role;
 }
