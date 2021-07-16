@@ -1,4 +1,5 @@
 import { Department, ProductSize, SneakerBrand } from '../../types/index';
+import { ProductColors } from './../../types/index';
 export const filterBrands: SneakerBrand[] = [
   'Adidas',
   'Air Jordan',
@@ -48,4 +49,23 @@ export const filterSize: ProductSize[] = [
   'xl',
   'xxl',
   'xs',
+];
+
+export const filterColors: ProductColors[] = [
+  'beige',
+  'black',
+  'blue',
+  'brown',
+  'gold',
+  'green',
+  'grey',
+  'ivory',
+  'multi',
+  'orange',
+  'pink',
+  'purple',
+  'red',
+  'silver',
+  'white',
+  'yellow',
 ];

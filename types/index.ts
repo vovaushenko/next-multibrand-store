@@ -132,3 +132,26 @@ export type ProductSize =
   | 'xl'
   | 'xxl'
   | 'xs';
+
+/**
+ * All available product colors
+ *@type ProductColors
+ */
+
+export type ProductColors =
+  | 'beige'
+  | 'black'
+  | 'blue'
+  | 'brown'
+  | 'gold'
+  | 'green'
+  | 'grey'
+  | 'ivory'
+  | 'multi'
+  | 'orange'
+  | 'pink'
+  | 'purple'
+  | 'red'
+  | 'silver'
+  | 'white'
+  | 'yellow';
