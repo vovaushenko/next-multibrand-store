@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const FileField = styled.div`
+  width: 100%;
   input {
     background: ${({ theme }) => theme.lightestGray};
     height: 3rem;
