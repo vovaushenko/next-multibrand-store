@@ -10,7 +10,12 @@ import { AuthAction, AuthActionTypes } from '../../types/authReduxTypes';
  *@returns {undefined}
  */
 export const registerNewUser =
-  (newUser: { name: string; email: string; role: string; password: string }) =>
+  (newUser: {
+    name: string;
+    avatar: string;
+    email: string;
+    password: string;
+  }) =>
   async (dispatch: Dispatch<AuthAction>): Promise<void> => {
     dispatch({ type: AuthActionTypes.REGISTER_USER });
 
@@ -59,3 +64,14 @@ export const loadUserAccountDetails =
       });
     }
   };
+
+/**
+ *@AUTH async action creator, will dispatch action to clear AUTH state
+ *@function clearAuthState
+ *@returns {undefined}
+ */
+export const clearAuthState = () => {
+  return async (dispatch: Dispatch<AuthAction>): Promise<void> => {
+    dispatch({ type: AuthActionTypes.CLEAR_STATE });
+  };
+};

@@ -2,7 +2,7 @@ import cloudinary from 'cloudinary';
 import { NextApiRequest, NextApiResponse } from 'next';
 import catchErrorsFrom from '../middleware/catchErrorsFrom';
 import User from '../models/user';
-import { NextApiResponseWithAuth } from '../types/authTypes';
+import { NextApiRequestWithAuth } from '../types/authTypes';
 
 // Setting up cloudinary config
 cloudinary.v2.config({
@@ -59,7 +59,7 @@ const registerUser = catchErrorsFrom(
  * @return {undefined}
  */
 const getCurrentUserProfile = async (
-  req: NextApiResponseWithAuth,
+  req: NextApiRequestWithAuth,
   res: NextApiResponse
 ): Promise<void> => {
   const user = await User.findById(req.user._id);
