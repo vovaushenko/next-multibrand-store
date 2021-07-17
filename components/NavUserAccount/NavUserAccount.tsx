@@ -1,6 +1,7 @@
 import { useSession } from 'next-auth/client';
 import React, { useState } from 'react';
 import { FiChevronDown } from 'react-icons/fi';
+import Avatar from '../Avatar/Avatar';
 import NavMiniModal from '../NavMiniModal/NavMiniModal';
 import SignIn from '../SignIn/SignIn';
 import UserAccountDropdown from '../UserAccountDropdown/UserAccountDropdown';
@@ -15,7 +16,7 @@ const NavUserAccount = (): JSX.Element => {
   // Controls Modal dropdown
   // TODO: move modal control to global state, or think about this
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const toggleCartModal = () => setIsModalOpen((prev) => !prev);
+  const toggleAccountModal = () => setIsModalOpen((prev) => !prev);
   const [session] = useSession();
 
   // Modal content and width depend on session. If user is authenticated - <UserAccountDropdown /> will be rendered
@@ -25,10 +26,21 @@ const NavUserAccount = (): JSX.Element => {
 
   return (
     <Styled.Container>
-      {session ? <span>Hello {session.user.name}</span> : <span>Sign In</span>}
+      {session ? (
+        <Avatar
+          src={session.user.avatar.url}
+          firstName={session.user.name.split(' ')[0]}
+          lastName={session.user.name.split(' ')[1] || ''}
+          hasBadge={true}
+          isActive={true}
+          width={'50px'}
+        />
+      ) : (
+        <span>Sign In</span>
+      )}
       <Styled.AccountButton
         className="account-button"
-        onClick={toggleCartModal}
+        onClick={toggleAccountModal}
       >
         My Account <FiChevronDown className="account-icon" />
       </Styled.AccountButton>

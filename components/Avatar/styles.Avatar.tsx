@@ -59,8 +59,8 @@ export const Badge = styled.span`
   z-index: 1;
   top: -6px;
   right: -2px;
-  width: 28px;
-  height: 28px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   border: 4px solid ${({ theme }) => theme.secondaryBg};
   background: ${({ theme }) => theme.activeGreen};

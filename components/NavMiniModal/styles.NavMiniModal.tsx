@@ -9,7 +9,7 @@ interface Props {
 export const Container = styled.div<Props>`
   z-index: 6;
   position: absolute;
-  top: 4rem;
+  top: 5rem;
   right: 3rem;
   min-width: ${({ modalWidth }) => modalWidth || '250px'};
   border: 1px solid ${({ theme }) => theme.borderGrayColor};
