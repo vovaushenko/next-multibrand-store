@@ -1,3 +1,4 @@
+import { Provider } from 'next-auth/client';
 import type { AppProps } from 'next/app';
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
@@ -10,7 +11,7 @@ import { mainTheme } from '../styles/mainTheme';
 
 const WrappedApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
-    <>
+    <Provider session={pageProps.session}>
       <ThemeProvider theme={mainTheme}>
         <GlobalStyles />
         <ToastContainer
@@ -27,7 +28,7 @@ const WrappedApp = ({ Component, pageProps }: AppProps): JSX.Element => {
         <Modal />
         <Component {...pageProps} />
       </ThemeProvider>
-    </>
+    </Provider>
   );
 };
 
