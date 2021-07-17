@@ -20,13 +20,18 @@ export const cartReducer = (
       return {
         ...state,
         cart: [...state.cart, action.payload],
-        productAmount: state.cart.length,
       };
 
     case CartActionTypes.REMOVE_FROM_CART:
       return {
         ...state,
-        cart: state.cart.filter((product) => product._id !== action.payload),
+        cart: state.cart.filter(
+          (product) => product.productID !== action.payload
+        ),
+      };
+    case CartActionTypes.CALCULATE_PRODUCT_QUANTITY:
+      return {
+        ...state,
         productAmount: state.cart.length,
       };
 

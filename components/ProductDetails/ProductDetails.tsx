@@ -18,6 +18,7 @@ interface Props {
  */
 const ProductDetails = ({ product }: Props): JSX.Element => {
   const {
+    _id,
     brand,
     colors,
     model,
@@ -42,6 +43,8 @@ const ProductDetails = ({ product }: Props): JSX.Element => {
 
         <Styled.RightColumn>
           <ProductDetailsCard
+            productID={_id}
+            productImg={images && images[0].url}
             brand={brand}
             colors={colors}
             department={department}

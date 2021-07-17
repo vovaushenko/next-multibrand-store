@@ -1,6 +1,9 @@
 import NextLink from 'next/link';
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
+import { useActions } from '../../hooks/useActions';
 import { Department } from '../../types';
+import { CartItem } from '../../types/cartReduxTypes';
 import Button from '../Button/Button';
 import HR from '../HR/HR';
 import PageHeader from '../PageHeader/PageHeader';
@@ -8,6 +11,8 @@ import SectionHeader from '../SectionHeader/SectionHeader';
 import * as Styled from './styles';
 
 export interface Props {
+  productID: string;
+  productImg: string;
   brand: string;
   colors: string[];
   department: Department;
@@ -27,6 +32,8 @@ export interface Props {
  *@returns {JSX.Element} - Rendered ProductDetailsCard
  */
 const ProductDetailsCard = ({
+  productID,
+  productImg,
   brand,
   colors,
   department,
@@ -39,6 +46,22 @@ const ProductDetailsCard = ({
   // this selection is controlled through selectedSize/setSelectedSize
   const [selectedSize, setSelectedSize] = useState<number>(0);
   const handleSelect = (id: number) => setSelectedSize(id);
+
+  const { addToCart } = useActions();
+
+  const handleAddToCart = () => {
+    const selectedProduct: CartItem = {
+      productID,
+      brand,
+      model,
+      price,
+      productImg,
+      size: size[selectedSize],
+    };
+
+    addToCart(selectedProduct);
+    toast.success('Item was added to the cart 💥');
+  };
 
   return (
     <Styled.CardContainer>
@@ -69,7 +92,7 @@ const ProductDetailsCard = ({
         <Styled.SizingHelp>sizing help</Styled.SizingHelp>
       </NextLink>
 
-      <Button text="add to cart" />
+      <Button text="add to cart" onClick={handleAddToCart} />
     </Styled.CardContainer>
   );
 };

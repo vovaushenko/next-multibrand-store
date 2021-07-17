@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 import CartIcon from '../CartIcon/CartIcon';
 import NavMiniModal from '../NavMiniModal/NavMiniModal';
 import * as Styled from './styles.NavCart';
@@ -14,10 +15,13 @@ const DummyContent = () => (
 const NavCart = (): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const toggleCartModal = () => setIsModalOpen((prev) => !prev);
+
+  const { productAmount } = useTypedSelector((state) => state.cart);
+
   return (
     <Styled.Container onClick={toggleCartModal}>
       <Styled.CartButton className="cart-button">
-        <CartIcon productAmount={1} />
+        <CartIcon productAmount={productAmount} />
         <span>Cart</span>
       </Styled.CartButton>
       <NavMiniModal

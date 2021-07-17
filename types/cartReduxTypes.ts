@@ -1,11 +1,19 @@
-import { Product } from './index';
 /**
  * Cart Reducer state interface
  *@interface
  */
 
+export interface CartItem {
+  productID: string;
+  productImg: string;
+  brand: string;
+  model: string;
+  price: number;
+  size: string;
+}
+
 export interface CartState {
-  cart: Product[];
+  cart: CartItem[];
   discount: number;
   total: number;
   productAmount: number;
@@ -18,6 +26,7 @@ export interface CartState {
 export enum CartActionTypes {
   ADD_TO_CART = 'ADD_TO_CART',
   CALCULATE_CART_TOTALS = 'CALCULATE_CART_TOTALS',
+  CALCULATE_PRODUCT_QUANTITY = 'CALCULATE_PRODUCT_QUANTITY',
   REMOVE_FROM_CART = 'REMOVE_FROM_CART',
   INCREASE_PRODUCT_QUANTITY = 'INCREASE_PRODUCT_QUANTITY',
   DECREASE_PRODUCT_QUANTITY = 'DECREASE_PRODUCT_QUANTITY',
@@ -25,13 +34,16 @@ export enum CartActionTypes {
 
 interface AddToCartAction {
   type: CartActionTypes.ADD_TO_CART;
-  payload: Product;
+  payload: CartItem;
 }
 interface RemoveFromCartAction {
   type: CartActionTypes.REMOVE_FROM_CART;
   payload: string;
 }
 
+interface CalculateProductQuantity {
+  type: CartActionTypes.CALCULATE_PRODUCT_QUANTITY;
+}
 interface CalculateCartTotalsAction {
   type: CartActionTypes.CALCULATE_CART_TOTALS;
 }
@@ -51,6 +63,7 @@ interface DecreaseProductQuantityAction {
 export type CartAction =
   | AddToCartAction
   | RemoveFromCartAction
+  | CalculateProductQuantity
   | CalculateCartTotalsAction
   | IncreaseProductQuantityAction
   | DecreaseProductQuantityAction;
