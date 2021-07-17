@@ -13,6 +13,7 @@ export const mainTheme: DefaultTheme = {
   lightGray: '#9a9696',
   lightestGray: '#d0d0d0',
   primaryGreen: '#4BB543',
+  activeGreen: '#21fc6b',
   dashboardGrayBg: '#242424',
   dashboardGrayCard: '#1b1b1b',
   borderRadius: '0.5rem',

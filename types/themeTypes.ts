@@ -21,6 +21,7 @@ declare module 'styled-components' {
     lightestGray: string;
     maxWidth: string;
     primaryGreen: string;
+    activeGreen: string;
     dashboardGrayBg: string;
     dashboardGrayCard: string;
     borderRadius: string;
