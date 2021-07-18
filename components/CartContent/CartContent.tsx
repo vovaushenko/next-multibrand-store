@@ -1,6 +1,7 @@
 import { useRouter } from 'next/dist/client/router';
 import React from 'react';
 import { FiShoppingCart } from 'react-icons/fi';
+import { removeFromCartType } from '../../store/action-creators/cartActionCreators';
 import { CartItem } from '../../types/cartReduxTypes';
 import Button from '../Button/Button';
 import CartProductItem from '../CartProductItem/CartProductItem';
@@ -9,6 +10,7 @@ import * as Styled from './styles.CartContent';
 export interface Props {
   cart: CartItem[];
   productAmount: number;
+  removeFromCart: removeFromCartType;
 }
 /**
  *@function CardContent
@@ -16,7 +18,11 @@ export interface Props {
  *@param {object} cart - cart content
  *@returns {JSX.Element} - Rendered CardContent component
  */
-const CardContent = ({ productAmount, cart }: Props): JSX.Element => {
+const CardContent = ({
+  productAmount,
+  cart,
+  removeFromCart,
+}: Props): JSX.Element => {
   const router = useRouter();
   // if cart is empty will render button which will redirect Client to products/all
   const handleRedirectToProducts = () => router.push('/products/all');
@@ -33,7 +39,10 @@ const CardContent = ({ productAmount, cart }: Props): JSX.Element => {
         <Styled.List>
           {cart.map((cartItem, id) => (
             <Styled.ListItem key={id}>
-              <CartProductItem cartItem={cartItem} />
+              <CartProductItem
+                cartItem={cartItem}
+                removeFromCart={removeFromCart}
+              />
             </Styled.ListItem>
           ))}
         </Styled.List>

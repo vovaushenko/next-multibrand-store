@@ -1,13 +1,16 @@
 import { shallow } from 'enzyme';
 import 'jest-styled-components';
 import React from 'react';
+import { removeFromCart } from '../../store/action-creators/cartActionCreators';
 import Button from '../Button/Button';
 import CartProductItem from '../CartProductItem/CartProductItem';
 import CartContent from './CartContent';
 import * as Styled from './styles.CartContent';
 
 describe('Empty Cart', () => {
-  const wrapper = shallow(<CartContent productAmount={0} cart={[]} />);
+  const wrapper = shallow(
+    <CartContent productAmount={0} cart={[]} removeFromCart={removeFromCart} />
+  );
 
   it('should render with no errors', () => {
     expect(wrapper);
@@ -27,6 +30,7 @@ describe('Cart with items', () => {
   const wrapper = shallow(
     <CartContent
       productAmount={1}
+      removeFromCart={removeFromCart}
       cart={[
         {
           brand: 'Nike',
