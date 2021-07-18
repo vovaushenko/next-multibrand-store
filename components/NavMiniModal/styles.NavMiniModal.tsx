@@ -12,6 +12,8 @@ export const Container = styled.div<Props>`
   top: 5rem;
   right: 3rem;
   min-width: ${({ modalWidth }) => modalWidth || '250px'};
+  max-height: 90vh;
+  overflow-y: auto;
   border: 1px solid ${({ theme }) => theme.borderGrayColor};
   border-radius: ${({ theme }) => theme.borderRadius};
   background: ${({ theme }) => theme.secondaryBg};
