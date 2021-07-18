@@ -14,13 +14,16 @@ export interface Props {
   cart: CartItem[];
   total: number;
   productAmount: number;
+  showCheckout?: boolean;
   removeFromCart: removeFromCartType;
   addToCart: addToCartType;
 }
 /**
  *@function CardContent
- *@param {number} productAmount - amount of products in cart
  *@param {object} cart - cart content
+ *@param {number} productAmount - amount of products in cart
+ *@param {number} total - total price of cart
+ *@param {number} showCheckout - OPTIONAL(default true) - in Navbar Mini Cart we want to show checkout buttons, but in cart page we will hide them
  *@returns {JSX.Element} - Rendered CardContent component
  */
 const CardContent = ({
@@ -29,6 +32,7 @@ const CardContent = ({
   total,
   addToCart,
   removeFromCart,
+  showCheckout = true,
 }: Props): JSX.Element => {
   const router = useRouter();
   // if cart is empty will render button which will redirect Client to products/all
@@ -62,21 +66,24 @@ const CardContent = ({
             ))}
           </Styled.List>
 
-          <Styled.Totals>
-            <Styled.Text fontSize="1rem">Total</Styled.Text>
-            <Styled.Text className="total" fontSize="1rem">
-              ${total}
-            </Styled.Text>
-          </Styled.Totals>
-
-          <Styled.BtnWrap>
-            <Button
-              text="checkout"
-              id="btn_checkout"
-              onClick={handleRedirectToCheckout}
-            />
-            <Button text="view cart" onClick={handleRedirectToCart} />
-          </Styled.BtnWrap>
+          {showCheckout && (
+            <>
+              <Styled.Totals>
+                <Styled.Text fontSize="1rem">Total</Styled.Text>
+                <Styled.Text className="total" fontSize="1rem">
+                  ${total}
+                </Styled.Text>
+              </Styled.Totals>
+              <Styled.BtnWrap id="btn_wrap">
+                <Button
+                  text="checkout"
+                  id="btn_checkout"
+                  onClick={handleRedirectToCheckout}
+                />
+                <Button text="view cart" onClick={handleRedirectToCart} />
+              </Styled.BtnWrap>
+            </>
+          )}
         </>
       )}
     </Styled.Container>
