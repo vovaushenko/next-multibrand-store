@@ -3,13 +3,19 @@ import {
   CartActionTypes,
   CartState,
 } from '../../types/cartReduxTypes';
-
-const initialState: CartState = {
-  cart: [],
-  discount: 0,
-  total: 0,
-  productAmount: 0,
+/**
+ * @method cartItemsFromStorage
+ * @returns {object} - initial state for cart reducer, or empty object if store is not saved in local storage. Action creators addToCart() and removeFromCart() persist cart into local storage on each call
+ */
+const cartItemsFromStorage = (): CartState => {
+  if (typeof window !== 'undefined') {
+    const persistedCart = localStorage.getItem('sneakerManiacsCart');
+    if (persistedCart) return JSON.parse(persistedCart);
+  }
+  return { cart: [], discount: 0, total: 0, productAmount: 0 };
 };
+
+const initialState = cartItemsFromStorage();
 
 export const cartReducer = (
   state = initialState,
@@ -48,9 +54,6 @@ export const cartReducer = (
         total: state.cart.reduce((totals, prod) => totals + prod.price, 0),
       };
     }
-
-    // TODO:INCREASE PRODUCT QUANTITY
-    // TODO:DECREASE PRODUCT QUANTITY
 
     default:
       return state;
