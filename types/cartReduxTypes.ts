@@ -38,7 +38,7 @@ interface AddToCartAction {
 }
 interface RemoveFromCartAction {
   type: CartActionTypes.REMOVE_FROM_CART;
-  payload: string;
+  payload: { productSize: string; productId: string };
 }
 
 interface CalculateProductQuantity {

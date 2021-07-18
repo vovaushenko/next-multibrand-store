@@ -17,10 +17,20 @@ export const addToCart =
     });
   };
 
-export const removeFromCart = (productID: string): CartAction => ({
-  type: CartActionTypes.REMOVE_FROM_CART,
-  payload: productID,
-});
+export const removeFromCart =
+  (productId: string, productSize: string) =>
+  async (dispatch: Dispatch<CartAction>): Promise<void> => {
+    dispatch({
+      type: CartActionTypes.REMOVE_FROM_CART,
+      payload: { productId, productSize },
+    });
+    dispatch({
+      type: CartActionTypes.CALCULATE_PRODUCT_QUANTITY,
+    });
+    dispatch({
+      type: CartActionTypes.CALCULATE_CART_TOTALS,
+    });
+  };
 
 export const calculateCartTotals = (): CartAction => ({
   type: CartActionTypes.CALCULATE_CART_TOTALS,

@@ -25,9 +25,14 @@ export const cartReducer = (
     case CartActionTypes.REMOVE_FROM_CART:
       return {
         ...state,
-        cart: state.cart.filter(
-          (product) => product.productID !== action.payload
-        ),
+        cart: state.cart
+          .map((product) =>
+            product.productID === action.payload.productId &&
+            product.size === action.payload.productSize
+              ? { ...product, productID: 'target' }
+              : product
+          )
+          .filter((product) => product.productID !== 'target'),
       };
     case CartActionTypes.CALCULATE_PRODUCT_QUANTITY:
       return {
