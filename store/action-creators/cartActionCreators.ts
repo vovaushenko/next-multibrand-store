@@ -32,6 +32,8 @@ export const removeFromCart =
     });
   };
 
+export type removeFromCartType = typeof removeFromCart;
+
 export const calculateCartTotals = (): CartAction => ({
   type: CartActionTypes.CALCULATE_CART_TOTALS,
 });

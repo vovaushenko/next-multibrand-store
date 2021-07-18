@@ -1,33 +1,41 @@
 import React, { useState } from 'react';
+import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
+import CartContent from '../CartContent/CartContent';
 import CartIcon from '../CartIcon/CartIcon';
 import NavMiniModal from '../NavMiniModal/NavMiniModal';
 import * as Styled from './styles.NavCart';
 
-const DummyContent = () => (
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti fuga
-    voluptatum, nostrum deleniti magnam illo laboriosam suscipit molestias
-    cumque dolore, illum optio harum a quam?
-  </p>
-);
+/**
+ *@component responsible for NavContent, contains all redux-logic for child components
+ *@function NavCart
+ *@returns {JSX.Element} - Rendered NavCart component
+ */
 
 const NavCart = (): JSX.Element => {
+  // local state - modal control
   const [isModalOpen, setIsModalOpen] = useState(false);
   const toggleCartModal = () => setIsModalOpen((prev) => !prev);
-
-  const { productAmount } = useTypedSelector((state) => state.cart);
+  // global state - cart content and removeFromCart action creator
+  const { productAmount, cart } = useTypedSelector((state) => state.cart);
+  const { removeFromCart } = useActions();
 
   return (
-    <Styled.Container onClick={toggleCartModal}>
-      <Styled.CartButton className="cart-button">
+    <Styled.Container>
+      <Styled.CartButton className="cart-button" onClick={toggleCartModal}>
         <CartIcon productAmount={productAmount} />
         <span>Cart</span>
       </Styled.CartButton>
       <NavMiniModal
         isOpen={isModalOpen}
-        modalContent={<DummyContent />}
-        modalWidth={'200px'}
+        modalContent={
+          <CartContent
+            cart={cart}
+            productAmount={productAmount}
+            removeFromCart={removeFromCart}
+          />
+        }
+        modalWidth={'500px'}
       />
     </Styled.Container>
   );

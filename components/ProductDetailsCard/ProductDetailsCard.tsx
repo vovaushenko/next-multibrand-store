@@ -46,7 +46,7 @@ const ProductDetailsCard = ({
   // this selection is controlled through selectedSize/setSelectedSize
   const [selectedSize, setSelectedSize] = useState<number>(0);
   const handleSelect = (id: number) => setSelectedSize(id);
-
+  // TODO:FIX TESTS and remove addToCart to Wrapper
   const { addToCart } = useActions();
 
   const handleAddToCart = () => {
