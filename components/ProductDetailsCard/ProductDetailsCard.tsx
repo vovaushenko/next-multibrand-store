@@ -60,7 +60,7 @@ const ProductDetailsCard = ({
     };
 
     addToCart(selectedProduct);
-    toast.success('Item was added to the cart 💥');
+    toast.success('Great choice 💯 Product was added to cart 💥');
   };
 
   return (

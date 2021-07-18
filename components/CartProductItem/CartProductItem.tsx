@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
+import { toast } from 'react-toastify';
 import {
   addToCartType,
   removeFromCartType,
@@ -26,8 +27,15 @@ const CartProductItem = ({
   addToCart,
 }: Props): JSX.Element => {
   const { brand, model, price, productID, productImg, size } = cartItem;
-  const handleRemoveFromCart = () => removeFromCart(productID, size);
-  const handleAddMore = () => addToCart({ ...cartItem });
+  const handleRemoveFromCart = () => {
+    removeFromCart(productID, size);
+    toast.warning('Product was removed from cart 💫 Shop other products 😉');
+  };
+
+  const handleAddMore = () => {
+    addToCart({ ...cartItem });
+    toast.success('🤙 Product was added to cart 💫');
+  };
 
   return (
     <Styled.Container>

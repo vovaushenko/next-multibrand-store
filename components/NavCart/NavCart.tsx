@@ -16,7 +16,9 @@ const NavCart = (): JSX.Element => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const toggleCartModal = () => setIsModalOpen((prev) => !prev);
   // global state - cart content and removeFromCart action creator
-  const { productAmount, cart } = useTypedSelector((state) => state.cart);
+  const { productAmount, cart, total } = useTypedSelector(
+    (state) => state.cart
+  );
   const { addToCart, removeFromCart } = useActions();
 
   return (
@@ -31,6 +33,7 @@ const NavCart = (): JSX.Element => {
         modalContent={
           <CartContent
             cart={cart}
+            total={total}
             productAmount={productAmount}
             addToCart={addToCart}
             removeFromCart={removeFromCart}

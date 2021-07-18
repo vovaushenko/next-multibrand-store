@@ -1,7 +1,10 @@
 import { shallow } from 'enzyme';
 import 'jest-styled-components';
 import React from 'react';
-import { removeFromCart } from '../../store/action-creators/cartActionCreators';
+import {
+  addToCart,
+  removeFromCart,
+} from '../../store/action-creators/cartActionCreators';
 import Button from '../Button/Button';
 import CartProductItem from '../CartProductItem/CartProductItem';
 import CartContent from './CartContent';
@@ -9,7 +12,13 @@ import * as Styled from './styles.CartContent';
 
 describe('Empty Cart', () => {
   const wrapper = shallow(
-    <CartContent productAmount={0} cart={[]} removeFromCart={removeFromCart} />
+    <CartContent
+      productAmount={0}
+      cart={[]}
+      removeFromCart={removeFromCart}
+      addToCart={addToCart}
+      total={500}
+    />
   );
 
   it('should render with no errors', () => {
@@ -31,6 +40,8 @@ describe('Cart with items', () => {
     <CartContent
       productAmount={1}
       removeFromCart={removeFromCart}
+      addToCart={addToCart}
+      total={500}
       cart={[
         {
           brand: 'Nike',
@@ -48,9 +59,9 @@ describe('Cart with items', () => {
     expect(wrapper);
     expect(wrapper.length).toBe(1);
   });
-  it('should  NOT render call to action button when cart is empty', () => {
+  it('should  render checkout and cart buttons if cart has products', () => {
     const button = wrapper.find(Button);
-    expect(button.length).toBe(0);
+    expect(button.length).toBe(2);
   });
 
   it('should render cart list with products', () => {

@@ -7,6 +7,7 @@ export const Container = styled.article`
   width: 100%;
   padding: 0.5rem;
   margin-top: 0.5rem;
+  border-bottom: 1px solid ${({ theme }) => theme.borderGrayColor};
   &:hover {
     box-shadow: 0 0 0 2px ${({ theme }) => theme.secondaryGolden};
     border-radius: ${({ theme }) => theme.borderRadius};
