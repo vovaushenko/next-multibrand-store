@@ -11,7 +11,9 @@ const CartIcon = ({ productAmount }: Props): JSX.Element => {
     <Styled.Container>
       <FiShoppingCart className="shopping-cart-icon" />
       <Styled.ProductQuantity>
-        <p className="product-amount">{productAmount}</p>
+        <p className="product-amount" key={productAmount}>
+          {productAmount}
+        </p>
       </Styled.ProductQuantity>
     </Styled.Container>
   );
