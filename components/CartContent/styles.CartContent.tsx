@@ -14,7 +14,9 @@ export const Container = styled.main`
   }
 `;
 
-export const List = styled.ul``;
+export const List = styled.ul`
+  width: 100%;
+`;
 export const ListItem = styled.li``;
 
 export const Text = styled.p`

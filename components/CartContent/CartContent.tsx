@@ -1,7 +1,10 @@
 import { useRouter } from 'next/dist/client/router';
 import React from 'react';
 import { FiShoppingCart } from 'react-icons/fi';
-import { removeFromCartType } from '../../store/action-creators/cartActionCreators';
+import {
+  addToCartType,
+  removeFromCartType,
+} from '../../store/action-creators/cartActionCreators';
 import { CartItem } from '../../types/cartReduxTypes';
 import Button from '../Button/Button';
 import CartProductItem from '../CartProductItem/CartProductItem';
@@ -11,6 +14,7 @@ export interface Props {
   cart: CartItem[];
   productAmount: number;
   removeFromCart: removeFromCartType;
+  addToCart: addToCartType;
 }
 /**
  *@function CardContent
@@ -21,6 +25,7 @@ export interface Props {
 const CardContent = ({
   productAmount,
   cart,
+  addToCart,
   removeFromCart,
 }: Props): JSX.Element => {
   const router = useRouter();
@@ -41,6 +46,7 @@ const CardContent = ({
             <Styled.ListItem key={id}>
               <CartProductItem
                 cartItem={cartItem}
+                addToCart={addToCart}
                 removeFromCart={removeFromCart}
               />
             </Styled.ListItem>

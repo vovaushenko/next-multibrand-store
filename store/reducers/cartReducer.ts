@@ -23,16 +23,18 @@ export const cartReducer = (
       };
 
     case CartActionTypes.REMOVE_FROM_CART:
+      const foundProduct = state.cart.find(
+        (product) =>
+          product.productID === action.payload.productId &&
+          product.size === action.payload.productSize
+      );
+      if (foundProduct) foundProduct.productID = 'will-be-removed';
+
       return {
         ...state,
-        cart: state.cart
-          .map((product) =>
-            product.productID === action.payload.productId &&
-            product.size === action.payload.productSize
-              ? { ...product, productID: 'target' }
-              : product
-          )
-          .filter((product) => product.productID !== 'target'),
+        cart: state.cart.filter(
+          (product) => product.productID !== 'will-be-removed'
+        ),
       };
     case CartActionTypes.CALCULATE_PRODUCT_QUANTITY:
       return {

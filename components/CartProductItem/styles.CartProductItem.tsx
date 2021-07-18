@@ -5,6 +5,12 @@ export const Container = styled.article`
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  &:hover {
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.secondaryGolden};
+    border-radius: ${({ theme }) => theme.borderRadius};
+  }
 `;
 export const Figure = styled.figure`
   img {
@@ -12,7 +18,20 @@ export const Figure = styled.figure`
   }
 `;
 
-export const Wrap = styled.div``;
+export const LeftColumn = styled.div`
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+`;
+export const RightColumn = styled.div`
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+`;
+
+export const Wrap = styled.div`
+  vertical-align: center;
+`;
 
 export const Price = styled.p`
   font-size: 1rem;
@@ -20,33 +39,19 @@ export const Price = styled.p`
   color: ${({ theme }) => theme.primaryGolden};
 `;
 
-export const QuantityController = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 5px 0.75rem;
-  gap: 1rem;
-  border: 1px solid ${({ theme }) => theme.borderGrayColor};
-  border-radius: ${({ theme }) => theme.borderRadius};
-`;
-
-export const Quantity = styled.div`
-  padding: 5px 1.25rem;
-  background: ${({ theme }) => theme.lightGray};
-  color: ${({ theme }) => theme.primaryWhite};
-`;
-
 interface Props {
-  fontSize: string;
+  btnType: 'add' | 'remove';
 }
 export const ControlButton = styled.button<Props>`
   cursor: pointer;
-  font-size: ${({ fontSize }) => fontSize};
+  font-size: 1rem;
   background: transparent;
   border: none;
-  color: ${({ theme }) => theme.lightGray};
+  color: ${({ theme, btnType }) =>
+    btnType === 'add' ? theme.activeGreen : theme.lightGray};
 
   &:hover {
-    color: ${({ theme }) => theme.primaryWhite};
+    color: ${({ theme, btnType }) =>
+      btnType === 'add' ? theme.primaryGolden : theme.primaryRed};
   }
 `;

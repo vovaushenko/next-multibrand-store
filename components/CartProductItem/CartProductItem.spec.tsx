@@ -2,7 +2,10 @@ import { shallow } from 'enzyme';
 import 'jest-styled-components';
 import Image from 'next/image';
 import React from 'react';
-import { removeFromCart } from '../../store/action-creators/cartActionCreators';
+import {
+  addToCart,
+  removeFromCart,
+} from '../../store/action-creators/cartActionCreators';
 import RouterLink from '../RouterLink/RouterLink';
 import CartProductItem from './CartProductItem';
 import * as Styled from './styles.CartProductItem';
@@ -18,7 +21,11 @@ const cartItem = {
 
 describe('Cart Product Item', () => {
   const wrapper = shallow(
-    <CartProductItem removeFromCart={removeFromCart} cartItem={cartItem} />
+    <CartProductItem
+      removeFromCart={removeFromCart}
+      cartItem={cartItem}
+      addToCart={addToCart}
+    />
   );
 
   it('should render with no errors', () => {
@@ -33,7 +40,7 @@ describe('Cart Product Item', () => {
   });
   it('should  render all control buttons', () => {
     const ctrlButtons = wrapper.find(Styled.ControlButton);
-    expect(ctrlButtons.length).toBe(3);
+    expect(ctrlButtons.length).toBe(2);
   });
   it('should  render router link with correct href', () => {
     const link = wrapper.find(RouterLink);
@@ -41,6 +48,6 @@ describe('Cart Product Item', () => {
   });
   it('should  render correct item price', () => {
     const price = wrapper.find(Styled.Price);
-    expect(price.text()).toBe(`$${cartItem.price}`);
+    expect(price.first().text()).toBe(`$${cartItem.price}`);
   });
 });
