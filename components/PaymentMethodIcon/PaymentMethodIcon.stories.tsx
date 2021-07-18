@@ -1,13 +1,13 @@
 import { Story } from '@storybook/react';
 import React from 'react';
-import PageHeader, { Props } from './PaymentMethodIcon';
+import PaymentMethodIcon, { Props } from './PaymentMethodIcon';
 
 export default {
   title: 'utility/Payment/Payment method',
-  component: PageHeader,
+  component: PaymentMethodIcon,
 };
 
-const Template: Story<Props> = (args) => <PageHeader {...args} />;
+const Template: Story<Props> = (args) => <PaymentMethodIcon {...args} />;
 
 export const ApplePay = Template.bind({});
 ApplePay.args = { iconSrc: '/images/payment-icons/apple-pay.svg' };

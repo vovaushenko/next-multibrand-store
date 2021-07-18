@@ -155,3 +155,14 @@ export type ProductColors =
   | 'silver'
   | 'white'
   | 'yellow';
+
+/**
+ * Generic Redux Interface for payment method
+ *@interface ReduxAsync
+ *@param {string} methodName - method name
+ *@param {string} iconSrc - img src for payment icon
+ */
+export interface PaymentMethod {
+  methodName: string;
+  iconSrc: string;
+}
