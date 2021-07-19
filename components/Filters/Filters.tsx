@@ -1,8 +1,10 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import { useActions } from '../../hooks/useActions';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 import CardHeader from '../CardHeader/CardHeader';
 import FilterColorsOption from '../FilterColorOption/FilterColorOption';
 import FilterTextOption from '../FilterTextOption/FilterTextOption';
+import RemoveFilter from '../RemoveFilter/RemoveFilter';
 import {
   filterBrands,
   filterColors,
@@ -17,18 +19,18 @@ import * as Styled from './styles.Filters';
  *@returns {JSX.Element} - Rendered  Filters component
  */
 const Filters = (): JSX.Element => {
-  // List of filter values that will be passed to global state filter object
-  const [brandFilter, setBrandFilter] = useState<string>('');
-  const [colorFilter, setColorFilter] = useState<string>('');
-  const [departmentFilter, setDepartmentFilter] = useState<string>('');
-  const [sizeFilter, setSizeFilter] = useState<string>('');
+  // All filter values we will get from redux
+  const { brand, color, department, size } = useTypedSelector(
+    (state) => state.products.filters
+  );
+  // Action creators
+  const { addFilterOption, removeAllFilters } = useActions();
 
-  const { addFilterOption } = useActions();
+  const handleRemoveFilters = () => removeAllFilters();
+
   // Each callback set filter value and simultaneously dispatch action to add this filter to global filter object
-  // TODO: REFACTOR AND REMOVE CODE DUPLICATION
   const setBrand = useCallback(
     (val: string) => {
-      setBrandFilter(val);
       addFilterOption({ filterName: 'brand', filterValue: val });
     },
     [addFilterOption]
@@ -36,7 +38,6 @@ const Filters = (): JSX.Element => {
 
   const setColor = useCallback(
     (val: string) => {
-      setColorFilter(val);
       addFilterOption({ filterName: 'color', filterValue: val });
     },
     [addFilterOption]
@@ -44,7 +45,6 @@ const Filters = (): JSX.Element => {
 
   const setDepartment = useCallback(
     (val: string) => {
-      setDepartmentFilter(val);
       addFilterOption({ filterName: 'department', filterValue: val });
     },
     [addFilterOption]
@@ -52,18 +52,34 @@ const Filters = (): JSX.Element => {
 
   const setSize = useCallback(
     (val: string) => {
-      setSizeFilter(val);
       addFilterOption({ filterName: 'size', filterValue: val });
     },
     [addFilterOption]
   );
-  // TODO: Add nice Filter Display/remove component
+
+  // will render remove filters button if there is one filter at least
+  const removeFilterButton = (): JSX.Element | null => {
+    if (brand || color || department || size)
+      return (
+        <Styled.ClearFilters onClick={handleRemoveFilters}>
+          Clear filters
+        </Styled.ClearFilters>
+      );
+    return null;
+  };
+
   return (
     <Styled.Container>
-      <h1>
-        {brandFilter} {colorFilter} {departmentFilter} {sizeFilter}
-      </h1>
       <CardHeader headerText="Filters" />
+
+      {brand && <RemoveFilter filterName={brand} removeFilter={setBrand} />}
+      {color && <RemoveFilter filterName={color} removeFilter={setColor} />}
+      {department && (
+        <RemoveFilter filterName={department} removeFilter={setDepartment} />
+      )}
+      {size && <RemoveFilter filterName={size} removeFilter={setSize} />}
+      {removeFilterButton()}
+
       <FilterTextOption
         filterBy="Brand"
         filterOptions={filterBrands}

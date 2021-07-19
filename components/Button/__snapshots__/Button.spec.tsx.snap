@@ -24,7 +24,6 @@ exports[`Button it applies default styles 1`] = `
   font-weight: 700;
   background: transparent;
   border: 0;
-  border-radius: 5px;
   cursor: pointer;
   outline: none;
 }

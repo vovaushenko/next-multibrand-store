@@ -19,3 +19,5 @@ export const FilterButton = styled.button`
     color: ${({ theme }) => theme.primaryGolden};
   }
 `;
+
+export const RemoveFilterButton = styled(FilterButton)``;

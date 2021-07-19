@@ -88,6 +88,12 @@ export const productsReducer = (
       }
       return { ...state, filteredProducts };
 
+    case ProductActionTypes.REMOVE_FILTERS:
+      return {
+        ...state,
+        filters: { brand: '', color: '', size: '', department: '' },
+      };
+
     //* Clear Errors in state
     case ProductActionTypes.CLEAR_ERRORS:
       return initialState;

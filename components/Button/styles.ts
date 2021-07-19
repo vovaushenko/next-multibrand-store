@@ -72,7 +72,7 @@ export const StyledButton = styled.button<Props>`
   font-weight: 700;
   background: transparent;
   border: 0;
-  border-radius: 5px;
+  border-radius: ${({ theme }) => theme.borderRadius};
   color: ${({ theme }) => theme.primaryWhite};
   cursor: pointer;
   outline: none;
