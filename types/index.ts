@@ -166,3 +166,14 @@ export interface PaymentMethod {
   methodName: string;
   iconSrc: string;
 }
+
+/**
+ * All available filters in ProductReducer
+ *@interface
+ */
+export interface ProductFilters {
+  brand: string;
+  color: string;
+  department: string;
+  size: string;
+}

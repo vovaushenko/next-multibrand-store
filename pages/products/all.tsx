@@ -6,19 +6,33 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import AllProducts from '../../screens/AllProducts/AllProducts';
 
 export default function AllProductsPage(): JSX.Element {
-  const { loadAllProducts } = useActions();
-  const { isLoading, products } = useTypedSelector((state) => state.products);
+  const { loadAllProducts, addFilterOption } = useActions();
+  const { isLoading, filteredProducts, products } = useTypedSelector(
+    (state) => state.products
+  );
 
   useEffect(() => {
-    if (products.length === 0) {
-      loadAllProducts();
-    }
+    // here we will firstly load all products from DB
+    // then we add empty 'brand' filter option, just to instantiate filteredProducts in global state (otherwise they will be empty [])
+    const instantiateGlobalProducts = async () => {
+      if (products.length === 0) {
+        await loadAllProducts();
+        await addFilterOption({ filterName: 'brand', filterValue: '' });
+      }
+    };
+
+    instantiateGlobalProducts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  // We will pass filteredProducts from global state to <AllProducts/>
+  // When new filters will be applied inside of <AllProducts/> will get new data
   return (
     <Layout title={'Shop All Products'}>
-      {isLoading ? <SneakerLoader /> : <AllProducts products={products} />}
+      {isLoading ? (
+        <SneakerLoader />
+      ) : (
+        <AllProducts products={filteredProducts} />
+      )}
     </Layout>
   );
 }

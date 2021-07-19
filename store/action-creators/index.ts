@@ -1,6 +1,7 @@
 import * as AdminActionCreators from './adminActionCreators';
 import * as AuthActionCreators from './authActionCreators';
 import * as CartActionCreators from './cartActionCreators';
+import * as FilterActionCreators from './filterActionCreators';
 import * as ProductsActionCreators from './productActionCreators';
 import * as UIactionCreators from './uiActionCreators';
 
@@ -15,4 +16,5 @@ export const CombinedActionCreators = {
   ...UIactionCreators,
   ...AuthActionCreators,
   ...CartActionCreators,
+  ...FilterActionCreators,
 };

@@ -8,6 +8,13 @@ import {
 const initialState: ProductsState = {
   products: [],
   product: {} as Product,
+  filters: {
+    brand: '',
+    color: '',
+    size: '',
+    department: '',
+  },
+  filteredProducts: [],
   isLoading: false,
   error: null,
 };
@@ -38,6 +45,48 @@ export const productsReducer = (
 
     case ProductActionTypes.PRODUCT_DETAILS_LOAD_ERROR:
       return { ...state, isLoading: false, error: action.payload };
+
+    //* Filtering actions
+
+    case ProductActionTypes.APPLY_FILTER:
+      const updatedFilters = { ...state.filters };
+      updatedFilters[action.payload.filterName] = action.payload.filterValue;
+      return { ...state, filters: updatedFilters };
+
+    case ProductActionTypes.FILTER_PRODUCTS:
+      // initial value of filteredProducts will point to state.products and reference
+      let filteredProducts = [...state.products];
+      // then all filters will be applied step-by-step(if they exist and specified by User)
+      // filter by brand
+      if (state.filters.brand) {
+        filteredProducts = filteredProducts.filter(
+          (product) =>
+            product.brand.toLowerCase() === state.filters.brand.toLowerCase()
+        );
+      }
+      // filter by color
+      if (state.filters.color) {
+        filteredProducts = filteredProducts.filter((product) =>
+          product.colors
+            .map((c) => c.toLowerCase())
+            .includes(state.filters.color.toLowerCase())
+        );
+      }
+      // filter by size
+      if (state.filters.size) {
+        filteredProducts = filteredProducts.filter((product) =>
+          product.size.includes(state.filters.size)
+        );
+      }
+      // filter by department
+      if (state.filters.department) {
+        filteredProducts = filteredProducts.filter(
+          (product) =>
+            product.department.toLowerCase() ===
+            state.filters.department.toLowerCase()
+        );
+      }
+      return { ...state, filteredProducts };
 
     //* Clear Errors in state
     case ProductActionTypes.CLEAR_ERRORS:

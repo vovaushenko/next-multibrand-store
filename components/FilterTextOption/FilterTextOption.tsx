@@ -5,6 +5,7 @@ import * as Styled from './styles.FilterTextOption';
 export interface Props<T> {
   filterBy: string;
   filterOptions: Array<T>;
+  setFilter: (name: string) => void;
 }
 
 /**
@@ -17,13 +18,20 @@ export interface Props<T> {
 const FilterTextOption = ({
   filterBy,
   filterOptions,
+  setFilter,
 }: Props<SneakerBrand | Department | ProductSize>): JSX.Element => {
+  const applyFilter = (filterValue: string) => {
+    setFilter(filterValue);
+  };
+
   return (
     <Styled.Container>
       <Styled.FilterOption>
         <summary>{filterBy}</summary>
         {filterOptions.map((option, id) => (
-          <Styled.FilterButton key={id}>{option}</Styled.FilterButton>
+          <Styled.FilterButton key={id} onClick={() => applyFilter(option)}>
+            {option}
+          </Styled.FilterButton>
         ))}
       </Styled.FilterOption>
     </Styled.Container>

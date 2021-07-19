@@ -1,4 +1,5 @@
 import { Product } from '.';
+import { ProductFilters } from './index';
 
 /**
  * Products Reducer state interface
@@ -7,6 +8,8 @@ import { Product } from '.';
 export interface ProductsState {
   products: Product[];
   product: Product;
+  filters: ProductFilters;
+  filteredProducts: Product[];
   isLoading: boolean;
   error: string | null;
 }
@@ -22,6 +25,10 @@ export enum ProductActionTypes {
   LOAD_PRODUCT_DETAILS = 'LOAD_PRODUCT_DETAILS',
   PRODUCT_DETAILS_DID_LOAD = 'PRODUCT_DETAILS_DID_LOAD',
   PRODUCT_DETAILS_LOAD_ERROR = 'PRODUCT_DETAILS_LOAD_ERROR',
+
+  APPLY_FILTER = 'APPLY_FILTER',
+  FILTER_PRODUCTS = 'FILTER_PRODUCTS',
+  REMOVE_FILTERS = 'REMOVE_FILTERS',
 
   CLEAR_ERRORS = 'CLEAR_ERRORS',
 }
@@ -54,6 +61,24 @@ interface LoadProductDetailsErrorAction {
   type: ProductActionTypes.PRODUCT_DETAILS_LOAD_ERROR;
   payload: string;
 }
+
+/**
+ * FILTER Action interfaces
+ */
+interface ApplyFilterAction {
+  type: ProductActionTypes.APPLY_FILTER;
+  payload: {
+    filterName: keyof ProductFilters;
+    filterValue: string;
+  };
+}
+interface FilterProductsAction {
+  type: ProductActionTypes.FILTER_PRODUCTS;
+}
+interface RemoveFiltersAction {
+  type: ProductActionTypes.REMOVE_FILTERS;
+}
+
 /**
  * CLEAR STATE action interfaces
  */
@@ -71,4 +96,7 @@ export type ProductsAction =
   | LoadProductDetailsAction
   | LoadProductDetailsSuccessAction
   | LoadProductDetailsErrorAction
+  | ApplyFilterAction
+  | FilterProductsAction
+  | RemoveFiltersAction
   | ClearStateAction;

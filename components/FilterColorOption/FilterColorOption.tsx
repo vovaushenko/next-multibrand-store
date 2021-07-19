@@ -5,6 +5,7 @@ import * as Styled from './styles.FilterColorOptions';
 export interface Props {
   filterBy: string;
   filterOptions: Array<ProductColors>;
+  setFilter: (name: string) => void;
 }
 
 /**
@@ -14,9 +15,14 @@ export interface Props {
  *@param {string} filterOptions - List of available filtering options, such as product brand, size and department
  *@returns {JSX.Element} - Rendered FilterTextOption component
  */
-const FilterTextOption = ({ filterBy, filterOptions }: Props): JSX.Element => {
-  //TODO: connect filter text option with global filtering state
-  // TODO: highlight selected filter with standard outline
+const FilterTextOption = ({
+  filterBy,
+  filterOptions,
+  setFilter,
+}: Props): JSX.Element => {
+  const applyFilter = (filterValue: string) => {
+    setFilter(filterValue);
+  };
   return (
     <Styled.Container>
       <Styled.FilterOption>
@@ -26,6 +32,7 @@ const FilterTextOption = ({ filterBy, filterOptions }: Props): JSX.Element => {
             <Styled.FilterButton
               key={id}
               bgColor={option}
+              onClick={() => applyFilter(option)}
             ></Styled.FilterButton>
           ))}
         </Styled.ColorsGrid>
