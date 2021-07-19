@@ -4,13 +4,15 @@ import { slideInKeyframes } from '../../styles/reusableStyles';
 interface Props {
   isOpen: boolean;
   modalWidth: string;
+  top: string;
+  right: string;
 }
 
 export const Container = styled.div<Props>`
   z-index: 6;
   position: absolute;
-  top: 5rem;
-  right: 5rem;
+  top: ${({ top }) => top};
+  right: ${({ right }) => right};
   min-width: ${({ modalWidth }) => modalWidth || '250px'};
   max-height: 90vh;
   overflow-y: auto;

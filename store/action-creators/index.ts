@@ -3,6 +3,7 @@ import * as AuthActionCreators from './authActionCreators';
 import * as CartActionCreators from './cartActionCreators';
 import * as FilterActionCreators from './filterActionCreators';
 import * as ProductsActionCreators from './productActionCreators';
+import * as SortActionCreators from './sortActionCreators';
 import * as UIactionCreators from './uiActionCreators';
 
 /**
@@ -17,4 +18,5 @@ export const CombinedActionCreators = {
   ...AuthActionCreators,
   ...CartActionCreators,
   ...FilterActionCreators,
+  ...SortActionCreators,
 };

@@ -177,3 +177,12 @@ export interface ProductFilters {
   department: string;
   size: string;
 }
+/**
+ * All available sorting options
+ *@type
+ */
+export type SortingOptionsType =
+  | 'a-z'
+  | 'z-a'
+  | 'priceLowToHight'
+  | 'priceHightToLow';

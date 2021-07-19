@@ -1,5 +1,5 @@
 import { Product } from '.';
-import { ProductFilters } from './index';
+import { ProductFilters, SortingOptionsType } from './index';
 
 /**
  * Products Reducer state interface
@@ -85,7 +85,7 @@ interface RemoveFiltersAction {
  */
 interface SortProductsAction {
   type: ProductActionTypes.SORT_PRODUCTS;
-  payload: 'a-z' | 'z-a' | 'priceLowToHight' | 'priceHightToLow';
+  payload: SortingOptionsType;
 }
 
 /**

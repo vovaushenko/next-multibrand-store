@@ -30,6 +30,8 @@ const NavCart = (): JSX.Element => {
       <NavMiniModal
         isOpen={isModalOpen}
         modalWidth="500px"
+        top="5rem"
+        right="-2rem"
         modalContent={
           <CartContent
             cart={cart}
