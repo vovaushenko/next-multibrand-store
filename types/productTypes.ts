@@ -30,6 +30,8 @@ export enum ProductActionTypes {
   FILTER_PRODUCTS = 'FILTER_PRODUCTS',
   REMOVE_FILTERS = 'REMOVE_FILTERS',
 
+  SORT_PRODUCTS = 'SORT_PRODUCTS',
+
   CLEAR_ERRORS = 'CLEAR_ERRORS',
 }
 
@@ -78,6 +80,13 @@ interface FilterProductsAction {
 interface RemoveFiltersAction {
   type: ProductActionTypes.REMOVE_FILTERS;
 }
+/**
+ * SORTING Action interfaces
+ */
+interface SortProductsAction {
+  type: ProductActionTypes.SORT_PRODUCTS;
+  payload: 'a-z' | 'z-a' | 'priceLowToHight' | 'priceHightToLow';
+}
 
 /**
  * CLEAR STATE action interfaces
@@ -99,4 +108,5 @@ export type ProductsAction =
   | ApplyFilterAction
   | FilterProductsAction
   | RemoveFiltersAction
+  | SortProductsAction
   | ClearStateAction;

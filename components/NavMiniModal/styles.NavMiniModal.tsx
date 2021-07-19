@@ -10,7 +10,7 @@ export const Container = styled.div<Props>`
   z-index: 6;
   position: absolute;
   top: 5rem;
-  right: 3rem;
+  right: 5rem;
   min-width: ${({ modalWidth }) => modalWidth || '250px'};
   max-height: 90vh;
   overflow-y: auto;

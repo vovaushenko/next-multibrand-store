@@ -1,3 +1,4 @@
+import { useRouter } from 'next/dist/client/router';
 import NextImage from 'next/image';
 import React, { useRef } from 'react';
 import useHover from '../../hooks/useHover';
@@ -33,6 +34,7 @@ const ProductCard = ({
   isAvailable,
   productID,
 }: Props): JSX.Element => {
+  const router = useRouter();
   // We will use image ref to target Image of Card to change img.src on hovering
   const imageRef = useRef<HTMLElement>(null);
   const isHovering = useHover(imageRef);
@@ -42,7 +44,8 @@ const ProductCard = ({
   if (images.length >= 2) {
     secondImage = images[1].url;
   }
-  //TODO: Add to CART
+
+  const redirectToProductPage = () => router.push(`/products/${productID}`);
 
   return (
     <Styled.Card>
@@ -62,8 +65,12 @@ const ProductCard = ({
         <a>{brandName + ' ' + productModel}</a>
       </RouterLink>
       <Styled.Price>${productPrice}</Styled.Price>
-      <Button disabled={isAvailable === false} className="add-to-cart-btn">
-        {isAvailable ? 'add to cart' : 'sold out'}
+      <Button
+        className="add-to-cart-btn"
+        disabled={isAvailable === false}
+        onClick={redirectToProductPage}
+      >
+        {isAvailable ? 'choose options' : 'sold out'}
       </Button>
       <Button text={'quick view'} id="quick-view-btn" />
     </Styled.Card>

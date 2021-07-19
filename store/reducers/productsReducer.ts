@@ -94,6 +94,32 @@ export const productsReducer = (
         filters: { brand: '', color: '', size: '', department: '' },
       };
 
+    //* Sorting actions
+    case ProductActionTypes.SORT_PRODUCTS:
+      let sortedProducts = [...state.filteredProducts];
+
+      if (action.payload === 'a-z') {
+        sortedProducts = sortedProducts.sort((prod1, prod2) =>
+          prod1.brand.localeCompare(prod2.brand)
+        );
+      }
+      if (action.payload === 'z-a') {
+        sortedProducts = sortedProducts.sort((prod1, prod2) =>
+          prod2.brand.localeCompare(prod1.brand)
+        );
+      }
+      if (action.payload === 'priceLowToHight') {
+        sortedProducts = sortedProducts.sort(
+          (prod1, prod2) => prod1.price - prod2.price
+        );
+      }
+      if (action.payload === 'priceHightToLow') {
+        sortedProducts = sortedProducts.sort(
+          (prod1, prod2) => prod2.price - prod1.price
+        );
+      }
+      return { ...state, filteredProducts: sortedProducts };
+
     //* Clear Errors in state
     case ProductActionTypes.CLEAR_ERRORS:
       return initialState;
