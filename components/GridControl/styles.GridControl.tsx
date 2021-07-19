@@ -6,10 +6,13 @@ export const Container = styled.header`
   align-items: center;
   padding: 0 2rem;
   margin-bottom: 1rem;
-  overflow: hidden;
   background: ${({ theme }) => theme.secondaryBg};
   border: 1px solid ${({ theme }) => theme.borderGrayColor};
   border-radius: ${({ theme }) => theme.borderRadius};
+`;
+
+export const SortWrapper = styled.div`
+  position: relative;
 `;
 
 export const IconContainer = styled.div`
