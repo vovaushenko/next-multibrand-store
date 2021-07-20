@@ -9,22 +9,17 @@ export const Container = styled.nav`
     display: none;
   }
   @media ${({ theme }) => theme.media.phone} {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     align-items: center;
-    padding: 0.25rem 1rem;
+    gap: 1rem;
+    padding: 0.5rem 2rem;
     border-bottom: 1px solid ${({ theme }) => theme.borderGrayColor};
-  }
-`;
 
-export const LogoWrap = styled.figure``;
-
-export const IconsWrap = styled.section`
-  display: flex;
-
-  gap: 1rem;
-  .mobile-icon {
-    font-size: 1.75rem;
+    .mobile-icon {
+      display: block;
+      font-size: 1.75rem;
+    }
   }
 `;
 

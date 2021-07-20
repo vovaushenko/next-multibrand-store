@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { BiSearch, BiUser } from 'react-icons/bi';
+import { BiSearch } from 'react-icons/bi';
 import { GoThreeBars } from 'react-icons/go';
-import CartIcon from '../CartIcon/CartIcon';
-import NavbarHeaderLogo from '../NavbarHeaderLogo/NavbarHeaderLogo';
+import NavCart from '../NavCart/NavCart';
 import NavHeaderSearch from '../NavHeaderSearch/NavHeaderSearch';
+import NavUserAccount from '../NavUserAccount/NavUserAccount';
 import * as Styled from './styles.MobileNavbar';
 
 /**
@@ -20,20 +20,10 @@ const MobileNavbar = (): JSX.Element => {
   return (
     <>
       <Styled.Container>
-        <Styled.LogoWrap>
-          <NavbarHeaderLogo
-            headerText="sneaker-maniacs"
-            src="/logo.png"
-            height={50}
-            width={50}
-          />
-        </Styled.LogoWrap>
-        <Styled.IconsWrap>
-          <BiSearch className="mobile-icon" onClick={toggleSearchVisibility} />
-          <BiUser className="mobile-icon" />
-          <CartIcon productAmount={0} />
-          <GoThreeBars className="mobile-icon" />
-        </Styled.IconsWrap>
+        <NavUserAccount />
+        <NavCart />
+        <BiSearch className="mobile-icon" onClick={toggleSearchVisibility} />
+        <GoThreeBars className="mobile-icon" />
       </Styled.Container>
       {/* Search bar will be controlled through local state */}
       {isSearchOnScreen && (

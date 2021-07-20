@@ -49,7 +49,7 @@ const NavUserAccount = (): JSX.Element => {
         modalContent={modalContent}
         modalWidth={modalWidth}
         top="5rem"
-        right="5rem"
+        right="4rem"
       />
     </Styled.Container>
   );
