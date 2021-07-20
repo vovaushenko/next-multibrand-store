@@ -62,7 +62,7 @@ const ProductCard = ({
         </RouterLink>
       </Styled.CardImage>
       <RouterLink href={`/products/${productID}`}>
-        <a>{brandName + ' ' + productModel}</a>
+        <h3>{brandName + ' ' + productModel}</h3>
       </RouterLink>
       <Styled.Price>${productPrice}</Styled.Price>
       <Button

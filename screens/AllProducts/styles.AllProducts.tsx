@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.section`
+  overflow: clip;
+`;
+
+export const Wrap = styled.section`
   margin-top: 3rem;
   display: flex;
   gap: 1rem;

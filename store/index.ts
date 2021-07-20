@@ -4,6 +4,9 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk, { ThunkDispatch } from 'redux-thunk';
 import { reducer, RootState } from './reducers';
 
+// store for tests
+export const store = createStore(reducer);
+
 const makeStore: MakeStore<RootState> = () =>
   createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
 

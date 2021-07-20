@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import Filters from '../../components/Filters/Filters';
 import GridControl from '../../components/GridControl/GridControl';
 import ProductGrid from '../../components/ProductsGrid/ProductsGrid';
+import RecentlyViewed from '../../components/RecentlyViewed/RecentlyViewed';
 import { Product } from '../../types';
 import * as Styled from './styles.AllProducts';
 
@@ -23,15 +24,19 @@ const AllProducts = ({ products }: Props): JSX.Element => {
 
   return (
     <Styled.Container>
-      <Filters />
-      <Styled.GridWrap>
-        <GridControl
-          header={'All Products'}
-          productAmount={products.length}
-          changeLayout={changeLayout}
-        />
-        <ProductGrid products={products} layoutType={layoutType} />
-      </Styled.GridWrap>
+      <Styled.Wrap>
+        <Filters />
+        <Styled.GridWrap>
+          <GridControl
+            header={'All Products'}
+            productAmount={products.length}
+            changeLayout={changeLayout}
+          />
+          <ProductGrid products={products} layoutType={layoutType} />
+        </Styled.GridWrap>
+      </Styled.Wrap>
+
+      <RecentlyViewed />
     </Styled.Container>
   );
 };
