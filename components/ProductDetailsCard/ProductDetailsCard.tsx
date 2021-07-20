@@ -8,7 +8,7 @@ import Button from '../Button/Button';
 import HR from '../HR/HR';
 import PageHeader from '../PageHeader/PageHeader';
 import SectionHeader from '../SectionHeader/SectionHeader';
-import * as Styled from './styles';
+import * as Styled from './styles.ProductDetailsCard';
 
 export interface Props {
   productID: string;
@@ -66,7 +66,7 @@ const ProductDetailsCard = ({
   return (
     <Styled.CardContainer>
       <PageHeader headerText={`${brand} ${model}`} />
-      <Styled.Price>{price}</Styled.Price>
+      <Styled.Price>${price}</Styled.Price>
       <Styled.List>
         <li>Style:{styleCode}</li>
         <li>Colors:{colors && colors.join('/')}</li>

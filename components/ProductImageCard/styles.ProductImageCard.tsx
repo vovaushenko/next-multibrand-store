@@ -6,6 +6,10 @@ export const CardContainer = styled.article`
   border-radius: ${({ theme }) => theme.borderRadius};
   border: 1px solid ${({ theme }) => theme.borderGrayColor};
   padding: 1rem;
+
+  @media ${({ theme }) => theme.media.tablet} {
+    flex-direction: column-reverse;
+  }
 `;
 
 export const ImageList = styled.aside`
@@ -13,6 +17,9 @@ export const ImageList = styled.aside`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  @media ${({ theme }) => theme.media.tablet} {
+    flex-direction: row;
+  }
 `;
 
 interface StyledProps {

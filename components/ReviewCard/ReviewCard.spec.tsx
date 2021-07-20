@@ -2,7 +2,7 @@ import { shallow } from 'enzyme';
 import 'jest-styled-components';
 import React from 'react';
 import ReviewCard from './ReviewCard';
-import * as Styled from './styles';
+import * as Styled from './styles.ReviewCard';
 
 describe('Review Card', () => {
   const wrap = shallow(<ReviewCard review="tomato" />);

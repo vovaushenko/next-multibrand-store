@@ -1,6 +1,6 @@
 import React from 'react';
 import CardHeader from '../CardHeader/CardHeader';
-import * as Styled from './styles';
+import * as Styled from './styles.DescriptionCard';
 
 export interface Props {
   description: string;

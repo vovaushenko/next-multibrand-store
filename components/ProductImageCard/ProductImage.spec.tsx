@@ -2,7 +2,7 @@ import { shallow } from 'enzyme';
 import 'jest-styled-components';
 import React from 'react';
 import ProductImageCard from './ProductImageCard';
-import * as Styled from './styles';
+import * as Styled from './styles.ProductImageCard';
 
 export const images = [
   { public_id: '/images/og-travis.png', url: '/images/og-travis.png' },

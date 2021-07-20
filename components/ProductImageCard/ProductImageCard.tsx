@@ -1,7 +1,7 @@
 import NextImage from 'next/image';
 import React, { useState } from 'react';
 import { Image } from '../../types';
-import * as Styled from './styles';
+import * as Styled from './styles.ProductImageCard';
 
 export interface Props {
   images: Image[];

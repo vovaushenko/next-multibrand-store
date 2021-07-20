@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../Button/Button';
 import CardHeader from '../CardHeader/CardHeader';
-import * as Styled from './styles';
+import * as Styled from './styles.ReviewCard';
 
 export interface Props {
   review: string;

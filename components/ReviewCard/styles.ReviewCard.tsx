@@ -12,6 +12,9 @@ export const CardContainer = styled.article`
     justify-self: end;
     width: 70%;
   }
+  @media ${({ theme }) => theme.media.tablet} {
+    display: none;
+  }
 `;
 
 export const Review = styled.p``;

@@ -18,6 +18,12 @@ export const CardContainer = styled.article`
   button {
     width: 50%;
   }
+
+  @media ${({ theme }) => theme.media.tablet} {
+    button {
+      width: 100%;
+    }
+  }
 `;
 export const Price = styled.h4`
   color: ${({ theme }) => theme.secondaryGolden};
@@ -35,6 +41,7 @@ export const List = styled.ul`
 
 export const SizesList = styled.ul`
   display: flex;
+  flex-wrap: wrap;
   margin: 1rem 0;
   li:nth-child(n + 2) {
     margin-left: 0.5rem;
@@ -48,6 +55,7 @@ interface Props {
 export const Size = styled.li<Props>`
   cursor: pointer;
   padding: 0.2rem 1rem;
+  margin: 0.25rem 0;
   border: 1px solid ${({ theme }) => theme.borderGrayColor};
   box-shadow: ${({ theme, isSelected }) => isSelected && theme.selectedOutline};
   color: ${({ theme, isSelected }) => isSelected && theme.secondaryGolden};

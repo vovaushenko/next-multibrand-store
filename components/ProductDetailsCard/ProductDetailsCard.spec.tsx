@@ -2,7 +2,7 @@ import { shallow } from 'enzyme';
 import 'jest-styled-components';
 import React from 'react';
 import ProductDetailsCard from './ProductDetailsCard';
-import * as Styled from './styles';
+import * as Styled from './styles.ProductDetailsCard';
 
 describe('Review Card', () => {
   const wrap = shallow(
@@ -12,7 +12,7 @@ describe('Review Card', () => {
       model="V (5) Retro (Raging Bull)"
       colors={['red', 'black', 'white']}
       price={150}
-      size={[7, 8, 9, 9.5, 10, 11, 11.5]}
+      size={['7', '8', '9', '9.5', '10', '11', '11.5']}
       styleCode="440888-600"
     />
   );

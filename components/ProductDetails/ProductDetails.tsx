@@ -5,7 +5,7 @@ import DescriptionCard from '../DescriptionCard/DescriptionCard';
 import ProductDetailsCard from '../ProductDetailsCard/ProductDetailsCard';
 import ProductImageCard from '../ProductImageCard/ProductImageCard';
 import ReviewCard from '../ReviewCard/ReviewCard';
-import * as Styled from './styles';
+import * as Styled from './styles.ProductDetails';
 
 interface Props {
   product: Product;

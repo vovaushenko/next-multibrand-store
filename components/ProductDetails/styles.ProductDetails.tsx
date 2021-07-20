@@ -4,6 +4,11 @@ export const Container = styled.main`
   margin: 4rem 0 2rem 0;
   display: flex;
   gap: 1rem;
+
+  @media ${({ theme }) => theme.media.tablet} {
+    margin: 2rem 0;
+    flex-direction: column;
+  }
 `;
 
 export const LeftColumn = styled.section`
