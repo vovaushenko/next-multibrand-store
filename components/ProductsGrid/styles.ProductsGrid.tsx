@@ -9,6 +9,10 @@ const verticalLayout = css`
 `;
 const gridLayout = css`
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+
+  @media ${({ theme }) => theme.media.tablet} {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
 export const Container = styled.section<Props>`

@@ -15,6 +15,11 @@ export const Card = styled.article`
   }
 
   @media ${({ theme }) => theme.media.phone} {
+    padding: 0.5rem;
+    button {
+      padding: 1rem 0;
+      width: 100%;
+    }
     #quick-view-btn {
       display: none;
     }

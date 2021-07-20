@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.aside`
-  position: sticky;
-  top: 20%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -13,6 +11,10 @@ export const Container = styled.aside`
   background: ${({ theme }) => theme.secondaryBg};
   border: 1px solid ${({ theme }) => theme.borderGrayColor};
   border-radius: ${({ theme }) => theme.borderRadius};
+
+  @media ${({ theme }) => theme.media.tablet} {
+    width: 100%;
+  }
 `;
 
 export const ClearFilters = styled.button`

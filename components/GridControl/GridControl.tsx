@@ -34,9 +34,9 @@ const GridControl = ({
   return (
     <Styled.Container>
       <PageHeader headerText={header} />
-      <p>Showing {productAmount} products</p>
+      <p className="product__amount">Showing {productAmount} products</p>
       {/* TODO:PAGINATION */}
-      <p>Display 24 per page</p>
+      <p className="items__per__page">Display 24 per page</p>
 
       <Styled.SortWrapper onClick={toggleSortModal} className="sort">
         Sort by: {sortType}

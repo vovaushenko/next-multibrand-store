@@ -9,6 +9,21 @@ export const Container = styled.header`
   background: ${({ theme }) => theme.secondaryBg};
   border: 1px solid ${({ theme }) => theme.borderGrayColor};
   border-radius: ${({ theme }) => theme.borderRadius};
+
+  @media ${({ theme }) => theme.media.tablet} {
+    padding: 1rem 2rem;
+    h1 {
+      display: none;
+    }
+  }
+  @media ${({ theme }) => theme.media.phone} {
+    .product__amount {
+      display: none;
+    }
+    .items__per__page {
+      display: none;
+    }
+  }
 `;
 
 export const SortWrapper = styled.div`
