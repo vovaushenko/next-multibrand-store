@@ -5,6 +5,12 @@ export const Wrapper = styled.section`
   display: flex;
   gap: 2rem;
   padding: 1rem;
+  @media ${({ theme }) => theme.media.tablet} {
+    flex-direction: column;
+    margin-top: 1rem;
+    gap: 1rem;
+    padding: 0;
+  }
 `;
 
 const backgroundAndBorder = css`
@@ -22,8 +28,13 @@ export const RightColumn = styled.aside`
   ${backgroundAndBorder}
   flex:0.3;
   max-height: 30vh;
-  position: sticky;
-  top: 20%;
+
+  @media ${({ theme }) => theme.media.tablet} {
+    max-height: 50vh;
+    p {
+      margin-bottom: 1rem;
+    }
+  }
 `;
 
 export const Checkout = styled.div`
@@ -44,6 +55,9 @@ export const Total = styled.header`
 
 export const PaymentWrapper = styled.div`
   margin-top: 2rem;
+  @media ${({ theme }) => theme.media.tablet} {
+    margin-top: 1rem;
+  }
 `;
 
 export const SneakerManiac = styled.a`

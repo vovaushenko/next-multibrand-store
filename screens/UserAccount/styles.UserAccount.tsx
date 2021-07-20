@@ -5,6 +5,13 @@ export const Wrapper = styled.section`
   display: flex;
   gap: 2rem;
   padding: 1rem;
+
+  @media ${({ theme }) => theme.media.tablet} {
+    margin-top: 1rem;
+    gap: 1rem;
+    padding: 0;
+    flex-direction: column;
+  }
 `;
 
 const backgroundAndBorder = css`

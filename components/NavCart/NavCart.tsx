@@ -16,8 +16,8 @@ const NavCart = (): JSX.Element => {
   // Modal Dropdown will be displayed differently for mobile and pc screens
   const onMobileWidth = useMediaQuery('only screen and (max-width: 500px)');
   const modalTop = onMobileWidth ? '3rem' : '5rem';
-  const modalRight = onMobileWidth ? '-3rem' : '-2rem';
-  const modalWidth = onMobileWidth ? '100%' : '500px';
+  const modalRight = onMobileWidth ? '-5rem' : '-2rem';
+  const modalWidth = onMobileWidth ? '330px' : '500px';
 
   // local state - modal control
   const [isModalOpen, setIsModalOpen] = useState(false);

@@ -9,7 +9,7 @@ export const Container = styled.div`
     margin-left: 0.75rem;
   }
 
-  @media ${({ theme }) => theme.media.phone} {
+  @media ${({ theme }) => theme.media.tablet} {
     flex-direction: row;
   }
 `;
@@ -27,7 +27,7 @@ export const AccountButton = styled.button`
   .account-icon {
     margin-left: 0.5rem;
   }
-  @media ${({ theme }) => theme.media.phone} {
+  @media ${({ theme }) => theme.media.tablet} {
     .account-icon {
       margin-left: 0;
     }
