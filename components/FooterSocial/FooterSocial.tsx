@@ -38,7 +38,6 @@ const FooterSocial = ({ footerSocialLinks }: Props): JSX.Element => {
 const FooterSocialSection = styled.section`
   ul {
     display: flex;
-    margin-top: 1rem;
     li:nth-child(n + 2) {
       margin-left: 1rem;
     }

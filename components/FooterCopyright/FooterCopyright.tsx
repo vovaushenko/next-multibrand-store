@@ -30,6 +30,7 @@ const FooterCopyright: FC<Props> = ({ footerCopyrightLinks }): JSX.Element => {
         </ul>
         <p>©2021 Sneaker-maniacs.com. All Rights Reserved.</p>
       </FooterCopyrightSection>
+      <HR />
     </Container>
   );
 };

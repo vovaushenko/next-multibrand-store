@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 
-export const FooterLinksSection = styled.section`
+export const Container = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
   line-height: 1.7;
   color: ${({ theme }) => theme.lightGray};
+  @media ${({ theme }) => theme.media.phone} {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 `;
 
 export const SneakerManiacPlus = styled.h3`

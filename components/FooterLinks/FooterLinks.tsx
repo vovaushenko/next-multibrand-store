@@ -3,7 +3,7 @@ import { RouterLinkType } from '../../types';
 import Container from '../Container/Container';
 import RouterLink from '../RouterLink/RouterLink';
 import SectionHeader from '../SectionHeader/SectionHeader';
-import { FooterLinksSection, SneakerManiacPlus } from './styles';
+import * as Styled from './styles.FooterLinks';
 
 export interface Props {
   footerLinks: RouterLinkType<string>[];
@@ -19,7 +19,7 @@ export interface Props {
 const FooterLinks = ({ footerLinks, rewardLinks }: Props): JSX.Element => {
   return (
     <Container>
-      <FooterLinksSection>
+      <Styled.Container>
         <div className="footer-links">
           <SectionHeader headerText="Customer support" />
           <p>Call us at 1-777-777-7777</p>
@@ -42,12 +42,14 @@ const FooterLinks = ({ footerLinks, rewardLinks }: Props): JSX.Element => {
             ))}
             <li>
               <RouterLink href="sneaker-maniac">
-                <SneakerManiacPlus>SNEAKERMANIC+</SneakerManiacPlus>
+                <Styled.SneakerManiacPlus>
+                  SNEAKERMANIAC+
+                </Styled.SneakerManiacPlus>
               </RouterLink>
             </li>
           </ul>
         </div>
-      </FooterLinksSection>
+      </Styled.Container>
     </Container>
   );
 };
