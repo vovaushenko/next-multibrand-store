@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { slideInKeyframes } from '../../styles/reusableStyles';
 
-export const Container = styled.nav`
+export const Container = styled.header`
   @media ${({ theme }) => theme.media.desktop} {
     display: none;
   }
@@ -19,6 +19,7 @@ export const Container = styled.nav`
     .mobile-icon {
       display: block;
       font-size: 1.75rem;
+      color: 1px solid ${({ theme }) => theme.primaryWhite};
     }
   }
 `;

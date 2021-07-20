@@ -1,3 +1,4 @@
+import { useMediaQuery } from '@react-hook/media-query';
 import React, { useState } from 'react';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
@@ -12,6 +13,12 @@ import * as Styled from './styles.NavCart';
  *@returns {JSX.Element} - Rendered NavCart component
  */
 const NavCart = (): JSX.Element => {
+  // Modal Dropdown will be displayed differently for mobile and pc screens
+  const onMobileWidth = useMediaQuery('only screen and (max-width: 500px)');
+  const modalTop = onMobileWidth ? '3rem' : '5rem';
+  const modalRight = onMobileWidth ? '-3rem' : '-2rem';
+  const modalWidth = onMobileWidth ? '100%' : '500px';
+
   // local state - modal control
   const [isModalOpen, setIsModalOpen] = useState(false);
   const toggleCartModal = () => setIsModalOpen((prev) => !prev);
@@ -29,9 +36,9 @@ const NavCart = (): JSX.Element => {
       </Styled.CartButton>
       <NavMiniModal
         isOpen={isModalOpen}
-        modalWidth="500px"
-        top="5rem"
-        right="-2rem"
+        modalWidth={modalWidth}
+        top={modalTop}
+        right={modalRight}
         modalContent={
           <CartContent
             cart={cart}

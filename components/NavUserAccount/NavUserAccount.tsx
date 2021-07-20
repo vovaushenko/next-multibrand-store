@@ -1,3 +1,4 @@
+import { useMediaQuery } from '@react-hook/media-query';
 import { useSession } from 'next-auth/client';
 import React, { useState } from 'react';
 import { FiChevronDown } from 'react-icons/fi';
@@ -13,6 +14,11 @@ import * as Styled from './styles.NavUserAccount';
  * @returns {ReactNode} - rendered NavUserAccount component
  */
 const NavUserAccount = (): JSX.Element => {
+  // Modal Dropdown will be displayed differently for mobile and pc screens
+  const onMobileWidth = useMediaQuery('only screen and (max-width: 500px)');
+  const modalTop = onMobileWidth ? '4rem' : '5rem';
+  const modalRight = onMobileWidth ? '2rem' : '4rem';
+
   // Controls Modal dropdown
   // TODO: move modal control to global state, or think about this
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,7 +28,8 @@ const NavUserAccount = (): JSX.Element => {
   // Modal content and width depend on session. If user is authenticated - <UserAccountDropdown /> will be rendered
   // otherwise <SignIn /> will be rendered
   const modalContent = session ? <UserAccountDropdown /> : <SignIn />;
-  const modalWidth = session ? '250px' : '350px';
+  let modalWidth = session ? '250px' : '350px';
+  if (onMobileWidth) modalWidth = '300px';
 
   return (
     <Styled.Container>
@@ -48,8 +55,8 @@ const NavUserAccount = (): JSX.Element => {
         isOpen={isModalOpen}
         modalContent={modalContent}
         modalWidth={modalWidth}
-        top="5rem"
-        right="4rem"
+        top={modalTop}
+        right={modalRight}
       />
     </Styled.Container>
   );
