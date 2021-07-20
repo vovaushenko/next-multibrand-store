@@ -23,7 +23,7 @@ const NavbarNavigation = (): JSX.Element => {
         <ul>
           {navLinks.map((link, id) => (
             <li key={id} onMouseEnter={() => setSection(link.section)}>
-              <NavLink href={`/${link.section}`} linkText={link.section} />
+              <NavLink href={`/products/all`} linkText={link.section} />
             </li>
           ))}
         </ul>

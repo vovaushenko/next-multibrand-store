@@ -17,7 +17,7 @@ const NavPictureDropdown = (): JSX.Element => {
       <Styled.List>
         {navPictureLinks.map((link) => (
           <Styled.ListItem key={link.section}>
-            <Link href={`${link.section}`} passHref={true}>
+            <Link href={`/products/all/${link.section}`} passHref={true}>
               <Image
                 className="section-image"
                 src={link.src}

@@ -21,9 +21,7 @@ export default function ProductDetailsPage(): JSX.Element {
   }, [id]);
 
   return (
-    <Layout
-      title={'Shop The Hottest Sneakers | Nike | Jordan | Adidas | Puma '}
-    >
+    <Layout title={`${product.brand} | ${product.model}`}>
       {isLoading ? <SneakerLoader /> : <ProductDetails product={product} />}
     </Layout>
   );

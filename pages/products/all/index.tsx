@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react';
-import Layout from '../../components/Layout/Layout';
-import SneakerLoader from '../../components/SneakerLoader/SneakerLoader';
-import { useActions } from '../../hooks/useActions';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
-import AllProducts from '../../screens/AllProducts/AllProducts';
-
+import Layout from '../../../components/Layout/Layout';
+import SneakerLoader from '../../../components/SneakerLoader/SneakerLoader';
+import { useActions } from '../../../hooks/useActions';
+import { useTypedSelector } from '../../../hooks/useTypedSelector';
+import AllProducts from '../../../screens/AllProducts/AllProducts';
+/**
+ * Page where product data is mapped into AllProductsPage
+ *@function AllProductsPage
+ *@returns {JSX.Element} - Rendered AllProductsPage component
+ */
 export default function AllProductsPage(): JSX.Element {
   const { loadAllProducts, addFilterOption } = useActions();
   const { isLoading, filteredProducts, products } = useTypedSelector(
