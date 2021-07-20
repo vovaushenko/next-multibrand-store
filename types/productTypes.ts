@@ -95,7 +95,7 @@ interface ClearStateAction {
   type: ProductActionTypes.CLEAR_ERRORS;
 }
 /**
- *Combined type for Admin action creators
+ *Combined type for Product action creators
  *@type
  */
 export type ProductsAction =
