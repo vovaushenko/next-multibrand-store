@@ -9,7 +9,7 @@ export const Wrapper = styled.section`
 
 export const GridContainer = styled.section`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   gap: 1px;
   overflow: hidden;
   background-color: ${({ theme }) => theme.borderGrayColor};

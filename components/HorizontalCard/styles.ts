@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const CardContainer = styled.article`
   display: flex;
-  padding: 1.25rem;
+  padding: 1rem;
 
   background: ${({ theme }) => theme.secondaryBg};
 `;
