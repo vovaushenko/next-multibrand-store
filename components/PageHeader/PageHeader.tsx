@@ -15,7 +15,7 @@ const PageHeader = ({ headerText }: Props): JSX.Element => {
   return <StyledHeader>{headerText}</StyledHeader>;
 };
 
-const StyledHeader = styled.h1`
+const StyledHeader = styled.h2`
   font-size: 2rem;
   text-transform: capitalize;
   font-weight: 700;

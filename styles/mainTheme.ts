@@ -19,6 +19,20 @@ export const mainTheme: DefaultTheme = {
   borderRadius: '0.5rem',
   borderGrayColor: 'rgba(143, 143, 143, 0.3)',
   selectedOutline: '0 0 0 1px #ffa500;',
+
+  blackToGrayGradient: `linear-gradient(
+    180deg,
+    #000000 35.5%,
+    #151515 50%,
+    #383838 78.6%
+  )`,
+
+  grayToBlackGradient: `linear-gradient(
+    180deg,
+    #383838 35.5%,
+    #151515 50%,
+    #000000 78.6%
+  )`,
   maxWidth: '1500px',
 
   media: {

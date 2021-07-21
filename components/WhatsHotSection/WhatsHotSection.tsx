@@ -17,21 +17,23 @@ export interface Props {
  */
 const WhatsHot = ({ products }: Props): JSX.Element => {
   return (
-    <Container>
-      <PageHeader headerText={`What's hot`} />
-      <Styled.Container>
-        {products.map((product) => (
-          <HorizontalCard
-            key={product._id}
-            productID={product._id}
-            brandName={product.brand}
-            images={product.images}
-            productModel={product.model}
-            productPrice={String(product.price)}
-          />
-        ))}
-      </Styled.Container>
-    </Container>
+    <Styled.Wrapper>
+      <Container>
+        <PageHeader headerText={`What's hot`} />
+        <Styled.GridContainer>
+          {products.map((product) => (
+            <HorizontalCard
+              key={product._id}
+              productID={product._id}
+              brandName={product.brand}
+              images={product.images}
+              productModel={product.model}
+              productPrice={String(product.price)}
+            />
+          ))}
+        </Styled.GridContainer>
+      </Container>
+    </Styled.Wrapper>
   );
 };
 

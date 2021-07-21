@@ -27,6 +27,8 @@ declare module 'styled-components' {
     borderRadius: string;
     borderGrayColor: string;
     selectedOutline: string;
+    blackToGrayGradient: string;
+    grayToBlackGradient: string;
     media: media;
   }
 }

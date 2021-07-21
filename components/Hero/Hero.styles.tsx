@@ -5,16 +5,11 @@ export const Container = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 85vh;
+  height: 90vh;
   line-height: 1;
   perspective: 1000px;
 
-  background-image: linear-gradient(
-    180deg,
-    #000000 25.5%,
-    #151515 40%,
-    #383838 78.6%
-  );
+  background-image: ${({ theme }) => theme.blackToGrayGradient};
 `;
 
 interface Props {
