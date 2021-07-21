@@ -43,5 +43,9 @@ export const LeftColumn = styled.aside`
 
 export const ContentColumn = styled.main`
   flex: 0.75;
+  overflow: clip;
+  h2 {
+    margin-top: 0;
+  }
   ${backgroundAndBorder}
 `;

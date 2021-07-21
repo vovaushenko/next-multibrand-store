@@ -4,7 +4,7 @@ interface ModalOverlayProps {
   positionY: number;
 }
 export const ModalOverlay = styled.div<ModalOverlayProps>`
-  z-index: 777;
+  z-index: 1000;
   position: absolute;
   top: ${({ positionY }) => `${positionY}px`};
   left: 0;
