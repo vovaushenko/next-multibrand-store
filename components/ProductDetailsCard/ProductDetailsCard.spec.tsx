@@ -1,32 +1,25 @@
 import { mount } from 'enzyme';
 import 'jest-styled-components';
 import React from 'react';
-import { Provider } from 'react-redux';
-import { ThemeProvider } from 'styled-components';
-import { mainTheme } from '../../styles/mainTheme';
-import { initialReduxStore } from '../../test/initialReduxStore';
-import { storeFactory } from '../../test/testUtils';
+import { withReduxAndStyledProviders } from '../../test/testUtils';
 import ProductDetailsCard from './ProductDetailsCard';
 import * as Styled from './styles.ProductDetailsCard';
 
 const setup = () => {
-  const store = storeFactory(initialReduxStore);
   return mount(
-    <Provider store={store}>
-      <ThemeProvider theme={mainTheme}>
-        <ProductDetailsCard
-          productImg="test"
-          productID="test"
-          department="men"
-          brand="air jordan"
-          model="V (5) Retro (Raging Bull)"
-          colors={['red', 'black', 'white']}
-          price={150}
-          size={['7', '8', '9', '9.5', '10', '11', '11.5']}
-          styleCode="440888-600"
-        />
-      </ThemeProvider>
-    </Provider>
+    withReduxAndStyledProviders(
+      <ProductDetailsCard
+        productImg="test"
+        productID="test"
+        department="men"
+        brand="air jordan"
+        model="V (5) Retro (Raging Bull)"
+        colors={['red', 'black', 'white']}
+        price={150}
+        size={['7', '8', '9', '9.5', '10', '11', '11.5']}
+        styleCode="440888-600"
+      />
+    )
   );
 };
 

@@ -1,9 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import { Provider } from 'react-redux';
 import { store } from '../../store';
-import { initialReduxStore } from '../../test/initialReduxStore';
-import { storeFactory } from '../../test/testUtils';
+import { withReduxAndStyledProviders } from '../../test/testUtils';
 import ProductCard from '../ProductCard/ProductCard';
 import RecentlyViewed from './RecentlyViewed';
 
@@ -12,12 +10,7 @@ import RecentlyViewed from './RecentlyViewed';
  * @returns {ShallowWrapper}
  */
 const setup = () => {
-  const store = storeFactory(initialReduxStore);
-  return shallow(
-    <Provider store={store}>
-      <RecentlyViewed />
-    </Provider>
-  );
+  return shallow(withReduxAndStyledProviders(<RecentlyViewed />));
 };
 
 describe('Footer contact/reward links Section', () => {

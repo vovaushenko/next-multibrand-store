@@ -1,15 +1,10 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
-import { mainTheme } from '../../styles/mainTheme';
+import { withReduxAndStyledProviders } from '../../test/testUtils';
 import * as Styled from './styles.MobileNavbar';
 
 const setup = () => {
-  return shallow(
-    <ThemeProvider theme={mainTheme}>
-      <Styled.Container />
-    </ThemeProvider>
-  );
+  return shallow(withReduxAndStyledProviders(<Styled.Container />));
 };
 
 const resizeWindow = (innerWidth: number): void => {
