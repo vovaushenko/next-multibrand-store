@@ -14,13 +14,6 @@ export const Wrapper = styled.section`
   }
 `;
 
-const backgroundAndBorder = css`
-  background: ${({ theme }) => theme.secondaryBg};
-  border-radius: ${({ theme }) => theme.borderRadius};
-  border: 1px solid ${({ theme }) => theme.borderGrayColor};
-  padding: 1.25rem;
-`;
-
 export const Button = styled.button`
   cursor: pointer;
   color: ${({ theme }) => theme.primaryWhite};
@@ -33,16 +26,28 @@ export const Button = styled.button`
   display: inline-flex;
 `;
 
+const backgroundAndBorder = css`
+  background: ${({ theme }) => theme.secondaryBg};
+  border-radius: ${({ theme }) => theme.borderRadius};
+  border: 1px solid ${({ theme }) => theme.borderGrayColor};
+  padding: 1.25rem;
+`;
+
 export const LeftColumn = styled.aside`
-  flex: 0.25;
+  flex: 0.15;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  height: max-content;
   ${backgroundAndBorder}
 `;
 
+export const UserName = styled.h4`
+  color: ${({ theme }) => theme.primaryGolden};
+`;
+
 export const ContentColumn = styled.main`
-  flex: 0.75;
+  flex: 0.85;
   overflow: clip;
   h2 {
     margin-top: 0;

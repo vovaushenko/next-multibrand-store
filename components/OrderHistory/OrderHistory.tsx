@@ -1,5 +1,6 @@
 import { useRouter } from 'next/dist/client/router';
 import React from 'react';
+import { FaParachuteBox } from 'react-icons/fa';
 import Button from '../Button/Button';
 import CardHeader from '../CardHeader/CardHeader';
 import * as Styled from './styles.OrderHistory';
@@ -12,6 +13,7 @@ const OrderHistory = (): JSX.Element => {
   return (
     <Styled.Container>
       <CardHeader headerText="No orders yet ..." />
+      <FaParachuteBox className="order" />
       <Button text="Make your first order" onClick={redirectToAllProducts} />
     </Styled.Container>
   );

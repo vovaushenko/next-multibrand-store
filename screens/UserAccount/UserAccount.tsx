@@ -44,14 +44,17 @@ const UserAccount = (): JSX.Element => {
       <Styled.Wrapper>
         <Styled.LeftColumn>
           {session && (
-            <Avatar
-              src={session.user.avatar.url}
-              firstName={session.user.name.split(' ')[0]}
-              lastName={session.user.name.split(' ')[1] || ''}
-              hasBadge={false}
-              isActive={false}
-              width={'120px'}
-            />
+            <>
+              <Avatar
+                src={session.user.avatar.url}
+                firstName={session.user.name.split(' ')[0]}
+                lastName={session.user.name.split(' ')[1] || ''}
+                hasBadge={false}
+                isActive={false}
+                width={'120px'}
+              />
+              <Styled.UserName>{session.user.name}</Styled.UserName>
+            </>
           )}
           {/* TODO:ADD UPDATE ORDERS CONTENT */}
           <Styled.Button onClick={showOrderHistory}>

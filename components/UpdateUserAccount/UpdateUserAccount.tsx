@@ -105,6 +105,7 @@ const UpdateUserAccount = (): JSX.Element => {
         placeholder="First Name"
         value={firstName}
         setValue={setFirstName}
+        required={true}
       />
       <FormTextField
         type="text"
@@ -112,6 +113,7 @@ const UpdateUserAccount = (): JSX.Element => {
         placeholder="Last Name"
         value={lastName}
         setValue={setLastName}
+        required={true}
       />
       <FormTextField
         type="email"
@@ -119,6 +121,7 @@ const UpdateUserAccount = (): JSX.Element => {
         placeholder="Email"
         value={email}
         setValue={setEmail}
+        required={true}
       />
       <FormTextField
         type="password"
@@ -126,6 +129,7 @@ const UpdateUserAccount = (): JSX.Element => {
         placeholder="New Password"
         value={password}
         setValue={setPassword}
+        required={true}
       />
       <FormTextField
         type="password"
@@ -133,6 +137,7 @@ const UpdateUserAccount = (): JSX.Element => {
         placeholder="Verify New Password"
         value={verificationPassword}
         setValue={setVerificationPassword}
+        required={true}
       />
       <Styled.AvatarControl>
         <Styled.AvatarPreview>
