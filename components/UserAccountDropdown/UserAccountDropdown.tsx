@@ -17,7 +17,7 @@ const UserAccountDropdown = (): JSX.Element => {
       <Link href="/account" passHref>
         <Styled.LinkContent>Account</Styled.LinkContent>
       </Link>
-      <Link href="/orders" passHref>
+      <Link href="/account" passHref>
         <Styled.LinkContent>Orders</Styled.LinkContent>
       </Link>
       <Button text="sign out" onClick={handleUserSignOut} />
