@@ -50,6 +50,7 @@ const SignIn = (): JSX.Element => {
         placeholder="Enter Email"
         value={email}
         setValue={setEmail}
+        required={true}
       />
       <Input
         type="password"
@@ -57,6 +58,7 @@ const SignIn = (): JSX.Element => {
         placeholder="Enter Password"
         value={password}
         setValue={setPassword}
+        required={true}
       />
       <Button type="submit" text="Sign In" isLoading={isLoading} />
 

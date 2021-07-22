@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { TextField } from './styles';
+import * as Styled from './styles.FormTextField';
 
 export interface Props {
   name: string;
@@ -15,6 +15,9 @@ export interface Props {
  *@param {string} name - label && input name
  *@param {string} type - input type
  *@param {string} placeholder - input placeholder
+ *@param {string} value - value of input
+ *@param {function} setValue - setter from useState to control value
+ *@param {boolean} required - is required, default to false
  *@returns {JSX.Element} - Rendered Form text control element
  */
 const Input: FC<Props> = ({
@@ -28,18 +31,16 @@ const Input: FC<Props> = ({
   //TODO: Move placeholder on top after typing
   //TODO: implement value and onChange props
   return (
-    <TextField>
-      <label htmlFor={name}>
-        <input
-          type={type}
-          name={name}
-          placeholder={placeholder}
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          required={required}
-        />
-      </label>
-    </TextField>
+    <Styled.Container>
+      <Styled.Input
+        type={type}
+        name={name}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        required={required}
+      />
+      <Styled.Label htmlFor={name}>{placeholder}</Styled.Label>
+    </Styled.Container>
   );
 };
 

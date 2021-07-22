@@ -13,17 +13,19 @@ describe('Form text control component', () => {
       setValue={() => console.log('test')}
     />
   );
+  it('should render', () => {
+    expect(wrap.length).toBe(1);
+  });
 
   it('should render specified input name', () => {
     expect(wrap);
     expect(wrap.find('input').prop('name')).toBe('tomato');
   });
   it('should render specified input type', () => {
-    expect(wrap);
     expect(wrap.find('input').prop('type')).toBe('email');
   });
   it('should render specified input placeholder', () => {
-    expect(wrap);
-    expect(wrap.find('input').prop('placeholder')).toBe('tomato');
+    const placeholder = wrap.find('label');
+    expect(placeholder.text()).toBe('tomato');
   });
 });
