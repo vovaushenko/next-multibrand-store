@@ -1,7 +1,7 @@
 import cloudinary from 'cloudinary';
 import { NextApiRequest, NextApiResponse } from 'next';
 import catchErrorsFrom from '../middleware/catchErrorsFrom';
-import User from '../models/user';
+import User, { IUser } from '../models/user';
 import { NextApiRequestWithAuth } from '../types/authTypes';
 
 // Setting up cloudinary config
@@ -70,4 +70,57 @@ const getCurrentUserProfile = async (
   });
 };
 
-export { registerUser, getCurrentUserProfile };
+/**
+ * Update user account details
+ * @params name, email, password, avatar will be in request and will be used to update current user profile
+ * @PUT /api/me/update
+ * @function updateUserProfile
+ * @param {NextApiResponseWithAuth} req  Next API request with user info
+ * @param {Next.Response} res The Next response
+ * @return {undefined}
+ */
+const updateUserProfile = async (
+  req: NextApiRequestWithAuth,
+  res: NextApiResponse
+): Promise<void> => {
+  const user: IUser = await User.findById(req.user._id);
+
+  // Update User's name and email
+  // Also Update User's Password, is specified
+  if (user) {
+    user.name = req.body.name;
+    user.email = req.body.email;
+
+    if (req.body.password) {
+      user.password = req.body.password;
+    }
+  }
+
+  // Update User's avatar in cloudinary CDN
+  if (req.body.avatar) {
+    const image_id = user.avatar?.public_id;
+    // Delete User's previous avatar
+    if (image_id) {
+      await cloudinary.v2.uploader.destroy(image_id);
+    }
+    // Upload New Avatar
+    const cloudinaryImg = await cloudinary.v2.uploader.upload(req.body.avatar, {
+      folder: 'sneaker-maniacs/user_avatars',
+      width: '150',
+      crop: 'scale',
+    });
+
+    user.avatar = {
+      public_id: cloudinaryImg.public_id,
+      url: cloudinaryImg.secure_url,
+    };
+  }
+
+  await user.save();
+
+  res.status(200).json({
+    success: true,
+  });
+};
+
+export { registerUser, getCurrentUserProfile, updateUserProfile };
