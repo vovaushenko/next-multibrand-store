@@ -484,6 +484,7 @@ export const initialReduxStore: LocalRootState = {
     isRegistered: false,
     success: false,
     error: null,
+    isUpdated: false,
   },
   cart: {
     cart: [
