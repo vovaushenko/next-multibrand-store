@@ -9,6 +9,7 @@ const initialState: AuthState = {
   isLoading: false,
   isAuthenticated: false,
   isRegistered: false,
+  isUpdated: false,
   success: false,
   error: null,
 };
@@ -50,6 +51,17 @@ export const authReducer = (
         isAuthenticated: false,
         error: action.payload,
       };
+    /**
+     * UPDATE USER PROFILE DETAILS
+     */
+    case AuthActionTypes.UPDATE_USER_PROFILE:
+      return { ...state, isLoading: true };
+
+    case AuthActionTypes.PROFILE_WAS_UPDATED:
+      return { ...state, isLoading: false, isUpdated: action.payload };
+
+    case AuthActionTypes.PROFILE_UPDATE_ERROR:
+      return { ...state, isLoading: false, error: action.payload };
 
     case AuthActionTypes.CLEAR_STATE:
       return initialState;

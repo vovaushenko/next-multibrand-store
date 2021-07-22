@@ -66,6 +66,47 @@ export const loadUserAccountDetails =
   };
 
 /**
+ *@function updateUserProfile
+ *@AUTH async action creator, will dispatch action to update user account details, also will dispatch error action if async operation fails
+ *@PUT /api/me/update
+ *@param {object} updatedUserDetails - user account details - name, email, avatar, password
+ *@returns {undefined}
+ */
+export const updateUserProfile =
+  (updatedUserDetails: {
+    name: string;
+    avatar: string;
+    email: string;
+    password: string;
+  }) =>
+  async (dispatch: Dispatch<AuthAction>): Promise<void> => {
+    dispatch({ type: AuthActionTypes.UPDATE_USER_PROFILE });
+
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      const { data } = await axios.put(
+        '/api/me/update',
+        updatedUserDetails,
+        config
+      );
+
+      dispatch({
+        type: AuthActionTypes.PROFILE_WAS_UPDATED,
+        payload: data.success,
+      });
+    } catch (error) {
+      dispatch({
+        type: AuthActionTypes.PROFILE_UPDATE_ERROR,
+        payload: error.response.data.message,
+      });
+    }
+  };
+
+/**
  *@AUTH async action creator, will dispatch action to clear AUTH state
  *@function clearAuthState
  *@returns {undefined}

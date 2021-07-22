@@ -10,6 +10,7 @@ export interface AuthState {
   isAuthenticated: boolean;
   isLoading: boolean;
   isRegistered: boolean;
+  isUpdated: boolean;
   success: boolean;
   error: null | string;
 }
@@ -25,6 +26,10 @@ export enum AuthActionTypes {
   LOAD_USER = 'LOAD_USER',
   USER_DID_LOAD = 'USER_DID_LOAD',
   USER_LOAD_FAIL = 'USER_LOAD_FAIL',
+
+  UPDATE_USER_PROFILE = 'UPDATE_USER_PROFILE',
+  PROFILE_WAS_UPDATED = 'PROFILE_WAS_UPDATED',
+  PROFILE_UPDATE_ERROR = 'PROFILE_UPDATE_ERROR',
 
   CLEAR_STATE = 'CLEAR_STATE',
 }
@@ -57,6 +62,22 @@ interface LoadUserFailAction {
   type: AuthActionTypes.USER_LOAD_FAIL;
   payload: string;
 }
+
+/**
+ * UPDATE USER PROFILE action interfaces
+ */
+interface UpdateProfileRequestAction {
+  type: AuthActionTypes.UPDATE_USER_PROFILE;
+}
+interface UpdateProfileSuccessAction {
+  type: AuthActionTypes.PROFILE_WAS_UPDATED;
+  payload: boolean;
+}
+interface UpdateProfileFailAction {
+  type: AuthActionTypes.PROFILE_UPDATE_ERROR;
+  payload: string;
+}
+
 /**
  * CLEAR STATE action interfaces
  */
@@ -74,4 +95,7 @@ export type AuthAction =
   | LoadUserRequestAction
   | LoadUserSuccessAction
   | LoadUserFailAction
-  | ClearAuthErrors;
+  | ClearAuthErrors
+  | UpdateProfileRequestAction
+  | UpdateProfileSuccessAction
+  | UpdateProfileFailAction;
