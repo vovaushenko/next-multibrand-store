@@ -1,20 +1,33 @@
 import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import Button from '../Button/Button';
 import CardHeader from '../CardHeader/CardHeader';
+import FormCheckboxField from '../FormCheckboxField/FormCheckboxField';
 import * as Styled from './styles.CheckoutShipping';
 
+/**
+ *Shipping stage of checkout process
+ *@function CheckoutShipping
+ *@returns {JSX.Element} - Rendered CheckoutShipping component
+ */
 const CheckoutShipping = (): JSX.Element => {
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState<boolean>(false);
+
   const router = useRouter();
 
   const proceedToPayment = () => {
     router.push('/checkout/payment');
   };
+
+  const toggleCheckbox = useCallback(() => {
+    setChecked(!checked);
+  }, [checked]);
+
   return (
     <Styled.Container>
       <CardHeader headerText="Shipping Information" />
+      {/* Shipping info */}
       <Styled.ShippingInfo>
         <Styled.Header>Contact</Styled.Header>
         <Styled.Content>vovaushenko1989@gmail.com</Styled.Content>
@@ -33,37 +46,31 @@ const CheckoutShipping = (): JSX.Element => {
         </Link>
       </Styled.ShippingInfo>
 
+      {/* Shipping Methods */}
       <CardHeader headerText="Shipping method" />
-
+      {/* Free shipping */}
       <Styled.ShippingInfo>
-        <Styled.InputControl>
-          <input
-            type="checkbox"
-            id="freeShipping"
-            name="freeShipping"
-            defaultChecked={checked}
-            onChange={() => setChecked(!checked)}
-          />
+        <FormCheckboxField
+          checked={checked}
+          setChecked={toggleCheckbox}
+          name="free__shipping"
+          labelText="FREE Shipping"
+        />
 
-          <label htmlFor="freeShipping">FREE Shipping</label>
-        </Styled.InputControl>
         <Styled.Content>Free</Styled.Content>
       </Styled.ShippingInfo>
-
+      {/* Paid two day shipping */}
       <Styled.ShippingInfo>
-        <Styled.InputControl>
-          <input
-            type="checkbox"
-            id="twoDayShipping"
-            name="scales"
-            defaultChecked={checked}
-            onChange={() => setChecked(!checked)}
-          />
-          <label htmlFor="twoDayShipping"> 2-Day Shipping</label>
-        </Styled.InputControl>
+        <FormCheckboxField
+          checked={checked}
+          setChecked={toggleCheckbox}
+          name="two_day__shipping"
+          labelText="2-Day Shipping"
+        />
+
         <Styled.Content>$4.99</Styled.Content>
       </Styled.ShippingInfo>
-
+      {/* Footer */}
       <Styled.ButtonWrap>
         <Button text="Continue to payment" onClick={proceedToPayment} />
         <Link href="/checkout/information" passHref>

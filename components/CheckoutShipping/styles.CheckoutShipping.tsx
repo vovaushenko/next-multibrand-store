@@ -22,15 +22,8 @@ export const ShippingInfo = styled.form`
 export const Header = styled.p`
   color: ${({ theme }) => theme.primaryGolden};
 `;
-export const Content = styled.p``;
 
-export const InputControl = styled.div`
-  /* TODO:CUSTOM CHECKBOX */
-  cursor: pointer;
-  label {
-    margin-left: 0.5rem;
-  }
-`;
+export const Content = styled.p``;
 
 export const ButtonWrap = styled.footer`
   display: flex;
