@@ -1,3 +1,4 @@
+import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { UserShippingInfo } from '../../types';
@@ -10,6 +11,8 @@ import * as Styled from './styles.CheckoutShippingInfo';
  *@returns {JSX.Element} - Rendered CheckoutShippingInfo component
  */
 const CheckoutShippingInfo = (): JSX.Element => {
+  const router = useRouter();
+
   const [firstName, setFirstName] = useState<string>('');
   const [lastName, setLastName] = useState<string>('');
   const [address, setAddress] = useState<string>('');
@@ -34,6 +37,10 @@ const CheckoutShippingInfo = (): JSX.Element => {
     // TODO:Validate and sanitize user input
     //TODO: Connect with redux checkout flow
     console.log(userShippingInformation);
+  };
+
+  const proceedToShipping = () => {
+    router.push('/checkout/shipping');
   };
 
   return (
@@ -114,7 +121,7 @@ const CheckoutShippingInfo = (): JSX.Element => {
       />
 
       <Styled.ButtonWrap>
-        <Button text="Continue to shipping" />
+        <Button text="Continue to shipping" onClick={proceedToShipping} />
         <Link href="/cart" passHref>
           <Styled.ReturnToCart>Return to cart</Styled.ReturnToCart>
         </Link>

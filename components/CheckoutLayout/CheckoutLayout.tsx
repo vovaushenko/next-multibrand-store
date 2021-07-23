@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import React, { ReactNode } from 'react';
 import CheckoutCart from '../CheckoutCart/CheckoutCart';
+import CheckoutProgress from '../CheckoutProgress/CheckoutProgress';
 import * as Styled from './styles.CheckoutLayout';
 
 interface Props {
@@ -21,7 +22,10 @@ const CheckoutLayout = ({ children, title }: Props): JSX.Element => {
         <title>{title}</title>
       </Head>
       <Styled.Container>
-        <Styled.LeftColumn>{children}</Styled.LeftColumn>
+        <Styled.LeftColumn>
+          <CheckoutProgress />
+          {children}
+        </Styled.LeftColumn>
         <Styled.RightColumn>
           <CheckoutCart />
         </Styled.RightColumn>

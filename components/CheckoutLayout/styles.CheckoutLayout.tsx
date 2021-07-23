@@ -6,7 +6,7 @@ export const Container = styled.main`
 `;
 export const LeftColumn = styled.section`
   flex: 0.6;
-  padding: 1.25rem;
+  padding: 1.25rem 4rem;
 `;
 export const RightColumn = styled.section`
   flex: 0.4;
