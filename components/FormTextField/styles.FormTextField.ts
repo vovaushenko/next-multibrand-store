@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   position: relative;
   margin-top: 0.25rem;
+  width: 100%;
 `;
 
 export const Label = styled.label`

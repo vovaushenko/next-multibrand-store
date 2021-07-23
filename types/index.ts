@@ -186,3 +186,18 @@ export type SortingOptionsType =
   | 'z-a'
   | 'priceLowToHight'
   | 'priceHightToLow';
+
+/**
+ * User Shipping information
+ *@interface
+ */
+export interface UserShippingInfo {
+  firstName: string;
+  lastName: string;
+  address: string;
+  city: string;
+  country: string;
+  state: string;
+  zipCode: string;
+  phone: string;
+}
