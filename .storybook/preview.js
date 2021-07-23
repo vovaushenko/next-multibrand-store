@@ -3,9 +3,10 @@ import * as nextImage from 'next/image';
 import { Provider } from 'react-redux';
 import { withThemesProvider } from 'storybook-addon-styled-component-theme';
 import { ThemeProvider } from 'styled-components';
-import { store } from '../store';
 import { GlobalStyles } from '../styles/globalStyle';
 import { mainTheme } from '../styles/mainTheme';
+import { initialReduxStore } from '../test/initialReduxStore';
+import { storeFactory } from '../test/testUtils';
 
 Object.defineProperty(nextImage, 'default', {
   configurable: true,
@@ -16,6 +17,7 @@ const themes = [mainTheme];
 
 addDecorator(withThemesProvider(themes), ThemeProvider);
 
+const store = storeFactory(initialReduxStore);
 addDecorator((s) => (
   <Provider store={store}>
     <GlobalStyles />

@@ -5,7 +5,7 @@ export const Container = styled.article`
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding: 1rem 2rem;
+  padding: 1rem;
   background: ${({ theme }) => theme.dashboardGrayCard};
   border-radius: ${({ theme }) => theme.borderRadius};
 `;
@@ -19,13 +19,15 @@ export const Figure = styled.figure`
 `;
 
 export const Figcaption = styled.figcaption``;
+
 export const ProductName = styled.h3`
-  color: ${({ theme }) => theme.primaryGolden};
+  font-size: 1rem;
+  font-weight: 400;
+  color: ${({ theme }) => theme.lightGray};
 `;
 export const Size = styled.p``;
 
 export const Price = styled.p`
   color: ${({ theme }) => theme.primaryGolden};
   font-weight: bold;
-  font-size: 1.25rem;
 `;
