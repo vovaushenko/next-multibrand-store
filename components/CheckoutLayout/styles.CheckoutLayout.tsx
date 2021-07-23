@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.main`
   display: flex;
+  background-color: ${({ theme }) => theme.dashboardGrayCard};
 `;
 export const LeftColumn = styled.section`
   flex: 0.6;
