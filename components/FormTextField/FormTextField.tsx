@@ -28,8 +28,6 @@ const Input: FC<Props> = ({
   setValue,
   required = false,
 }) => {
-  //TODO: Move placeholder on top after typing
-  //TODO: implement value and onChange props
   return (
     <Styled.Container>
       <Styled.Input
