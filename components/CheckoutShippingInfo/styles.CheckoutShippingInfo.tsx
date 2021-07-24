@@ -25,6 +25,9 @@ export const ButtonWrap = styled.footer`
   padding: 1rem;
   border-radius: ${({ theme }) => theme.borderRadius};
   background-color: ${({ theme }) => theme.dashboardGrayBg};
+  &:hover {
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.secondaryGolden};
+  }
 
   button {
     color: ${({ theme }) => theme.dashboardGrayBg};
