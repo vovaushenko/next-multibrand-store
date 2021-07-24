@@ -14,6 +14,8 @@ export interface CheckoutState {
   isShippingInfoCollected: boolean;
   isShippingMethodSelected: boolean;
   isPaymentInfoCollected: boolean;
+  isPaid: boolean;
+  error: string | null;
 }
 
 /**
@@ -31,7 +33,9 @@ export enum CheckoutActionTypes {
 
   REMEMBER_CUSTOMER_INFO = 'REMEMBER_CUSTOMER_INFO',
 
-  CLEAR_STATE = 'CLEAR_STATE',
+  PROCESS_PAYMENT = 'PROCESS_PAYMENT',
+  PAYMENT_WAS_SUCCESSFUL = 'PAYMENT_WAS_SUCCESSFUL',
+  PAYMENT_WAS_DENIED = ' PAYMENT_WAS_DENIED',
 }
 
 /**
@@ -61,8 +65,21 @@ interface ShippingMethodIsSelectedAction {
 
 interface RememberCustomerAction {
   type: CheckoutActionTypes.REMEMBER_CUSTOMER_INFO;
-  payload: UserShippingInfo;
+  payload: boolean;
 }
+
+interface ProcessPaymentAction {
+  type: CheckoutActionTypes.PROCESS_PAYMENT;
+}
+interface SuccessfulPaymentAction {
+  type: CheckoutActionTypes.PAYMENT_WAS_SUCCESSFUL;
+  payload: boolean;
+}
+interface PaymentErrorAction {
+  type: CheckoutActionTypes.PAYMENT_WAS_DENIED;
+  payload: string;
+}
+
 /**
  *Combined type for Checkout action creators
  *@type
@@ -72,4 +89,7 @@ export type CheckoutAction =
   | ShippingAddressIsCorrectAction
   | SelectShippingMethodAction
   | ShippingMethodIsSelectedAction
-  | RememberCustomerAction;
+  | RememberCustomerAction
+  | ProcessPaymentAction
+  | SuccessfulPaymentAction
+  | PaymentErrorAction;

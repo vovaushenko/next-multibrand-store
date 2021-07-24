@@ -36,6 +36,8 @@ const FormCheckboxField: FC<Props> = ({
           required={required}
           className="check__input"
           disabled={disabled}
+          // here we use key to dynamically re-render, this is hacky, will fix later
+          key={name + checked}
         />
         <Styled.CheckBox className="check__box" />
 

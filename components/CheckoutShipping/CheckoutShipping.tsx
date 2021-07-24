@@ -1,6 +1,10 @@
 import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
 import React, { useCallback, useState } from 'react';
+import { toast } from 'react-toastify';
+import { useActions } from '../../hooks/useActions';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { ShippingMethod } from '../../types/checkoutTypes';
 import Button from '../Button/Button';
 import CardHeader from '../CardHeader/CardHeader';
 import FormCheckboxField from '../FormCheckboxField/FormCheckboxField';
@@ -12,17 +16,45 @@ import * as Styled from './styles.CheckoutShipping';
  *@returns {JSX.Element} - Rendered CheckoutShipping component
  */
 const CheckoutShipping = (): JSX.Element => {
-  const [checked, setChecked] = useState<boolean>(false);
-
   const router = useRouter();
 
-  const proceedToPayment = () => {
-    router.push('/checkout/payment');
+  const [freeShippingSelected, setFreeShippingSelected] =
+    useState<boolean>(true);
+  const [expressShippingSelected, setExpressShippingSelected] =
+    useState<boolean>(false);
+
+  const { collectCustomerShippingMethod } = useActions();
+  const { userShippingInfo, isLoading, isShippingMethodSelected } =
+    useTypedSelector((state) => state.checkout);
+
+  const getUserAddress = () => {
+    if (userShippingInfo)
+      return `${userShippingInfo?.address}, ${userShippingInfo?.city}, ${userShippingInfo?.zipCode}, ${userShippingInfo?.country}`;
+
+    return 'Not specified';
   };
 
-  const toggleCheckbox = useCallback(() => {
-    setChecked(!checked);
-  }, [checked]);
+  const proceedToPayment = async () => {
+    const preferredShippingMethod: ShippingMethod = expressShippingSelected
+      ? 'expressTwoDay'
+      : 'free';
+
+    await collectCustomerShippingMethod(preferredShippingMethod);
+    toast.success('🎉 Preferred shipping is saved 🎉');
+    setTimeout(() => {
+      router.push('/checkout/payment');
+    }, 1000);
+  };
+
+  const selectFreeShipping = useCallback(() => {
+    setFreeShippingSelected(true);
+    setExpressShippingSelected(false);
+  }, []);
+
+  const selectExpressShipping = useCallback(() => {
+    setExpressShippingSelected(true);
+    setFreeShippingSelected(false);
+  }, []);
 
   return (
     <Styled.Container>
@@ -30,7 +62,9 @@ const CheckoutShipping = (): JSX.Element => {
       {/* Shipping info */}
       <Styled.ShippingInfo>
         <Styled.Header>Contact</Styled.Header>
-        <Styled.Content>vovaushenko1989@gmail.com</Styled.Content>
+        <Styled.Content>
+          {userShippingInfo?.email || 'Not Specified'}
+        </Styled.Content>
         <Link href="/checkout/information" passHref>
           <Styled.RouterLink>Change</Styled.RouterLink>
         </Link>
@@ -38,9 +72,7 @@ const CheckoutShipping = (): JSX.Element => {
 
       <Styled.ShippingInfo>
         <Styled.Header>Ship to</Styled.Header>
-        <Styled.Content>
-          1509 14 Avenue Southwest D, a21, Calgary ID 83646, United States
-        </Styled.Content>
+        <Styled.Content>{getUserAddress()}</Styled.Content>
         <Link href="/checkout/information" passHref>
           <Styled.RouterLink>Change</Styled.RouterLink>
         </Link>
@@ -51,8 +83,8 @@ const CheckoutShipping = (): JSX.Element => {
       {/* Free shipping */}
       <Styled.ShippingInfo>
         <FormCheckboxField
-          checked={checked}
-          setChecked={toggleCheckbox}
+          checked={freeShippingSelected}
+          setChecked={selectFreeShipping}
           name="free__shipping"
           labelText="FREE Shipping"
         />
@@ -62,8 +94,8 @@ const CheckoutShipping = (): JSX.Element => {
       {/* Paid two day shipping */}
       <Styled.ShippingInfo>
         <FormCheckboxField
-          checked={checked}
-          setChecked={toggleCheckbox}
+          checked={expressShippingSelected}
+          setChecked={selectExpressShipping}
           name="two_day__shipping"
           labelText="2-Day Shipping"
         />
@@ -72,7 +104,12 @@ const CheckoutShipping = (): JSX.Element => {
       </Styled.ShippingInfo>
       {/* Footer */}
       <Styled.ButtonWrap>
-        <Button text="Continue to payment" onClick={proceedToPayment} />
+        <Button
+          text="Continue to payment"
+          onClick={proceedToPayment}
+          isCompleted={isShippingMethodSelected}
+          isLoading={isLoading}
+        />
         <Link href="/checkout/information" passHref>
           <Styled.RouterLink>Return to information</Styled.RouterLink>
         </Link>

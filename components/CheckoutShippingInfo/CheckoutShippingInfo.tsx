@@ -2,6 +2,9 @@ import { useSession } from 'next-auth/client';
 import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
+import { useActions } from '../../hooks/useActions';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { UserShippingInfo } from '../../types';
 import Button from '../Button/Button';
 import FormTextField from '../FormTextField/FormTextField';
@@ -25,11 +28,18 @@ const CheckoutShippingInfo = (): JSX.Element => {
   const [zipCode, setZipCode] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
 
-  const handleGetShippingAddress = (e: React.FormEvent<HTMLFormElement>) => {
+  const { collectCustomerShippingInfo } = useActions();
+  const { isLoading, isShippingInfoCollected } = useTypedSelector(
+    (state) => state.checkout
+  );
+
+  const handleGetShippingAddress = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
     e.preventDefault();
-
+    // in user is authenticated, get email from session, otherwise get email from from local state
     const userEmail = session !== null ? session.user.email : email;
-
+    // connect all data into userShippingInformation
     const userShippingInformation: UserShippingInfo = {
       firstName,
       lastName,
@@ -41,11 +51,14 @@ const CheckoutShippingInfo = (): JSX.Element => {
       zipCode,
       phone,
     };
-    // TODO:Validate and sanitize user input
-    //TODO: Connect with redux checkout flow
-    console.log(userShippingInformation);
+    // dispatch action to redux
+    await collectCustomerShippingInfo(userShippingInformation);
+    toast.success('🎉 Shipping information is saved 🎉');
+    // if everything is correct, proceed to shipping stage
+    setTimeout(() => {
+      proceedToShipping();
+    }, 1000);
   };
-
   const proceedToShipping = () => {
     router.push('/checkout/shipping');
   };
@@ -141,7 +154,8 @@ const CheckoutShippingInfo = (): JSX.Element => {
       <Styled.ButtonWrap>
         <Button
           text="Continue to shipping"
-          onClick={proceedToShipping}
+          isCompleted={isShippingInfoCollected}
+          isLoading={isLoading}
           type="submit"
         />
         <Link href="/cart" passHref>

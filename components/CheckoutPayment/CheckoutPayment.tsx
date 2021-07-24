@@ -1,5 +1,8 @@
 import Link from 'next/link';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import { useActions } from '../../hooks/useActions';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 import Button from '../Button/Button';
 import CardHeader from '../CardHeader/CardHeader';
 import FormCheckboxField from '../FormCheckboxField/FormCheckboxField';
@@ -11,14 +14,56 @@ import * as Styled from './styles.CheckoutPayment';
  *@returns {JSX.Element} - Rendered CheckoutShipping component
  */
 const CheckoutShipping = (): JSX.Element => {
-  const [checked, setChecked] = useState<boolean>(false);
-  const handlePayment = () => {
-    console.log('paid');
+  const [useShippingAddress, setUseShippingAddress] = useState<boolean>(true);
+  const [useAnotherAddress, setUseAnotherAddress] = useState<boolean>(false);
+  const [shouldRememberCustomerInfo, setShouldRememberCustomerInfo] =
+    useState<boolean>(true);
+
+  const { rememberCustomerInfo } = useActions();
+
+  const { isLoading, userShippingInfo, shippingMethod, isPaid, error } =
+    useTypedSelector((state) => state.checkout);
+
+  const getUserAddress = () => {
+    if (userShippingInfo)
+      return `${userShippingInfo?.address}, ${userShippingInfo?.city}, ${userShippingInfo?.zipCode}, ${userShippingInfo?.country}`;
+
+    return 'Not specified';
+  };
+  const getPaymentMethod = () => {
+    if (shippingMethod)
+      return shippingMethod === 'free'
+        ? 'FREE Shipping · Free'
+        : 'EXPRESS Shipping · $4.99';
+
+    return 'Not specified';
   };
 
-  const toggleCheckbox = useCallback(() => {
-    setChecked(!checked);
-  }, [checked]);
+  const handleSetShippingInfo = useCallback(() => {
+    if (useShippingAddress) {
+      setUseShippingAddress(false);
+      setUseAnotherAddress(true);
+    } else {
+      setUseShippingAddress(true);
+      setUseAnotherAddress(false);
+    }
+  }, [useShippingAddress]);
+
+  useEffect(() => {
+    if (isPaid) toast.success('The purchase was successful');
+    if (error) toast.error(error);
+  }, [isPaid, error]);
+
+  const processPayment = () => {
+    // if customer has specified that he wants to store shippingInfo for future use
+    if (shouldRememberCustomerInfo) {
+      console.log('remembered');
+      if (userShippingInfo) rememberCustomerInfo(userShippingInfo);
+    }
+
+    console.log(userShippingInfo);
+    console.log(shippingMethod);
+  };
 
   return (
     <Styled.Container>
@@ -26,16 +71,8 @@ const CheckoutShipping = (): JSX.Element => {
       {/* Shipping info */}
       <Styled.ShippingInfo>
         <Styled.Header>Contact</Styled.Header>
-        <Styled.Content>vovaushenko1989@gmail.com</Styled.Content>
-        <Link href="/checkout/information" passHref>
-          <Styled.RouterLink>Change</Styled.RouterLink>
-        </Link>
-      </Styled.ShippingInfo>
-
-      <Styled.ShippingInfo>
-        <Styled.Header>Ship to</Styled.Header>
         <Styled.Content>
-          1509 14 Avenue Southwest D, a21, Calgary ID 83646, United States
+          {userShippingInfo?.email || 'Not Specified'}
         </Styled.Content>
         <Link href="/checkout/information" passHref>
           <Styled.RouterLink>Change</Styled.RouterLink>
@@ -43,8 +80,16 @@ const CheckoutShipping = (): JSX.Element => {
       </Styled.ShippingInfo>
 
       <Styled.ShippingInfo>
+        <Styled.Header>Ship to</Styled.Header>
+        <Styled.Content>{getUserAddress()}</Styled.Content>
+        <Link href="/checkout/information" passHref>
+          <Styled.RouterLink>Change</Styled.RouterLink>
+        </Link>
+      </Styled.ShippingInfo>
+
+      <Styled.ShippingInfo>
         <Styled.Header>Method</Styled.Header>
-        <Styled.Content>FREE Shipping · Free</Styled.Content>
+        <Styled.Content>{getPaymentMethod()}</Styled.Content>
         <Link href="/checkout/information" passHref>
           <Styled.RouterLink>Change</Styled.RouterLink>
         </Link>
@@ -59,16 +104,16 @@ const CheckoutShipping = (): JSX.Element => {
 
       <Styled.ShippingInfo>
         <FormCheckboxField
-          checked={checked}
-          setChecked={toggleCheckbox}
+          checked={useShippingAddress}
+          setChecked={handleSetShippingInfo}
           name="same__billing"
           labelText="	Same as shipping address"
         />
       </Styled.ShippingInfo>
       <Styled.ShippingInfo>
         <FormCheckboxField
-          checked={checked}
-          setChecked={toggleCheckbox}
+          checked={useAnotherAddress}
+          setChecked={handleSetShippingInfo}
           name="different"
           labelText="Use a different billing address"
         />
@@ -77,15 +122,15 @@ const CheckoutShipping = (): JSX.Element => {
       <CardHeader headerText="Remember me" />
       <Styled.ShippingInfo>
         <FormCheckboxField
-          checked={checked}
-          setChecked={toggleCheckbox}
+          checked={shouldRememberCustomerInfo}
+          setChecked={() => setShouldRememberCustomerInfo((prev) => !prev)}
           name="remember__me"
           labelText="	Save my information for a faster checkout"
         />
       </Styled.ShippingInfo>
       {/* Footer */}
       <Styled.ButtonWrap>
-        <Button text="Continue to payment" onClick={handlePayment} />
+        <Button text="Pay Now" isLoading={isLoading} onClick={processPayment} />
         <Link href="/checkout/shipping" passHref>
           <Styled.RouterLink>Return to shipping</Styled.RouterLink>
         </Link>

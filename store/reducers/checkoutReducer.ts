@@ -11,6 +11,8 @@ const initialState: CheckoutState = {
   isShippingInfoCollected: false,
   isShippingMethodSelected: false,
   isPaymentInfoCollected: false,
+  error: null,
+  isPaid: false,
 };
 
 export const checkoutReducer = (
@@ -35,12 +37,22 @@ export const checkoutReducer = (
     case CheckoutActionTypes.SHIPPING_METHOD_IS_SELECTED:
       return {
         ...state,
+        isLoading: false,
         shippingMethod: action.payload.shippingMethod,
         isShippingMethodSelected: action.payload.isShippingMethodSelected,
       };
 
     case CheckoutActionTypes.REMEMBER_CUSTOMER_INFO:
-      return { ...state };
+      return { ...state, isPaymentInfoCollected: action.payload };
+
+    case CheckoutActionTypes.PROCESS_PAYMENT:
+      return { ...state, isLoading: true };
+
+    case CheckoutActionTypes.PAYMENT_WAS_SUCCESSFUL:
+      return { ...state, isPaid: action.payload };
+
+    case CheckoutActionTypes.PAYMENT_WAS_DENIED:
+      return { ...state, error: action.payload };
 
     default:
       return state;

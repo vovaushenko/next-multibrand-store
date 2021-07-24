@@ -202,3 +202,14 @@ export interface UserShippingInfo {
   zipCode: string;
   phone: string;
 }
+
+/**
+ * User Order Information
+ *@interface
+ */
+
+export interface OrderInformation {
+  total: number;
+  purchasedItems: string[];
+  customerInfo: UserShippingInfo;
+}
