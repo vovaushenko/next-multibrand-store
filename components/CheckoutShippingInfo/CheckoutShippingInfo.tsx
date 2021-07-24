@@ -1,3 +1,4 @@
+import { useSession } from 'next-auth/client';
 import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
 import React, { useState } from 'react';
@@ -12,9 +13,11 @@ import * as Styled from './styles.CheckoutShippingInfo';
  */
 const CheckoutShippingInfo = (): JSX.Element => {
   const router = useRouter();
+  const [session] = useSession();
 
   const [firstName, setFirstName] = useState<string>('');
   const [lastName, setLastName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
   const [address, setAddress] = useState<string>('');
   const [city, setCity] = useState<string>('');
   const [country, setCountry] = useState<string>('');
@@ -24,9 +27,13 @@ const CheckoutShippingInfo = (): JSX.Element => {
 
   const handleGetShippingAddress = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const userEmail = session !== null ? session.user.email : email;
+
     const userShippingInformation: UserShippingInfo = {
       firstName,
       lastName,
+      email: userEmail,
       city,
       address,
       country,
@@ -64,6 +71,17 @@ const CheckoutShippingInfo = (): JSX.Element => {
           required={true}
         />
       </Styled.FormControl>
+      {/* EMAIL - will be shown only to unauthorized users, if user is logged-in. Data will be received through session */}
+      {session === null && (
+        <FormTextField
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={email}
+          setValue={setEmail}
+          required={true}
+        />
+      )}
 
       {/* ADDRESS */}
       <FormTextField
@@ -121,7 +139,11 @@ const CheckoutShippingInfo = (): JSX.Element => {
       />
 
       <Styled.ButtonWrap>
-        <Button text="Continue to shipping" onClick={proceedToShipping} />
+        <Button
+          text="Continue to shipping"
+          onClick={proceedToShipping}
+          type="submit"
+        />
         <Link href="/cart" passHref>
           <Styled.ReturnToCart>Return to cart</Styled.ReturnToCart>
         </Link>
