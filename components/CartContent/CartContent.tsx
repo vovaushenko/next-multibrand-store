@@ -40,7 +40,7 @@ const CardContent = ({
   // redirect to cart
   const handleRedirectToCart = () => router.push('/cart');
   // redirect to checkout
-  const handleRedirectToCheckout = () => router.push('/checkout');
+  const handleRedirectToCheckout = () => router.push('/checkout/information');
 
   return (
     <Styled.Container>

@@ -14,6 +14,7 @@ export const Form = styled.form`
   gap: 1rem;
   margin: 2rem 0;
   width: 50%;
+  align-items: center;
 
   @media ${({ theme }) => theme.media.tablet} {
     width: 80%;

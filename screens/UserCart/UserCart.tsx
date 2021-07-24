@@ -1,3 +1,4 @@
+import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
 import React from 'react';
 import AllPaymentMethods from '../../components/AllPaymentMethods/AllPaymentMethods';
@@ -28,6 +29,9 @@ const UserCartScreen = ({
   productAmount,
   removeFromCart,
 }: Props): JSX.Element => {
+  const router = useRouter();
+  const proceedToCheckout = () => router.push('/checkout/information');
+
   return (
     <Container>
       <Styled.Wrapper>
@@ -49,7 +53,7 @@ const UserCartScreen = ({
                 <CardHeader headerText={`$${total}`} />
               </Styled.Total>
               <p>Taxes and shipping calculated at checkout</p>
-              <Button text="checkout" />
+              <Button text="checkout" onClick={proceedToCheckout} />
             </Styled.Checkout>
             <Styled.PaymentWrapper>
               <Link href="/sneaker-maniac" passHref>
