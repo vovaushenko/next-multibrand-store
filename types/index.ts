@@ -213,6 +213,7 @@ export interface Purchase {
   brand: string;
   model: string;
   size: string;
+  img: string;
 }
 
 export interface OrderInformation {

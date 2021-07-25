@@ -18,8 +18,6 @@ const createNewOrder = async (
 ): Promise<void> => {
   const { orderTotal, purchase, shippingInfo, paymentInfo } = req.body;
 
-  console.log();
-
   const deliveryStatus = 'Not delivered';
 
   const newOrder: IOrder = await Order.create({
@@ -39,6 +37,27 @@ const createNewOrder = async (
 };
 
 /**
+ * Get all Customers Orders
+ * @GET /api/orders/
+ * @function registerUser
+ * @param {NextApiRequestWithAuth} req  Next API request with authenticated user
+ * @param {Next.Response} res  Next API response
+ * @return {undefined}
+ */
+
+const getAllCustomerOrders = async (
+  req: NextApiRequestWithAuth,
+  res: NextApiResponse
+): Promise<void> => {
+  const allCustomerOrders = await Order.find({ user: req.user._id });
+
+  res.status(200).json({
+    success: true,
+    orders: allCustomerOrders,
+  });
+};
+
+/**
  * @ADMIN route
  * Get all orders
  * @GET /api/admin/orders
@@ -53,9 +72,10 @@ const getAllOrders = catchErrorsFrom(
 
     res.status(200).json({
       success: true,
+      count: orders.length,
       orders,
     });
   }
 );
 
-export { createNewOrder, getAllOrders };
+export { createNewOrder, getAllOrders, getAllCustomerOrders };

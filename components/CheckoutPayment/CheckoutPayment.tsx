@@ -76,6 +76,7 @@ const CheckoutShipping = (): JSX.Element => {
           brand: cartItem.brand,
           model: cartItem.model,
           size: cartItem.size,
+          img: cartItem.productImg,
         })),
       };
 
