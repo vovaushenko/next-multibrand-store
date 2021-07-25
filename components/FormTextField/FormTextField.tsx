@@ -20,7 +20,7 @@ export interface Props {
  *@param {boolean} required - is required, default to false
  *@returns {JSX.Element} - Rendered Form text control element
  */
-const Input: FC<Props> = ({
+const FormTextField: FC<Props> = ({
   name,
   type,
   placeholder,
@@ -42,4 +42,4 @@ const Input: FC<Props> = ({
   );
 };
 
-export default Input;
+export default FormTextField;

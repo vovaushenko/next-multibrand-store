@@ -8,6 +8,7 @@ import { OrderInformation } from '../../types';
 import Button from '../Button/Button';
 import CardHeader from '../CardHeader/CardHeader';
 import FormCheckboxField from '../FormCheckboxField/FormCheckboxField';
+import PaymentSection from '../PaymentSection/PaymentSection';
 import * as Styled from './styles.CheckoutPayment';
 
 /**
@@ -147,7 +148,9 @@ const CheckoutShipping = (): JSX.Element => {
           labelText="Use a different billing address"
         />
       </Styled.ShippingInfo>
+
       {/* Remember User */}
+
       <CardHeader headerText="Remember me" />
       <Styled.ShippingInfo>
         <FormCheckboxField
@@ -157,6 +160,18 @@ const CheckoutShipping = (): JSX.Element => {
           labelText="	Save my information for a faster checkout"
         />
       </Styled.ShippingInfo>
+
+      {/* Payment */}
+
+      <div>
+        <CardHeader headerText="Payment" />
+        <Styled.Content>
+          All transactions are secure and encrypted.
+        </Styled.Content>
+      </div>
+
+      <PaymentSection />
+
       {/* Footer */}
       <Styled.ButtonWrap>
         <Button
