@@ -207,7 +207,6 @@ export interface UserShippingInfo {
  * User Order Information
  *@interface
  */
-
 export interface Purchase {
   productID: string;
   brand: string;
@@ -220,4 +219,23 @@ export interface OrderInformation {
   total: number;
   purchasedItems: Purchase[];
   customerInfo: UserShippingInfo;
+}
+
+export interface PaymentInfo {
+  paymentID: string;
+  status: string;
+}
+/**
+ * User Order Information
+ *@interface
+ */
+export interface Order {
+  shippingInfo: UserShippingInfo;
+  paymentInfo: PaymentInfo;
+  deliveryStatus: string;
+  _id: string;
+  user: string;
+  orderTotal: number;
+  purchase: Purchase[];
+  paidAt: string;
 }

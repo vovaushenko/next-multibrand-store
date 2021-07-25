@@ -1,3 +1,4 @@
+import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
 import React, { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
@@ -14,6 +15,7 @@ import * as Styled from './styles.CheckoutPayment';
  *@returns {JSX.Element} - Rendered CheckoutShipping component
  */
 const CheckoutShipping = (): JSX.Element => {
+  const router = useRouter();
   const [useShippingAddress, setUseShippingAddress] = useState<boolean>(true);
   const [useAnotherAddress, setUseAnotherAddress] = useState<boolean>(false);
   const [shouldRememberCustomerInfo, setShouldRememberCustomerInfo] =
@@ -52,7 +54,10 @@ const CheckoutShipping = (): JSX.Element => {
   }, [useShippingAddress]);
 
   useEffect(() => {
-    if (isPaid) toast.success('The purchase was successful');
+    if (isPaid)
+      toast.success(
+        'The purchase was successful! You will be redirected to orders section in no time!'
+      );
     if (error) toast.error(error);
   }, [isPaid, error]);
 
@@ -62,9 +67,6 @@ const CheckoutShipping = (): JSX.Element => {
       console.log('remembered');
       if (userShippingInfo) rememberCustomerInfo(userShippingInfo);
     }
-
-    // console.log(userShippingInfo);
-    // console.log(shippingMethod);
 
     // Process payment
     if (userShippingInfo !== null) {
@@ -80,9 +82,13 @@ const CheckoutShipping = (): JSX.Element => {
         })),
       };
 
-      console.log(order);
-
       processPayment(order);
+
+      //redirect to account/orders
+
+      setTimeout(() => {
+        router.push('/account');
+      }, 1500);
     }
   };
 
