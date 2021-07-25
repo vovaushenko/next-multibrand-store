@@ -6,6 +6,14 @@ import * as Styled from './styles.CheckoutCart';
 
 const CheckoutCart = (): JSX.Element => {
   const { cart, total } = useTypedSelector((state) => state.cart);
+  const { shippingMethod } = useTypedSelector((state) => state.checkout);
+
+  const calculateTotal = () => {
+    let finalTotal = total;
+    if (shippingMethod === 'expressTwoDay') finalTotal += 5;
+
+    return finalTotal;
+  };
 
   return (
     <Styled.Container>
@@ -25,13 +33,15 @@ const CheckoutCart = (): JSX.Element => {
 
       <Styled.TextWrap marginTop="0.5rem">
         <Styled.Shipping>Shipping</Styled.Shipping>
-        <Styled.BoldTxt>Free</Styled.BoldTxt>
+        <Styled.BoldTxt>
+          {shippingMethod === 'free' ? 'Free' : '$5'}
+        </Styled.BoldTxt>
       </Styled.TextWrap>
       <HR />
 
       <Styled.TextWrap>
         <Styled.Total>Total</Styled.Total>
-        <Styled.TotalPrice>${total}</Styled.TotalPrice>
+        <Styled.TotalPrice>${calculateTotal()}</Styled.TotalPrice>
       </Styled.TextWrap>
     </Styled.Container>
   );

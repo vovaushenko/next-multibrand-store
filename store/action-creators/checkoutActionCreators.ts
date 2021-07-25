@@ -47,7 +47,7 @@ export const collectCustomerShippingMethod =
           shippingMethod,
         },
       });
-    }, 1500);
+    }, 500);
   };
 export type collectCustomerShippingMethod =
   typeof collectCustomerShippingMethod;

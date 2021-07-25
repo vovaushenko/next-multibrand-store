@@ -24,8 +24,9 @@ const CheckoutShipping = (): JSX.Element => {
     useState<boolean>(false);
 
   const { collectCustomerShippingMethod } = useActions();
-  const { userShippingInfo, isLoading, isShippingMethodSelected } =
-    useTypedSelector((state) => state.checkout);
+  const { userShippingInfo, isLoading } = useTypedSelector(
+    (state) => state.checkout
+  );
 
   const getUserAddress = () => {
     if (userShippingInfo)
@@ -49,11 +50,13 @@ const CheckoutShipping = (): JSX.Element => {
   const selectFreeShipping = useCallback(() => {
     setFreeShippingSelected(true);
     setExpressShippingSelected(false);
+    collectCustomerShippingMethod('free');
   }, []);
 
   const selectExpressShipping = useCallback(() => {
     setExpressShippingSelected(true);
     setFreeShippingSelected(false);
+    collectCustomerShippingMethod('expressTwoDay');
   }, []);
 
   return (
@@ -107,7 +110,6 @@ const CheckoutShipping = (): JSX.Element => {
         <Button
           text="Continue to payment"
           onClick={proceedToPayment}
-          isCompleted={isShippingMethodSelected}
           isLoading={isLoading}
         />
         <Link href="/checkout/information" passHref>
