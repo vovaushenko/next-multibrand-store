@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { OrderInformation } from '../../types';
 import Button from '../Button/Button';
 import CardHeader from '../CardHeader/CardHeader';
 import FormCheckboxField from '../FormCheckboxField/FormCheckboxField';
@@ -70,7 +71,7 @@ const CheckoutShipping = (): JSX.Element => {
 
     // Process payment
     if (userShippingInfo !== null) {
-      const order = {
+      const order: OrderInformation = {
         customerInfo: userShippingInfo,
         total: total,
         purchasedItems: cart.map((cartItem) => ({
@@ -79,6 +80,7 @@ const CheckoutShipping = (): JSX.Element => {
           model: cartItem.model,
           size: cartItem.size,
           img: cartItem.productImg,
+          price: cartItem.price,
         })),
       };
 

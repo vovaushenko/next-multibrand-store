@@ -1,10 +1,19 @@
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import React from 'react';
+import { withReduxAndStyledProviders } from '../../test/testUtils';
 import CheckoutPayment from './CheckoutPayment';
 import * as Styled from './styles.CheckoutPayment';
 
-describe('Checkout Progress component', () => {
-  const wrap = shallow(<CheckoutPayment />);
+/**
+ * Setup function for the component
+ * @returns {mountWrapper}
+ */
+const setup = () => {
+  return mount(withReduxAndStyledProviders(<CheckoutPayment />));
+};
+
+describe('Checkout Payment component', () => {
+  const wrap = setup();
 
   it('should render without throwing an error', () => {
     expect(wrap);

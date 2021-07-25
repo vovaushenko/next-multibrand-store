@@ -12,3 +12,11 @@ export const Container = styled.main`
     margin-bottom: 1rem;
   }
 `;
+
+export const UL = styled.ul`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+`;
