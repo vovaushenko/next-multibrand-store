@@ -6,12 +6,12 @@ import {
   RecentlyViewedProductActionTypes,
   RecentlyViewedProductsAction,
 } from './../../types/recentlyViewedProductsTypes';
+
 /**
- * async action creator, will dispatch action to get all products from DB, also will dispatch error action if async operation fails
- * @function loadNews
- * @GET All products from /api/products endpoint
- * @Will dispatch action to fetch products from DB
- * @Will dispatch Error in the case of failure
+ * async action creator, will dispatch action to get product details from DB, also will dispatch error action if async operation fails
+ * @function loadProductDetails
+ * @GET /api/products/:id
+ * @param {string} id - product ID
  * @returns {undefined} void
  */
 export const loadProductDetails = (id: string) => {
@@ -47,12 +47,14 @@ export const loadProductDetails = (id: string) => {
 };
 
 /**
- * async action creator, will dispatch action to get product details from DB, also will dispatch error action if async operation fails
- * @function loadProductDetails
- * @GET /api/products/:id
- * @param {string} id - product ID
+ * async action creator, will dispatch action to get all products from DB, also will dispatch error action if async operation fails
+ * @function loadAllProducts
+ * @GET All products from /api/products endpoint
+ * @Will dispatch action to fetch products from DB
+ * @Will dispatch Error in the case of failure
  * @returns {undefined} void
  */
+
 export const loadAllProducts = () => {
   return async (dispatch: Dispatch<ProductsAction>): Promise<void> => {
     dispatch({ type: ProductActionTypes.LOAD_PRODUCTS });

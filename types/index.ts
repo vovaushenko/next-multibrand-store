@@ -213,6 +213,7 @@ export interface Purchase {
   model: string;
   size: string;
   img: string;
+  price: number;
 }
 
 export interface OrderInformation {

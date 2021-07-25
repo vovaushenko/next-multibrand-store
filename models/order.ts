@@ -44,6 +44,9 @@ const orderSchema: Schema<IOrder> = new mongoose.Schema({
       img: {
         type: String,
       },
+      price: {
+        type: Number,
+      },
     },
   ],
   shippingInfo: {
