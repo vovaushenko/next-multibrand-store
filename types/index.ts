@@ -208,8 +208,15 @@ export interface UserShippingInfo {
  *@interface
  */
 
+export interface Purchase {
+  productID: string;
+  brand: string;
+  model: string;
+  size: string;
+}
+
 export interface OrderInformation {
   total: number;
-  purchasedItems: string[];
+  purchasedItems: Purchase[];
   customerInfo: UserShippingInfo;
 }

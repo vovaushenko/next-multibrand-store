@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { Dispatch } from 'redux';
 import { CheckoutAction, CheckoutActionTypes } from '../../types/checkoutTypes';
 import { ShippingMethod } from './../../types/checkoutTypes';
@@ -83,16 +84,33 @@ export const processPayment =
       type: CheckoutActionTypes.PROCESS_PAYMENT,
     });
     try {
-      //TODO: Save Order details on backend
-      console.log(orderInfo);
+      //TODO: after connecting payment methods get payment info from provider
+      const paymentInfo = {
+        paymentID: 'test123',
+        status: 'Processed/Paid',
+      };
+
+      const order = {
+        orderTotal: orderInfo.total,
+        purchase: orderInfo.purchasedItems,
+        shippingInfo: orderInfo.customerInfo,
+        paymentInfo,
+      };
+
+      const config = {
+        headers: { 'Content-Type': 'application/json' },
+      };
+
+      const { data } = await axios.post('/api/orders', order, config);
+
       dispatch({
         type: CheckoutActionTypes.PAYMENT_WAS_SUCCESSFUL,
-        payload: true,
+        payload: data.success,
       });
     } catch (error) {
       dispatch({
         type: CheckoutActionTypes.PAYMENT_WAS_DENIED,
-        payload: error.response.data.error,
+        payload: error.response.data.error.message,
       });
     }
   };

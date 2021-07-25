@@ -19,10 +19,12 @@ const CheckoutShipping = (): JSX.Element => {
   const [shouldRememberCustomerInfo, setShouldRememberCustomerInfo] =
     useState<boolean>(true);
 
-  const { rememberCustomerInfo } = useActions();
+  const { rememberCustomerInfo, processPayment } = useActions();
 
   const { isLoading, userShippingInfo, shippingMethod, isPaid, error } =
     useTypedSelector((state) => state.checkout);
+
+  const { total, cart } = useTypedSelector((state) => state.cart);
 
   const getUserAddress = () => {
     if (userShippingInfo)
@@ -54,15 +56,33 @@ const CheckoutShipping = (): JSX.Element => {
     if (error) toast.error(error);
   }, [isPaid, error]);
 
-  const processPayment = () => {
+  const handleProcessPayment = () => {
     // if customer has specified that he wants to store shippingInfo for future use
     if (shouldRememberCustomerInfo) {
       console.log('remembered');
       if (userShippingInfo) rememberCustomerInfo(userShippingInfo);
     }
 
-    console.log(userShippingInfo);
-    console.log(shippingMethod);
+    // console.log(userShippingInfo);
+    // console.log(shippingMethod);
+
+    // Process payment
+    if (userShippingInfo !== null) {
+      const order = {
+        customerInfo: userShippingInfo,
+        total: total,
+        purchasedItems: cart.map((cartItem) => ({
+          productID: cartItem.productID,
+          brand: cartItem.brand,
+          model: cartItem.model,
+          size: cartItem.size,
+        })),
+      };
+
+      console.log(order);
+
+      processPayment(order);
+    }
   };
 
   return (
@@ -130,7 +150,11 @@ const CheckoutShipping = (): JSX.Element => {
       </Styled.ShippingInfo>
       {/* Footer */}
       <Styled.ButtonWrap>
-        <Button text="Pay Now" isLoading={isLoading} onClick={processPayment} />
+        <Button
+          text="Pay Now"
+          isLoading={isLoading}
+          onClick={handleProcessPayment}
+        />
         <Link href="/checkout/shipping" passHref>
           <Styled.RouterLink>Return to shipping</Styled.RouterLink>
         </Link>
