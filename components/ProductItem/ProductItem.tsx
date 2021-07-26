@@ -4,7 +4,7 @@ import UpdateProduct from '../../components/AdminUpdateProduct/AdminUpdateProduc
 import { Product } from '../../types';
 import { UiAction } from '../../types/uiTypes';
 import Button from '../Button/Button';
-import { StyledListItem } from './styles';
+import * as Styled from './styles';
 
 export type Props = Product & {
   isLoading: boolean;
@@ -58,8 +58,8 @@ const ProductItem = ({
   const imagePreview = images ? images[0].url : '/images/generic-sneaker.png';
 
   return (
-    <StyledListItem>
-      <article>
+    <Styled.StyledListItem>
+      <Styled.Article>
         <Image
           src={imagePreview}
           alt={`${brand} ${model}`}
@@ -70,16 +70,18 @@ const ProductItem = ({
         <p className="brand-name">{brand}</p>
         <p className="brand-model">{model}</p>
         <p className="style-code">Style-Code : {styleCode}</p>
-        <Button
-          onClick={handleDeleteProduct}
-          isLoading={isLoading}
-          isCompleted={isDeleted}
-        >
-          {isDeleted ? 'Deleted' : 'Delete'}
-        </Button>
-        <Button onClick={handleUpdateProduct}>Update</Button>
-      </article>
-    </StyledListItem>
+        <Styled.BtnWrap>
+          <Button
+            onClick={handleDeleteProduct}
+            isLoading={isLoading}
+            isCompleted={isDeleted}
+          >
+            {isDeleted ? 'Deleted' : 'Delete'}
+          </Button>
+          <Button onClick={handleUpdateProduct}>Update</Button>
+        </Styled.BtnWrap>
+      </Styled.Article>
+    </Styled.StyledListItem>
   );
 };
 

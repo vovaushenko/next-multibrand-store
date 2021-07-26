@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 /**
  * Cloudinary image interface
  *@interface
@@ -53,6 +54,7 @@ export interface UploadProduct {
 export interface RouterLinkType<T> {
   text: T;
   href: string;
+  icon?: ReactNode;
 }
 
 /**

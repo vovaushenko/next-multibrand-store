@@ -26,28 +26,29 @@ const AdminNavigation = ({ adminNavLinks }: Props): JSX.Element => {
   return (
     <Styled.Navigation>
       <Styled.Container>
+        {session && (
+          <Styled.AvatarWrapper>
+            <Avatar
+              src={session.user.avatar.url}
+              firstName={session.user.name.split(' ')[0]}
+              lastName={session.user.name.split(' ')[1] || ''}
+              hasBadge={true}
+              isActive={false}
+              width={'80px'}
+            />
+            <Styled.AdminName>
+              <p>{session.user.name}</p>
+              <Styled.SignOut onClick={() => handleSignOut()}>
+                Sign Out
+              </Styled.SignOut>
+            </Styled.AdminName>
+          </Styled.AvatarWrapper>
+        )}
         <ul>
-          {session && (
-            <Styled.AvatarWrapper>
-              <Avatar
-                src={session.user.avatar.url}
-                firstName={session.user.name.split(' ')[0]}
-                lastName={session.user.name.split(' ')[1] || ''}
-                hasBadge={true}
-                isActive={false}
-                width={'80px'}
-              />
-              <Styled.AdminName>
-                <p>{session.user.name}</p>
-                <Styled.SignOut onClick={() => handleSignOut()}>
-                  Sign Out
-                </Styled.SignOut>
-              </Styled.AdminName>
-            </Styled.AvatarWrapper>
-          )}
           {adminNavLinks.map((link) => (
             <li key={link.text}>
-              <RouterLink href={link.href} fontSize={'1.25rem'}>
+              {link.icon}
+              <RouterLink href={link.href} fontSize={'1rem'}>
                 {link.text}
               </RouterLink>
             </li>

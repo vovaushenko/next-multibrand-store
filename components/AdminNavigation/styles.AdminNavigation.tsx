@@ -1,17 +1,27 @@
 import styled from 'styled-components';
 
-export const Navigation = styled.nav``;
+export const Navigation = styled.nav`
+  background-color: ${({ theme }) => theme.secondaryBg};
+`;
 
 export const Container = styled.aside`
   display: flex;
-  align-items: center;
   justify-content: center;
+  flex-direction: column;
   position: sticky;
   top: 0;
-  padding: 5rem 1rem;
+  padding: 2rem 1rem;
 
   li {
     margin: 1rem 0;
+    display: flex;
+    align-items: center;
+
+    .icon {
+      color: ${({ theme }) => theme.primaryGolden};
+      margin-right: 0.5rem;
+      font-size: 1.5rem;
+    }
   }
 `;
 
