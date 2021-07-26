@@ -1,7 +1,9 @@
+import { signOut, useSession } from 'next-auth/client';
 import React from 'react';
 import { RouterLinkType } from '../../types';
+import Avatar from '../Avatar/Avatar';
 import RouterLink from '../RouterLink/RouterLink';
-import { StyledAdminNavigation } from './styles';
+import * as Styled from './styles.AdminNavigation';
 
 export type Props = {
   adminNavLinks: RouterLinkType<string>[];
@@ -13,11 +15,36 @@ export type Props = {
  *@returns {JSX.Element} - Rendered component AdminNavigation
  */
 const AdminNavigation = ({ adminNavLinks }: Props): JSX.Element => {
+  const [session] = useSession();
+
+  const handleSignOut = () => {
+    if (confirm('Are you sure want to log out?')) {
+      signOut();
+    }
+  };
+
   return (
-    <nav>
-      <StyledAdminNavigation>
-        {/* TODO:ADMIN info/avatar section */}
+    <Styled.Navigation>
+      <Styled.Container>
         <ul>
+          {session && (
+            <Styled.AvatarWrapper>
+              <Avatar
+                src={session.user.avatar.url}
+                firstName={session.user.name.split(' ')[0]}
+                lastName={session.user.name.split(' ')[1] || ''}
+                hasBadge={true}
+                isActive={false}
+                width={'80px'}
+              />
+              <Styled.AdminName>
+                <p>{session.user.name}</p>
+                <Styled.SignOut onClick={() => handleSignOut()}>
+                  Sign Out
+                </Styled.SignOut>
+              </Styled.AdminName>
+            </Styled.AvatarWrapper>
+          )}
           {adminNavLinks.map((link) => (
             <li key={link.text}>
               <RouterLink href={link.href} fontSize={'1.25rem'}>
@@ -26,8 +53,8 @@ const AdminNavigation = ({ adminNavLinks }: Props): JSX.Element => {
             </li>
           ))}
         </ul>
-      </StyledAdminNavigation>
-    </nav>
+      </Styled.Container>
+    </Styled.Navigation>
   );
 };
 
