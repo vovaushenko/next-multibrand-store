@@ -7,5 +7,6 @@ export const LayoutContainer = styled.section`
 `;
 
 export const ChildrenWrapper = styled.main`
+  padding: 2rem;
   background-color: ${({ theme }) => theme.dashboardGrayBg};
 `;
