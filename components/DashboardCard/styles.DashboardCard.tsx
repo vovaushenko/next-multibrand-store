@@ -1,11 +1,15 @@
 import styled from 'styled-components';
 
-export const Container = styled.article`
+interface Props {
+  variant: 'icon' | 'figure' | 'stats';
+}
+export const Container = styled.article<Props>`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-direction: ${({ variant }) => (variant === 'figure' ? 'column' : 'row')};
   flex-wrap: wrap;
-  padding: 2rem 1rem;
+  padding: 2rem 1.25rem;
   border-radius: ${({ theme }) => theme.borderRadius};
   background-color: ${({ theme }) => theme.dashboardGrayCard};
   width: 100%;

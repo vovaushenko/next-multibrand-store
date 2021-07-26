@@ -2,47 +2,45 @@ import Image from 'next/image';
 import React, { ReactNode } from 'react';
 import * as Styled from './styles.DashboardCard';
 
-export interface Props {
-  variant: 'icon' | 'figure' | 'stats';
-  title?: string;
-  imgSrc?: string;
-  icon: ReactNode | null;
-  header: string;
-  stat: string;
-  stats?: [string, string][];
-}
+type CardProps =
+  | { variant: 'icon'; header: string; stat: string; icon: ReactNode }
+  | {
+      variant: 'figure';
+      title: string;
+      imgParams: { src: string; height: number; width: number };
+      stats: [string, string][];
+    }
+  | { variant: 'stats'; stats: [string, string][] };
 /**
  *@function DashboardCard
-
+ *@variants "icon" | "figure" | "stats", has different sets of props for different variants
+ *@param {string} header - Header in "icon" variant
+ *@param {string} stat - Stat in "icon" variant
+ *@param {ReactNode} icon - Icon in "icon" variant
+ *@param {string} title - Title in "figure" variant
+ *@param {string} imgSrc - src for image in "figure" variant
+ *@param {array of string tuples} stats - text stats in "figure" and "stats" variant
  *@returns {JSX.Element} - Rendered DashboardCard component
  */
-const DashboardCard = ({
-  icon,
-  header,
-  stat,
-  variant,
-  stats,
-  title,
-  imgSrc,
-}: Props): JSX.Element => {
-  if (variant === 'icon') {
+const DashboardCard = (props: CardProps): JSX.Element => {
+  if (props.variant === 'icon') {
     return (
-      <Styled.Container>
+      <Styled.Container variant={props.variant}>
         <Styled.TextWrapper>
-          <Styled.Header>{header}</Styled.Header>
-          <Styled.Stat>{stat}</Styled.Stat>
+          <Styled.Header>{props.header}</Styled.Header>
+          <Styled.Stat>{props.stat}</Styled.Stat>
         </Styled.TextWrapper>
-        <Styled.ImageWrapper>{icon}</Styled.ImageWrapper>
+        <Styled.ImageWrapper>{props.icon}</Styled.ImageWrapper>
       </Styled.Container>
     );
   }
 
-  if (variant === 'figure') {
+  if (props.variant === 'figure') {
     return (
-      <Styled.Container>
-        <Styled.Title>{title && title}</Styled.Title>
+      <Styled.Container variant={props.variant}>
+        <Styled.Title>{props.title}</Styled.Title>
         <Styled.TextContainer>
-          {stats?.map((stat, id) => (
+          {props.stats.map((stat, id) => (
             <Styled.TextWrapper key={id}>
               <Styled.Header>{stat[0]}</Styled.Header>
               <Styled.Stat>{stat[1]}</Styled.Stat>
@@ -51,10 +49,10 @@ const DashboardCard = ({
         </Styled.TextContainer>
         <Styled.Figure>
           <Image
-            src={imgSrc || ''}
-            alt={title}
-            height={200}
-            width={300}
+            src={props.imgParams.src}
+            alt={props.title}
+            height={props.imgParams.height}
+            width={props.imgParams.width}
             objectFit="contain"
           />
         </Styled.Figure>
@@ -63,8 +61,8 @@ const DashboardCard = ({
   }
 
   return (
-    <Styled.Container>
-      {stats?.map((stat, id) => (
+    <Styled.Container variant={props.variant}>
+      {props.stats.map((stat, id) => (
         <Styled.TextWrapper key={id}>
           <Styled.Header>{stat[0]}</Styled.Header>
           <Styled.Stat>{stat[1]}</Styled.Stat>

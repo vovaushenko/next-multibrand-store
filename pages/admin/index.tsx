@@ -6,7 +6,7 @@ import Dashboard from '../../components/Dashboard/Dashboard';
 
 export default function AdminDashboard(): JSX.Element {
   return (
-    <AdminLayout title="dashboard">
+    <AdminLayout title="Statistics | Dashboard">
       <Dashboard />
     </AdminLayout>
   );

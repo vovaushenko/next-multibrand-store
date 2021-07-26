@@ -35,9 +35,6 @@ const Dashboard = (): JSX.Element => {
         ))}
         <DashboardCard
           variant="stats"
-          header=""
-          icon={null}
-          stat=""
           stats={[
             ['Orders Today', '14'],
             ['Weekly Orders', '121'],
@@ -50,37 +47,36 @@ const Dashboard = (): JSX.Element => {
         <DashboardCard
           variant="figure"
           title="Trends"
-          header=""
-          icon={null}
-          stat=""
-          stats={[['Sold', '23 pairs']]}
-          imgSrc="/images/og-travis.png"
+          stats={[['Air Jordan OG Travis Scott', 'Sold : 23 pairs']]}
+          imgParams={{ src: '/images/og-travis.png', height: 200, width: 300 }}
         />
         <DashboardCard
           variant="figure"
           title="Earnings"
-          header=""
-          icon={null}
-          stat=""
           stats={[
             ['Revenue', '$24.4k'],
             ['Profit', '$4.4k'],
             ['Orders', '108'],
           ]}
-          imgSrc="/images/charts/digram.svg"
+          imgParams={{
+            src: '/images/charts/digram.svg',
+            height: 200,
+            width: 500,
+          }}
         />
         <DashboardCard
           variant="figure"
           title="Users"
-          header=""
-          icon={null}
-          stat=""
           stats={[
             ['Total', '12134'],
             ['Active', '428'],
             ['New', '26'],
           ]}
-          imgSrc="/images/charts/stats.svg"
+          imgParams={{
+            src: '/images/charts/stats.svg',
+            height: 200,
+            width: 300,
+          }}
         />
       </Styled.BottomRow>
     </Styled.Container>

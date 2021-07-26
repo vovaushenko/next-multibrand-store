@@ -32,9 +32,6 @@ export const MidRow = styled.div`
 export const BottomRow = styled.div`
   display: flex;
   gap: 1rem;
-  article {
-    flex-direction: column;
-  }
 
   & article {
     width: 25%;
