@@ -11,7 +11,7 @@ export const GlobalStyles = createGlobalStyle`
 }
 
  body {
-    font-family: 'Roboto Condensed','sans-serif';
+  font-family: 'Poppins', sans-serif;
     color: ${({ theme }) => theme.primaryWhite};
     background: ${({ theme }) => theme.primaryBg};
     line-height: 1.4;
@@ -50,7 +50,7 @@ img {
 
 input {
   ::placeholder {
-    font-family:'Roboto Condensed','sans-serif';
+    font-family: 'Poppins', sans-serif;
   }
 }
 

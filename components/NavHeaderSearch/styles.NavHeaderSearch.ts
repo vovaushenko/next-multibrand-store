@@ -17,6 +17,7 @@ export const Input = styled.input`
     color: ${({ theme }) => theme.primaryBg};
     font-size: 1rem;
   }
+  border-radius: 0.5rem 0 0 0.5rem;
 `;
 
 export const SubmitButton = styled.button`
@@ -26,7 +27,7 @@ export const SubmitButton = styled.button`
   justify-content: center;
   width: 4rem;
   background-color: ${({ theme }) => theme.primaryGolden};
-  border-radius: 0 5px 5px 0;
+  border-radius: 0 0.5rem 0.5rem 0;
   border: none;
 
   .search-icon {

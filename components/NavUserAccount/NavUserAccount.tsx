@@ -40,7 +40,7 @@ const NavUserAccount = (): JSX.Element => {
           lastName={session.user.name.split(' ')[1] || ''}
           hasBadge={true}
           isActive={true}
-          width={'50px'}
+          width={'45px'}
         />
       ) : (
         <span>Sign In</span>

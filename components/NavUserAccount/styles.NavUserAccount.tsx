@@ -5,9 +5,6 @@ export const Container = styled.div`
   flex: 0.5;
   flex-direction: column;
   align-items: flex-start;
-  span {
-    margin-left: 0.75rem;
-  }
 
   @media ${({ theme }) => theme.media.tablet} {
     flex-direction: row;
@@ -21,7 +18,7 @@ export const AccountButton = styled.button`
   background: transparent;
   border: none;
   color: ${({ theme }) => theme.primaryWhite};
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 600;
 
   .account-icon {

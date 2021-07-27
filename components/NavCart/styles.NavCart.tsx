@@ -17,7 +17,7 @@ export const CartButton = styled.button`
 
   span {
     margin-left: 1.25rem;
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: 600;
   }
 `;

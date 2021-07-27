@@ -22,7 +22,11 @@ const NavbarNavigation = (): JSX.Element => {
       <Container>
         <ul>
           {navLinks.map((link, id) => (
-            <li key={id} onMouseEnter={() => setSection(link.section)}>
+            <li
+              key={id}
+              onMouseEnter={() => setSection(link.section)}
+              onFocus={() => setSection(link.section)}
+            >
               <NavLink href={`/products/all`} linkText={link.section} />
             </li>
           ))}

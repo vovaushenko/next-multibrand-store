@@ -14,12 +14,7 @@ import * as Styled from './styles.NavbarHeader';
 const NavbarHeader = (): JSX.Element => {
   return (
     <Styled.Container>
-      <NavbarHeaderLogo
-        headerText={'Sneakers'}
-        src="/images/logo.png"
-        width={321}
-        height={66}
-      />
+      <NavbarHeaderLogo />
       <NavHeaderSearch />
       <NavHeaderActionList />
     </Styled.Container>
