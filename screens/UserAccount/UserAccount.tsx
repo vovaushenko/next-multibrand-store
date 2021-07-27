@@ -1,5 +1,7 @@
 import { signOut, useSession } from 'next-auth/client';
 import React, { useCallback, useState } from 'react';
+import { FiLogOut } from 'react-icons/fi';
+import { MdAccountCircle, MdShoppingBasket } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import Avatar from '../../components/Avatar/Avatar';
 import Container from '../../components/Container/Container';
@@ -56,16 +58,21 @@ const UserAccount = (): JSX.Element => {
               <Styled.UserName>{session.user.name}</Styled.UserName>
             </>
           )}
-          {/* TODO:ADD UPDATE ORDERS CONTENT */}
+
           <Styled.Button onClick={showOrderHistory}>
+            <MdShoppingBasket className="icon" />
             Orders History
           </Styled.Button>
-          {/* TODO:ADD UPDATE ACCOUNT CONTENT */}
+
           <Styled.Button onClick={showUpdateAccount}>
+            <MdAccountCircle className="icon" />
             Update Account
           </Styled.Button>
 
-          <Styled.Button onClick={handleSignOut}>Sign Out</Styled.Button>
+          <Styled.Button onClick={handleSignOut}>
+            <FiLogOut className="icon" />
+            Sign Out
+          </Styled.Button>
         </Styled.LeftColumn>
 
         {/* Column with content that is controlled through the above buttons */}

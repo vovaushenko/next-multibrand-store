@@ -16,14 +16,22 @@ export const Wrapper = styled.section`
 
 export const Button = styled.button`
   cursor: pointer;
+  background: transparent;
+  border: 0;
   color: ${({ theme }) => theme.primaryWhite};
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+
+  .icon {
+    font-size: 1.25rem;
+    margin-right: 0.5rem;
+    color: ${({ theme }) => theme.primaryGolden};
+  }
+
   &:hover {
     color: ${({ theme }) => theme.secondaryGolden};
   }
-  background: transparent;
-  border: none;
-  font-size: 1rem;
-  display: inline-flex;
 `;
 
 const backgroundAndBorder = css`

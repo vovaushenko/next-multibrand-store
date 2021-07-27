@@ -9,10 +9,6 @@ export const Container = styled.article`
   width: 100%;
   padding: 1rem 3rem;
 
-  &:hover {
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.secondaryGolden};
-  }
-
   h3 {
     color: ${({ theme }) => theme.primaryGolden};
     margin-bottom: 0.5rem;
@@ -49,7 +45,7 @@ export const OrderItem = styled.li`
     color: ${({ theme }) => theme.primaryGolden};
   }
   &:hover {
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.activeGreen};
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.secondaryGolden};
   }
 `;
 
@@ -57,7 +53,7 @@ interface Props {
   margin?: string;
 }
 export const Subheader = styled.p<Props>`
-  color: ${({ theme }) => theme.secondaryGolden};
+  color: ${({ theme }) => theme.lightGray};
   margin: ${({ margin }) => margin};
 `;
 
@@ -66,7 +62,7 @@ interface DeliveryProps {
 }
 export const DeliveryStatus = styled.p<DeliveryProps>`
   color: ${({ isDelivered, theme }) =>
-    isDelivered ? theme.activeGreen : theme.primaryRed};
+    isDelivered ? theme.activeGreen : theme.primaryWhite};
 `;
 
 export const Total = styled.div`
