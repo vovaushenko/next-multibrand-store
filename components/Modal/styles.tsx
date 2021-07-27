@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { slideInKeyframes } from '../../styles/reusableStyles';
 
 interface ModalOverlayProps {
   positionY: number;
@@ -13,8 +14,9 @@ export const ModalOverlay = styled.div<ModalOverlayProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.52);
+  background-color: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(4px);
+  overflow-y: auto;
 `;
 
 export const ModalBody = styled.main`
@@ -24,29 +26,26 @@ export const ModalBody = styled.main`
 export const ModalHeader = styled.div`
   display: flex;
   justify-content: flex-end;
-  button {
-    cursor: pointer;
-    font-size: 1.45rem;
+`;
+
+export const CloseModalBtn = styled.button`
+  cursor: pointer;
+  font-size: 1.45rem;
+  background-color: transparent;
+  border: 0;
+
+  .icon {
+    font-size: 2rem;
+    color: ${({ theme }) => theme.primaryGolden};
   }
 `;
 
 export const Modal = styled.section`
   width: 90%;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
 
-  @keyframes showModal {
-    0% {
-      transform: rotateY(20deg) rotateX(35deg) translate(300px, -300px)
-        skew(-35deg, 10deg);
-      opacity: 0;
-    }
-    100% {
-      transform: rotateY(0) rotateX(0deg) translate(0, 0) skew(0deg, 0deg);
-      opacity: 1;
-    }
-  }
-  animation: showModal 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: ${slideInKeyframes} 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
 `;
 
 export const ModalWrapper = styled.div`

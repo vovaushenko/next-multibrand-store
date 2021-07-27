@@ -1,6 +1,6 @@
 import React, { MouseEvent, useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { FaTimes } from 'react-icons/fa';
+import { MdClose } from 'react-icons/md';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import * as Styled from './styles';
@@ -49,9 +49,9 @@ const Modal = (): JSX.Element | null => {
         <Styled.ModalWrapper ref={modalWrapperRef}>
           <Styled.Modal>
             <Styled.ModalHeader>
-              <button onClick={handleCloseClick}>
-                <FaTimes />
-              </button>
+              <Styled.CloseModalBtn onClick={handleCloseClick}>
+                <MdClose className="icon" />
+              </Styled.CloseModalBtn>
             </Styled.ModalHeader>
             <Styled.ModalBody>{modalContent}</Styled.ModalBody>
           </Styled.Modal>
