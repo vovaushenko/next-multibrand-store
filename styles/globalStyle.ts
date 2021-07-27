@@ -12,8 +12,8 @@ export const GlobalStyles = createGlobalStyle`
 
  body {
     font-family: 'Roboto Condensed','sans-serif';
-    color: #ffffff;
-    background: #000000;
+    color: ${({ theme }) => theme.primaryWhite};
+    background: ${({ theme }) => theme.primaryBg};
     line-height: 1.4;
     font-size: 1rem;
 }
@@ -56,6 +56,14 @@ input {
 
 button {
   font-family: inherit;
+}
+
+button, input, a {
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px ${({ theme }) => theme.secondaryGolden};
+    border-radius: ${({ theme }) => theme.borderRadius};
+  }
 }
 
 ::-webkit-scrollbar {

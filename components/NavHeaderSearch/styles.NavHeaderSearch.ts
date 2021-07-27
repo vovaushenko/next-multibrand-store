@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  position: relative;
+`;
 
 export const Form = styled.form`
   display: flex;
@@ -29,5 +31,31 @@ export const SubmitButton = styled.button`
 
   .search-icon {
     font-size: 1.25rem;
+  }
+`;
+
+export const ModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 2rem;
+`;
+
+export const Product = styled.article`
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap;
+  border-radius: ${({ theme }) => theme.borderRadius};
+  background: ${({ theme }) => theme.dashboardGrayCard};
+  padding: 1rem 2rem;
+
+  p:nth-child(2) {
+    color: ${({ theme }) => theme.primaryGolden};
+  }
+
+  &:hover {
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.secondaryGolden};
   }
 `;
