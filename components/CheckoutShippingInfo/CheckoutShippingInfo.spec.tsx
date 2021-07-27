@@ -1,14 +1,26 @@
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import React from 'react';
-import { withReduxAndStyledProviders } from '../../test/testUtils';
+import { Provider } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
+import { mainTheme } from '../../styles/mainTheme';
+import { initialReduxStore } from '../../test/initialReduxStore';
+import { storeFactory } from '../../test/testUtils';
 import CheckoutShippingInfo from './CheckoutShippingInfo';
 
 /**
  * Setup function for the component
- * @returns {ShallowWrapper}
+ * @returns {mountWrapper}
  */
 const setup = () => {
-  return shallow(withReduxAndStyledProviders(<CheckoutShippingInfo />));
+  const store = storeFactory(initialReduxStore);
+
+  return mount(
+    <ThemeProvider theme={mainTheme}>
+      <Provider store={store}>
+        <CheckoutShippingInfo />
+      </Provider>
+    </ThemeProvider>
+  );
 };
 
 describe('Checkout Shipping info component', () => {
