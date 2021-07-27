@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import Link from 'next/link';
 import React from 'react';
-import Button from '../Button/Button';
+import * as Styled from './styles.UserAccountDropdown';
 import UserAccountDropdown from './UserAccountDropdown';
 
 describe('User Account Dropdown(Navbar)', () => {
@@ -16,7 +16,7 @@ describe('User Account Dropdown(Navbar)', () => {
     expect(routerLinks.length).toBe(2);
   });
   it('should render sign out button', () => {
-    const btn = wrap.find(Button);
-    expect(btn.length).toBe(1);
+    const signOut = wrap.find(Styled.SignOut);
+    expect(signOut.length).toBe(1);
   });
 });
