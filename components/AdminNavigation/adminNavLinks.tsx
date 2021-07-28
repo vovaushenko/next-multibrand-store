@@ -3,6 +3,7 @@ import {
   MdAddShoppingCart,
   MdDashboard,
   MdEuroSymbol,
+  MdGroup,
   MdSend,
   MdSentimentSatisfied,
   MdShoppingCart,
@@ -30,6 +31,11 @@ export const adminNavLinks: RouterLinkType<string>[] = [
     text: 'Delivery',
     href: '/admin/delivery',
     icon: <MdSend className="icon" />,
+  },
+  {
+    text: 'Clients',
+    href: '/admin/clients',
+    icon: <MdGroup className="icon" />,
   },
   {
     text: 'Reviews',
