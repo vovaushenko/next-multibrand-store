@@ -88,6 +88,28 @@ export const updateProduct = (
 };
 
 /**
+ * @Admin async action creator, will dispatch action to get all customers profiles from DB, also will dispatch error action if async operation fails
+ * @DELETE /api/products/:id
+ */
+export const getAllClientsDetails = () => {
+  return async (dispatch: Dispatch<AdminAction>): Promise<void> => {
+    dispatch({ type: AdminActionTypes.LOAD_USERS });
+    try {
+      const { data } = await axios.get(`/api/admin/clients`);
+      dispatch({
+        type: AdminActionTypes.USERS_WERE_LOADED,
+        payload: data.clients,
+      });
+    } catch (error) {
+      dispatch({
+        type: AdminActionTypes.USERS_LOAD_ERROR,
+        payload: error.response.data.error,
+      });
+    }
+  };
+};
+
+/**
  *@ADMIN async action creator, will clear state after successful||unsuccessful operations
  *@function clearStatusOfOperations
  *@returns {undefined}

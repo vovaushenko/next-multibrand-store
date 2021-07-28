@@ -24,14 +24,15 @@ interface DashboardStat {
 }
 
 const Dashboard = (): JSX.Element => {
-  // TODO: Connect Dashboard with backend and get dynamic data
-
   const {
     totalRevenue,
     newOrdersAmount,
     deliveredOrdersAmount,
     mostTrendingItem,
     maxPurchaseFrequency,
+    activeUsers,
+    newUsers,
+    userQuantity,
   } = useDashboardStats();
 
   const topRow: DashboardStat[] = [
@@ -52,7 +53,7 @@ const Dashboard = (): JSX.Element => {
     },
     {
       header: 'Active Users',
-      stat: `${428}`,
+      stat: `${activeUsers}`,
       icon: <MdPeople className="icon" />,
     },
   ];
@@ -96,8 +97,8 @@ const Dashboard = (): JSX.Element => {
         <DashboardCard
           variant="stats"
           stats={[
-            ['Orders Today', '14'],
-            ['Weekly Orders', '121'],
+            ['Orders Today', `${newOrdersAmount}`],
+            ['Weekly Orders', `${newOrdersAmount * 4}`],
             ['Hot Section', 'Sneakers'],
           ]}
         />
@@ -137,9 +138,9 @@ const Dashboard = (): JSX.Element => {
           variant="figure"
           title="Users"
           stats={[
-            ['Total', '12134'],
-            ['Active', '428'],
-            ['New', '26'],
+            ['Total', `${userQuantity}`],
+            ['Active', `${activeUsers}`],
+            ['New', `${newUsers}`],
           ]}
           imgParams={{
             src: '/images/charts/stats.svg',

@@ -5,6 +5,7 @@ import {
 } from '../../types/adminTypes';
 
 const initialState: AdminState = {
+  clients: [],
   isLoading: false,
   error: null,
   isDeleted: false,
@@ -59,6 +60,17 @@ export const adminReducer = (
         isUpdated: false,
         error: action.payload,
       };
+
+    // Load all users
+    case AdminActionTypes.LOAD_USERS:
+      return { ...state, isLoading: true };
+
+    case AdminActionTypes.USERS_WERE_LOADED:
+      return { ...state, isLoading: false, clients: action.payload };
+
+    case AdminActionTypes.USERS_LOAD_ERROR:
+      return { ...state, isLoading: false, error: action.payload };
+
     // Clear state Operations
     case AdminActionTypes.CLEAR_STATE:
       return initialState;

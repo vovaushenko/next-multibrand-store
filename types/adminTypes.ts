@@ -1,3 +1,4 @@
+import { User } from './authTypes';
 import { ReduxAsync } from './index';
 
 /**
@@ -10,6 +11,7 @@ export interface AdminState extends ReduxAsync {
   isUpdating: boolean;
   isUpdated: boolean;
   isCreated: boolean;
+  clients: User[];
 }
 
 /**
@@ -28,6 +30,10 @@ export enum AdminActionTypes {
   UPDATE_PRODUCT = 'UPDATE_PRODUCT',
   PRODUCT_WAS_UPDATED = 'PRODUCT_WAS_UPDATED',
   PRODUCT_UPDATE_ERROR = 'PRODUCT_UPDATE_ERROR',
+
+  LOAD_USERS = 'LOAD_USERS',
+  USERS_WERE_LOADED = 'USERS_WERE_LOADED',
+  USERS_LOAD_ERROR = 'USERS_LOAD_ERROR',
 
   CLEAR_STATE = 'CLEAR_STATE',
 }
@@ -75,6 +81,20 @@ interface UpdateProductFailAction {
   payload: string;
 }
 /**
+ * Admin LOAD USERS action interfaces
+ */
+interface LoadUsersRequestAction {
+  type: AdminActionTypes.LOAD_USERS;
+}
+interface LoadUsersSuccessAction {
+  type: AdminActionTypes.USERS_WERE_LOADED;
+  payload: User[];
+}
+interface LoadUsersFailAction {
+  type: AdminActionTypes.USERS_LOAD_ERROR;
+  payload: string;
+}
+/**
  * Admin CLEAR state action interface
  */
 interface ClearStateAction {
@@ -95,4 +115,7 @@ export type AdminAction =
   | DeleteProductFailAction
   | UpdateProductRequestAction
   | UpdateProductSuccessAction
+  | LoadUsersRequestAction
+  | LoadUsersSuccessAction
+  | LoadUsersFailAction
   | UpdateProductFailAction;

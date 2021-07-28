@@ -18,16 +18,23 @@ export function useDashboardStats(): {
   deliveredOrdersAmount: number;
   maxPurchaseFrequency: number;
   mostTrendingItem: Purchase;
+  userQuantity: number;
+  activeUsers: number;
+  newUsers: number;
 } {
-  const { loadAllCustomerOrders } = useActions();
+  const { loadAllCustomerOrders, getAllClientsDetails } = useActions();
   const { orders: allOrders } = useTypedSelector((state) => state.orders);
+  const { clients } = useTypedSelector((state) => state.admin);
 
   useEffect(() => {
     loadAllCustomerOrders();
-
+    getAllClientsDetails();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  /**
+   * Order Stats
+   **/
   const totalRevenue = allOrders.reduce(
     (total, order) => total + order.orderTotal,
     0
@@ -63,11 +70,22 @@ export function useDashboardStats(): {
     (product) => product.productID === mostBoughtID
   ) as Purchase;
 
+  /**
+   * User Stats
+   **/
+  // TODO:Implement active and new users based on their log-ins and registration info
+  const userQuantity = clients.length;
+  const activeUsers = Math.floor(clients.length * 0.6);
+  const newUsers = 3;
+
   return {
     totalRevenue,
     newOrdersAmount,
     deliveredOrdersAmount,
     maxPurchaseFrequency,
     mostTrendingItem,
+    userQuantity,
+    activeUsers,
+    newUsers,
   };
 }

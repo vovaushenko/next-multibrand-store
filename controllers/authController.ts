@@ -1,8 +1,16 @@
 import cloudinary from 'cloudinary';
 import { NextApiRequest, NextApiResponse } from 'next';
+import { User as UserType } from 'next-auth';
 import catchErrorsFrom from '../middleware/catchErrorsFrom';
 import User, { IUser } from '../models/user';
 import { NextApiRequestWithAuth } from '../types/authTypes';
+
+export {
+  registerUser,
+  getCurrentUserProfile,
+  updateUserProfile,
+  getAllClients,
+};
 
 // Setting up cloudinary config
 cloudinary.v2.config({
@@ -123,4 +131,27 @@ const updateUserProfile = async (
   });
 };
 
-export { registerUser, getCurrentUserProfile, updateUserProfile };
+type Response = {
+  success: true;
+  clients: UserType[];
+};
+/**
+ * @ADMIN
+ * Get all clients
+ * @GET /api/admin/clients
+ * @function getAllClients
+ * @param {NextApiResponseWithAuth} req  Next API request with user info
+ * @param {Next.Response} res The Next response
+ * @return {undefined}
+ */
+const getAllClients = async (
+  req: NextApiRequestWithAuth,
+  res: NextApiResponse<Response>
+): Promise<void> => {
+  const allClients = await User.find({});
+
+  res.status(200).json({
+    success: true,
+    clients: allClients,
+  });
+};
