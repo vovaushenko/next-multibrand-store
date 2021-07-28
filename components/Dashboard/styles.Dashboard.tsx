@@ -6,7 +6,7 @@ export const Container = styled.section`
   gap: 1rem;
 `;
 
-export const Row = styled.div`
+export const TopRow = styled.div`
   display: flex;
   gap: 1rem;
   justify-content: space-between;
