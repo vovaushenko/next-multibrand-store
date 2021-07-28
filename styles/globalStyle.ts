@@ -49,6 +49,7 @@ img {
 }
 
 input {
+  font-family: 'Poppins', sans-serif;
   ::placeholder {
     font-family: 'Poppins', sans-serif;
   }

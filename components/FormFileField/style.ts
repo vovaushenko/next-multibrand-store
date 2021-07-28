@@ -3,12 +3,14 @@ import styled from 'styled-components';
 export const FileField = styled.div`
   width: 100%;
   input {
-    background: ${({ theme }) => theme.lightestGray};
     height: 3rem;
     padding: 0.5rem;
-    border-radius: 5px;
     width: 100%;
-    border: 2px solid ${({ theme }) => theme.secondaryBg};
+    background: ${({ theme }) => theme.dashboardGrayCard};
+    border: 1px solid ${({ theme }) => theme.borderGrayColor};
+    color: ${({ theme }) => theme.primaryWhite};
+    border-radius: ${({ theme }) => theme.borderRadius};
+
     &:focus-visible {
       outline: none;
       box-shadow: 0 0 0 3px ${({ theme }) => theme.secondaryGolden};
@@ -24,7 +26,8 @@ export const FileField = styled.div`
       color: ${({ theme }) => theme.primaryWhite};
       font-family: inherit;
       border: none;
-      padding: 0.5rem 1.125rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
     }
   }
 `;

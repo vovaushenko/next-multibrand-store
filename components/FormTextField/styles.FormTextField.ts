@@ -21,12 +21,19 @@ export const Label = styled.label`
 
 export const Input = styled.input`
   display: block;
-  background: ${({ theme }) => theme.lightestGray};
   height: 3rem;
   padding: 0.5rem;
   border-radius: 5px;
   width: 100%;
-  border: 2px solid ${({ theme }) => theme.secondaryBg};
+  background: ${({ theme }) => theme.dashboardGrayCard};
+  border: 1px solid ${({ theme }) => theme.borderGrayColor};
+  color: ${({ theme }) => theme.primaryWhite};
+  border-radius: ${({ theme }) => theme.borderRadius};
+
+  &:default {
+    background-color: red;
+  }
+
   &:focus-visible {
     outline: none;
     box-shadow: 0 0 0 3px ${({ theme }) => theme.secondaryGolden};

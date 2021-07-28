@@ -9,7 +9,7 @@ interface Props {
   title: string;
 }
 
-const name: FC<Props> = ({ children, title }) => {
+const Layout: FC<Props> = ({ children, title }) => {
   return (
     <>
       <Head>
@@ -28,4 +28,4 @@ const name: FC<Props> = ({ children, title }) => {
     </>
   );
 };
-export default name;
+export default Layout;
