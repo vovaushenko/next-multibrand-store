@@ -1,7 +1,9 @@
 import { addDecorator } from '@storybook/react';
 import * as nextImage from 'next/image';
+import { Provider } from 'react-redux';
 import { withThemesProvider } from 'storybook-addon-styled-component-theme';
 import { ThemeProvider } from 'styled-components';
+import { GlobalStyles } from '../styles/globalStyle';
 import { mainTheme } from '../styles/mainTheme';
 import { initialReduxStore } from '../test/initialReduxStore';
 import { storeFactory } from '../test/testUtils';
@@ -14,11 +16,13 @@ Object.defineProperty(nextImage, 'default', {
 const themes = [mainTheme];
 
 addDecorator(withThemesProvider(themes), ThemeProvider);
-//TODO: Solve problem with the below decorator
+
 const store = storeFactory(initialReduxStore);
-// addDecorator((s) => (
-//   <Provider store={store}>
-//     <GlobalStyles />
-//     {s()}
-//   </Provider>
-// ));
+addDecorator((story) => (
+  <ThemeProvider theme={mainTheme}>
+    <Provider store={store}>
+      <GlobalStyles />
+      {story()}
+    </Provider>
+  </ThemeProvider>
+));
