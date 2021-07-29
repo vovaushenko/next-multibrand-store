@@ -1,10 +1,15 @@
 import { signOut, useSession } from 'next-auth/client';
 import React, { useCallback, useState } from 'react';
 import { FiLogOut } from 'react-icons/fi';
-import { MdAccountCircle, MdShoppingBasket } from 'react-icons/md';
+import {
+  MdAccountCircle,
+  MdCreditCard,
+  MdShoppingBasket,
+} from 'react-icons/md';
 import { toast } from 'react-toastify';
 import Avatar from '../../components/Avatar/Avatar';
 import Container from '../../components/Container/Container';
+import CustomerPaymentMethods from '../../components/CustomerPaymentMethods/CustomerPaymentMethods';
 import HR from '../../components/HR/HR';
 import OrderHistory from '../../components/OrderHistory/OrderHistory';
 import PageHeader from '../../components/PageHeader/PageHeader';
@@ -14,21 +19,31 @@ import * as Styled from './styles.UserAccount';
 
 const UserAccount = (): JSX.Element => {
   const [session] = useSession();
-  const [contentHeader, setContentHeader] = useState('Orders');
-  const [isOrderHistoryOnScreen, setIsOrderHistoryOnScreen] = useState(true);
+  const [contentHeader, setContentHeader] = useState('Payment Methods');
+  const [isOrderHistoryOnScreen, setIsOrderHistoryOnScreen] = useState(false);
   const [isUpdateAccountOnScreen, setIsOrderUpdateAccountOnScreen] =
     useState(false);
+  const [isPaymentMethodsOnScreen, setIsOrderPaymentMethodsOnScreen] =
+    useState(true);
 
   const showOrderHistory = useCallback(() => {
     setContentHeader('Orders');
-    setIsOrderUpdateAccountOnScreen(false);
     setIsOrderHistoryOnScreen(true);
+    setIsOrderUpdateAccountOnScreen(false);
+    setIsOrderPaymentMethodsOnScreen(false);
   }, []);
 
   const showUpdateAccount = useCallback(() => {
     setContentHeader('Update Account Details');
-    setIsOrderHistoryOnScreen(false);
     setIsOrderUpdateAccountOnScreen(true);
+    setIsOrderPaymentMethodsOnScreen(false);
+    setIsOrderHistoryOnScreen(false);
+  }, []);
+  const showPaymentMethods = useCallback(() => {
+    setContentHeader('Payment Methods');
+    setIsOrderPaymentMethodsOnScreen(true);
+    setIsOrderUpdateAccountOnScreen(false);
+    setIsOrderHistoryOnScreen(false);
   }, []);
 
   const handleSignOut = () => {
@@ -39,6 +54,13 @@ const UserAccount = (): JSX.Element => {
   const rightColumnContent = () => {
     if (isOrderHistoryOnScreen) return <OrderHistory />;
     if (isUpdateAccountOnScreen) return <UpdateUserAccount />;
+    if (isPaymentMethodsOnScreen)
+      return (
+        <CustomerPaymentMethods
+          customerName={session?.user.name || ''}
+          customerImg={session?.user.avatar.url || ''}
+        />
+      );
   };
 
   return (
@@ -67,6 +89,11 @@ const UserAccount = (): JSX.Element => {
           <Styled.Button onClick={showUpdateAccount}>
             <MdAccountCircle className="icon" />
             Update Account
+          </Styled.Button>
+
+          <Styled.Button onClick={showPaymentMethods}>
+            <MdCreditCard className="icon" />
+            Payment Methods
           </Styled.Button>
 
           <Styled.Button onClick={handleSignOut}>
