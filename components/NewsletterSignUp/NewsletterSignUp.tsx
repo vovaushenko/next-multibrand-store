@@ -30,6 +30,7 @@ const NewsletterSignUp = (): JSX.Element => {
             type="email"
             value={email}
             setValue={setEmail}
+            required
           />
           <Button text="subscribe" type="submit" />
         </Styled.Form>

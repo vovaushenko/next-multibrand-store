@@ -37,6 +37,7 @@ const NavbarNavigation = (): JSX.Element => {
         {section && section !== 'new arrivals' && (
           <NavigationDropdown
             dropdownContent={findDropdownContentBy(section)!}
+            sectionName={section}
           />
         )}
       </Container>

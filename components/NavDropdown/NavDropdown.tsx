@@ -6,9 +6,13 @@ import * as Styled from './styles';
 
 export interface Props {
   dropdownContent: NavDropdownItem;
+  sectionName: string;
 }
 
-const NavigationDropdown = ({ dropdownContent }: Props): JSX.Element => {
+const NavigationDropdown = ({
+  dropdownContent,
+  sectionName,
+}: Props): JSX.Element => {
   // Will get array of Keys for headers in dropdown, also we should get rid of 'section' key since it has no corresponding value
   const sectionTitles = Object.keys(dropdownContent).filter(
     (key) => key !== 'section'
@@ -20,6 +24,10 @@ const NavigationDropdown = ({ dropdownContent }: Props): JSX.Element => {
     return 'kid';
   };
 
+  if (sectionName === 'most wanted') {
+    sectionName = 'tmw';
+  }
+
   return (
     <Styled.Container>
       <Styled.List>
@@ -27,7 +35,10 @@ const NavigationDropdown = ({ dropdownContent }: Props): JSX.Element => {
           <Styled.ListItem key={section}>
             <SectionHeader headerText={section + `'s`} />
             {dropdownContent[mapSectionToContent(section)].map((brand, id) => (
-              <RouterLink key={id} href={`/${section}/${brand}`}>
+              <RouterLink
+                key={id}
+                href={`/products/${sectionName}/${section.toLowerCase()}/${brand.toLowerCase()}`}
+              >
                 {brand}
               </RouterLink>
             ))}
