@@ -44,8 +44,8 @@ const HorizontalCard = ({
           <NextImage
             src={isHovering ? firstImage : secondImage}
             alt={`${brandName} ${productModel}`}
-            height={80}
-            width={80}
+            height={90}
+            width={100}
             objectFit="contain"
             className="card-img"
           />

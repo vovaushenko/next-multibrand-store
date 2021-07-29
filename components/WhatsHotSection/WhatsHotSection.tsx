@@ -19,7 +19,7 @@ const WhatsHot = ({ products }: Props): JSX.Element => {
   return (
     <Styled.Wrapper>
       <Container>
-        <PageHeader headerText={`What's hot`} />
+        <PageHeader headerText={`What's hot! 🔥`} />
         <Styled.GridContainer>
           {products.map((product) => (
             <HorizontalCard
