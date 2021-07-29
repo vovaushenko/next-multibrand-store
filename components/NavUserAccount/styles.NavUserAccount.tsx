@@ -30,3 +30,5 @@ export const AccountButton = styled.button`
     }
   }
 `;
+
+export const ModalContentWrapper = styled.div``;

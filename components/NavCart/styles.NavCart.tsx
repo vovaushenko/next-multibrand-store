@@ -21,3 +21,5 @@ export const CartButton = styled.button`
     font-weight: 600;
   }
 `;
+
+export const ModalContentWrap = styled.div``;
