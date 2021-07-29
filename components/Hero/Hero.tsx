@@ -1,12 +1,18 @@
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import Container from '../Container/Container';
 import * as Styled from './Hero.styles';
 
-type Props = {
+interface HighlightedSneaker {
   imgSrc: string;
   sneakerModel: string;
   sneakerName: string;
+  sneakerLogoGradient: string;
+}
+
+type Props = {
+  highlightedSneakers: HighlightedSneaker[];
 };
 /**
  * Hero Component
@@ -16,7 +22,22 @@ type Props = {
  *@param {string} sneakerName - name of highlighted sneaker model
  *@returns {JSX.Element} - Rendered Hero component
  */
-const Hero = ({ imgSrc, sneakerModel, sneakerName }: Props): JSX.Element => {
+const Hero = ({ highlightedSneakers }: Props): JSX.Element => {
+  const [id, setId] = useState(0);
+
+  const nextSneaker = () => {
+    let newId = id + 1;
+    if (newId >= highlightedSneakers.length) newId = 0;
+    setId(newId);
+  };
+  const previousSneaker = () => {
+    let newId = id - 1;
+    if (newId < 0) newId = highlightedSneakers.length - 1;
+    setId(newId);
+  };
+  const { sneakerModel, sneakerName, imgSrc, sneakerLogoGradient } =
+    highlightedSneakers[id];
+
   const [transition, setTransition] = useState<string>('');
   const [translateZ, setTranslateZ] = useState<string>('');
   const [headerTranslate, setHeaderTranslate] = useState<string>('');
@@ -33,20 +54,40 @@ const Hero = ({ imgSrc, sneakerModel, sneakerName }: Props): JSX.Element => {
     setTranslateZ('translateZ(0px) rotateZ(0deg)');
     setHeaderTranslate('translateZ(0px)');
   };
+
+  // this useEffect changes index of highlighted sneaker from "highlightedSneakers"
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setId((prev) => (prev + 1 >= highlightedSneakers.length ? 0 : prev + 1));
+    }, 7000);
+
+    return () => {
+      clearInterval(interval);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Styled.Container>
       <Container>
         <Styled.ImageWrap
+          key={id}
           transition={transition}
           translateZ={translateZ}
           onMouseEnter={handleAnimateIn}
           onMouseLeave={handleAnimateOut}
         >
           <Styled.Figcaption>
-            <Styled.Header headerTranslate={headerTranslate}>
+            <Styled.Header
+              headerTranslate={headerTranslate}
+              sneakerLogoGradient={sneakerLogoGradient}
+            >
               {sneakerModel}
             </Styled.Header>
-            <Styled.SubHeader headerTranslate={headerTranslate}>
+            <Styled.SubHeader
+              headerTranslate={headerTranslate}
+              sneakerLogoGradient={sneakerLogoGradient}
+            >
               {sneakerName}
             </Styled.SubHeader>
           </Styled.Figcaption>
@@ -58,8 +99,16 @@ const Hero = ({ imgSrc, sneakerModel, sneakerName }: Props): JSX.Element => {
             width={500}
             objectFit="contain"
             className="hero-image"
+            quality={90}
           />
         </Styled.ImageWrap>
+
+        <Styled.PrevSneaker onClick={previousSneaker}>
+          <MdKeyboardArrowLeft className="icon" />
+        </Styled.PrevSneaker>
+        <Styled.NextSneaker onClick={nextSneaker}>
+          <MdKeyboardArrowRight className="icon" />
+        </Styled.NextSneaker>
       </Container>
     </Styled.Container>
   );

@@ -8,10 +8,11 @@ const heroProps = {
   imgSrc: '/test.img',
   sneakerName: 'nike',
   sneakerModel: 'roche',
+  sneakerLogoGradient: 'test',
 };
 
 describe('Hero component', () => {
-  const wrapper = shallow(<Hero {...heroProps} />);
+  const wrapper = shallow(<Hero highlightedSneakers={[heroProps]} />);
   it('should render component with no errors', () => {
     expect(wrapper.length).toBe(1);
   });
