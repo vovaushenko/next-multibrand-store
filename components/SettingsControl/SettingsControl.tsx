@@ -8,6 +8,7 @@ import {
   MdWbSunny,
 } from 'react-icons/md';
 import { useActions } from '../../hooks/useActions';
+import ContactUs from '../ContactUs/ContactUs';
 import * as Styled from './styles.SettingsControl';
 
 /**
@@ -24,11 +25,18 @@ const SettingsControl = (): JSX.Element => {
     setIsSettingsShown((prev) => !prev);
   }, []);
 
-  const { changeTheme } = useActions();
+  const { changeTheme, openModal } = useActions();
 
   const toggleTheme = useCallback(() => {
     changeTheme();
   }, [changeTheme]);
+
+  const handleContactUs = useCallback(() => {
+    openModal({
+      modalYposition: window.scrollY,
+      modalContent: <ContactUs />,
+    });
+  }, []);
 
   return (
     <>
@@ -43,7 +51,7 @@ const SettingsControl = (): JSX.Element => {
           <Styled.SettingsOption>
             <MdWbSunny className="icon" />
           </Styled.SettingsOption>
-          <Styled.SettingsOption title="Contact us">
+          <Styled.SettingsOption title="Contact us" onClick={handleContactUs}>
             <MdSms className="icon" />
           </Styled.SettingsOption>
           <Styled.SettingsOption title="Account">

@@ -4,6 +4,7 @@ export const Container = styled.div`
   position: relative;
   padding: 0.25rem 0;
   width: 100%;
+  height: 100%;
 `;
 
 export const Label = styled.label`

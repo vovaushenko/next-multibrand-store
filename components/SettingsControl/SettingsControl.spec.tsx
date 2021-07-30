@@ -1,10 +1,19 @@
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import React from 'react';
 import { BiCog } from 'react-icons/bi';
+import { withReduxAndStyledProviders } from '../../test/testUtils';
 import SettingsControl from './SettingsControl';
 
+/**
+ * Setup function for the component
+ * @returns {ShallowWrapper}
+ */
+const setup = () => {
+  return mount(withReduxAndStyledProviders(<SettingsControl />));
+};
+
 describe('Router Link', () => {
-  const wrap = shallow(<SettingsControl />);
+  const wrap = setup();
 
   it('should render without throwing an error', () => {
     expect(wrap);
