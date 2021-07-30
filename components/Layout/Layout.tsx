@@ -3,6 +3,7 @@ import React, { FC, ReactNode } from 'react';
 import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar';
 import NewsletterSignUp from '../NewsletterSignUp/NewsletterSignUp';
+import SettingsControl from '../SettingsControl/SettingsControl';
 
 interface Props {
   children: ReactNode;
@@ -22,10 +23,12 @@ const Layout: FC<Props> = ({ children, title }) => {
         <title>{title}</title>
       </Head>
       <Navbar />
+      <SettingsControl />
       {children}
       <NewsletterSignUp />
       <Footer />
     </>
   );
 };
+
 export default Layout;
