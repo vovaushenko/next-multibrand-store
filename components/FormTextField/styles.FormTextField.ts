@@ -23,12 +23,12 @@ export const Input = styled.input`
   display: block;
   height: 3rem;
   padding: 0.5rem;
-  border-radius: 5px;
   width: 100%;
   background: ${({ theme }) => theme.dashboardGrayCard};
   border: 1px solid ${({ theme }) => theme.borderGrayColor};
   color: ${({ theme }) => theme.primaryWhite};
   border-radius: ${({ theme }) => theme.borderRadius};
+  box-shadow: ${({ theme }) => theme.mode === 'light' && theme.boxShadow};
 
   &:default {
     background-color: red;

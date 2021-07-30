@@ -73,7 +73,8 @@ export const StyledButton = styled.button<Props>`
   background: transparent;
   border: 0;
   border-radius: ${({ theme }) => theme.borderRadius};
-  color: ${({ theme }) => theme.primaryWhite};
+  color: ${({ theme }) =>
+    theme.mode === 'dark' ? theme.primaryWhite : theme.secondaryBg};
   cursor: pointer;
   outline: none;
   & > span {

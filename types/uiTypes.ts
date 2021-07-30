@@ -1,4 +1,5 @@
 export interface UiActionsState {
+  theme: 'dark' | 'light';
   isModalOpen: boolean;
   modalYposition: number;
   modalContent: React.ReactNode | null;
@@ -7,6 +8,9 @@ export interface UiActionsState {
 export enum UiActionTypes {
   SET_MODAL_OPEN = 'SET_MODAL_OPEN',
   SET_MODAL_CLOSED = 'SET_MODAL_CLOSED',
+
+  CHANGE_THEME = 'CHANGE_THEME',
+  THEME_WAS_CHANGED = 'THEME_WAS_CHANGED',
 }
 
 interface OpenModalAction {
@@ -17,4 +21,19 @@ interface CloseModalAction {
   type: UiActionTypes.SET_MODAL_CLOSED;
 }
 
-export type UiAction = OpenModalAction | CloseModalAction;
+/**
+ * Theme Action Creators
+ */
+
+interface ChangeThemeAction {
+  type: UiActionTypes.CHANGE_THEME;
+}
+interface ThemeWasChangedAction {
+  type: UiActionTypes.THEME_WAS_CHANGED;
+}
+
+export type UiAction =
+  | OpenModalAction
+  | CloseModalAction
+  | ChangeThemeAction
+  | ThemeWasChangedAction;

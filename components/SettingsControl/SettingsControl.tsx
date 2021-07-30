@@ -7,6 +7,7 @@ import {
   MdSms,
   MdWbSunny,
 } from 'react-icons/md';
+import { useActions } from '../../hooks/useActions';
 import * as Styled from './styles.SettingsControl';
 
 /**
@@ -23,6 +24,12 @@ const SettingsControl = (): JSX.Element => {
     setIsSettingsShown((prev) => !prev);
   }, []);
 
+  const { changeTheme } = useActions();
+
+  const toggleTheme = useCallback(() => {
+    changeTheme();
+  }, [changeTheme]);
+
   return (
     <>
       <Styled.Container onClick={handleShowSettings} title="Settings">
@@ -30,7 +37,7 @@ const SettingsControl = (): JSX.Element => {
       </Styled.Container>
       {isSettingsShown && (
         <Styled.SettingsContainer>
-          <Styled.SettingsOption title="Change Theme">
+          <Styled.SettingsOption title="Change Theme" onClick={toggleTheme}>
             <MdBrightness6 className="icon" />
           </Styled.SettingsOption>
           <Styled.SettingsOption>

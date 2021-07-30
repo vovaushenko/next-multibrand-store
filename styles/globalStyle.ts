@@ -76,6 +76,6 @@ button, input, a {
   
 }
 ::-webkit-scrollbar-thumb {
-  background:#ffc130;
+  background:${({ theme }) => theme.primaryGolden};
 }
  `;

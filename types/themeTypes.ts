@@ -8,6 +8,7 @@ interface media {
 
 declare module 'styled-components' {
   export interface DefaultTheme {
+    mode: 'dark' | 'light';
     primaryBg: string;
     secondaryBg: string;
     secondaryBgLighter: string;
@@ -29,6 +30,7 @@ declare module 'styled-components' {
     selectedOutline: string;
     blackToGrayGradient: string;
     grayToBlackGradient: string;
+    boxShadow: string;
     media: media;
   }
 }

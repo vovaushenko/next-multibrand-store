@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   position: relative;
+  box-shadow: ${({ theme }) => theme.boxShadow};
+  border-radius: 1rem;
 `;
 
 export const Form = styled.form`
@@ -32,6 +34,7 @@ export const SubmitButton = styled.button`
 
   .search-icon {
     font-size: 1.25rem;
+    color: ${({ theme }) => theme.primaryBg};
   }
 `;
 

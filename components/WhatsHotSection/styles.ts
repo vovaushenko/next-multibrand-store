@@ -16,4 +16,5 @@ export const GridContainer = styled.section`
   background-image: ${({ theme }) => theme.blackToGrayGradient};
   border-radius: ${({ theme }) => theme.borderRadius};
   box-shadow: 0 0 12px ${({ theme }) => theme.borderGrayColor};
+  box-shadow: ${({ theme }) => theme.mode === 'light' && theme.boxShadow};
 `;

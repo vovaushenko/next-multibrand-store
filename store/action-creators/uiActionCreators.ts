@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
+import { Dispatch } from 'redux';
 import { UiAction, UiActionTypes } from '../../types/uiTypes';
+import { State } from '../reducers';
 /**
  * @function openModal
  * @param {number} modalYposition equals window.scrollY - used to absolutely position a Modal
@@ -20,3 +22,21 @@ export const openModal = (modalContent: {
 export const closeModal = (): UiAction => ({
   type: UiActionTypes.SET_MODAL_CLOSED,
 });
+
+/**
+ *@UI async action creator, will dispatch action to change color theme and persist this change to localStorage
+ *@function changeTheme
+ *@returns {undefined}
+ */
+export const changeTheme =
+  () =>
+  async (
+    dispatch: Dispatch<UiAction>,
+    getState: () => State
+  ): Promise<void> => {
+    dispatch({ type: UiActionTypes.CHANGE_THEME });
+
+    localStorage.setItem('theme', JSON.stringify(getState().ui.theme));
+
+    dispatch({ type: UiActionTypes.THEME_WAS_CHANGED });
+  };
