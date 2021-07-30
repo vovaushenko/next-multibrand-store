@@ -28,7 +28,6 @@ export const Input = styled.input`
   border: 1px solid ${({ theme }) => theme.borderGrayColor};
   color: ${({ theme }) => theme.primaryWhite};
   border-radius: ${({ theme }) => theme.borderRadius};
-  box-shadow: ${({ theme }) => theme.mode === 'light' && theme.boxShadow};
 
   &:default {
     background-color: red;

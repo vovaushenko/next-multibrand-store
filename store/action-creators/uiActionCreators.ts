@@ -36,7 +36,7 @@ export const changeTheme =
   ): Promise<void> => {
     dispatch({ type: UiActionTypes.CHANGE_THEME });
 
-    localStorage.setItem('theme', JSON.stringify(getState().ui.theme));
+    localStorage.setItem('theme', getState().ui.theme);
 
     dispatch({ type: UiActionTypes.THEME_WAS_CHANGED });
   };

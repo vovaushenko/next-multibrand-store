@@ -49,8 +49,8 @@ export const secondaryTheme: DefaultTheme = {
   secondaryBg: '#ffffff',
   secondaryBgLighter: '#4BB543',
   secondaryBgLightest: '#444444',
-  primaryGolden: '#475be3',
-  secondaryGolden: '#475be3',
+  primaryGolden: '#ffa500',
+  secondaryGolden: '#ffa500',
   primaryWhite: '#343239',
   primaryRed: '#ff0000',
   darkGray: '#8f8f8f',
@@ -74,8 +74,8 @@ export const secondaryTheme: DefaultTheme = {
   grayToBlackGradient: `linear-gradient(
     180deg,
     #ffffff 35.5%,
-    #9a9696 50%,
-    #ffffff 78.6%
+    #f4f4f8 50%,
+    #f4f4f8 78.6%
   )`,
   maxWidth: '1500px',
   boxShadow: '0 0 10px rgb(0 0 0 / 15%), 0 3px 3px rgb(0 0 0 / 15%)',
@@ -92,3 +92,6 @@ export const secondaryTheme: DefaultTheme = {
 // #151939
 // #475be3
 //Text color ##343239
+
+// #002f34
+// #

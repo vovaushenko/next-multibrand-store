@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   position: relative;
-  box-shadow: ${({ theme }) => theme.boxShadow};
   border-radius: 1rem;
 `;
 
@@ -16,7 +15,8 @@ export const Input = styled.input`
   border: none;
   appearance: none;
   &::placeholder {
-    color: ${({ theme }) => theme.primaryBg};
+    color: ${({ theme }) =>
+      theme.mode === 'dark' ? theme.primaryBg : theme.primaryWhite};
     font-size: 1rem;
   }
   border-radius: 0.5rem 0 0 0.5rem;

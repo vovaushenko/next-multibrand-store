@@ -3,16 +3,20 @@ import { UiAction, UiActionsState, UiActionTypes } from '../../types/uiTypes';
  * @method getThemeFromLocalStorage
  * @returns {'dark' | 'light'} - initial state for UI reducer theme.
  */
+//TODO: fix server-side issue with themes
 const getThemeFromLocalStorage = (): 'dark' | 'light' => {
   if (typeof window !== 'undefined') {
     const persistedTheme = localStorage.getItem('theme');
-    if (persistedTheme) return JSON.parse(persistedTheme);
+    console.log(persistedTheme);
+    if (persistedTheme) {
+      return persistedTheme as 'dark' | 'light';
+    }
   }
   return 'dark';
 };
 
 const initialState: UiActionsState = {
-  theme: 'light',
+  theme: 'dark',
   isModalOpen: false,
   modalYposition: 0,
   modalContent: null,
