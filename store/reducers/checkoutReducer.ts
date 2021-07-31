@@ -49,10 +49,10 @@ export const checkoutReducer = (
       return { ...state, isLoading: true };
 
     case CheckoutActionTypes.PAYMENT_WAS_SUCCESSFUL:
-      return { ...state, isPaid: action.payload };
+      return { ...state, isLoading: false, isPaid: action.payload };
 
     case CheckoutActionTypes.PAYMENT_WAS_DENIED:
-      return { ...state, error: action.payload };
+      return { ...state, isLoading: false, error: action.payload };
 
     default:
       return state;

@@ -46,7 +46,7 @@ export const recentlyViewedProductsReducer = (
       return { ...state, isLoading: true };
 
     case RecentlyViewedProductActionTypes.RECENTLY_VIEWED_PRODUCTS_DID_LOAD:
-      return { ...state, viewedProducts: action.payload };
+      return { ...state, isLoading: false, viewedProducts: action.payload };
 
     default:
       return state;
