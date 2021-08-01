@@ -9,6 +9,16 @@ export const initialReduxStore: LocalRootState = {
     isUpdating: false,
     isUpdated: false,
     isCreated: false,
+    clients: [
+      {
+        _id: '123',
+        email: 'test@gmail.com',
+        name: 'john',
+        password: '12345',
+        role: 'user',
+        avatar: { url: 'test.jpg', public_id: 'testID' },
+      },
+    ],
   },
   products: {
     products: [
@@ -68,17 +78,17 @@ export const initialReduxStore: LocalRootState = {
           {
             _id: '60edd01c01d3ca10f5eafa4b',
             public_id: 'sneaker-maniacs/products/ofml12qnkwlrdvlofwl5',
-            url: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626198038/sneaker-maniacs/products/ofml12qnkwlrdvlofwl5.png',
+            url: '/vovaushenko/image/upload/v1626198038/sneaker-maniacs/products/ofml12qnkwlrdvlofwl5.png',
           },
           {
             _id: '60edd01c01d3ca10f5eafa4c',
             public_id: 'sneaker-maniacs/products/rr3ivdk0o7vvwd1qb1wg',
-            url: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626198041/sneaker-maniacs/products/rr3ivdk0o7vvwd1qb1wg.png',
+            url: '/vovaushenko/image/upload/v1626198041/sneaker-maniacs/products/rr3ivdk0o7vvwd1qb1wg.png',
           },
           {
             _id: '60edd01c01d3ca10f5eafa4d',
             public_id: 'sneaker-maniacs/products/thypql9jsyvgyie0qglr',
-            url: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626198043/sneaker-maniacs/products/thypql9jsyvgyie0qglr.png',
+            url: '/vovaushenko/image/upload/v1626198043/sneaker-maniacs/products/thypql9jsyvgyie0qglr.png',
           },
         ],
         model: 'Yeezy 500',
@@ -97,12 +107,12 @@ export const initialReduxStore: LocalRootState = {
         {
           _id: '60ec4beb182a728b9d356c45',
           public_id: 'sneaker-maniacs/products/cljhv7wwz3va5rg5pilr',
-          url: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626098663/sneaker-maniacs/products/cljhv7wwz3va5rg5pilr.png',
+          url: '/vovaushenko/image/upload/v1626098663/sneaker-maniacs/products/cljhv7wwz3va5rg5pilr.png',
         },
         {
           _id: '60ec4beb182a728b9d356c46',
           public_id: 'sneaker-maniacs/products/cr1ter0wc7y4mtzjli8z',
-          url: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626098666/sneaker-maniacs/products/cr1ter0wc7y4mtzjli8z.png',
+          url: '/vovaushenko/image/upload/v1626098666/sneaker-maniacs/products/cr1ter0wc7y4mtzjli8z.png',
         },
       ],
       model: 'Air Vapormax Plus',
@@ -128,7 +138,7 @@ export const initialReduxStore: LocalRootState = {
           {
             _id: '60ec4b0d182a728b9d356c35',
             public_id: 'sneaker-maniacs/products/cummusiuf80rolweuzjs',
-            url: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626098444/sneaker-maniacs/products/cummusiuf80rolweuzjs.png',
+            url: '/vovaushenko/image/upload/v1626098444/sneaker-maniacs/products/cummusiuf80rolweuzjs.png',
           },
         ],
         model: 'VII (7) Retro',
@@ -146,12 +156,12 @@ export const initialReduxStore: LocalRootState = {
           {
             _id: '60ec4beb182a728b9d356c45',
             public_id: 'sneaker-maniacs/products/cljhv7wwz3va5rg5pilr',
-            url: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626098663/sneaker-maniacs/products/cljhv7wwz3va5rg5pilr.png',
+            url: '/vovaushenko/image/upload/v1626098663/sneaker-maniacs/products/cljhv7wwz3va5rg5pilr.png',
           },
           {
             _id: '60ec4beb182a728b9d356c46',
             public_id: 'sneaker-maniacs/products/cr1ter0wc7y4mtzjli8z',
-            url: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626098666/sneaker-maniacs/products/cr1ter0wc7y4mtzjli8z.png',
+            url: '/vovaushenko/image/upload/v1626098666/sneaker-maniacs/products/cr1ter0wc7y4mtzjli8z.png',
           },
         ],
         model: 'Air Vapormax Plus',
@@ -169,7 +179,7 @@ export const initialReduxStore: LocalRootState = {
           {
             _id: '60ed38efcc67692e872368ae',
             public_id: 'sneaker-maniacs/products/x5wvjejbjpyrbmrxv7pq',
-            url: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626159343/sneaker-maniacs/products/x5wvjejbjpyrbmrxv7pq.png',
+            url: '/vovaushenko/image/upload/v1626159343/sneaker-maniacs/products/x5wvjejbjpyrbmrxv7pq.png',
           },
         ],
         model: 'Air Jordan 6 Retro SP Travis Scott',
@@ -187,12 +197,12 @@ export const initialReduxStore: LocalRootState = {
           {
             _id: '60eee93bf6551d566f99253e',
             public_id: 'sneaker-maniacs/products/dxskvzzxt3wgeisai9wi',
-            url: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626270008/sneaker-maniacs/products/dxskvzzxt3wgeisai9wi.png',
+            url: '/vovaushenko/image/upload/v1626270008/sneaker-maniacs/products/dxskvzzxt3wgeisai9wi.png',
           },
           {
             _id: '60eee93bf6551d566f99253f',
             public_id: 'sneaker-maniacs/products/xwakwmjm1n9jcimi6efz',
-            url: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626270010/sneaker-maniacs/products/xwakwmjm1n9jcimi6efz.png',
+            url: '/vovaushenko/image/upload/v1626270010/sneaker-maniacs/products/xwakwmjm1n9jcimi6efz.png',
           },
         ],
         model: 'OG Travis Scott',
@@ -211,12 +221,12 @@ export const initialReduxStore: LocalRootState = {
           {
             _id: '60ed779ff236a82619a8002f',
             public_id: 'sneaker-maniacs/products/miptshnlp3oexshskdj6',
-            url: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626175387/sneaker-maniacs/products/miptshnlp3oexshskdj6.png',
+            url: '/vovaushenko/image/upload/v1626175387/sneaker-maniacs/products/miptshnlp3oexshskdj6.png',
           },
           {
             _id: '60ed779ff236a82619a80030',
             public_id: 'sneaker-maniacs/products/whgljjbwwrms4ho0ee3x',
-            url: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626175391/sneaker-maniacs/products/whgljjbwwrms4ho0ee3x.png',
+            url: '/vovaushenko/image/upload/v1626175391/sneaker-maniacs/products/whgljjbwwrms4ho0ee3x.png',
           },
         ],
         model: 'Pharrell Williams Solar HU Glide',
@@ -235,7 +245,7 @@ export const initialReduxStore: LocalRootState = {
           {
             _id: '60ed784ef236a82619a8003a',
             public_id: 'sneaker-maniacs/products/ffsscrm5ghlruvyugkdy',
-            url: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626175566/sneaker-maniacs/products/ffsscrm5ghlruvyugkdy.png',
+            url: '/vovaushenko/image/upload/v1626175566/sneaker-maniacs/products/ffsscrm5ghlruvyugkdy.png',
           },
         ],
         model: 'NMD_R1',
@@ -269,7 +279,7 @@ export const initialReduxStore: LocalRootState = {
           {
             _id: '60edd01c01d3ca10f5eafa4d',
             public_id: 'sneaker-maniacs/products/thypql9jsyvgyie0qglr',
-            url: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626198043/sneaker-maniacs/products/thypql9jsyvgyie0qglr.png',
+            url: '/vovaushenko/image/upload/v1626198043/sneaker-maniacs/products/thypql9jsyvgyie0qglr.png',
           },
         ],
         model: 'Yeezy 500',
@@ -337,6 +347,7 @@ export const initialReduxStore: LocalRootState = {
     isModalOpen: false,
     modalYposition: 0,
     modalContent: null,
+    theme: 'dark',
   },
   auth: {
     user: null,
@@ -596,7 +607,7 @@ export const initialReduxStore: LocalRootState = {
             brand: 'Adidas',
             model: 'Yeezy 500 (Enflame)',
             size: '10.5',
-            img: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626269121/sneaker-maniacs/products/fatvqe7fmnjk26efvqwh.png',
+            img: '/vovaushenko/image/upload/v1626269121/sneaker-maniacs/products/fatvqe7fmnjk26efvqwh.png',
             price: 300,
           },
           {
@@ -604,7 +615,7 @@ export const initialReduxStore: LocalRootState = {
             brand: 'Adidas',
             model: 'Yeezy 500',
             size: '11',
-            img: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626198036/sneaker-maniacs/products/xmh4goid166sizjv83b1.png',
+            img: '/vovaushenko/image/upload/v1626198036/sneaker-maniacs/products/xmh4goid166sizjv83b1.png',
             price: 550,
           },
         ],
@@ -636,7 +647,7 @@ export const initialReduxStore: LocalRootState = {
             brand: 'Adidas',
             model: 'Yeezy 500 (Enflame)',
             size: '10.5',
-            img: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626269121/sneaker-maniacs/products/fatvqe7fmnjk26efvqwh.png',
+            img: '/vovaushenko/image/upload/v1626269121/sneaker-maniacs/products/fatvqe7fmnjk26efvqwh.png',
             price: 300,
           },
           {
@@ -644,7 +655,7 @@ export const initialReduxStore: LocalRootState = {
             brand: 'Adidas',
             model: 'Yeezy 500',
             size: '11',
-            img: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626198036/sneaker-maniacs/products/xmh4goid166sizjv83b1.png',
+            img: '/vovaushenko/image/upload/v1626198036/sneaker-maniacs/products/xmh4goid166sizjv83b1.png',
             price: 550,
           },
           {
@@ -652,7 +663,7 @@ export const initialReduxStore: LocalRootState = {
             brand: 'Air Jordan',
             model: 'OG Travis Scott',
             size: '11',
-            img: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626270008/sneaker-maniacs/products/dxskvzzxt3wgeisai9wi.png',
+            img: '/vovaushenko/image/upload/v1626270008/sneaker-maniacs/products/dxskvzzxt3wgeisai9wi.png',
             price: 1200,
           },
           {
@@ -660,7 +671,7 @@ export const initialReduxStore: LocalRootState = {
             brand: 'Nike',
             model: 'Air Vapormax Plus',
             size: '7.5',
-            img: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626098663/sneaker-maniacs/products/cljhv7wwz3va5rg5pilr.png',
+            img: '/vovaushenko/image/upload/v1626098663/sneaker-maniacs/products/cljhv7wwz3va5rg5pilr.png',
             price: 270,
           },
           {
@@ -668,7 +679,7 @@ export const initialReduxStore: LocalRootState = {
             brand: 'Air Jordan',
             model: 'VII (7) Retro',
             size: '10.5',
-            img: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626098444/sneaker-maniacs/products/cummusiuf80rolweuzjs.png',
+            img: '/vovaushenko/image/upload/v1626098444/sneaker-maniacs/products/cummusiuf80rolweuzjs.png',
             price: 399,
           },
         ],
@@ -700,7 +711,7 @@ export const initialReduxStore: LocalRootState = {
             brand: 'Adidas',
             model: 'Yeezy 500 (Enflame)',
             size: '10.5',
-            img: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626269121/sneaker-maniacs/products/fatvqe7fmnjk26efvqwh.png',
+            img: '/vovaushenko/image/upload/v1626269121/sneaker-maniacs/products/fatvqe7fmnjk26efvqwh.png',
             price: 300,
           },
           {
@@ -708,7 +719,7 @@ export const initialReduxStore: LocalRootState = {
             brand: 'Air Jordan',
             model: 'VII (7) Retro',
             size: '10.5',
-            img: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626098444/sneaker-maniacs/products/cummusiuf80rolweuzjs.png',
+            img: '/vovaushenko/image/upload/v1626098444/sneaker-maniacs/products/cummusiuf80rolweuzjs.png',
             price: 399,
           },
         ],
@@ -740,7 +751,7 @@ export const initialReduxStore: LocalRootState = {
             brand: 'Adidas',
             model: 'NMD_XR1',
             size: '12',
-            img: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626270276/sneaker-maniacs/products/jgsp889cuc7hg95xrhxk.png',
+            img: '/vovaushenko/image/upload/v1626270276/sneaker-maniacs/products/jgsp889cuc7hg95xrhxk.png',
             price: 190,
           },
           {
@@ -748,7 +759,7 @@ export const initialReduxStore: LocalRootState = {
             brand: 'Adidas',
             model: 'Pharrell Williams Solar HU Glide',
             size: '7',
-            img: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626175387/sneaker-maniacs/products/miptshnlp3oexshskdj6.png',
+            img: '/vovaushenko/image/upload/v1626175387/sneaker-maniacs/products/miptshnlp3oexshskdj6.png',
             price: 320,
           },
         ],

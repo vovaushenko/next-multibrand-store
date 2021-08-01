@@ -1,10 +1,10 @@
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import 'jest-styled-components';
 import React from 'react';
 import NavUserAccount from './NavUserAccount';
 
 describe('Navbar Header User account component', () => {
-  const wrapper = shallow(<NavUserAccount />);
+  const wrapper = mount(<NavUserAccount />);
 
   it('should render with no errors', () => {
     expect(wrapper);

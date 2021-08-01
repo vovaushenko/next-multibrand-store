@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { AnyAction, createStore, Store } from 'redux';
+import { AnyAction, applyMiddleware, createStore, Store } from 'redux';
+import thunk from 'redux-thunk';
 import { ThemeProvider } from 'styled-components';
 import { reducer } from '../store/reducers';
 import { LocalRootState } from '../store/reducers/index';
@@ -16,7 +17,8 @@ import { initialReduxStore } from './initialReduxStore';
 export const storeFactory = (
   initialState: LocalRootState
 ): Store<LocalRootState, AnyAction> => {
-  return createStore(reducer, initialState);
+  const middlewares = [thunk];
+  return createStore(reducer, initialState, applyMiddleware(...middlewares));
 };
 
 /**

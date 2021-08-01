@@ -1,12 +1,21 @@
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import 'jest-styled-components';
 import React from 'react';
+import { withReduxAndStyledProviders } from '../../test/testUtils';
 import DashboardCard from '../DashboardCard/DashboardCard';
 import Dashboard from './Dashboard';
 import * as Styled from './styles.Dashboard';
 
+/**
+ * Setup function for the component
+ * @returns {ShallowWrapper}
+ */
+const setup = () => {
+  return mount(withReduxAndStyledProviders(<Dashboard />));
+};
+
 describe('Description Card', () => {
-  const wrap = shallow(<Dashboard />);
+  const wrap = setup();
 
   it('should render without throwing an error', () => {
     expect(wrap);
@@ -14,7 +23,7 @@ describe('Description Card', () => {
   });
 
   it('should render all rows', () => {
-    const topRow = wrap.find(Styled.Row);
+    const topRow = wrap.find(Styled.TopRow);
     expect(topRow.length).toBe(1);
     const midRow = wrap.find(Styled.MidRow);
     expect(midRow.length).toBe(1);
