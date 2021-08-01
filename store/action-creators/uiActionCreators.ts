@@ -28,9 +28,8 @@ export const closeModal = (): UiAction => ({
  *@function changeTheme
  *@returns {undefined}
  */
-export const changeTheme =
-  () =>
-  async (
+export const changeTheme = () => {
+  return async (
     dispatch: Dispatch<UiAction>,
     getState: () => State
   ): Promise<void> => {
@@ -40,3 +39,4 @@ export const changeTheme =
 
     dispatch({ type: UiActionTypes.THEME_WAS_CHANGED });
   };
+};

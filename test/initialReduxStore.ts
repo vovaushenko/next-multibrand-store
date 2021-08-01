@@ -359,19 +359,10 @@ export const initialReduxStore: LocalRootState = {
     isUpdated: false,
   },
   cart: {
-    cart: [
-      {
-        productID: '60eeea4af6551d566f992547',
-        brand: 'Adidas',
-        model: 'NMD_XR1',
-        price: 190,
-        productImg: '/public/images/og-travis.png',
-        size: '7',
-      },
-    ],
+    cart: [],
     discount: 0,
-    total: 190,
-    productAmount: 1,
+    total: 0,
+    productAmount: 0,
   },
   recentlyViewed: {
     viewedProducts: [
