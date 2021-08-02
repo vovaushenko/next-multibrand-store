@@ -242,3 +242,16 @@ export interface Order {
   purchase: Purchase[];
   paidAt: string;
 }
+
+/**
+ * Review Interface
+ *@interface
+ */
+export interface Review {
+  productID: string;
+  clientName: string;
+  clientEmail: string;
+  title: string;
+  rating: number;
+  reviewContent: string;
+}

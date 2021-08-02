@@ -6,7 +6,7 @@ import { NextApiRequestWithAuth } from '../types/authTypes';
 /**
  * Create new order
  * @POST /api/orders
- * @function registerUser
+ * @function createNewOrder
  * @param {NextApiRequestWithAuth} req  Next API request with authenticated user
  * @param {Next.Response} res  Next API response
  * @return {undefined}
