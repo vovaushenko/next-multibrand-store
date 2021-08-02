@@ -1,12 +1,21 @@
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import 'jest-styled-components';
 import React from 'react';
+import { withReduxAndStyledProviders } from '../../test/testUtils';
 import FormTextField from '../FormTextField/FormTextField';
 import Rating from '../Rating/Rating';
 import ReviewForm from './ReviewForm';
 
+/**
+ * Setup function for the component
+ * @returns {ShallowWrapper}
+ */
+const setup = () => {
+  return mount(withReduxAndStyledProviders(<ReviewForm />));
+};
+
 describe('Review Form', () => {
-  const wrap = shallow(<ReviewForm />);
+  const wrap = setup();
 
   it('should render without throwing an error', () => {
     expect(wrap);

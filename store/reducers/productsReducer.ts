@@ -19,8 +19,6 @@ const initialState: ProductsState = {
   error: null,
 };
 
-//TODO: proper documentation after testing
-//TODO: write tests
 export const productsReducer = (
   state = initialState,
   action: ProductsAction

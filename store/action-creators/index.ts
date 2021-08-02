@@ -5,6 +5,7 @@ import * as CheckoutActionCreators from './checkoutActionCreators';
 import * as FilterActionCreators from './filterActionCreators';
 import * as OrdersActionCreators from './orderActionCreators';
 import * as ProductsActionCreators from './productActionCreators';
+import * as ReviewsActionCreators from './reviewActionCreators';
 import * as SortActionCreators from './sortActionCreators';
 import * as UIactionCreators from './uiActionCreators';
 /**
@@ -22,4 +23,5 @@ export const CombinedActionCreators = {
   ...SortActionCreators,
   ...CheckoutActionCreators,
   ...OrdersActionCreators,
+  ...ReviewsActionCreators,
 };

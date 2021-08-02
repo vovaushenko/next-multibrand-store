@@ -5,6 +5,7 @@ import { AuthState } from '../../types/authReduxTypes';
 import { CartState } from '../../types/cartReduxTypes';
 import { OrdersState } from '../../types/orderTypes';
 import { ProductsState } from '../../types/productTypes';
+import { ReviewsState } from '../../types/reviewsTypes';
 import { UiActionsState } from '../../types/uiTypes';
 import { CheckoutState } from './../../types/checkoutTypes';
 import { RecentlyViewedProductsState } from './../../types/recentlyViewedProductsTypes';
@@ -15,6 +16,7 @@ import { checkoutReducer } from './checkoutReducer';
 import { ordersReducer } from './ordersReducer';
 import { productsReducer } from './productsReducer';
 import { recentlyViewedProductsReducer } from './recentlyViewedProducts';
+import { reviewsReducer } from './reviewsReducer';
 import { uiActionsReducer } from './uiActionsReducer';
 
 const rootReducer = combineReducers({
@@ -26,6 +28,7 @@ const rootReducer = combineReducers({
   recentlyViewed: recentlyViewedProductsReducer,
   checkout: checkoutReducer,
   orders: ordersReducer,
+  reviews: reviewsReducer,
 });
 
 export type State = {
@@ -37,6 +40,7 @@ export type State = {
   recentlyViewed: RecentlyViewedProductsState;
   checkout: CheckoutState;
   orders: OrdersState;
+  reviews: ReviewsState;
 };
 
 // https://stackoverflow.com/questions/64139344/how-to-use-typescript-next-redux-wrapper-getserversideprops

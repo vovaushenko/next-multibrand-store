@@ -760,6 +760,13 @@ export const initialReduxStore: LocalRootState = {
     isLoading: false,
     error: null,
   },
+
+  reviews: {
+    productReviews: [],
+    isLoading: false,
+    isReviewUploaded: false,
+    error: null,
+  },
 };
 
 export const mockProduct: Product = {
