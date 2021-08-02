@@ -11,7 +11,7 @@ export const testProductItem: Product = {
   model: 'Yeezy 500',
   price: 450,
   styleCode: 'f36640',
-  size: 10.5,
+  size: ['10.5'],
   description:
     'Developed by Kanye West, the Adidas Yeezy 500 is a sporty and stylish model. They are crafted with a combination of premium suede, leather, and mesh, feature an adiPRENE sole, piping details, pull tab, and a rubber outsole.',
   images: [
@@ -33,6 +33,7 @@ describe('Footer Social-links Section', () => {
       isDeleted={false}
       isLoading={false}
       deleteProduct={() => console.log('test')}
+      openModal={() => console.log('open')}
     />
   );
 
