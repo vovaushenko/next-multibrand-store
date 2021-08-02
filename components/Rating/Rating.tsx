@@ -7,7 +7,11 @@ import * as Styled from './styles.Rating';
  *@function Rating
  *@returns {JSX.Element} - Rendered Rating component
  */
-const Rating = (): JSX.Element => {
+export interface Props {
+  setClientRating: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const Rating = ({ setClientRating }: Props): JSX.Element => {
   const [rating, setRating] = useState(0);
 
   const generateRating = (): JSX.Element[] => {
@@ -21,18 +25,25 @@ const Rating = (): JSX.Element => {
     return stars;
   };
 
-  const handleClick = useCallback((id) => {
-    setRating(id + 1);
-  }, []);
+  const handleClick = useCallback(
+    (id) => {
+      setRating(id + 1);
+      setClientRating(id + 1);
+    },
+    [setClientRating]
+  );
 
   return (
-    <Styled.Container>
-      {generateRating().map((star, id) => (
-        <div key={id} onClick={() => handleClick(id)}>
-          {star}
-        </div>
-      ))}
-    </Styled.Container>
+    <>
+      <Styled.Rating>Rating</Styled.Rating>
+      <Styled.StarContainer>
+        {generateRating().map((star, id) => (
+          <Styled.Star key={id} onClick={() => handleClick(id)}>
+            {star}
+          </Styled.Star>
+        ))}
+      </Styled.StarContainer>
+    </>
   );
 };
 

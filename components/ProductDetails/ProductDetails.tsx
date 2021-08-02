@@ -34,7 +34,7 @@ const ProductDetails = ({ product }: Props): JSX.Element => {
       <Styled.Container>
         <Styled.LeftColumn>
           <ProductImageCard
-            images={images}
+            images={images && images}
             sneakerModel={`${brand} ${model}`}
           />
           <DescriptionCard description={description} />

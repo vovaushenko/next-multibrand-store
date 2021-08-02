@@ -42,7 +42,7 @@ export const CloseModalBtn = styled.button`
 
 export const Modal = styled.section`
   width: 90%;
-  max-width: 1000px;
+  max-width: 800px;
   margin: 0 auto;
 
   animation: ${slideInKeyframes} 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
