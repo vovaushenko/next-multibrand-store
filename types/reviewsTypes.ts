@@ -16,9 +16,9 @@ export interface ReviewsState {
  *@interface
  */
 export enum ReviewActionTypes {
-  LOAD_REVIEWS = 'LOAD_REVIEWS',
-  REVIEWS_DID_LOAD = 'REVIEWS_DID_LOAD',
-  REVIEWS_LOAD_ERROR = 'REVIEWS_LOAD_ERROR',
+  LOAD_PRODUCT_REVIEWS = 'LOAD_PRODUCT_REVIEWS',
+  PRODUCT_REVIEWS_DID_LOAD = 'PRODUCT_REVIEWS_DID_LOAD',
+  PRODUCT_REVIEWS_LOAD_ERROR = 'PRODUCT_REVIEWS_LOAD_ERROR',
 
   UPLOAD_PRODUCT_REVIEW = 'UPLOAD_PRODUCT_REVIEW',
   PRODUCT_REVIEW_WAS_UPLOADED = 'PRODUCT_REVIEW_WAS_UPLOADED',
@@ -30,6 +30,18 @@ export enum ReviewActionTypes {
 /**
  * PRODUCT REVIEWS Action interfaces
  */
+interface LoadProductReviewAction {
+  type: ReviewActionTypes.LOAD_PRODUCT_REVIEWS;
+}
+interface LoadProductReviewSuccessAction {
+  type: ReviewActionTypes.PRODUCT_REVIEWS_DID_LOAD;
+  payload: Review[];
+}
+interface LoadProductReviewErrorAction {
+  type: ReviewActionTypes.PRODUCT_REVIEWS_LOAD_ERROR;
+  payload: string;
+}
+
 interface UploadProductReviewAction {
   type: ReviewActionTypes.UPLOAD_PRODUCT_REVIEW;
 }
@@ -49,4 +61,7 @@ interface UploadProductReviewErrorAction {
 export type ReviewAction =
   | UploadProductReviewAction
   | UploadProductReviewSuccessAction
-  | UploadProductReviewErrorAction;
+  | UploadProductReviewErrorAction
+  | LoadProductReviewAction
+  | LoadProductReviewSuccessAction
+  | LoadProductReviewErrorAction;

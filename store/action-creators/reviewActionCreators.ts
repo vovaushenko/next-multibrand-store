@@ -29,3 +29,27 @@ export const uploadNewCustomerReview = (review: Review) => {
     }
   };
 };
+
+/**
+ *@Action creator, will dispatch action to load all product reviews from DB, also will dispatch error action if async operation fails
+ *@function uploadNewCustomerReview
+ *@param {string} productID - id of product
+ *@returns {function} - Redux thunk function
+ */
+export const loadProductReviews = (productID: string) => {
+  return async (dispatch: Dispatch<ReviewAction>): Promise<void> => {
+    dispatch({ type: ReviewActionTypes.LOAD_PRODUCT_REVIEWS });
+    try {
+      const { data } = await axios.get(`/api/reviews/${productID}`);
+      dispatch({
+        type: ReviewActionTypes.PRODUCT_REVIEWS_DID_LOAD,
+        payload: data.reviews,
+      });
+    } catch (error) {
+      dispatch({
+        type: ReviewActionTypes.PRODUCT_REVIEWS_LOAD_ERROR,
+        payload: error.response.data.error,
+      });
+    }
+  };
+};
