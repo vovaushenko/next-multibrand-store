@@ -11,7 +11,7 @@ export const CardContainer = styled.article`
   padding: 1.25rem;
   text-transform: capitalize;
 
-  h1 {
+  h2 {
     margin: 0;
   }
 
@@ -25,6 +25,16 @@ export const CardContainer = styled.article`
     }
   }
 `;
+
+export const StarsRating = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const NumberOfReviews = styled.p`
+  margin-left: 0.5rem;
+`;
+
 export const Price = styled.h4`
   color: ${({ theme }) => theme.secondaryGolden};
   font-size: 2rem;

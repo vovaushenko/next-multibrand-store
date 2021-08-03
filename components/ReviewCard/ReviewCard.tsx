@@ -40,6 +40,7 @@ const ReviewCard = (): JSX.Element => {
         </>
       ) : (
         <Styled.Reviews>
+          <CardHeader headerText="Reviews" />
           {productReviews.map((review, id) => (
             <CustomerReview key={id} {...review} />
           ))}

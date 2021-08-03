@@ -2,9 +2,12 @@ import NextLink from 'next/link';
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useActions } from '../../hooks/useActions';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { Department } from '../../types';
 import { CartItem } from '../../types/cartReduxTypes';
+import { getAverageRating } from '../../utils/helperFunctions';
 import Button from '../Button/Button';
+import FiveStars from '../FiveStars/FiveStars';
 import HR from '../HR/HR';
 import PageHeader from '../PageHeader/PageHeader';
 import SectionHeader from '../SectionHeader/SectionHeader';
@@ -45,6 +48,11 @@ const ProductDetailsCard = ({
   // By selecting some size, we will highlight it by adding outline
   // this selection is controlled through selectedSize/setSelectedSize
   const [selectedSize, setSelectedSize] = useState<number>(0);
+  // Get Reviews from global state
+  const { productReviews } = useTypedSelector((state) => state.reviews);
+
+  const averageProductRating = getAverageRating(productReviews);
+
   const handleSelect = (id: number) => setSelectedSize(id);
   // TODO:FIX TESTS and remove addToCart to Wrapper
   const { addToCart } = useActions();
@@ -66,10 +74,16 @@ const ProductDetailsCard = ({
   return (
     <Styled.CardContainer>
       <PageHeader headerText={`${brand} ${model}`} />
+      <Styled.StarsRating>
+        <FiveStars rating={averageProductRating} />
+        <Styled.NumberOfReviews>
+          ({productReviews && productReviews.length} reviews)
+        </Styled.NumberOfReviews>
+      </Styled.StarsRating>
       <Styled.Price>${price}</Styled.Price>
       <Styled.List>
-        <li>Style:{styleCode}</li>
-        <li>Colors:{colors && colors.join('/')}</li>
+        <li>Style: {styleCode}</li>
+        <li>Colors: {colors && colors.join('/')}</li>
       </Styled.List>
 
       <HR />

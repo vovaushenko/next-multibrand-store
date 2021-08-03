@@ -1,5 +1,5 @@
 import NextImage from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image } from '../../types';
 import * as Styled from './styles.ProductImageCard';
 
@@ -15,7 +15,7 @@ export interface Props {
 const ProductImageCard = ({ images, sneakerModel }: Props): JSX.Element => {
   // big image src will be controlled through local state
   const [bigImageSrc, setBigImageSrc] = useState<string>(
-    images && images[0].url
+    '/images/generic-sneaker.png'
   );
   // product list focus border will be also controlled here
   const [highlightedID, setHighlightedID] = useState<number>(0);
@@ -24,6 +24,10 @@ const ProductImageCard = ({ images, sneakerModel }: Props): JSX.Element => {
     setBigImageSrc(src);
     setHighlightedID(id);
   };
+
+  useEffect(() => {
+    setBigImageSrc(images && images[0].url);
+  }, []);
 
   return (
     <Styled.CardContainer>
@@ -49,7 +53,7 @@ const ProductImageCard = ({ images, sneakerModel }: Props): JSX.Element => {
           </Styled.ImageList>
           <Styled.BigImage>
             <NextImage
-              src={bigImageSrc}
+              src={bigImageSrc || images[0].url}
               height={350}
               width={350}
               alt={sneakerModel}

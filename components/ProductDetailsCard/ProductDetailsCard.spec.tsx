@@ -36,7 +36,7 @@ describe('Review Card', () => {
     expect(header.text()).toBe('$150');
   });
   it('should render specified product style code', () => {
-    expect(wrap.find('li').first().text()).toBe('Style:440888-600');
+    expect(wrap.find('li').first().text()).toBe('Style: 440888-600');
   });
   it('should render specified product style colors', () => {
     expect(wrap.find('li').last().text()).toBe('11.5');
