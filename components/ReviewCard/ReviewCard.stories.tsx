@@ -1,15 +1,13 @@
 import { Story } from '@storybook/react';
 import React from 'react';
-import ReviewCard, { Props } from './ReviewCard';
+import ReviewCard from './ReviewCard';
 
 export default {
   title: 'utility/Review Card',
   component: ReviewCard,
 };
 
-const Template: Story<Props> = (args) => <ReviewCard {...args} />;
+const Template: Story = (args) => <ReviewCard {...args} />;
 
 export const Primary = Template.bind({});
-Primary.args = {
-  review: 'No reviews yet',
-};
+Primary.args = {};

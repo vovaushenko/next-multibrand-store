@@ -254,4 +254,5 @@ export interface Review {
   title: string;
   rating: number;
   reviewContent: string;
+  createdAt: string;
 }

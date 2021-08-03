@@ -38,7 +38,7 @@ const ProductDetails = ({ product }: Props): JSX.Element => {
             sneakerModel={`${brand} ${model}`}
           />
           <DescriptionCard description={description} />
-          <ReviewCard review={'No reviews yet'} />
+          <ReviewCard />
         </Styled.LeftColumn>
 
         <Styled.RightColumn>

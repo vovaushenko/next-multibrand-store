@@ -2,15 +2,15 @@ import { mount } from 'enzyme';
 import 'jest-styled-components';
 import React from 'react';
 import { withReduxAndStyledProviders } from '../../test/testUtils';
+import CustomerReview from '../CustomerReview/CustomerReview';
 import ReviewCard from './ReviewCard';
-import * as Styled from './styles.ReviewCard';
 
 /**
  * Setup function for the component
  * @returns {mountWrapper}
  */
 const setup = () => {
-  return mount(withReduxAndStyledProviders(<ReviewCard review="tomato" />));
+  return mount(withReduxAndStyledProviders(<ReviewCard />));
 };
 
 describe('Review Card', () => {
@@ -22,7 +22,7 @@ describe('Review Card', () => {
   });
 
   it('should render specified product review', () => {
-    const price = wrap.find(Styled.Review);
-    expect(price.text()).toBe('tomato');
+    const reviews = wrap.find(CustomerReview);
+    expect(reviews.length).toBe(0);
   });
 });
