@@ -53,3 +53,27 @@ export const loadProductReviews = (productID: string) => {
     }
   };
 };
+
+/**
+ *@ADMIN feature
+ *@Action creator, will dispatch action to load ALL EXISTING  reviews from DB, also will dispatch error action if async operation fails
+ *@function loadAllReviews
+ *@returns {function} - Redux thunk function
+ */
+export const loadAllReviews = () => {
+  return async (dispatch: Dispatch<ReviewAction>): Promise<void> => {
+    dispatch({ type: ReviewActionTypes.LOAD_ALL_REVIEWS });
+    try {
+      const { data } = await axios.get(`/api/reviews/`);
+      dispatch({
+        type: ReviewActionTypes.ALL_REVIEWS_DID_LOAD,
+        payload: data.reviews,
+      });
+    } catch (error) {
+      dispatch({
+        type: ReviewActionTypes.ALL_REVIEWS_LOAD_ERROR,
+        payload: error.response.data.error,
+      });
+    }
+  };
+};
