@@ -1,7 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import nc from 'next-connect';
 import connectWithDB from '../../../config/connectWithDB';
-import { getAllProductReviews } from '../../../controllers/reviewController';
+import {
+  deleteCustomerReview,
+  getAllProductReviews,
+} from '../../../controllers/reviewController';
+import { authorizedRoles, isAuthenticatedUser } from '../../../middleware/auth';
 // import { isAuthenticatedUser } from '../../../middleware/auth';
 import { onError } from '../../../middleware/onError';
 
@@ -13,5 +17,9 @@ connectWithDB();
  *
  */
 handler.get(getAllProductReviews);
+
+handler
+  .use(isAuthenticatedUser, authorizedRoles('admin'))
+  .delete(deleteCustomerReview);
 
 export default handler;

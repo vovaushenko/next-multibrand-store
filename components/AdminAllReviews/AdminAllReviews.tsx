@@ -42,7 +42,10 @@ const AdminAllReviews = (): JSX.Element => {
   return (
     <Styled.Container>
       {allReviews.map((review, id) => (
-        <Styled.Review key={review.productID + id}>
+        <Styled.Review
+          key={review.productID + id}
+          onClick={() => showReviewDetails(review)}
+        >
           {/* REVIEWED/NOT REVIEWED BOX */}
           <Styled.StatWrapper>
             {review.isReviewed ? (
@@ -53,7 +56,7 @@ const AdminAllReviews = (): JSX.Element => {
             <p>{review.isReviewed ? 'Reviewed' : 'Not Reviewed'}</p>
           </Styled.StatWrapper>
           {/* SHOW DETAILS BOX */}
-          <Styled.StatWrapper onClick={() => showReviewDetails(review)}>
+          <Styled.StatWrapper>
             <MdZoomOutMap className="icon" />
             <p>Details</p>
           </Styled.StatWrapper>

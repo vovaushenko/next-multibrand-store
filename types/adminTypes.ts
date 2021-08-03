@@ -35,6 +35,14 @@ export enum AdminActionTypes {
   USERS_WERE_LOADED = 'USERS_WERE_LOADED',
   USERS_LOAD_ERROR = 'USERS_LOAD_ERROR',
 
+  MODERATE_REVIEW = 'MODERATE_REVIEW',
+  REVIEW_WAS_MODERATED = 'REVIEW_WAS_MODERATED',
+  REVIEW_MODERATION_ERROR = 'REVIEW_MODERATION_ERROR',
+
+  DELETE_REVIEW = 'DELETE_REVIEW',
+  REVIEW_WAS_DELETED = 'REVIEW_WAS_DELETED',
+  REVIEW_DELETE_ERROR = 'REVIEW_DELETE_ERROR',
+
   CLEAR_STATE = 'CLEAR_STATE',
 }
 
@@ -95,6 +103,32 @@ interface LoadUsersFailAction {
   payload: string;
 }
 /**
+ * Admin MODERATE REVIEW action interfaces
+ */
+interface ModerateReviewRequestAction {
+  type: AdminActionTypes.MODERATE_REVIEW;
+}
+interface ModerateReviewSuccessAction {
+  type: AdminActionTypes.REVIEW_WAS_MODERATED;
+  payload: boolean;
+}
+interface ModerateReviewFailAction {
+  type: AdminActionTypes.REVIEW_MODERATION_ERROR;
+  payload: string;
+}
+
+interface DeleteReviewRequestAction {
+  type: AdminActionTypes.DELETE_REVIEW;
+}
+interface DeleteReviewSuccessAction {
+  type: AdminActionTypes.REVIEW_WAS_DELETED;
+  payload: boolean;
+}
+interface DeleteReviewFailAction {
+  type: AdminActionTypes.REVIEW_DELETE_ERROR;
+  payload: string;
+}
+/**
  * Admin CLEAR state action interface
  */
 interface ClearStateAction {
@@ -118,4 +152,10 @@ export type AdminAction =
   | LoadUsersRequestAction
   | LoadUsersSuccessAction
   | LoadUsersFailAction
-  | UpdateProductFailAction;
+  | UpdateProductFailAction
+  | ModerateReviewRequestAction
+  | ModerateReviewSuccessAction
+  | ModerateReviewFailAction
+  | DeleteReviewRequestAction
+  | DeleteReviewSuccessAction
+  | DeleteReviewFailAction;

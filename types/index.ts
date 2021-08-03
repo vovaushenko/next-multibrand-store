@@ -248,6 +248,7 @@ export interface Order {
  *@interface
  */
 export interface Review {
+  _id?: string;
   productID: string;
   clientName: string;
   clientEmail: string;

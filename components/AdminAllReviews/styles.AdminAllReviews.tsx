@@ -7,6 +7,7 @@ export const Container = styled.section`
 `;
 
 export const Review = styled.article`
+  cursor: pointer;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;

@@ -6,7 +6,13 @@ import ErrorHandler from '../utils/errorHandler';
 /**
  * @EXPORTS
  */
-export { createNewReview, getAllProductReviews, getAllReviews };
+export {
+  createNewReview,
+  getAllProductReviews,
+  getAllReviews,
+  moderateReview,
+  deleteCustomerReview,
+};
 
 /**
  * Create new review
@@ -88,3 +94,57 @@ const getAllReviews = async (
     reviews: allProductReviews,
   });
 };
+
+/**
+ * @ADMIN
+ * Moderate a review
+ * @PUT /api/reviews/
+ * @function updateUserProfile
+ * @param {NextApiResponseWithAuth} req  Next API request with user info
+ * @param {Next.Response} res The Next response
+ * @return {undefined}
+ */
+const moderateReview = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> => {
+  const { reviewID } = req.body;
+
+  const foundReview: IReview = await Review.findById(reviewID);
+
+  foundReview.isReviewed = true;
+
+  await foundReview.save();
+
+  res.status(200).json({
+    success: true,
+  });
+};
+
+/**
+ * @ADMIN
+ * Delete a review
+ * @DELETE /api/reviews/:id
+ * @function deleteCustomerReview
+ * @param {NextApiRequest} req  Next API request with user info
+ * @param {Next.Response} res The Next response
+ * @return {undefined}
+ */
+const deleteCustomerReview = catchErrorsFrom(
+  async (req: NextApiRequest, res: NextApiResponse) => {
+    const foundReview: IReview = await Review.findById(req.query.id);
+
+    if (!foundReview) {
+      return new ErrorHandler(
+        `Review with the id ${req.query.id} does not exist`,
+        404
+      );
+    }
+
+    await foundReview.remove();
+
+    res.status(204).json({
+      success: true,
+    });
+  }
+);

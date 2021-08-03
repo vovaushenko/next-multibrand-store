@@ -7,7 +7,7 @@ import { UploadProduct } from './../../types/index';
  *@Admin async action creator, will dispatch action to save product in DB, also will dispatch error action if async operation fails
  *@function uploadNewProduct
  *@param {object} product - product to be saved in DB
- *@returns {undefined}
+ *@returns {function} - Redux thunk function
  */
 export const uploadNewProduct = (product: UploadProduct) => {
   return async (dispatch: Dispatch<AdminAction>): Promise<void> => {
@@ -34,6 +34,7 @@ export const uploadNewProduct = (product: UploadProduct) => {
  * @Admin async action creator, will dispatch action to delete product from DB, also will dispatch error action if async operation fails
  * @param {string} id - product id
  * @DELETE /api/products/:id
+ * @returns {function} - Redux thunk function
  */
 export const deleteProduct = (id: string) => {
   return async (dispatch: Dispatch<AdminAction>): Promise<void> => {
@@ -58,6 +59,7 @@ export const deleteProduct = (id: string) => {
  * @param {string} id - product id
  * @param {object} updatedProduct - new product details of type UploadProduct
  * @PUT /api/products/:id
+ * @returns {function} - Redux thunk function
  */
 export const updateProduct = (
   productId: string,
@@ -110,9 +112,59 @@ export const getAllClientsDetails = () => {
 };
 
 /**
+ * @Admin async action creator, will dispatch action to moderate a review, also will dispatch error action if async operation fails
+ * @param {string} reviewID - review id
+ * @PUT /api/products/
+ * @returns {function} - Redux thunk function
+ */
+export const moderateReview = (reviewID: string) => {
+  return async (dispatch: Dispatch<AdminAction>): Promise<void> => {
+    dispatch({ type: AdminActionTypes.MODERATE_REVIEW });
+    try {
+      const config = {
+        headers: { 'Content-Type': 'application/json' },
+      };
+      const { data } = await axios.put(`/api/reviews/`, { reviewID }, config);
+      dispatch({
+        type: AdminActionTypes.REVIEW_WAS_MODERATED,
+        payload: data.success,
+      });
+    } catch (error) {
+      dispatch({
+        type: AdminActionTypes.REVIEW_MODERATION_ERROR,
+        payload: error.response.data.error,
+      });
+    }
+  };
+};
+/**
+ * @Admin async action creator, will dispatch action to delete a review, also will dispatch error action if async operation fails
+ * @param {string} reviewID - review id
+ * @DELETE /api/products/
+ * @returns {function} - Redux thunk function
+ */
+export const deleteReview = (reviewID: string) => {
+  return async (dispatch: Dispatch<AdminAction>): Promise<void> => {
+    dispatch({ type: AdminActionTypes.DELETE_REVIEW });
+    try {
+      const { data } = await axios.delete(`/api/reviews/${reviewID}`);
+      dispatch({
+        type: AdminActionTypes.REVIEW_WAS_DELETED,
+        payload: data.success,
+      });
+    } catch (error) {
+      dispatch({
+        type: AdminActionTypes.REVIEW_DELETE_ERROR,
+        payload: error.response.data.error,
+      });
+    }
+  };
+};
+
+/**
  *@ADMIN async action creator, will clear state after successful||unsuccessful operations
  *@function clearStatusOfOperations
- *@returns {undefined}
+ *@returns {function} - Redux thunk function
  */
 export const clearStatusOfAdminOperations = () => {
   return async (dispatch: Dispatch<AdminAction>): Promise<void> => {

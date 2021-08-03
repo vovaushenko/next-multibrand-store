@@ -4,6 +4,7 @@ import connectWithDB from '../../../config/connectWithDB';
 import {
   createNewReview,
   getAllReviews,
+  moderateReview,
 } from '../../../controllers/reviewController';
 import { authorizedRoles, isAuthenticatedUser } from '../../../middleware/auth';
 import { onError } from '../../../middleware/onError';
@@ -18,6 +19,9 @@ connectWithDB();
 handler.post(createNewReview);
 
 //only admin users can get all reviews
-handler.use(isAuthenticatedUser, authorizedRoles('admin')).get(getAllReviews);
+handler
+  .use(isAuthenticatedUser, authorizedRoles('admin'))
+  .get(getAllReviews)
+  .put(moderateReview);
 
 export default handler;

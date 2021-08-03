@@ -15,8 +15,12 @@ const initialState: AdminState = {
   isCreated: false,
 };
 
-//TODO: proper documentation after testing
-//TODO: write tests
+/**
+ *@function adminReducer
+ *@param {AdminState} state - state of reducer
+ *@param {object} action - action to be reduced
+ *@returns {object} - new review state
+ */
 export const adminReducer = (
   state = initialState,
   action: AdminAction
@@ -69,6 +73,26 @@ export const adminReducer = (
       return { ...state, isLoading: false, clients: action.payload };
 
     case AdminActionTypes.USERS_LOAD_ERROR:
+      return { ...state, isLoading: false, error: action.payload };
+
+    // Moderate review
+    case AdminActionTypes.MODERATE_REVIEW:
+      return { ...state, isLoading: true };
+
+    case AdminActionTypes.REVIEW_WAS_MODERATED:
+      return { ...state, isLoading: false, isUpdated: action.payload };
+
+    case AdminActionTypes.REVIEW_MODERATION_ERROR:
+      return { ...state, isLoading: false, error: action.payload };
+
+    // Delete review
+    case AdminActionTypes.DELETE_REVIEW:
+      return { ...state, isLoading: true };
+
+    case AdminActionTypes.REVIEW_WAS_DELETED:
+      return { ...state, isLoading: false, isDeleted: true };
+
+    case AdminActionTypes.REVIEW_DELETE_ERROR:
       return { ...state, isLoading: false, error: action.payload };
 
     // Clear state Operations

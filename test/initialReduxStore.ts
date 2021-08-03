@@ -763,6 +763,7 @@ export const initialReduxStore: LocalRootState = {
 
   reviews: {
     productReviews: [],
+    allReviews: [],
     isLoading: false,
     isReviewUploaded: false,
     error: null,
