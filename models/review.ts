@@ -8,6 +8,7 @@ export interface IReview extends Document {
   rating: number;
   title: string;
   reviewContent: string;
+  isReviewed: boolean;
   createdAt: MongooseDate;
 }
 
@@ -39,6 +40,10 @@ const reviewSchema: Schema<IReview> = new mongoose.Schema({
   reviewContent: {
     type: String,
     required: true,
+  },
+  isReviewed: {
+    type: Boolean,
+    default: false,
   },
   createdAt: {
     type: Date,

@@ -3,7 +3,10 @@ import catchErrorsFrom from '../middleware/catchErrorsFrom';
 import Review, { IReview } from '../models/review';
 import ErrorHandler from '../utils/errorHandler';
 
-export { createNewReview, getAllProductReviews };
+/**
+ * @EXPORTS
+ */
+export { createNewReview, getAllProductReviews, getAllReviews };
 
 /**
  * Create new review
@@ -26,6 +29,7 @@ const createNewReview = catchErrorsFrom(
       title,
       reviewContent,
       rating,
+      isReviewed: false,
     });
 
     res.status(200).json({
@@ -55,6 +59,28 @@ const getAllProductReviews = async (
       404
     );
   }
+
+  res.status(200).json({
+    success: true,
+    reviewCount: allProductReviews.length,
+    reviews: allProductReviews,
+  });
+};
+
+/**
+ * @ADMIN
+ * Get all Product Reviews
+ * @GET /api/reviews/
+ * @function getAllReviews
+ * @param {NextApiRequest} req  Next API request
+ * @param {Next.Response} res  Next API response
+ * @return {undefined}
+ */
+const getAllReviews = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> => {
+  const allProductReviews = await Review.find({});
 
   res.status(200).json({
     success: true,

@@ -44,6 +44,7 @@ const ReviewCard = (): JSX.Element => {
           {productReviews.map((review, id) => (
             <CustomerReview key={id} {...review} />
           ))}
+          <Button text="LEAVE A REVIEW" onClick={handleLeaveReview} />
         </Styled.Reviews>
       )}
     </Styled.CardContainer>

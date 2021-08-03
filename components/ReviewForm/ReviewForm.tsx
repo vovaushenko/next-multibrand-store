@@ -37,6 +37,8 @@ const ReviewForm = (): JSX.Element => {
       title,
       reviewContent: review,
       productID: _id,
+      isReviewed: false,
+      createdAt: String(Date.now()),
     };
 
     uploadNewCustomerReview(newCustomerReview);

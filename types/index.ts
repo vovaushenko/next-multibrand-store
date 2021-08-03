@@ -255,4 +255,5 @@ export interface Review {
   rating: number;
   reviewContent: string;
   createdAt: string;
+  isReviewed: boolean;
 }
