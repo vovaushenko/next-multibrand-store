@@ -30,9 +30,11 @@ const ReviewCard = (): JSX.Element => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [_id]);
 
+  const moderatedReviews = productReviews.filter((review) => review.isReviewed);
+
   return (
-    <Styled.CardContainer hasReviews={productReviews.length > 0}>
-      {productReviews.length === 0 ? (
+    <Styled.CardContainer hasReviews={moderatedReviews.length > 0}>
+      {moderatedReviews.length === 0 ? (
         <>
           <CardHeader headerText="Customer Reviews" />
           <Button text="LEAVE A REVIEW" onClick={handleLeaveReview} />
@@ -41,7 +43,7 @@ const ReviewCard = (): JSX.Element => {
       ) : (
         <Styled.Reviews>
           <CardHeader headerText="Reviews" />
-          {productReviews.map((review, id) => (
+          {moderatedReviews.map((review, id) => (
             <CustomerReview key={id} {...review} />
           ))}
           <Button text="LEAVE A REVIEW" onClick={handleLeaveReview} />
