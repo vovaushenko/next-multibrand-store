@@ -1,16 +1,20 @@
-import axios from 'axios';
-import { GetStaticProps } from 'next';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Hero from '../components/Hero/Hero';
 import Layout from '../components/Layout/Layout';
 import WhatsHot from '../components/WhatsHotSection/WhatsHotSection';
-import { Product } from '../types';
+import { useActions } from '../hooks/useActions';
+import { useTypedSelector } from '../hooks/useTypedSelector';
 
-interface ServerProps {
-  trendingProducts: Product[];
-}
+export default function Home(): JSX.Element {
+  const { loadAllProducts } = useActions();
+  const { products } = useTypedSelector((state) => state.products);
 
-export default function Home({ trendingProducts }: ServerProps): JSX.Element {
+  useEffect(() => {
+    loadAllProducts();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Layout
       title={'Shop The Hottest Sneakers | Nike | Jordan | Adidas | Puma '}
@@ -65,22 +69,7 @@ export default function Home({ trendingProducts }: ServerProps): JSX.Element {
           },
         ]}
       />
-      <WhatsHot products={trendingProducts} />
+      <WhatsHot products={products} />
     </Layout>
   );
 }
-
-export const getStaticProps: GetStaticProps = async () => {
-  const url =
-    process.env.NODE_ENV === 'development'
-      ? 'http://localhost:3000/api/products'
-      : `${process.env.VERCEL_URL}/api/products`;
-
-  const { data } = await axios.get(url);
-
-  return {
-    props: {
-      trendingProducts: data.allProducts,
-    },
-  };
-};
