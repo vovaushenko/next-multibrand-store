@@ -2,8 +2,7 @@
 
 #jsdoc boilerplate
 /jsdoc.ts
-#dev-data
-/dev-data
+
 
 # dependencies
 /node_modules
