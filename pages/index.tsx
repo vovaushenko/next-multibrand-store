@@ -71,8 +71,13 @@ export default function Home({ trendingProducts }: ServerProps): JSX.Element {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  //TODO: Implement absolute url instead of localhost
-  const { data } = await axios.get('http://localhost:3000/api/products');
+  const url =
+    process.env.NODE_ENV === 'development'
+      ? 'http://localhost:3000/api/products'
+      : `${process.env.VERCEL_URL}/api/products`;
+
+  const { data } = await axios.get(url);
+
   return {
     props: {
       trendingProducts: data.allProducts,
