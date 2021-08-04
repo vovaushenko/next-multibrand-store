@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React, { ReactNode } from 'react';
 import * as Styled from './styles.DashboardCard';
 
-type CardProps =
+export type CardProps =
   | { variant: 'icon'; header: string; stat: string; icon: ReactNode }
   | {
       variant: 'figure';

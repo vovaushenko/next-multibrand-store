@@ -16,7 +16,7 @@ import * as Styled from './styles.CheckoutPayment';
  *@function CheckoutShipping
  *@returns {JSX.Element} - Rendered CheckoutShipping component
  */
-const CheckoutShipping = (): JSX.Element => {
+const CheckoutPayment = (): JSX.Element => {
   const router = useRouter();
   const [useShippingAddress, setUseShippingAddress] = useState<boolean>(true);
   const [useAnotherAddress, setUseAnotherAddress] = useState<boolean>(false);
@@ -187,4 +187,4 @@ const CheckoutShipping = (): JSX.Element => {
   );
 };
 
-export default CheckoutShipping;
+export default CheckoutPayment;
