@@ -20,7 +20,7 @@ export const Container = styled.section<Props>`
   ${({ layoutType }) => (layoutType === 'grid' ? gridLayout : verticalLayout)}
   gap: 1px;
   overflow: hidden;
-  background: ${({ theme }) => theme.borderGrayColor};
+  background: ${({ theme }) => theme.dashboardGrayBg};
   border: 1px solid ${({ theme }) => theme.borderGrayColor};
   border-radius: ${({ theme }) => theme.borderRadius};
 

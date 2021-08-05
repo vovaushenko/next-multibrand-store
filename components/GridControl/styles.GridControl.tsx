@@ -12,7 +12,7 @@ export const Container = styled.header`
 
   @media ${({ theme }) => theme.media.tablet} {
     padding: 1rem 2rem;
-    h1 {
+    h2 {
       display: none;
     }
   }

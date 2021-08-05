@@ -11,11 +11,18 @@ export const CreditCard = styled.article`
   margin: 2rem;
   box-shadow: none;
   background: none;
-  :hover .front {
+  :hover .front,
+  :active .front {
     transform: rotateY(180deg);
   }
-  :hover .back {
+  :hover .back,
+  :active .back {
     transform: rotateY(0deg);
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    height: 10rem;
+    max-width: 550px;
   }
 `;
 
@@ -34,6 +41,12 @@ const sideCss = css`
   width: 80%;
   padding: 1rem 2rem;
   color: white;
+
+  @media ${({ theme }) => theme.media.phone} {
+    height: 10rem;
+    width: 100%;
+    padding: 0.5rem;
+  }
 `;
 export const BackSide = styled.div`
   ${sideCss}
@@ -45,12 +58,15 @@ export const BackSide = styled.div`
   flex-direction: row;
   align-items: center;
   gap: 2rem;
+
+  @media ${({ theme }) => theme.media.phone} {
+    gap: 0.5rem;
+  }
 `;
 
 export const FrontSide = styled.div`
   ${sideCss}
 
-  /*  */
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
   background-color: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
@@ -69,6 +85,10 @@ export const Name = styled.h3`
   text-transform: uppercase;
   font-weight: 400;
   color: ${({ theme }) => theme.primaryGolden};
+
+  @media ${({ theme }) => theme.media.phone} {
+    font-size: 0.75rem;
+  }
 `;
 
 export const NameWrapper = styled.div`
@@ -80,6 +100,12 @@ export const NameWrapper = styled.div`
   .icon {
     color: ${({ theme }) => theme.secondaryGolden};
     font-size: 2.5rem;
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    .icon {
+      font-size: 1.25rem;
+    }
   }
 `;
 
@@ -95,12 +121,19 @@ export const ChipWrapper = styled.div`
 export const SneakerManiacs = styled.h3`
   color: ${({ theme }) => theme.primaryBg};
   /* text-shadow: 0 0 2px #1b1b1b; */
+
+  @media ${({ theme }) => theme.media.phone} {
+    font-size: 1rem;
+  }
 `;
 
 export const ProviderName = styled.p`
   font-size: 1.25rem;
   color: ${({ theme }) => theme.primaryBg};
   margin-left: 1rem;
+  @media ${({ theme }) => theme.media.phone} {
+    font-size: 1rem;
+  }
 `;
 
 export const CardNumber = styled.p`
@@ -109,6 +142,10 @@ export const CardNumber = styled.p`
   font-size: 1.5rem;
   margin-left: 1rem;
   font-weight: 900;
+  @media ${({ theme }) => theme.media.phone} {
+    letter-spacing: 3px;
+    font-size: 1rem;
+  }
 `;
 
 export const CustomerAvatar = styled.figure``;
@@ -118,10 +155,16 @@ export const Contacts = styled.div``;
 export const CustomerSupport = styled.p`
   color: ${({ theme }) => theme.primaryGolden};
   margin-bottom: 0.5rem;
+  @media ${({ theme }) => theme.media.phone} {
+    font-size: 0.75rem;
+  }
 `;
 export const Telephone = styled.a`
   display: block;
   cursor: pointer;
   margin-bottom: 0.25rem;
   color: ${({ theme }) => theme.primaryWhite};
+  @media ${({ theme }) => theme.media.phone} {
+    font-size: 0.75rem;
+  }
 `;
