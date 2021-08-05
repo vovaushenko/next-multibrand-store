@@ -67,6 +67,18 @@ export default function Home(): JSX.Element {
                 #4e5349 90%
               )`,
           },
+
+          {
+            sneakerModel: 'Air Jordan 1 High OG',
+            sneakerName: 'Travis Scott',
+            imgSrc: '/images/og-travis.png',
+            sneakerLogoGradient: `linear-gradient(
+                45deg,
+                #793f1e 0%,
+                #5c7743 52%,
+                #793f1e 90%
+              )`,
+          },
         ]}
       />
       <WhatsHot products={products} />
