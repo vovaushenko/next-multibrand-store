@@ -2,9 +2,10 @@ import styled from 'styled-components';
 
 export const CardContainer = styled.article`
   display: flex;
-  padding: 2rem;
+  padding: 1rem;
   background: ${({ theme }) => theme.secondaryBg};
   background-color: rgba(255, 255, 255, 0.1);
+  gap: 1rem;
   backdrop-filter: blur(10px);
 
   &:hover {
@@ -22,6 +23,7 @@ export const CardText = styled.aside`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  margin-left: 1rem;
 
   .router-link {
     max-width: 70%;

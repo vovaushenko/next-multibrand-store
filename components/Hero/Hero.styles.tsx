@@ -57,6 +57,10 @@ export const ImageWrap = styled.figure<Props>`
 export const Figcaption = styled.figcaption`
   text-align: center;
   margin-bottom: 1rem;
+
+  @media ${({ theme }) => theme.media.phone} {
+    margin-bottom: 3rem;
+  }
 `;
 
 const headerStyles = css`
@@ -111,25 +115,38 @@ const buttonStyle = css`
     font-size: 4rem;
     color: ${({ theme }) => theme.primaryGolden};
   }
+  @media ${({ theme }) => theme.media.phone} {
+    .icon {
+      font-size: 2.5rem;
+    }
+  }
 `;
 
 export const NextSneaker = styled.button`
   ${buttonStyle}
-  right: 3rem;
+  right: 10rem;
 
   &:hover {
     .icon {
       transform: translateX(4px);
     }
   }
+
+  @media ${({ theme }) => theme.media.tablet} {
+    right: 1rem;
+  }
 `;
 export const PrevSneaker = styled.button`
   ${buttonStyle}
-  left: 3rem;
+  left: 10rem;
 
   &:hover {
     .icon {
       transform: translateX(-4px);
     }
+  }
+
+  @media ${({ theme }) => theme.media.tablet} {
+    left: 1rem;
   }
 `;
