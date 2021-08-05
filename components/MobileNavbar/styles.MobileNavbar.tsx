@@ -12,8 +12,8 @@ export const Container = styled.header`
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     align-items: center;
-    gap: 1rem;
-    padding: 0.5rem 2rem;
+    gap: 1.5rem;
+    padding: 0.5rem 1rem;
     border-bottom: 1px solid ${({ theme }) => theme.borderGrayColor};
 
     .mobile-icon {

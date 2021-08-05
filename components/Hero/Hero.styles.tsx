@@ -7,7 +7,7 @@ export const Container = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 90vh;
+  height: 95vh;
   line-height: 1;
   perspective: 1000px;
   background-image: ${({ theme }) => theme.blackToGrayGradient};

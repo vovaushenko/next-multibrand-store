@@ -14,6 +14,7 @@ import * as Styled from './styles.NavUserAccount';
  * @returns {ReactNode} - rendered NavUserAccount component
  */
 const NavUserAccount = (): JSX.Element => {
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   // Modal Dropdown will be displayed differently for mobile and pc screens
   const onMobileWidth = useMediaQuery('only screen and (max-width: 500px)');
@@ -21,7 +22,6 @@ const NavUserAccount = (): JSX.Element => {
   const modalRight = onMobileWidth ? '2rem' : '4rem';
 
   // Controls Modal dropdown
-  // TODO: move modal control to global state, or think about this
   const [isModalOpen, setIsModalOpen] = useState(false);
   const toggleAccountModal = () => setIsModalOpen((prev) => !prev);
   const [session] = useSession();
@@ -47,8 +47,8 @@ const NavUserAccount = (): JSX.Element => {
       // then close the menu
       if (
         isModalOpen &&
-        modalRef.current &&
-        !modalRef.current.contains(e.target as Node)
+        !buttonRef.current?.contains(e.target as Node) &&
+        !modalRef.current?.contains(e.target as Node)
       ) {
         setIsModalOpen(false);
       }
@@ -76,6 +76,7 @@ const NavUserAccount = (): JSX.Element => {
       <Styled.AccountButton
         className="account-button"
         onClick={toggleAccountModal}
+        ref={buttonRef}
       >
         My Account <FiChevronDown className="account-icon" />
       </Styled.AccountButton>

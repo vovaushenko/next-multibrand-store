@@ -1,5 +1,5 @@
 import { useMediaQuery } from '@react-hook/media-query';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import CartContent from '../CartContent/CartContent';
@@ -14,15 +14,19 @@ import * as Styled from './styles.NavCart';
  */
 const NavCart = (): JSX.Element => {
   const modalRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
   // Modal Dropdown will be displayed differently for mobile and pc screens
   const onMobileWidth = useMediaQuery('only screen and (max-width: 500px)');
   const modalTop = onMobileWidth ? '3rem' : '5rem';
-  const modalRight = onMobileWidth ? '-5rem' : '0rem';
-  const modalWidth = onMobileWidth ? '100%' : '500px';
+  const modalRight = onMobileWidth ? '-7rem' : '0rem';
+  const modalWidth = onMobileWidth ? '350px' : '500px';
 
   // local state - modal control
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const toggleCartModal = () => setIsModalOpen((prev) => !prev);
+
+  const toggleCartModal = useCallback(() => {
+    setIsModalOpen((prev) => !prev);
+  }, []);
   // global state - cart content and removeFromCart action creator
   const { productAmount, cart, total } = useTypedSelector(
     (state) => state.cart
@@ -36,8 +40,8 @@ const NavCart = (): JSX.Element => {
       // then close the menu
       if (
         isModalOpen &&
-        modalRef.current &&
-        !modalRef.current.contains(e.target as Node)
+        !buttonRef.current?.contains(e.target as Node) &&
+        !modalRef.current?.contains(e.target as Node)
       ) {
         setIsModalOpen(false);
       }
@@ -50,7 +54,11 @@ const NavCart = (): JSX.Element => {
 
   return (
     <Styled.Container>
-      <Styled.CartButton className="cart-button" onClick={toggleCartModal}>
+      <Styled.CartButton
+        className="cart-button"
+        onClick={toggleCartModal}
+        ref={buttonRef}
+      >
         <CartIcon productAmount={productAmount} />
         <span>Cart</span>
       </Styled.CartButton>
