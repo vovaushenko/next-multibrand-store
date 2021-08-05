@@ -16,7 +16,7 @@ const NavHeaderSearch = (): JSX.Element => {
   const router = useRouter();
   const modalRef = useRef<HTMLDivElement>(null);
   // modal config
-  const modalWidth = '740px';
+  const modalWidth = '100%';
   const modalTop = '2.5rem';
   const modalRight = '0rem';
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -69,7 +69,7 @@ const NavHeaderSearch = (): JSX.Element => {
           product.model.toLowerCase().includes(searchTerm)
       );
 
-      return allProducts.slice(0, 5);
+      return allProducts.slice(0, 4);
     }
 
     return [];

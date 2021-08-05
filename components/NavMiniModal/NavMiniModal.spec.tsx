@@ -1,12 +1,28 @@
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import 'jest-styled-components';
 import React from 'react';
+import { withReduxAndStyledProviders } from '../../test/testUtils';
 import NavMiniModal from './NavMiniModal';
 
-describe('Navbar Header Search', () => {
-  const navSearch = shallow(
-    <NavMiniModal isOpen={true} modalContent={() => <h1>tomato</h1>} />
+/**
+ * Setup function for the component
+ * @returns {ShallowWrapper}
+ */
+const setup = () => {
+  return mount(
+    withReduxAndStyledProviders(
+      <NavMiniModal
+        isOpen={true}
+        modalContent={() => <h1>tomato</h1>}
+        top="1rem"
+        right="1rem"
+        modalWidth="100%"
+      />
+    )
   );
+};
+describe('Navbar Header Search', () => {
+  const navSearch = setup();
 
   it('should render with no errors', () => {
     expect(navSearch);

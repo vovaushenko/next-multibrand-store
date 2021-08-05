@@ -42,7 +42,10 @@ export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 1rem 2rem;
+  padding: 1rem;
+  @media ${({ theme }) => theme.media.phone} {
+    padding: 0.25rem;
+  }
 `;
 
 export const Product = styled.article`
@@ -61,5 +64,14 @@ export const Product = styled.article`
 
   &:hover {
     box-shadow: 0 0 0 2px ${({ theme }) => theme.secondaryGolden};
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    gap: 1rem;
+    padding: 1rem;
+    width: 100%;
+    p {
+      font-size: 0.75rem;
+    }
   }
 `;

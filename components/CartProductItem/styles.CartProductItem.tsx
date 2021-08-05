@@ -12,6 +12,10 @@ export const Container = styled.article`
     box-shadow: 0 0 0 2px ${({ theme }) => theme.secondaryGolden};
     border-radius: ${({ theme }) => theme.borderRadius};
   }
+
+  @media ${({ theme }) => theme.media.phone} {
+    flex-direction: column;
+  }
 `;
 export const Figure = styled.figure`
   img {
@@ -23,21 +27,37 @@ export const LeftColumn = styled.div`
   display: flex;
   gap: 1rem;
   align-items: center;
+  @media ${({ theme }) => theme.media.phone} {
+    width: 100%;
+    a {
+      font-size: 0.75rem;
+    }
+  }
 `;
 export const RightColumn = styled.div`
   display: flex;
   gap: 1rem;
   align-items: center;
+  @media ${({ theme }) => theme.media.phone} {
+    width: 100%;
+  }
 `;
 
 export const Wrap = styled.div`
   vertical-align: center;
+  @media ${({ theme }) => theme.media.phone} {
+    font-size: 0.75rem;
+  }
 `;
 
 export const Price = styled.p`
   font-size: 1rem;
   font-weight: 600;
   color: ${({ theme }) => theme.primaryGolden};
+
+  @media ${({ theme }) => theme.media.phone} {
+    font-size: 0.75rem;
+  }
 `;
 
 interface Props {
@@ -54,5 +74,8 @@ export const ControlButton = styled.button<Props>`
   &:hover {
     color: ${({ theme, btnType }) =>
       btnType === 'add' ? theme.primaryGolden : theme.primaryRed};
+  }
+  @media ${({ theme }) => theme.media.phone} {
+    font-size: 0.75rem;
   }
 `;

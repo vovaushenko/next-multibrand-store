@@ -95,4 +95,8 @@ export const StyledButton = styled.button<Props>`
   }
   ${(p) => p.isLoading && loadingButton};
   ${(p) => p.isCompleted && completedButton};
+
+  @media ${({ theme }) => theme.media.phone} {
+    font-size: 0.75rem;
+  }
 `;

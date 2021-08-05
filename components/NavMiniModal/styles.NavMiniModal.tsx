@@ -23,4 +23,8 @@ export const Container = styled.div<Props>`
   padding: 1.25rem;
 
   animation: ${slideInKeyframes} 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+
+  @media ${({ theme }) => theme.media.tablet} {
+    padding: 0.75rem;
+  }
 `;

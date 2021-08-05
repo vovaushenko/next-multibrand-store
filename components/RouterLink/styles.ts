@@ -11,4 +11,8 @@ export const StyledRouterLink = styled.div<StyledProps>`
   &:hover {
     color: ${({ theme }) => theme.secondaryGolden};
   }
+
+  @media ${({ theme }) => theme.media.phone} {
+    font-size: 0.75rem;
+  }
 `;
