@@ -11,6 +11,18 @@ export const Container = styled.section`
   width: auto;
   padding: 1rem;
   gap: 1rem;
+  /* Hide horizontal scrollbar on mobile devices */
+  @media ${({ theme }) => theme.media.tablet} {
+    overflow-x: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    ::-webkit-scrollbar {
+      /* WebKit */
+      width: 0;
+      height: 0;
+    }
+  }
+
   article {
     width: 250px;
     border-radius: ${({ theme }) => theme.borderRadius};

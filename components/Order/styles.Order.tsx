@@ -13,6 +13,9 @@ export const Container = styled.article`
     color: ${({ theme }) => theme.primaryGolden};
     margin-bottom: 0.5rem;
   }
+  @media ${({ theme }) => theme.media.tablet} {
+    padding: 1rem;
+  }
 `;
 
 export const LeftColumn = styled.div`
@@ -21,6 +24,12 @@ export const LeftColumn = styled.div`
   flex-direction: column;
   gap: 0.25rem;
   border-right: 1px solid ${({ theme }) => theme.borderGrayColor};
+
+  @media ${({ theme }) => theme.media.tablet} {
+    border-right: 0;
+    border-bottom: 1px solid ${({ theme }) => theme.borderGrayColor};
+    flex: auto;
+  }
 `;
 
 export const RightColumn = styled.div`
@@ -29,6 +38,12 @@ export const RightColumn = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+  }
+
+  @media ${({ theme }) => theme.media.tablet} {
+    border-right: 0;
+    border-bottom: 1px solid ${({ theme }) => theme.borderGrayColor};
+    flex: auto;
   }
 `;
 
@@ -46,6 +61,13 @@ export const OrderItem = styled.li`
   }
   &:hover {
     box-shadow: 0 0 0 2px ${({ theme }) => theme.secondaryGolden};
+  }
+
+  @media ${({ theme }) => theme.media.tablet} {
+    flex-direction: column;
+    padding: 0 1rem;
+    width: 100%;
+    gap: 0.25rem;
   }
 `;
 
@@ -82,6 +104,7 @@ export const ButtonWrapper = styled.footer`
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
+  gap: 1rem;
 
   button:nth-child(2) {
     background-color: ${({ theme }) => theme.primaryGreen};

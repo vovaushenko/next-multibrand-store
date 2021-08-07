@@ -66,6 +66,7 @@ const Order = ({ order, orderID }: Props): JSX.Element => {
         <p>{order.shippingInfo.phone}</p>
         <p>{order.shippingInfo.email}</p>
       </Styled.LeftColumn>
+
       <Styled.RightColumn>
         <CardHeader headerText="Sneaker Maniac Goods" />
         <ul>
