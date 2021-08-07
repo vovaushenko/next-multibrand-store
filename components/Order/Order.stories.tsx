@@ -34,7 +34,7 @@ export const order = {
       brand: 'Adidas',
       model: 'Yeezy 500 (Enflame)',
       size: '10.5',
-      img: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626269121/sneaker-maniacs/products/fatvqe7fmnjk26efvqwh.png',
+      img: '/images/og-travis.png',
       price: 300,
     },
     {
@@ -43,7 +43,7 @@ export const order = {
       brand: 'Adidas',
       model: 'Yeezy 500',
       size: '11',
-      img: 'https://res.cloudinary.com/vovaushenko/image/upload/v1626198036/sneaker-maniacs/products/xmh4goid166sizjv83b1.png',
+      img: '/images/og-travis.png',
       price: 550,
     },
   ],

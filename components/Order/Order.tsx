@@ -1,9 +1,11 @@
 import { useRouter } from 'next/dist/client/router';
 import Image from 'next/image';
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useActions } from '../../hooks/useActions';
 import { Order as OrderType } from '../../types';
 import Button from '../Button/Button';
 import CardHeader from '../CardHeader/CardHeader';
+import ReviewForm from '../ReviewForm/ReviewForm';
 import * as Styled from './styles.Order';
 
 export interface Props {
@@ -23,8 +25,18 @@ const Order = ({ order, orderID }: Props): JSX.Element => {
   const redirectToProductDetails = (productID: string) =>
     router.push(`/products/${productID}`);
 
-  // TODO: Order again functionality
-  // TODO: Submit review functionality
+  const { openModal } = useActions();
+
+  const handleOrderAgain = () => router.push('/products/all');
+
+  // TODO: Backend for order reviews
+  const handleLeaveReview = useCallback(() => {
+    openModal({
+      modalYposition: window.scrollY,
+      modalContent: <ReviewForm />,
+    });
+  }, [openModal]);
+
   return (
     <Styled.Container>
       <Styled.LeftColumn>
@@ -82,8 +94,8 @@ const Order = ({ order, orderID }: Props): JSX.Element => {
           <p>${order.orderTotal}</p>
         </Styled.Total>
         <Styled.ButtonWrapper>
-          <Button text="leave review" />
-          <Button text="Order Again" />
+          <Button text="leave review" onClick={handleLeaveReview} />
+          <Button text="Order Again" onClick={handleOrderAgain} />
         </Styled.ButtonWrapper>
       </Styled.RightColumn>
     </Styled.Container>
