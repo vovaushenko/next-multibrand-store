@@ -1,6 +1,12 @@
 import styled, { css } from 'styled-components';
+import { slideInKeyframes } from '../../styles/reusableStyles';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  @media ${({ theme }) => theme.media.tablet} {
+    margin-top: 1rem;
+    animation: ${slideInKeyframes} 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+  }
+`;
 
 export const UL = styled.ul`
   display: flex;

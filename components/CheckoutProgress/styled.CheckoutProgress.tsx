@@ -13,6 +13,7 @@ export const Container = styled.nav`
 
 export const IconControl = styled.figure<Props>`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   .icon {
     color: ${({ theme, isStepPassed }) =>

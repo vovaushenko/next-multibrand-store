@@ -16,6 +16,11 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media ${({ theme }) => theme.media.tablet} {
+    flex-direction: column;
+    gap: 1rem;
+  }
 `;
 
 export const PaymentMethod = styled.button`
@@ -32,5 +37,9 @@ export const PaymentMethod = styled.button`
   border-radius: ${({ theme }) => theme.borderRadius};
   .payment__icon {
     font-size: 2.5rem;
+  }
+
+  @media ${({ theme }) => theme.media.tablet} {
+    width: 100%;
   }
 `;

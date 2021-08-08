@@ -17,6 +17,11 @@ export const ShippingInfo = styled.form`
   align-items: center;
   justify-content: space-between;
   ${backgroundAndPadding};
+
+  @media ${({ theme }) => theme.media.phone} {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 `;
 
 export const Header = styled.p`

@@ -16,6 +16,10 @@ export const FormControl = styled.fieldset`
   gap: 1rem;
   outline: 0;
   border: 0;
+
+  @media ${({ theme }) => theme.media.tablet} {
+    flex-direction: column;
+  }
 `;
 
 export const ButtonWrap = styled.footer`

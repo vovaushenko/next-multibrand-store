@@ -1,5 +1,7 @@
+import { useMediaQuery } from '@react-hook/media-query';
 import Head from 'next/head';
 import React, { ReactNode } from 'react';
+import { MdExpandMore, MdShoppingCart } from 'react-icons/md';
 import CheckoutCart from '../CheckoutCart/CheckoutCart';
 import CheckoutProgress from '../CheckoutProgress/CheckoutProgress';
 import * as Styled from './styles.CheckoutLayout';
@@ -10,6 +12,8 @@ interface Props {
 }
 
 const CheckoutLayout = ({ children, title }: Props): JSX.Element => {
+  const onMobileWidth = useMediaQuery('(max-width: 768px)');
+
   return (
     <>
       <Head>
@@ -26,8 +30,19 @@ const CheckoutLayout = ({ children, title }: Props): JSX.Element => {
           <CheckoutProgress />
           {children}
         </Styled.LeftColumn>
+
         <Styled.RightColumn>
-          <CheckoutCart />
+          {onMobileWidth ? (
+            <Styled.Details>
+              <summary>
+                <MdShoppingCart className="icon" /> Show order summary{' '}
+                <MdExpandMore className="icon" />
+              </summary>
+              <CheckoutCart />
+            </Styled.Details>
+          ) : (
+            <CheckoutCart />
+          )}
         </Styled.RightColumn>
       </Styled.Container>
     </>

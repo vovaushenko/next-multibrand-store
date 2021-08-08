@@ -84,7 +84,7 @@ const PaymentSection = (): JSX.Element => {
             type="text"
             required={true}
           />
-          <Styled.FormControl>
+          <Styled.FormTextControl>
             <FormTextField
               name="expiration__date"
               placeholder="Expiration Date(MM / YY)"
@@ -101,7 +101,7 @@ const PaymentSection = (): JSX.Element => {
               type="text"
               required={true}
             />
-          </Styled.FormControl>
+          </Styled.FormTextControl>
         </>
       )}
 

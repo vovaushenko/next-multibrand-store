@@ -7,6 +7,7 @@ import * as Styled from './styles.CheckoutLayout';
  * Setup function for the component
  * @returns {ShallowWrapper}
  */
+
 const Test = () => <h1>Test</h1>;
 const setup = () => {
   return shallow(
@@ -16,6 +17,19 @@ const setup = () => {
   );
 };
 
+Object.defineProperty(window, 'matchMedia', {
+  writable: true,
+  value: jest.fn().mockImplementation((query) => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: jest.fn(), // deprecated
+    removeListener: jest.fn(), // deprecated
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+    dispatchEvent: jest.fn(),
+  })),
+});
 describe('Checkout Cart content component', () => {
   const wrap = setup();
 

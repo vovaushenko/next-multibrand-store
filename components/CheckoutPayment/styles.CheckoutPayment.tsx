@@ -19,13 +19,22 @@ export const ShippingInfo = styled.form`
   align-items: center;
   justify-content: space-between;
   ${backgroundAndPadding};
+  @media ${({ theme }) => theme.media.phone} {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 `;
 
 export const Header = styled.p`
   color: ${({ theme }) => theme.primaryGolden};
 `;
 
-export const Content = styled.p``;
+interface ContentProps {
+  marginTop?: string;
+}
+export const Content = styled.p<ContentProps>`
+  margin-top: ${({ marginTop }) => marginTop};
+`;
 
 export const RouterLink = styled.a`
   color: ${({ theme }) => theme.primaryGolden};

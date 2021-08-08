@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.section`
   display: flex;
@@ -9,11 +9,23 @@ export const Container = styled.section`
   background-color: ${({ theme }) => theme.dashboardGrayBg};
 `;
 
-export const FormControl = styled.div`
+const formControlCss = css`
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+`;
+
+export const FormControl = styled.div`
+  ${formControlCss}
+`;
+
+export const FormTextControl = styled.div`
+  ${formControlCss}
+
+  @media ${({ theme }) => theme.media.tablet} {
+    flex-direction: column;
+  }
 `;
 
 export const CreditCardProviders = styled.div`

@@ -1,12 +1,21 @@
 import { mount } from 'enzyme';
 import 'jest-styled-components';
 import React from 'react';
+import { withReduxAndStyledProviders } from '../../test/testUtils';
 import PaymentMethodIcon from '../PaymentMethodIcon/PaymentMethodIcon';
 import PaymentSection from './PaymentSection';
 import * as Styled from './styles.PaymentSection';
 
+/**
+ * Setup function for the component
+ * @returns {ShallowWrapper}
+ */
+const setup = () => {
+  return mount(withReduxAndStyledProviders(<PaymentSection />));
+};
+
 describe('Payment Methods Component', () => {
-  const wrap = mount(<PaymentSection />);
+  const wrap = setup();
 
   it('should with no errors', () => {
     expect(wrap);
@@ -20,6 +29,6 @@ describe('Payment Methods Component', () => {
 
   it('should render only all specified payment sections', () => {
     const paymentSection = wrap.find(Styled.FormControl);
-    expect(paymentSection.length).toBe(4);
+    expect(paymentSection.length).toBe(3);
   });
 });

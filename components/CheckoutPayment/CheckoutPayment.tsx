@@ -126,8 +126,8 @@ const CheckoutPayment = (): JSX.Element => {
       </Styled.ShippingInfo>
       {/* Billing Address */}
       <div>
-        <CardHeader headerText="Shipping Information" />
-        <Styled.Content>
+        <CardHeader headerText="Billing address" />
+        <Styled.Content marginTop="0.5rem">
           Select the address that matches your card or payment method.
         </Styled.Content>
       </div>
@@ -137,7 +137,7 @@ const CheckoutPayment = (): JSX.Element => {
           checked={useShippingAddress}
           setChecked={handleSetShippingInfo}
           name="same__billing"
-          labelText="	Same as shipping address"
+          labelText="Same as shipping address"
         />
       </Styled.ShippingInfo>
       <Styled.ShippingInfo>
@@ -165,11 +165,12 @@ const CheckoutPayment = (): JSX.Element => {
 
       <div>
         <CardHeader headerText="Payment" />
-        <Styled.Content>
+        <Styled.Content marginTop="0.5rem">
           All transactions are secure and encrypted.
         </Styled.Content>
       </div>
 
+      {/* Payment methods */}
       <PaymentSection />
 
       {/* Footer */}
