@@ -1,6 +1,17 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
-const productsSchema = new mongoose.Schema({
+export interface IProduct extends Document {
+  department: 'men' | 'women' | 'kid';
+  brand: string;
+  model: string;
+  price: number;
+  styleCode: string;
+  colors: string[];
+  size: string[];
+  description: string;
+}
+
+const productsSchema: Schema<IProduct> = new mongoose.Schema({
   department: {
     required: [true, 'Please add product department (men, women, kid)'],
     type: String,

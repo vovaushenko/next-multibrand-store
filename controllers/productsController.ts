@@ -1,7 +1,8 @@
 import cloudinary from 'cloudinary';
 import { NextApiRequest, NextApiResponse } from 'next';
 import catchErrorsFrom from '../middleware/catchErrorsFrom';
-import Products from '../models/products';
+import Products, { IProduct } from '../models/products';
+import { APIfeatures } from '../utils/apiFeatures';
 import ErrorHandler from '../utils/errorHandler';
 
 /**
@@ -25,7 +26,19 @@ cloudinary.v2.config({
 
 export const getAllProducts = catchErrorsFrom(
   async (req: NextApiRequest, res: NextApiResponse) => {
-    const allProducts = await Products.find();
+    const features = new APIfeatures(
+      Products.find(),
+      req.query as {
+        [key: string]: string;
+      }
+    )
+      .filter()
+      .sort()
+      .limitFields()
+      .paginate();
+
+    const allProducts: IProduct[] = await features.query;
+
     res.status(200).json({
       success: true,
       count: allProducts.length,
@@ -63,6 +76,7 @@ export const addNewProduct = catchErrorsFrom(
     req.body.images = imagesLinks;
 
     const newProduct = await Products.create(req.body);
+
     res.status(200).json({
       success: true,
       newProduct,
