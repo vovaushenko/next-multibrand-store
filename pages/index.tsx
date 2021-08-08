@@ -10,7 +10,7 @@ export default function Home(): JSX.Element {
   const { products } = useTypedSelector((state) => state.products);
 
   useEffect(() => {
-    loadAllProducts();
+    loadAllProducts('?isFeatured=true');
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

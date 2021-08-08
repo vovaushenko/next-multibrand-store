@@ -1,7 +1,8 @@
 import { useRouter } from 'next/dist/client/router';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import Button from '../../components/Button/Button';
+import FormCheckboxField from '../../components/FormCheckboxField/FormCheckboxField';
 import FormFileField from '../../components/FormFileField/FormFileField';
 import FormTextField from '../../components/FormTextField/FormTextField';
 import PageHeader from '../../components/PageHeader/PageHeader';
@@ -23,6 +24,7 @@ const AdminAddProduct = (): JSX.Element => {
   const [styleCode, setStyleCode] = useState<string>('');
   const [productSize, setProductSize] = useState<string>('');
   const [description, setDescription] = useState<string>('');
+  const [isFeatured, setIsFeatured] = useState<boolean>(false);
   //! global redux state
   const { isLoading, isUploaded, error } = useTypedSelector(
     (state) => state.admin
@@ -53,6 +55,7 @@ const AdminAddProduct = (): JSX.Element => {
       price,
       size: productSize.trim().split(' '),
       styleCode,
+      isFeatured,
     };
 
     uploadNewProduct(newProduct);
@@ -82,6 +85,10 @@ const AdminAddProduct = (): JSX.Element => {
     if (isUploaded) return '🎉🎉🎉Successfully uploaded🎉🎉🎉';
     return 'Add new product';
   };
+
+  const toggleFeatured = useCallback(() => {
+    setIsFeatured((prev) => !prev);
+  }, []);
 
   return (
     <StyledWrapper>
@@ -154,6 +161,13 @@ const AdminAddProduct = (): JSX.Element => {
           value={description}
           setValue={setDescription}
           required={true}
+        />
+
+        <FormCheckboxField
+          checked={isFeatured}
+          setChecked={toggleFeatured}
+          name="is-featured"
+          labelText="Promote product to featured"
         />
         {/* TODO: images */}
         <FormFileField

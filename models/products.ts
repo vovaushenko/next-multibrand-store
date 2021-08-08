@@ -1,7 +1,7 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose, { Date as MongooseDate, Schema } from 'mongoose';
 
 export interface IProduct extends Document {
-  department: 'men' | 'women' | 'kid';
+  department: 'men' | 'women' | 'kid' | 'gear' | 'apparel';
   brand: string;
   model: string;
   price: number;
@@ -9,13 +9,18 @@ export interface IProduct extends Document {
   colors: string[];
   size: string[];
   description: string;
+  isFeatured: boolean;
+  createdAt: MongooseDate;
 }
 
 const productsSchema: Schema<IProduct> = new mongoose.Schema({
   department: {
-    required: [true, 'Please add product department (men, women, kid)'],
+    required: [
+      true,
+      'Please add product department (men, women, kid, gear, apparel)',
+    ],
     type: String,
-    enum: ['men', 'women', 'kid'],
+    enum: ['men', 'women', 'kid', 'gear', 'apparel'],
     default: 'men',
   },
   brand: {
@@ -65,6 +70,16 @@ const productsSchema: Schema<IProduct> = new mongoose.Schema({
       },
     },
   ],
+
+  isFeatured: {
+    type: Boolean,
+    default: false,
+  },
+
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 export default mongoose.models.Products ||

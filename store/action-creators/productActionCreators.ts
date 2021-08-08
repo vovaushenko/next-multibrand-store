@@ -49,17 +49,18 @@ export const loadProductDetails = (id: string) => {
 /**
  * async action creator, will dispatch action to get all products from DB, also will dispatch error action if async operation fails
  * @function loadAllProducts
+ * @param {queryParams} string - query params to be added to query, for instance ?isFeatured=true, ?sort=-price. See more in API docs
  * @GET All products from /api/products endpoint
  * @Will dispatch action to fetch products from DB
  * @Will dispatch Error in the case of failure
  * @returns {undefined} void
  */
 
-export const loadAllProducts = () => {
+export const loadAllProducts = (queryParams = '') => {
   return async (dispatch: Dispatch<ProductsAction>): Promise<void> => {
     dispatch({ type: ProductActionTypes.LOAD_PRODUCTS });
     try {
-      const { data } = await axios.get(`/api/products`);
+      const { data } = await axios.get(`/api/products${queryParams}`);
       dispatch({
         type: ProductActionTypes.PRODUCTS_DID_LOAD,
         payload: data.allProducts,
