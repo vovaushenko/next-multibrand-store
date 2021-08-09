@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import catchErrorsFrom from '../middleware/catchErrorsFrom';
 import Review, { IReview } from '../models/review';
+import { APIfeatures } from '../utils/apiFeatures';
 import ErrorHandler from '../utils/errorHandler';
 
 /**
@@ -57,11 +58,18 @@ const getAllProductReviews = async (
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<ErrorHandler | undefined> => {
-  const allProductReviews = await Review.find({ product: req.query.id });
+  const features = new APIfeatures(
+    Review.find({ product: req.query.id }),
+    req.query as {
+      [key: string]: string;
+    }
+  ).sort();
+
+  const allProductReviews = await features.query;
 
   if (!allProductReviews) {
     return new ErrorHandler(
-      `Product Reviews with the id ${req.query.id} does not exist`,
+      `Product Reviews with the id ${req.query.id} do not exist`,
       404
     );
   }
@@ -86,7 +94,14 @@ const getAllReviews = async (
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> => {
-  const allProductReviews = await Review.find({});
+  const features = new APIfeatures(
+    Review.find({}),
+    req.query as {
+      [key: string]: string;
+    }
+  ).sort();
+
+  const allProductReviews = await features.query;
 
   res.status(200).json({
     success: true,

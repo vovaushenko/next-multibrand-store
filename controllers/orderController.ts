@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import catchErrorsFrom from '../middleware/catchErrorsFrom';
 import Order, { IOrder } from '../models/order';
 import { NextApiRequestWithAuth } from '../types/authTypes';
+import { APIfeatures } from '../utils/apiFeatures';
 
 /**
  * Create new order
@@ -49,7 +50,14 @@ const getAllCustomerOrders = async (
   req: NextApiRequestWithAuth,
   res: NextApiResponse
 ): Promise<void> => {
-  const allCustomerOrders = await Order.find({ user: req.user._id });
+  const features = new APIfeatures(
+    Order.find({ user: req.user._id }),
+    req.query as {
+      [key: string]: string;
+    }
+  ).sort();
+
+  const allCustomerOrders = await features.query;
 
   res.status(200).json({
     success: true,
@@ -68,7 +76,14 @@ const getAllCustomerOrders = async (
  */
 const getAllOrders = catchErrorsFrom(
   async (req: NextApiRequest, res: NextApiResponse) => {
-    const orders = await Order.find({});
+    const features = new APIfeatures(
+      Order.find(),
+      req.query as {
+        [key: string]: string;
+      }
+    ).sort();
+
+    const orders = await features.query;
 
     res.status(200).json({
       success: true,
