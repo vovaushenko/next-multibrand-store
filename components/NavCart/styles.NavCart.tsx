@@ -7,7 +7,7 @@ export const Container = styled.div`
   position: relative;
 
   @media ${({ theme }) => theme.media.tablet} {
-    flex: none;
+    flex: auto;
   }
 `;
 
@@ -23,6 +23,15 @@ export const CartButton = styled.button`
     margin-left: 1.25rem;
     font-size: 1rem;
     font-weight: 600;
+  }
+
+  @media ${({ theme }) => theme.media.tablet} {
+    flex: auto;
+
+    span {
+      margin-left: 1.25rem;
+      font-size: 0.75rem;
+    }
   }
 `;
 

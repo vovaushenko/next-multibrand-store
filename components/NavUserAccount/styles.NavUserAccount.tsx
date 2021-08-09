@@ -9,7 +9,7 @@ export const Container = styled.div`
   @media ${({ theme }) => theme.media.tablet} {
     flex-direction: row;
     align-items: center;
-    flex: none;
+    flex: auto;
   }
 `;
 
@@ -34,6 +34,7 @@ export const AccountButton = styled.button`
   }
   @media ${({ theme }) => theme.media.phone} {
     margin-left: 0.25rem;
+    font-size: 0.75rem;
   }
 `;
 

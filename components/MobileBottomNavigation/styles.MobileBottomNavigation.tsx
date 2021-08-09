@@ -9,7 +9,7 @@ export const Container = styled.nav`
     height: 5rem;
     /* Positioning */
     position: fixed;
-    top: 97%;
+    top: 98%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 6;

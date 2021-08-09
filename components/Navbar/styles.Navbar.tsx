@@ -7,7 +7,7 @@ export const Container = styled.nav`
   height: 6rem;
   background: ${({ theme }) => theme.primaryBg};
 
-  @media ${({ theme }) => theme.media.phone} {
+  @media ${({ theme }) => theme.media.tablet} {
     height: auto;
   }
 `;

@@ -6,11 +6,9 @@ export const Container = styled.header`
   @media ${({ theme }) => theme.media.desktop} {
     display: none;
   }
-  @media ${({ theme }) => theme.media.tablet} {
-    display: none;
-  }
+
   /* will be in DOM only on mobile widths */
-  @media ${({ theme }) => theme.media.phone} {
+  @media ${({ theme }) => theme.media.tablet} {
     display: flex;
     gap: 1rem;
     align-items: center;

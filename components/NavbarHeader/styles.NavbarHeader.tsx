@@ -8,7 +8,7 @@ export const Container = styled.header`
   padding: 0.5rem 0.75rem;
   margin: 0 auto;
 
-  @media ${({ theme }) => theme.media.phone} {
+  @media ${({ theme }) => theme.media.tablet} {
     display: none;
   }
 `;
