@@ -31,7 +31,6 @@ export const Card = styled.article`
 `;
 
 export const CardImage = styled.figure`
-  height: 70%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,3 +40,21 @@ export const Price = styled.p`
   color: ${({ theme }) => theme.primaryGolden};
   margin-top: 0.5rem;
 `;
+
+export const ProductColumn = styled.div`
+  height: 75%;
+`;
+
+export const ButtonColumn = styled.div`
+  margin-top: 1rem;
+
+  button {
+    width: 100%;
+  }
+
+  button:nth-child(2) {
+    margin-top: 1rem;
+  }
+`;
+
+export const TextWrap = styled.div``;

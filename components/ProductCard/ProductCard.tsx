@@ -49,30 +49,37 @@ const ProductCard = ({
 
   return (
     <Styled.Card>
-      <Styled.CardImage ref={imageRef}>
-        <RouterLink href={`/products/${productID}`}>
-          <NextImage
-            src={isHovering ? firstImage : secondImage}
-            alt={`${brandName} ${productModel}`}
-            height={200}
-            width={200}
-            objectFit="contain"
-            className="card-img"
-          />
-        </RouterLink>
-      </Styled.CardImage>
-      <RouterLink href={`/products/${productID}`}>
-        <h3>{brandName + ' ' + productModel}</h3>
-      </RouterLink>
-      <Styled.Price>${productPrice}</Styled.Price>
-      <Button
-        className="add-to-cart-btn"
-        disabled={isAvailable === false}
-        onClick={redirectToProductPage}
-      >
-        {isAvailable ? 'choose options' : 'sold out'}
-      </Button>
-      <Button text={'quick view'} id="quick-view-btn" />
+      <Styled.ProductColumn className="product-column">
+        <Styled.CardImage ref={imageRef}>
+          <RouterLink href={`/products/${productID}`}>
+            <NextImage
+              src={isHovering ? firstImage : secondImage}
+              alt={`${brandName} ${productModel}`}
+              height={200}
+              width={200}
+              objectFit="contain"
+              className="card-img"
+            />
+          </RouterLink>
+        </Styled.CardImage>
+        <Styled.TextWrap>
+          <RouterLink href={`/products/${productID}`}>
+            <h3>{brandName + ' ' + productModel}</h3>
+          </RouterLink>
+          <Styled.Price>${productPrice}</Styled.Price>
+        </Styled.TextWrap>
+      </Styled.ProductColumn>
+
+      <Styled.ButtonColumn className="btn-column">
+        <Button
+          className="add-to-cart-btn"
+          disabled={isAvailable === false}
+          onClick={redirectToProductPage}
+        >
+          {isAvailable ? 'choose options' : 'sold out'}
+        </Button>
+        <Button text={'quick view'} id="quick-view-btn" />
+      </Styled.ButtonColumn>
     </Styled.Card>
   );
 };

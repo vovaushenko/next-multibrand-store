@@ -6,6 +6,25 @@ interface Props {
 
 const verticalLayout = css`
   grid-template-columns: 1fr;
+
+  article {
+    flex-direction: row;
+    justify-content: space-between;
+
+    .product-column {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .btn-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 `;
 const gridLayout = css`
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
