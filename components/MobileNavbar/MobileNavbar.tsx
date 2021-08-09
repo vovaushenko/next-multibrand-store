@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { BiSearch } from 'react-icons/bi';
-import { CgClose } from 'react-icons/cg';
-import { GoThreeBars } from 'react-icons/go';
+import { MdClose, MdMenu, MdSearch } from 'react-icons/md';
 import { navLinks } from '../NavbarNavigation/navigationData';
 import NavCart from '../NavCart/NavCart';
 import NavHeaderSearch from '../NavHeaderSearch/NavHeaderSearch';
@@ -28,14 +26,14 @@ const MobileNavbar = (): JSX.Element => {
       <Styled.Container>
         <NavUserAccount />
         <NavCart />
-        <BiSearch className="mobile-icon" onClick={toggleSearchVisibility} />
+        <MdSearch className="mobile-icon" onClick={toggleSearchVisibility} />
         {isNavigationOnScreen ? (
-          <CgClose
+          <MdClose
             className="mobile-icon"
             onClick={toggleNavigationVisibility}
           />
         ) : (
-          <GoThreeBars
+          <MdMenu
             className="mobile-icon"
             onClick={toggleNavigationVisibility}
           />
@@ -43,13 +41,13 @@ const MobileNavbar = (): JSX.Element => {
       </Styled.Container>
       {/* Search bar will be controlled through local state */}
       {isSearchOnScreen && (
-        <Styled.SearchContainer>
+        <Styled.SearchContainer height="auto">
           <NavHeaderSearch />
         </Styled.SearchContainer>
       )}
       {/* Navigation bar will be controlled through local state */}
       {isNavigationOnScreen && (
-        <Styled.SearchContainer>
+        <Styled.SearchContainer height="100vh">
           <ul>
             {navLinks.map((link, id) => (
               <li key={id}>

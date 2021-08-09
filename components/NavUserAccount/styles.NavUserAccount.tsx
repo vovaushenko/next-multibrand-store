@@ -8,12 +8,15 @@ export const Container = styled.div`
 
   @media ${({ theme }) => theme.media.tablet} {
     flex-direction: row;
+    align-items: center;
+    flex: none;
   }
 `;
 
 export const AccountButton = styled.button`
   display: flex;
   align-items: center;
+  justify-content: center;
   cursor: pointer;
   background: transparent;
   border: none;
@@ -26,8 +29,11 @@ export const AccountButton = styled.button`
   }
   @media ${({ theme }) => theme.media.tablet} {
     .account-icon {
-      margin-left: 0;
+      margin-left: 0.25rem;
     }
+  }
+  @media ${({ theme }) => theme.media.phone} {
+    margin-left: 0.25rem;
   }
 `;
 

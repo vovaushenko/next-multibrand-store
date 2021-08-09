@@ -2,17 +2,19 @@ import styled from 'styled-components';
 import { slideInKeyframes } from '../../styles/reusableStyles';
 
 export const Container = styled.header`
+  /* will not show up on PC and Tablet widths */
   @media ${({ theme }) => theme.media.desktop} {
     display: none;
   }
   @media ${({ theme }) => theme.media.tablet} {
     display: none;
   }
+  /* will be in DOM only on mobile widths */
   @media ${({ theme }) => theme.media.phone} {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
+    gap: 1rem;
     align-items: center;
-    gap: 1.5rem;
+    justify-content: center;
     padding: 0.5rem 1rem;
     border-bottom: 1px solid ${({ theme }) => theme.borderGrayColor};
 
@@ -24,8 +26,12 @@ export const Container = styled.header`
   }
 `;
 
-export const SearchContainer = styled.div`
+interface Props {
+  height: string;
+}
+export const SearchContainer = styled.div<Props>`
   padding: 1rem;
   border-bottom: 1px solid ${({ theme }) => theme.borderGrayColor};
   animation: ${slideInKeyframes} 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+  height: ${({ height }) => height};
 `;

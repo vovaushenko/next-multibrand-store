@@ -64,4 +64,7 @@ export const Badge = styled.span`
   border-radius: 50%;
   border: 4px solid ${({ theme }) => theme.secondaryBg};
   background: ${({ theme }) => theme.activeGreen};
+
+  @media ${({ theme }) => theme.media.phone} {
+  }
 `;
