@@ -11,6 +11,10 @@ export const Container = styled.section`
   line-height: 1;
   perspective: 1000px;
   background-image: ${({ theme }) => theme.blackToGrayGradient};
+
+  @media ${({ theme }) => theme.media.phone} {
+    height: 85vh;
+  }
 `;
 
 interface Props {

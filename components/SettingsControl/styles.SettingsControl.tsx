@@ -15,6 +15,11 @@ const sharedContainerStyles = css`
 `;
 
 export const Container = styled.aside`
+  /* is not shown on mobile devices */
+  @media ${({ theme }) => theme.media.tablet} {
+    display: none;
+  }
+
   /* Positioning */
   position: fixed;
   top: 85%;

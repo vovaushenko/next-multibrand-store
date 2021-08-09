@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import React, { FC, ReactNode } from 'react';
 import Footer from '../Footer/Footer';
+import MobileBottomNavigation from '../MobileBottomNavigation/MobileBottomNavigation';
 import Navbar from '../Navbar/Navbar';
 import NewsletterSignUp from '../NewsletterSignUp/NewsletterSignUp';
 import SettingsControl from '../SettingsControl/SettingsControl';
@@ -24,6 +25,8 @@ const Layout: FC<Props> = ({ children, title }) => {
       </Head>
       <Navbar />
       <SettingsControl />
+      <MobileBottomNavigation />
+
       {children}
       <NewsletterSignUp />
       <Footer />
