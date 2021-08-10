@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useActions } from '../../hooks/useActions';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 import Button from '../Button/Button';
 import Container from '../Container/Container';
 import FormTextField from '../FormTextField/FormTextField';
@@ -12,12 +14,15 @@ import * as Styled from './styles';
  */
 const NewsletterSignUp = (): JSX.Element => {
   const [email, setEmail] = useState<string>('');
+  const { getUserLocation } = useActions();
+  const { isLoading, isLoaded } = useTypedSelector((state) => state.user);
+
   const handleNewsletterSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('User newsletter signup');
-    //TODO: add email validation
-    //TODO: connect to backend and handle user subscription to a newsletter
+
+    getUserLocation();
   };
+
   return (
     <Container>
       <Styled.SignUP>
@@ -32,7 +37,12 @@ const NewsletterSignUp = (): JSX.Element => {
             setValue={setEmail}
             required
           />
-          <Button text="subscribe" type="submit" />
+          <Button
+            text={isLoaded ? 'Thanks for subscription' : 'subscribe'}
+            type="submit"
+            isLoading={isLoading}
+            isCompleted={isLoaded}
+          />
         </Styled.Form>
       </Styled.SignUP>
     </Container>

@@ -8,6 +8,7 @@ import * as ProductsActionCreators from './productActionCreators';
 import * as ReviewsActionCreators from './reviewActionCreators';
 import * as SortActionCreators from './sortActionCreators';
 import * as UIactionCreators from './uiActionCreators';
+import * as UseractionCreators from './userActionCreators';
 /**
  * This object combines all available redux action creators
  * @object CombinedActionCreators
@@ -24,4 +25,5 @@ export const CombinedActionCreators = {
   ...CheckoutActionCreators,
   ...OrdersActionCreators,
   ...ReviewsActionCreators,
+  ...UseractionCreators,
 };
