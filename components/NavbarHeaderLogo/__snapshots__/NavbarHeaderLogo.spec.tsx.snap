@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 1`] = `
+.c0 {
+  margin-left: 1rem;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: relative;
+}
+
+.c1 {
+  font-size: 1.75rem;
+  text-transform: uppercase;
+  margin-left: 0.25rem;
+}
+
+.c1::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.c2 {
+  font-size: 1.75rem;
+  text-transform: uppercase;
+}
+
+<h1
+  className="c0"
+>
+  <div
+    style={
+      Object {
+        "boxSizing": "border-box",
+        "display": "inline-block",
+        "margin": 0,
+        "maxWidth": "100%",
+        "overflow": "hidden",
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "boxSizing": "border-box",
+          "display": "block",
+          "maxWidth": "100%",
+        }
+      }
+    >
+      <img
+        alt=""
+        aria-hidden={true}
+        role="presentation"
+        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
+        style={
+          Object {
+            "border": "none",
+            "display": "block",
+            "margin": 0,
+            "maxWidth": "100%",
+            "padding": 0,
+          }
+        }
+      />
+    </div>
+    <noscript>
+      <img
+        alt="sneaker maniacs logo"
+        decoding="async"
+        src="/_next/image?url=%2Fsneaker-maniacs-logo.png&w=128&q=100"
+        srcSet="/_next/image?url=%2Fsneaker-maniacs-logo.png&w=64&q=100 1x, /_next/image?url=%2Fsneaker-maniacs-logo.png&w=128&q=100 2x"
+        style={
+          Object {
+            "border": "none",
+            "bottom": 0,
+            "boxSizing": "border-box",
+            "display": "block",
+            "height": 0,
+            "left": 0,
+            "margin": "auto",
+            "maxHeight": "100%",
+            "maxWidth": "100%",
+            "minHeight": "100%",
+            "minWidth": "100%",
+            "objectFit": "contain",
+            "objectPosition": undefined,
+            "padding": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+            "width": 0,
+          }
+        }
+      />
+    </noscript>
+    <img
+      alt="sneaker maniacs logo"
+      decoding="async"
+      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      style={
+        Object {
+          "border": "none",
+          "bottom": 0,
+          "boxSizing": "border-box",
+          "display": "block",
+          "height": 0,
+          "left": 0,
+          "margin": "auto",
+          "maxHeight": "100%",
+          "maxWidth": "100%",
+          "minHeight": "100%",
+          "minWidth": "100%",
+          "objectFit": "contain",
+          "objectPosition": undefined,
+          "padding": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "width": 0,
+        }
+      }
+    />
+  </div>
+  <a
+    className="c1"
+    href="/"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    Sneaker
+  </a>
+  <span
+    className="c2"
+  >
+    Maniacs
+  </span>
+</h1>
+`;

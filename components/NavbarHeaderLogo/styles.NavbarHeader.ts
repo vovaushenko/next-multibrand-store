@@ -5,33 +5,26 @@ export const HeaderLogo = styled.h1`
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-
-  /**
- * ----------------------------------------
- * animation color-change
- * ----------------------------------------
- */
-  @keyframes color-change {
-    0% {
-      color: ${({ theme }) => theme.primaryGolden};
-    }
-    100% {
-      color: ${({ theme }) => theme.primaryRed};
-    }
-  }
-
-  .icon {
-    font-size: 1.75rem;
-    animation: color-change 5s linear infinite alternate both;
-  }
+  justify-content: center;
+  position: relative;
 `;
 
 export const Sneaker = styled.a`
   font-size: 1.75rem;
   color: ${({ theme }) => theme.primaryWhite};
+  text-transform: uppercase;
+  margin-left: 0.25rem;
+  ::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 `;
-export const Maniacs = styled.p`
+export const Maniacs = styled.span`
   font-size: 1.75rem;
   color: ${({ theme }) => theme.primaryGolden};
+  text-transform: uppercase;
 `;
