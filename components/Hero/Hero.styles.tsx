@@ -44,7 +44,7 @@ export const ImageWrap = styled.figure<Props>`
  */
   @keyframes puff-in-center {
     0% {
-      transform: scale(2);
+      transform: scale(1.2);
       filter: blur(4px);
       opacity: 0;
     }
@@ -116,6 +116,7 @@ const buttonStyle = css`
   border: 0;
   cursor: pointer;
   .icon {
+    transition: all 0.3s ease-in-out;
     font-size: 4rem;
     color: ${({ theme }) => theme.primaryGolden};
   }

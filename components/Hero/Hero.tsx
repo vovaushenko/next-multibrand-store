@@ -24,23 +24,25 @@ type Props = {
  */
 const Hero = ({ highlightedSneakers }: Props): JSX.Element => {
   const [id, setId] = useState(0);
+  const [intervalID, setIntervalID] = useState<NodeJS.Timer | null>(null);
+  const [transition, setTransition] = useState<string>('');
+  const [translateZ, setTranslateZ] = useState<string>('');
+  const [headerTranslate, setHeaderTranslate] = useState<string>('');
 
   const nextSneaker = () => {
     let newId = id + 1;
     if (newId >= highlightedSneakers.length) newId = 0;
+    if (intervalID !== null) clearInterval(intervalID);
     setId(newId);
   };
   const previousSneaker = () => {
     let newId = id - 1;
     if (newId < 0) newId = highlightedSneakers.length - 1;
+    if (intervalID !== null) clearInterval(intervalID);
     setId(newId);
   };
   const { sneakerModel, sneakerName, imgSrc, sneakerLogoGradient } =
     highlightedSneakers[id];
-
-  const [transition, setTransition] = useState<string>('');
-  const [translateZ, setTranslateZ] = useState<string>('');
-  const [headerTranslate, setHeaderTranslate] = useState<string>('');
 
   // transition and animation of headers and hero image are controlled through local state, onMouseEnter we will apply effects, onMouseLeave we will revert applied transformations
   const handleAnimateIn = () => {
@@ -59,13 +61,15 @@ const Hero = ({ highlightedSneakers }: Props): JSX.Element => {
   useEffect(() => {
     const interval = setInterval(() => {
       setId((prev) => (prev + 1 >= highlightedSneakers.length ? 0 : prev + 1));
-    }, 7000);
+    }, 10000);
+
+    setIntervalID(interval);
 
     return () => {
       clearInterval(interval);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [id]);
 
   return (
     <Styled.Container>

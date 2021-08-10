@@ -71,14 +71,14 @@ const NavUserAccount = (): JSX.Element => {
           width={'45px'}
         />
       ) : (
-        <span>Sign In</span>
+        <Styled.SignIn>Sign In</Styled.SignIn>
       )}
       <Styled.AccountButton
         className="account-button"
         onClick={toggleAccountModal}
         ref={buttonRef}
       >
-        My Account <FiChevronDown className="account-icon" />
+        {session ? 'My Account' : ''} <FiChevronDown className="account-icon" />
       </Styled.AccountButton>
       <NavMiniModal
         isOpen={isModalOpen}

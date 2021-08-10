@@ -37,5 +37,13 @@ export const AccountButton = styled.button`
     font-size: 0.75rem;
   }
 `;
+export const SignIn = styled.span`
+  font-size: 1rem;
+  font-weight: 600;
+
+  @media ${({ theme }) => theme.media.phone} {
+    font-size: 0.75rem;
+  }
+`;
 
 export const ModalContentWrapper = styled.div``;

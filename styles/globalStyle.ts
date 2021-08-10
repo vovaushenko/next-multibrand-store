@@ -7,7 +7,6 @@ export const GlobalStyles = createGlobalStyle`
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: all 0.3s ease-in-out;
 }
 
  body {
@@ -17,18 +16,7 @@ export const GlobalStyles = createGlobalStyle`
     line-height: 1.4;
     font-size: 1rem;
 }
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-}
-
-strong{
- 
-}
+html, body {height:100%;overflow:auto}
 
 ul {
   list-style-type: none;
@@ -38,9 +26,7 @@ li {
 }
 
 a {
-  
   text-decoration: none;
-  
 }
 
 img {
@@ -57,6 +43,11 @@ input {
 
 button {
   font-family: inherit;
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px ${({ theme }) => theme.secondaryGolden};
+    border-radius: ${({ theme }) => theme.borderRadius};
+  }
 }
 
 button, input, a {

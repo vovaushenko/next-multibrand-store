@@ -1,5 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
+import '../__mocks__/matchMediaMock';
 import CheckoutCart from './CheckoutLayout';
 import * as Styled from './styles.CheckoutLayout';
 
@@ -17,19 +18,6 @@ const setup = () => {
   );
 };
 
-Object.defineProperty(window, 'matchMedia', {
-  writable: true,
-  value: jest.fn().mockImplementation((query) => ({
-    matches: false,
-    media: query,
-    onchange: null,
-    addListener: jest.fn(), // deprecated
-    removeListener: jest.fn(), // deprecated
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
-    dispatchEvent: jest.fn(),
-  })),
-});
 describe('Checkout Cart content component', () => {
   const wrap = setup();
 
