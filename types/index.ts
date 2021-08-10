@@ -258,3 +258,24 @@ export interface Review {
   createdAt: string;
   isReviewed: boolean;
 }
+
+/**
+ * UserLocation Interface
+ *@interface
+ */
+export interface UserLocation {
+  continent: string;
+  country: string;
+  countryCode: string;
+  city: string;
+  region: string;
+}
+
+/**
+ * User Signup Info Interface
+ *@interface
+ */
+
+export interface UserSignupInfo extends UserLocation {
+  email: string;
+}

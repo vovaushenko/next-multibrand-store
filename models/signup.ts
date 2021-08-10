@@ -2,7 +2,11 @@ import mongoose, { Date as MongooseDate, Document, Schema } from 'mongoose';
 
 export interface ISignup extends Document {
   email: string;
+  continent: string;
   country: string;
+  countryCode: string;
+  city: string;
+  region: string;
   createdAt: MongooseDate;
 }
 
@@ -19,9 +23,21 @@ const signupSchema: Schema<ISignup> = new mongoose.Schema({
     unique: true,
   },
 
+  continent: {
+    type: String,
+    required: [true, 'Please provide continent'],
+  },
   country: {
     type: String,
     required: [true, 'Please provide country'],
+  },
+  city: {
+    type: String,
+    required: [true, 'Please provide city'],
+  },
+  region: {
+    type: String,
+    required: [true, 'Please provide region'],
   },
 
   createdAt: {

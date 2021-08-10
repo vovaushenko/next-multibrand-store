@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import Button from '../Button/Button';
@@ -14,14 +15,29 @@ import * as Styled from './styles';
  */
 const NewsletterSignUp = (): JSX.Element => {
   const [email, setEmail] = useState<string>('');
-  const { getUserLocation } = useActions();
-  const { isLoading, isLoaded } = useTypedSelector((state) => state.user);
+  const { getUserLocation, uploadUserSignupInfo } = useActions();
+  const { isLoading, isLocationLoaded, location, isUploaded } =
+    useTypedSelector((state) => state.user);
 
-  const handleNewsletterSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleNewsletterSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
     e.preventDefault();
 
     getUserLocation();
+
+    uploadUserSignupInfo({ ...location, email });
   };
+
+  useEffect(() => {
+    if (isLocationLoaded) {
+      uploadUserSignupInfo({ ...location, email });
+    }
+
+    if (isUploaded) {
+      toast.success('We will deliver info about the best drops 💪');
+    }
+  }, [isLocationLoaded, email, location, uploadUserSignupInfo]);
 
   return (
     <Container>
@@ -38,10 +54,10 @@ const NewsletterSignUp = (): JSX.Element => {
             required
           />
           <Button
-            text={isLoaded ? 'Thanks for subscription' : 'subscribe'}
+            text={isUploaded ? 'Thanks for subscription' : 'subscribe'}
             type="submit"
             isLoading={isLoading}
-            isCompleted={isLoaded}
+            isCompleted={isUploaded}
           />
         </Styled.Form>
       </Styled.SignUP>

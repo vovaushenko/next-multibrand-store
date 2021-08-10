@@ -1,12 +1,4 @@
-import { ReduxAsync } from '.';
-
-export interface UserLocation {
-  continent: string;
-  country: string;
-  countryCode: string;
-  city: string;
-  region: string;
-}
+import { ReduxAsync, UserLocation } from '.';
 
 /**
  * User Reducer state interface
@@ -16,7 +8,8 @@ export interface UserState extends ReduxAsync {
   loggedOut: boolean;
   sessionExpired: boolean;
   location: UserLocation;
-  isLoaded: boolean;
+  isLocationLoaded: boolean;
+  isUploaded: boolean;
 }
 
 /**
@@ -28,6 +21,10 @@ export enum UserActionTypes {
   GET_USER_LOCATION = 'GET_USER_LOCATION',
   LOCATION_DID_LOAD = 'LOCATION_DID_LOAD',
   LOCATION_LOAD_ERROR = 'LOCATION_LOAD_ERROR',
+
+  UPLOAD_SIGNUP_INFO = 'UPLOAD_SIGNUP_INFO',
+  SIGNUP_INFO_WAS_UPLOADED = 'SIGNUP_INFO_WAS_UPLOADED',
+  SIGNUP_UPLOAD_ERROR = 'SIGNUP_UPLOAD_ERROR',
 }
 
 /**
@@ -44,6 +41,19 @@ interface LocationLoadErrorAction {
   type: UserActionTypes.LOCATION_LOAD_ERROR;
   payload: string;
 }
+
+interface UploadSignupInfoRequestAction {
+  type: UserActionTypes.UPLOAD_SIGNUP_INFO;
+}
+interface UploadSignupInfoSuccessAction {
+  type: UserActionTypes.SIGNUP_INFO_WAS_UPLOADED;
+  payload: boolean;
+}
+interface UploadSignupInfoErrorAction {
+  type: UserActionTypes.SIGNUP_UPLOAD_ERROR;
+  payload: string;
+}
+
 /**
  *@type
  *Combined type for ProdUseruct action creators
@@ -51,4 +61,7 @@ interface LocationLoadErrorAction {
 export type UserAction =
   | GetUserLocationRequestAction
   | LocationLoadSuccessAction
-  | LocationLoadErrorAction;
+  | LocationLoadErrorAction
+  | UploadSignupInfoRequestAction
+  | UploadSignupInfoSuccessAction
+  | UploadSignupInfoErrorAction;

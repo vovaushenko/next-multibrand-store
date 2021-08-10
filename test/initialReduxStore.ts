@@ -768,6 +768,22 @@ export const initialReduxStore: LocalRootState = {
     isReviewUploaded: false,
     error: null,
   },
+
+  user: {
+    isLoading: false,
+    isLocationLoaded: false,
+    isUploaded: false,
+    error: null,
+    loggedOut: false,
+    sessionExpired: false,
+    location: {
+      continent: '',
+      country: '',
+      countryCode: '',
+      city: '',
+      region: '',
+    },
+  },
 };
 
 export const mockProduct: Product = {

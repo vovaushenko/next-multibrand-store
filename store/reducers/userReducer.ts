@@ -6,7 +6,8 @@ import {
 
 const initialState: UserState = {
   isLoading: false,
-  isLoaded: false,
+  isLocationLoaded: false,
+  isUploaded: false,
   error: null,
   loggedOut: false,
   sessionExpired: false,
@@ -36,7 +37,7 @@ export const userReducer = (
       return {
         ...state,
         isLoading: false,
-        isLoaded: true,
+        isLocationLoaded: true,
         location: {
           country: action.payload.country,
           city: action.payload.city,
@@ -46,6 +47,27 @@ export const userReducer = (
         },
       };
     case UserActionTypes.LOCATION_LOAD_ERROR:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
+
+    case UserActionTypes.UPLOAD_SIGNUP_INFO:
+      return {
+        ...state,
+        isLoading: true,
+        isLocationLoaded: false,
+      };
+
+    case UserActionTypes.SIGNUP_INFO_WAS_UPLOADED:
+      return {
+        ...state,
+        isLoading: false,
+        isUploaded: action.payload,
+      };
+
+    case UserActionTypes.SIGNUP_UPLOAD_ERROR:
       return {
         ...state,
         isLoading: false,
