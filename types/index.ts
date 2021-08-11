@@ -279,3 +279,7 @@ export interface UserLocation {
 export interface UserSignupInfo extends UserLocation {
   email: string;
 }
+export interface UserSignupInfoAPIResponse extends UserSignupInfo {
+  _id: string;
+  createdAt: string;
+}

@@ -4,12 +4,27 @@ import { AdminAction, AdminActionTypes } from './../../types/adminTypes';
 import { UploadProduct } from './../../types/index';
 
 /**
+ *@EXPORTS
+ */
+
+export {
+  uploadNewProduct,
+  deleteProduct,
+  updateProduct,
+  getAllClientsDetails,
+  moderateReview,
+  deleteReview,
+  loadAllNewsletterSignups,
+  clearStatusOfAdminOperations,
+};
+
+/**
  *@Admin async action creator, will dispatch action to save product in DB, also will dispatch error action if async operation fails
  *@function uploadNewProduct
  *@param {object} product - product to be saved in DB
  *@returns {function} - Redux thunk function
  */
-export const uploadNewProduct = (product: UploadProduct) => {
+const uploadNewProduct = (product: UploadProduct) => {
   return async (dispatch: Dispatch<AdminAction>): Promise<void> => {
     dispatch({ type: AdminActionTypes.UPLOAD_PRODUCT });
     try {
@@ -36,7 +51,7 @@ export const uploadNewProduct = (product: UploadProduct) => {
  * @DELETE /api/products/:id
  * @returns {function} - Redux thunk function
  */
-export const deleteProduct = (id: string) => {
+const deleteProduct = (id: string) => {
   return async (dispatch: Dispatch<AdminAction>): Promise<void> => {
     dispatch({ type: AdminActionTypes.DELETE_PRODUCT });
     try {
@@ -61,10 +76,7 @@ export const deleteProduct = (id: string) => {
  * @PUT /api/products/:id
  * @returns {function} - Redux thunk function
  */
-export const updateProduct = (
-  productId: string,
-  updatedProduct: UploadProduct
-) => {
+const updateProduct = (productId: string, updatedProduct: UploadProduct) => {
   return async (dispatch: Dispatch<AdminAction>): Promise<void> => {
     dispatch({ type: AdminActionTypes.UPDATE_PRODUCT });
     try {
@@ -93,7 +105,7 @@ export const updateProduct = (
  * @Admin async action creator, will dispatch action to get all customers profiles from DB, also will dispatch error action if async operation fails
  * @DELETE /api/products/:id
  */
-export const getAllClientsDetails = () => {
+const getAllClientsDetails = () => {
   return async (dispatch: Dispatch<AdminAction>): Promise<void> => {
     dispatch({ type: AdminActionTypes.LOAD_USERS });
     try {
@@ -117,7 +129,7 @@ export const getAllClientsDetails = () => {
  * @PUT /api/products/
  * @returns {function} - Redux thunk function
  */
-export const moderateReview = (reviewID: string) => {
+const moderateReview = (reviewID: string) => {
   return async (dispatch: Dispatch<AdminAction>): Promise<void> => {
     dispatch({ type: AdminActionTypes.MODERATE_REVIEW });
     try {
@@ -143,7 +155,7 @@ export const moderateReview = (reviewID: string) => {
  * @DELETE /api/products/
  * @returns {function} - Redux thunk function
  */
-export const deleteReview = (reviewID: string) => {
+const deleteReview = (reviewID: string) => {
   return async (dispatch: Dispatch<AdminAction>): Promise<void> => {
     dispatch({ type: AdminActionTypes.DELETE_REVIEW });
     try {
@@ -162,11 +174,33 @@ export const deleteReview = (reviewID: string) => {
 };
 
 /**
+ * @Admin async action creator, will dispatch action to get all customers newsletter signups from DB, also will dispatch error action if async operation fails
+ * @GET /api/signup
+ */
+const loadAllNewsletterSignups = () => {
+  return async (dispatch: Dispatch<AdminAction>): Promise<void> => {
+    dispatch({ type: AdminActionTypes.LOAD_NEWSLETTER_SIGNUPS });
+    try {
+      const { data } = await axios.get(`/api/signup`);
+      dispatch({
+        type: AdminActionTypes.NEWSLETTER_SIGNUPS_DID_LOAD,
+        payload: data.allSignups,
+      });
+    } catch (error) {
+      dispatch({
+        type: AdminActionTypes.NEWSLETTER_SIGNUPS_LOAD_ERROR,
+        payload: error.response.data.error,
+      });
+    }
+  };
+};
+
+/**
  *@ADMIN async action creator, will clear state after successful||unsuccessful operations
  *@function clearStatusOfOperations
  *@returns {function} - Redux thunk function
  */
-export const clearStatusOfAdminOperations = () => {
+const clearStatusOfAdminOperations = () => {
   return async (dispatch: Dispatch<AdminAction>): Promise<void> => {
     dispatch({ type: AdminActionTypes.CLEAR_STATE });
   };

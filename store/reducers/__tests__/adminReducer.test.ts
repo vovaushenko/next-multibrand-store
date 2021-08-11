@@ -8,6 +8,7 @@ import { adminReducer } from '../adminReducer';
 
 const initialState: AdminState = {
   clients: [],
+  newsletterSignups: [],
   isLoading: false,
   error: null,
   isDeleted: false,
@@ -142,6 +143,56 @@ describe('Admin reducer', () => {
       ...initialState,
       isLoading: false,
       error: '404 not found',
+    });
+  });
+
+  describe('Load client signups', () => {
+    test('should set loading to true on LOAD_NEWSLETTER_SIGNUPS action', () => {
+      const newState = adminReducer(initialState, {
+        type: AdminActionTypes.LOAD_NEWSLETTER_SIGNUPS,
+      });
+
+      expect(newState).toStrictEqual({
+        ...initialState,
+        isLoading: true,
+      });
+    });
+
+    test('should stop loading and set signups  on NEWSLETTER_SIGNUPS_DID_LOAD action', () => {
+      const mockSignup = {
+        _id: 'test',
+        city: 'berlin',
+        country: 'germany',
+        continent: 'europre',
+        countryCode: 'de',
+        createdAt: '25/07/2021',
+        email: 'test@email.com',
+        region: 'ger',
+      };
+
+      const newState = adminReducer(initialState, {
+        type: AdminActionTypes.NEWSLETTER_SIGNUPS_DID_LOAD,
+        payload: [mockSignup, mockSignup],
+      });
+
+      expect(newState).toStrictEqual({
+        ...initialState,
+        isLoading: false,
+        newsletterSignups: [mockSignup, mockSignup],
+      });
+    });
+
+    test('should stop loading and set error  on NEWSLETTER_SIGNUPS_LOAD_ERROR action', () => {
+      const newState = adminReducer(initialState, {
+        type: AdminActionTypes.NEWSLETTER_SIGNUPS_LOAD_ERROR,
+        payload: 'ERROR',
+      });
+
+      expect(newState).toStrictEqual({
+        ...initialState,
+        isLoading: false,
+        error: 'ERROR',
+      });
     });
   });
 });

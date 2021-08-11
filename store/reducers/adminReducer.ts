@@ -6,6 +6,7 @@ import {
 
 const initialState: AdminState = {
   clients: [],
+  newsletterSignups: [],
   isLoading: false,
   error: null,
   isDeleted: false,
@@ -93,6 +94,16 @@ export const adminReducer = (
       return { ...state, isLoading: false, isDeleted: true };
 
     case AdminActionTypes.REVIEW_DELETE_ERROR:
+      return { ...state, isLoading: false, error: action.payload };
+
+    // Load all newsletter signups
+    case AdminActionTypes.LOAD_NEWSLETTER_SIGNUPS:
+      return { ...state, isLoading: true };
+
+    case AdminActionTypes.NEWSLETTER_SIGNUPS_DID_LOAD:
+      return { ...state, isLoading: false, newsletterSignups: action.payload };
+
+    case AdminActionTypes.NEWSLETTER_SIGNUPS_LOAD_ERROR:
       return { ...state, isLoading: false, error: action.payload };
 
     // Clear state Operations

@@ -8,16 +8,7 @@ import {
 import { useActions } from './useActions';
 import { useTypedSelector } from './useTypedSelector';
 
-/**
- * Custom hook that returns processed dashboard statistics in admin screen
- *@function useDashboardStats
- *@returns {number} totalRevenue - total revenue of all orders
- *@returns {number} newOrdersAmount - number of new orders
- *@returns {number} deliveredOrdersAmount - number of delivered orders
- *@returns {Purchase} mostTrendingItem - item that is currently the most popular and most purchased
- *@returns {number} maxPurchaseFrequency - number of orders of most popular item
- */
-export function useDashboardStats(): {
+interface DashboardStats {
   totalRevenue: number;
   newOrdersAmount: number;
   deliveredOrdersAmount: number;
@@ -27,14 +18,33 @@ export function useDashboardStats(): {
   activeUsers: number;
   newUsers: number;
   customerReviews: number;
-} {
-  const { loadAllCustomerOrders, getAllClientsDetails, loadAllReviews } =
-    useActions();
-  const { orders: allOrders } = useTypedSelector((state) => state.orders);
-  const { clients } = useTypedSelector((state) => state.admin);
+  newsletterSignupsAmount: number;
+}
+/**
+ * Custom hook that returns processed dashboard statistics in admin screen
+ *@function useDashboardStats
+ *@returns {number} totalRevenue - total revenue of all orders
+ *@returns {number} newOrdersAmount - number of new orders
+ *@returns {number} deliveredOrdersAmount - number of delivered orders
+ *@returns {Purchase} mostTrendingItem - item that is currently the most popular and most purchased
+ *@returns {number} maxPurchaseFrequency - number of orders of most popular item
+ */
+export function useDashboardStats(): DashboardStats {
+  const {
+    loadAllCustomerOrders,
+    getAllClientsDetails,
+    loadAllReviews,
+    loadAllNewsletterSignups,
+  } = useActions();
+
   const { allReviews } = useTypedSelector((state) => state.reviews);
+  const { orders: allOrders } = useTypedSelector((state) => state.orders);
+  const { clients, newsletterSignups } = useTypedSelector(
+    (state) => state.admin
+  );
 
   useEffect(() => {
+    loadAllNewsletterSignups();
     loadAllCustomerOrders();
     getAllClientsDetails();
     loadAllReviews();
@@ -63,6 +73,11 @@ export function useDashboardStats(): {
    **/
   const customerReviews = allReviews.length;
 
+  /**
+   * Newsletter Signup Stats
+   **/
+  const newsletterSignupsAmount = newsletterSignups?.length;
+
   return {
     totalRevenue,
     newOrdersAmount,
@@ -73,5 +88,6 @@ export function useDashboardStats(): {
     activeUsers,
     newUsers,
     customerReviews,
+    newsletterSignupsAmount,
   };
 }

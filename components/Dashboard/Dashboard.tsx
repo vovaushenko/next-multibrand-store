@@ -11,18 +11,16 @@ import { useDashboardStats } from '../../hooks/useDashboardStats';
 import DashboardCard from '../DashboardCard/DashboardCard';
 import * as Styled from './styles.Dashboard';
 
-/**
- * Admin dashboard component with statistical information.
- *@function Dashboard
- *@returns {JSX.Element} - Rendered Dashboard component
- */
-
 interface DashboardStat {
   header: string;
   stat: string;
   icon: ReactNode;
 }
-
+/**
+ * Admin dashboard component with statistical information.
+ *@function Dashboard
+ *@returns {JSX.Element} - Rendered Dashboard component
+ */
 const Dashboard = (): JSX.Element => {
   const {
     totalRevenue,
@@ -34,6 +32,7 @@ const Dashboard = (): JSX.Element => {
     newUsers,
     userQuantity,
     customerReviews,
+    newsletterSignupsAmount,
   } = useDashboardStats();
 
   const topRow: DashboardStat[] = [
@@ -62,7 +61,7 @@ const Dashboard = (): JSX.Element => {
   const midRow = [
     {
       header: 'Newsletter SignUps',
-      stat: '29',
+      stat: `${newsletterSignupsAmount}`,
       icon: <MdLibraryBooks className="icon" />,
     },
     {

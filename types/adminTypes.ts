@@ -1,5 +1,5 @@
 import { User } from './authTypes';
-import { ReduxAsync } from './index';
+import { ReduxAsync, UserSignupInfoAPIResponse } from './index';
 
 /**
  * Admin Reducer state interface
@@ -12,6 +12,7 @@ export interface AdminState extends ReduxAsync {
   isUpdated: boolean;
   isCreated: boolean;
   clients: User[];
+  newsletterSignups: UserSignupInfoAPIResponse[];
 }
 
 /**
@@ -42,6 +43,10 @@ export enum AdminActionTypes {
   DELETE_REVIEW = 'DELETE_REVIEW',
   REVIEW_WAS_DELETED = 'REVIEW_WAS_DELETED',
   REVIEW_DELETE_ERROR = 'REVIEW_DELETE_ERROR',
+
+  LOAD_NEWSLETTER_SIGNUPS = 'LOAD_NEWSLETTER_SIGNUPS',
+  NEWSLETTER_SIGNUPS_DID_LOAD = 'NEWSLETTER_SIGNUPS_DID_LOAD',
+  NEWSLETTER_SIGNUPS_LOAD_ERROR = 'NEWSLETTER_SIGNUPS_LOAD_ERROR',
 
   CLEAR_STATE = 'CLEAR_STATE',
 }
@@ -128,6 +133,22 @@ interface DeleteReviewFailAction {
   type: AdminActionTypes.REVIEW_DELETE_ERROR;
   payload: string;
 }
+
+/**
+ * Admin LOAD NEWSLETTER SIGNUPS action interfaces
+ */
+interface LoadNewsletterSignupsRequestAction {
+  type: AdminActionTypes.LOAD_NEWSLETTER_SIGNUPS;
+}
+interface LoadNewsletterSignupsSuccessAction {
+  type: AdminActionTypes.NEWSLETTER_SIGNUPS_DID_LOAD;
+  payload: UserSignupInfoAPIResponse[];
+}
+interface LoadNewsletterSignupsFailAction {
+  type: AdminActionTypes.NEWSLETTER_SIGNUPS_LOAD_ERROR;
+  payload: string;
+}
+
 /**
  * Admin CLEAR state action interface
  */
@@ -158,4 +179,7 @@ export type AdminAction =
   | ModerateReviewFailAction
   | DeleteReviewRequestAction
   | DeleteReviewSuccessAction
-  | DeleteReviewFailAction;
+  | DeleteReviewFailAction
+  | LoadNewsletterSignupsRequestAction
+  | LoadNewsletterSignupsSuccessAction
+  | LoadNewsletterSignupsFailAction;
