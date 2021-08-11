@@ -11,7 +11,7 @@ const initialState: OrdersState = {
   error: null,
 };
 
-const mockOrder = {
+export const mockOrder = {
   _id: 'id123',
   user: 'test',
   deliveryStatus: 'not delivered',

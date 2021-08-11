@@ -33,6 +33,7 @@ const Dashboard = (): JSX.Element => {
     activeUsers,
     newUsers,
     userQuantity,
+    customerReviews,
   } = useDashboardStats();
 
   const topRow: DashboardStat[] = [
@@ -66,7 +67,7 @@ const Dashboard = (): JSX.Element => {
     },
     {
       header: 'Customer Reviews',
-      stat: '61',
+      stat: `${customerReviews}`,
       icon: <MdRateReview className="icon" />,
     },
   ];

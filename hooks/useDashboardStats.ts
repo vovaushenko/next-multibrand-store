@@ -1,5 +1,10 @@
 import { useEffect } from 'react';
 import { Purchase } from '../types';
+import {
+  calculateTotalRevenue,
+  countDeliveredOrders,
+  getMostPopularProductStats,
+} from '../utils/dashboardHelpers';
 import { useActions } from './useActions';
 import { useTypedSelector } from './useTypedSelector';
 
@@ -21,54 +26,29 @@ export function useDashboardStats(): {
   userQuantity: number;
   activeUsers: number;
   newUsers: number;
+  customerReviews: number;
 } {
-  const { loadAllCustomerOrders, getAllClientsDetails } = useActions();
+  const { loadAllCustomerOrders, getAllClientsDetails, loadAllReviews } =
+    useActions();
   const { orders: allOrders } = useTypedSelector((state) => state.orders);
   const { clients } = useTypedSelector((state) => state.admin);
+  const { allReviews } = useTypedSelector((state) => state.reviews);
 
   useEffect(() => {
     loadAllCustomerOrders();
     getAllClientsDetails();
+    loadAllReviews();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   /**
    * Order Stats
    **/
-  const totalRevenue = allOrders.reduce(
-    (total, order) => total + order.orderTotal,
-    0
-  );
-
+  const totalRevenue = calculateTotalRevenue(allOrders);
+  const deliveredOrdersAmount = countDeliveredOrders(allOrders);
   const newOrdersAmount = allOrders.length;
-
-  const deliveredOrdersAmount = allOrders.filter(
-    (order) => order.deliveryStatus === 'delivered'
-  ).length;
-
-  const flattenedProducts: Purchase[] = allOrders.reduce(
-    (allItems, order) => allItems.concat(order.purchase),
-    [] as Purchase[]
-  );
-
-  const purchaseFrequencyMap = flattenedProducts.reduce(
-    (map, item) => (
-      map[item.productID] ? map[item.productID]++ : (map[item.productID] = 1),
-      map
-    ),
-    {} as Record<string, number>
-  );
-
-  const maxPurchaseFrequency = Math.max(...Object.values(purchaseFrequencyMap));
-
-  let mostBoughtID = '';
-  for (const key in purchaseFrequencyMap) {
-    if (purchaseFrequencyMap[key] === maxPurchaseFrequency) mostBoughtID = key;
-  }
-
-  const mostTrendingItem = flattenedProducts.find(
-    (product) => product.productID === mostBoughtID
-  ) as Purchase;
+  const { maxPurchaseFrequency, mostTrendingItem } =
+    getMostPopularProductStats(allOrders);
 
   /**
    * User Stats
@@ -77,6 +57,11 @@ export function useDashboardStats(): {
   const userQuantity = clients.length;
   const activeUsers = Math.floor(clients.length * 0.6);
   const newUsers = 3;
+
+  /**
+   * Review Stats
+   **/
+  const customerReviews = allReviews.length;
 
   return {
     totalRevenue,
@@ -87,5 +72,6 @@ export function useDashboardStats(): {
     userQuantity,
     activeUsers,
     newUsers,
+    customerReviews,
   };
 }
