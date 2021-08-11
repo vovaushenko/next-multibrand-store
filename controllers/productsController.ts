@@ -191,6 +191,6 @@ export const deleteSingleProduct = catchErrorsFrom(
 
     foundProduct = await foundProduct.remove();
 
-    res.status(204).json({ status: 'success', data: null });
+    res.status(204).json({ success: true, data: null });
   }
 );
