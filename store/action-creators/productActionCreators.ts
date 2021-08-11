@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { Dispatch } from 'redux';
+import { getAllProducts, getProductDetails } from '../../api/rest/products';
 import { ProductActionTypes, ProductsAction } from '../../types/productTypes';
 import { State } from '../reducers';
 import {
@@ -21,12 +21,12 @@ export const loadProductDetails = (id: string) => {
   ): Promise<void> => {
     dispatch({ type: ProductActionTypes.LOAD_PRODUCT_DETAILS });
     try {
-      const { data } = await axios.get(`/api/products/${id}`);
+      const { data } = await getProductDetails(id);
+
       dispatch({
         type: ProductActionTypes.PRODUCT_DETAILS_DID_LOAD,
         payload: data.product,
       });
-
       // we will also store this product in recently viewed
       dispatch({
         type: RecentlyViewedProductActionTypes.ADD_PRODUCT_TO_RECENTLY_VIEWED,
@@ -40,7 +40,7 @@ export const loadProductDetails = (id: string) => {
     } catch (error) {
       dispatch({
         type: ProductActionTypes.PRODUCT_DETAILS_LOAD_ERROR,
-        payload: error.response.data.error,
+        payload: error.response.data.error || error.response.statusText,
       });
     }
   };
@@ -60,7 +60,7 @@ export const loadAllProducts = (queryParams = '') => {
   return async (dispatch: Dispatch<ProductsAction>): Promise<void> => {
     dispatch({ type: ProductActionTypes.LOAD_PRODUCTS });
     try {
-      const { data } = await axios.get(`/api/products${queryParams}`);
+      const { data } = await getAllProducts(queryParams);
       dispatch({
         type: ProductActionTypes.PRODUCTS_DID_LOAD,
         payload: data.allProducts,
@@ -68,7 +68,7 @@ export const loadAllProducts = (queryParams = '') => {
     } catch (error) {
       dispatch({
         type: ProductActionTypes.PRODUCTS_LOAD_ERROR,
-        payload: error.response.data.error,
+        payload: error.response.data.error || error.response.statusText,
       });
     }
   };
