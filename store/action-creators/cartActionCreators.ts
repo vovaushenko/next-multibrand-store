@@ -1,11 +1,11 @@
 import { Dispatch } from 'redux';
-import {} from 'redux-thunk';
 import {
   CartAction,
   CartActionTypes,
   CartItem,
 } from '../../types/cartReduxTypes';
 import { State } from '../reducers';
+
 /**
  *@Cart async action creator, will dispatch action to add item to cart, then to calculate totals && quantity in cart
  *@function addToCart

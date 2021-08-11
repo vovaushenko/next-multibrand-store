@@ -1,8 +1,12 @@
-import axios from 'axios';
 import { Dispatch } from 'redux';
+import { processCustomerOrder } from '../../api/rest/orders';
 import { CheckoutAction, CheckoutActionTypes } from '../../types/checkoutTypes';
 import { ShippingMethod } from './../../types/checkoutTypes';
-import { OrderInformation, UserShippingInfo } from './../../types/index';
+import {
+  ClientOrder,
+  OrderInformation,
+  UserShippingInfo,
+} from './../../types/index';
 
 /**
  *@Checkout async action creator, will dispatch action to check shipping info and save shipping info
@@ -89,28 +93,22 @@ export const processPayment =
         paymentID: 'test123',
         status: 'Processed/Paid',
       };
-
-      const order = {
+      const order: ClientOrder = {
         orderTotal: orderInfo.total,
         purchase: orderInfo.purchasedItems,
         shippingInfo: orderInfo.customerInfo,
         paymentInfo,
       };
-
-      const config = {
-        headers: { 'Content-Type': 'application/json' },
-      };
-
-      const { data } = await axios.post('/api/orders', order, config);
-
+      const { data } = await processCustomerOrder(order);
       dispatch({
         type: CheckoutActionTypes.PAYMENT_WAS_SUCCESSFUL,
         payload: data.success,
       });
     } catch (error) {
+      console.log(error.response);
       dispatch({
         type: CheckoutActionTypes.PAYMENT_WAS_DENIED,
-        payload: error.response.data.error.message,
+        payload: error.response.data.message || error.response.statusText,
       });
     }
   };

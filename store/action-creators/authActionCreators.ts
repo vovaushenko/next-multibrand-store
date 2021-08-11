@@ -1,5 +1,9 @@
-import axios from 'axios';
 import { Dispatch } from 'redux';
+import {
+  getUserAccountDetails,
+  updateUserProfileDetails,
+} from '../../api/rest/me';
+import { registerUser } from '../../api/rest/register';
 import { AuthAction, AuthActionTypes } from '../../types/authReduxTypes';
 
 /**
@@ -20,12 +24,7 @@ export const registerNewUser =
     dispatch({ type: AuthActionTypes.REGISTER_USER });
 
     try {
-      const config = {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      };
-      const { data } = await axios.post('/api/auth/register', newUser, config);
+      const { data } = await registerUser(newUser);
 
       dispatch({
         type: AuthActionTypes.USER_WAS_REGISTERED,
@@ -51,7 +50,7 @@ export const loadUserAccountDetails =
     try {
       dispatch({ type: AuthActionTypes.LOAD_USER });
 
-      const { data } = await axios.get('/api/me');
+      const { data } = await getUserAccountDetails();
 
       dispatch({
         type: AuthActionTypes.USER_DID_LOAD,
@@ -81,19 +80,8 @@ export const updateUserProfile =
   }) =>
   async (dispatch: Dispatch<AuthAction>): Promise<void> => {
     dispatch({ type: AuthActionTypes.UPDATE_USER_PROFILE });
-
     try {
-      const config = {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      };
-      const { data } = await axios.put(
-        '/api/me/update',
-        updatedUserDetails,
-        config
-      );
-
+      const { data } = await updateUserProfileDetails(updatedUserDetails);
       dispatch({
         type: AuthActionTypes.PROFILE_WAS_UPDATED,
         payload: data.success,
@@ -101,7 +89,7 @@ export const updateUserProfile =
     } catch (error) {
       dispatch({
         type: AuthActionTypes.PROFILE_UPDATE_ERROR,
-        payload: error.response.data.message,
+        payload: error.response.data,
       });
     }
   };

@@ -1,7 +1,9 @@
 import { AxiosResponse } from 'axios';
 import { Product, UploadProduct } from '../../types';
 import { makeRequest } from '../makeRequest';
-
+/**
+ *@EXPORTS
+ */
 export {
   getAllProducts,
   getProductDetails,

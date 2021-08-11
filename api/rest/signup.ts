@@ -1,8 +1,10 @@
 import { AxiosResponse } from 'axios';
-import { UserSignupInfoAPIResponse } from '../../types';
+import { UserSignupInfo, UserSignupInfoAPIResponse } from '../../types';
 import { makeRequest } from '../makeRequest';
-
-export { getAllNewsletterSignups };
+/**
+ *@EXPORTS
+ */
+export { getAllNewsletterSignups, postNewsletterSignup };
 
 /**
  *@api will make GET request to /api/signup
@@ -15,5 +17,22 @@ const getAllNewsletterSignups = (): Promise<
   return makeRequest({
     url: '/api/signup',
     method: 'GET',
+  });
+};
+
+/**
+ *@api will make POST request to /api/products/
+ *@function postNewProduct
+ *@param {object} product - product to be saved in DB
+ *@returns {object} - promise with success status
+ */
+const postNewsletterSignup = (
+  signupInfo: UserSignupInfo
+): Promise<AxiosResponse<{ success: boolean }>> => {
+  return makeRequest({
+    url: '/api/signup/',
+    method: 'POST',
+    data: signupInfo,
+    headers: { 'Content-Type': 'application/json' },
   });
 };

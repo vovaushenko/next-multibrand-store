@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
+import { postNewsletterSignup } from '../../api/rest/signup';
 import { UserSignupInfo } from '../../types';
 import { UserAction, UserActionTypes } from '../../types/userReduxTypes';
 
@@ -43,10 +44,7 @@ export const uploadUserSignupInfo = (signupInfo: UserSignupInfo) => {
   return async (dispatch: Dispatch<UserAction>): Promise<void> => {
     dispatch({ type: UserActionTypes.UPLOAD_SIGNUP_INFO });
     try {
-      const config = {
-        headers: { 'Content-Type': 'application/json' },
-      };
-      const { data } = await axios.post(`/api/signup`, signupInfo, config);
+      const { data } = await postNewsletterSignup(signupInfo);
       dispatch({
         type: UserActionTypes.SIGNUP_INFO_WAS_UPLOADED,
         payload: data.success,

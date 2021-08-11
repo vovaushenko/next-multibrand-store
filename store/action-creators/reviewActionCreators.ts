@@ -1,5 +1,9 @@
-import axios from 'axios';
 import { Dispatch } from 'redux';
+import {
+  getAllSubmittedReviews,
+  getProductReviews,
+  uploadNewReview,
+} from '../../api/rest/reviews';
 import { Review } from '../../types';
 import { ReviewAction, ReviewActionTypes } from '../../types/reviewsTypes';
 
@@ -13,10 +17,7 @@ export const uploadNewCustomerReview = (review: Review) => {
   return async (dispatch: Dispatch<ReviewAction>): Promise<void> => {
     dispatch({ type: ReviewActionTypes.UPLOAD_PRODUCT_REVIEW });
     try {
-      const config = {
-        headers: { 'Content-Type': 'application/json' },
-      };
-      const { data } = await axios.post(`/api/reviews`, review, config);
+      const { data } = await uploadNewReview(review);
       dispatch({
         type: ReviewActionTypes.PRODUCT_REVIEW_WAS_UPLOADED,
         payload: data.success,
@@ -40,7 +41,7 @@ export const loadProductReviews = (productID: string) => {
   return async (dispatch: Dispatch<ReviewAction>): Promise<void> => {
     dispatch({ type: ReviewActionTypes.LOAD_PRODUCT_REVIEWS });
     try {
-      const { data } = await axios.get(`/api/reviews/${productID}`);
+      const { data } = await getProductReviews(productID);
       dispatch({
         type: ReviewActionTypes.PRODUCT_REVIEWS_DID_LOAD,
         payload: data.reviews,
@@ -64,7 +65,7 @@ export const loadAllReviews = () => {
   return async (dispatch: Dispatch<ReviewAction>): Promise<void> => {
     dispatch({ type: ReviewActionTypes.LOAD_ALL_REVIEWS });
     try {
-      const { data } = await axios.get(`/api/reviews/`);
+      const { data } = await getAllSubmittedReviews();
       dispatch({
         type: ReviewActionTypes.ALL_REVIEWS_DID_LOAD,
         payload: data.reviews,

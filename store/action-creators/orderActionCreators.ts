@@ -1,5 +1,6 @@
-import axios from 'axios';
 import { Dispatch } from 'redux';
+import { getAllProcessedOrders } from '../../api/rest/admin';
+import { getAllClientOrders } from '../../api/rest/orders';
 import { OrdersAction, OrdersActionTypes } from '../../types/orderTypes';
 
 /**
@@ -16,8 +17,7 @@ export const loadAllCustomerOrders = () => {
     dispatch({ type: OrdersActionTypes.LOAD_ORDERS });
 
     try {
-      const { data } = await axios.get(`/api/orders`);
-
+      const { data } = await getAllClientOrders();
       dispatch({
         type: OrdersActionTypes.ORDERS_DID_LOAD,
         payload: data.orders,
@@ -45,7 +45,7 @@ export const loadAllOrders = () => {
     dispatch({ type: OrdersActionTypes.LOAD_ORDERS });
 
     try {
-      const { data } = await axios.get(`/api/admin/orders`);
+      const { data } = await getAllProcessedOrders();
 
       dispatch({
         type: OrdersActionTypes.ORDERS_DID_LOAD,
@@ -54,7 +54,7 @@ export const loadAllOrders = () => {
     } catch (error) {
       dispatch({
         type: OrdersActionTypes.ORDERS_LOAD_ERROR,
-        payload: error.response.data.error.message,
+        payload: error.response.statusText,
       });
     }
   };

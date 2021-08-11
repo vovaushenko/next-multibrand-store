@@ -283,3 +283,17 @@ export interface UserSignupInfoAPIResponse extends UserSignupInfo {
   _id: string;
   createdAt: string;
 }
+
+/**
+ * Client Order
+ *@interface
+ */
+export interface ClientOrder {
+  orderTotal: number;
+  purchase: Purchase[];
+  shippingInfo: UserShippingInfo;
+  paymentInfo: {
+    paymentID: string;
+    status: string;
+  };
+}
