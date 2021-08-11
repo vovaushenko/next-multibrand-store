@@ -22,7 +22,6 @@ export const reviewsReducer = (
   state = initialState,
   action: ReviewAction
 ): ReviewsState => {
-  //TODO: INTEGRATION TESTS AFTER ADDING ALL FEATURES
   switch (action.type) {
     /**
      * UPLOAD REVIEW
