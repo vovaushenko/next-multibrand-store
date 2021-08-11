@@ -44,10 +44,10 @@ export function useDashboardStats(): DashboardStats {
   );
 
   useEffect(() => {
-    loadAllNewsletterSignups();
-    loadAllCustomerOrders();
-    getAllClientsDetails();
-    loadAllReviews();
+    if (!allReviews.length) loadAllReviews();
+    if (!allOrders.length) loadAllCustomerOrders();
+    if (!newsletterSignups.length) loadAllNewsletterSignups();
+    if (!clients.length) getAllClientsDetails();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
