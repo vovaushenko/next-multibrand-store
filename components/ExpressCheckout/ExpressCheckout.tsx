@@ -1,6 +1,8 @@
-import React from 'react';
-import { FaAmazonPay, FaPaypal } from 'react-icons/fa';
-import { SiGooglepay } from 'react-icons/si';
+import Image from 'next/image';
+import React, { useCallback } from 'react';
+import { useActions } from '../../hooks/useActions';
+import ExpressPaymentModal from '../ExpressPaymentModal/ExpressPaymentModalConent';
+import { expressCheckoutPaymentMethods } from './expressCherckout.data';
 import * as Styled from './styles.ExpressCheckout';
 
 /**
@@ -9,18 +11,39 @@ import * as Styled from './styles.ExpressCheckout';
  *@returns {JSX.Element} - Rendered ExpressCheckout component
  */
 const ExpressCheckout = (): JSX.Element => {
+  const { openModal } = useActions();
+
+  const processExpressPayment = useCallback(
+    (paymentIcon: string, alt: string) => {
+      openModal({
+        modalYposition: window.scrollY,
+        modalContent: (
+          <ExpressPaymentModal
+            paymentMethodImageSrc={paymentIcon}
+            imgAlt={alt}
+          />
+        ),
+      });
+    },
+    [openModal]
+  );
+
   return (
     <Styled.Container>
       <Styled.Wrapper>
-        <Styled.PaymentMethod>
-          <SiGooglepay className="payment__icon" />
-        </Styled.PaymentMethod>
-        <Styled.PaymentMethod>
-          <FaAmazonPay className="payment__icon" />
-        </Styled.PaymentMethod>
-        <Styled.PaymentMethod>
-          <FaPaypal className="payment__icon" />
-        </Styled.PaymentMethod>
+        {expressCheckoutPaymentMethods.map((paymentMethod) => (
+          <Styled.PaymentMethod key={paymentMethod.alt}>
+            <Image
+              src={paymentMethod.src}
+              alt={paymentMethod.alt}
+              width={paymentMethod.width}
+              height={paymentMethod.height}
+              onClick={() =>
+                processExpressPayment(paymentMethod.src, paymentMethod.alt)
+              }
+            />
+          </Styled.PaymentMethod>
+        ))}
       </Styled.Wrapper>
     </Styled.Container>
   );

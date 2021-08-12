@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.section`
-  gap: 1rem;
   margin: 1rem 0;
   padding: 1rem;
   border-radius: ${({ theme }) => theme.borderRadius};
@@ -13,33 +12,34 @@ export const Container = styled.section`
 `;
 
 export const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
 
   @media ${({ theme }) => theme.media.tablet} {
-    flex-direction: column;
-    gap: 1rem;
+    grid-template-columns: 1fr;
   }
 `;
 
 export const PaymentMethod = styled.button`
   cursor: pointer;
+  height: 3rem;
+  overflow: clip;
   display: flex;
   align-items: center;
-  padding: 0.25rem 3rem;
-  margin-left: 1rem;
   justify-content: center;
-  background-color: transparent;
+  padding: 0 0.5rem;
+  background-color: ${({ theme }) => theme.primaryGolden};
   border: 0;
   color: ${({ theme }) => theme.primaryGolden};
-  border: 1px solid ${({ theme }) => theme.primaryGolden};
   border-radius: ${({ theme }) => theme.borderRadius};
-  .payment__icon {
-    font-size: 2.5rem;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.secondaryGolden};
   }
 
   @media ${({ theme }) => theme.media.tablet} {
     width: 100%;
+    margin: 0;
   }
 `;

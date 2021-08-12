@@ -5,6 +5,7 @@ export const Label = styled.label`
   display: block;
   margin-bottom: 0.4rem;
   padding-left: 1.2rem;
+  position: relative;
 
   /* Checked */
   .check__input:checked + .check__box {

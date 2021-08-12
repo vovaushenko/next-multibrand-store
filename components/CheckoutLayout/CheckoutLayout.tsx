@@ -4,6 +4,7 @@ import React, { ReactNode } from 'react';
 import { MdExpandMore, MdShoppingCart } from 'react-icons/md';
 import CheckoutCart from '../CheckoutCart/CheckoutCart';
 import CheckoutProgress from '../CheckoutProgress/CheckoutProgress';
+import NavbarHeaderLogo from '../NavbarHeaderLogo/NavbarHeaderLogo';
 import * as Styled from './styles.CheckoutLayout';
 
 interface Props {
@@ -27,6 +28,7 @@ const CheckoutLayout = ({ children, title }: Props): JSX.Element => {
       </Head>
       <Styled.Container>
         <Styled.LeftColumn>
+          <NavbarHeaderLogo />
           <CheckoutProgress />
           {children}
         </Styled.LeftColumn>

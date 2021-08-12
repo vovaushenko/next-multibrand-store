@@ -12,6 +12,10 @@ export const Container = styled.main`
 export const LeftColumn = styled.section`
   flex: 0.6;
   padding: 1.25rem 4rem;
+  h1 {
+    justify-content: flex-start;
+    margin-left: 0;
+  }
 
   @media ${({ theme }) => theme.media.tablet} {
     padding: 1rem;
