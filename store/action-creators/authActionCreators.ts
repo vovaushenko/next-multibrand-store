@@ -2,8 +2,8 @@ import { Dispatch } from 'redux';
 import {
   getUserAccountDetails,
   updateUserProfileDetails,
-} from '../../api/rest/me';
-import { registerUser } from '../../api/rest/register';
+} from '../../fetch-client/rest/me';
+import { registerUser } from '../../fetch-client/rest/register';
 import { AuthAction, AuthActionTypes } from '../../types/authReduxTypes';
 
 /**

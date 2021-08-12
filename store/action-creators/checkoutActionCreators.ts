@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux';
-import { processCustomerOrder } from '../../api/rest/orders';
+import { processCustomerOrder } from '../../fetch-client/rest/orders';
 import { CheckoutAction, CheckoutActionTypes } from '../../types/checkoutTypes';
 import { ShippingMethod } from './../../types/checkoutTypes';
 import {

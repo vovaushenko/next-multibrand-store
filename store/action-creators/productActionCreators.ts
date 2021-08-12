@@ -1,5 +1,8 @@
 import { Dispatch } from 'redux';
-import { getAllProducts, getProductDetails } from '../../api/rest/products';
+import {
+  getAllProducts,
+  getProductDetails,
+} from '../../fetch-client/rest/products';
 import { ProductActionTypes, ProductsAction } from '../../types/productTypes';
 import { State } from '../reducers';
 import {

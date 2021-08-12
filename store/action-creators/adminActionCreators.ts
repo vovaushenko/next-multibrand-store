@@ -1,15 +1,15 @@
 import { Dispatch } from 'redux';
-import { getAllClients } from '../../api/rest/admin';
+import { getAllClients } from '../../fetch-client/rest/admin';
 import {
   deleteOneProduct,
   postNewProduct,
   updateProductDetails,
-} from '../../api/rest/products';
+} from '../../fetch-client/rest/products';
 import {
   deleteClientReview,
   moderateCustomerReview,
-} from '../../api/rest/reviews';
-import { getAllNewsletterSignups } from '../../api/rest/signup';
+} from '../../fetch-client/rest/reviews';
+import { getAllNewsletterSignups } from '../../fetch-client/rest/signup';
 import { AdminAction, AdminActionTypes } from './../../types/adminTypes';
 import { UploadProduct } from './../../types/index';
 

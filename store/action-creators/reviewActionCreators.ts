@@ -3,7 +3,7 @@ import {
   getAllSubmittedReviews,
   getProductReviews,
   uploadNewReview,
-} from '../../api/rest/reviews';
+} from '../../fetch-client/rest/reviews';
 import { Review } from '../../types';
 import { ReviewAction, ReviewActionTypes } from '../../types/reviewsTypes';
 

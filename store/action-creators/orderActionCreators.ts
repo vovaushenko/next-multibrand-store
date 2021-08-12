@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
-import { getAllProcessedOrders } from '../../api/rest/admin';
-import { getAllClientOrders } from '../../api/rest/orders';
+import { getAllProcessedOrders } from '../../fetch-client/rest/admin';
+import { getAllClientOrders } from '../../fetch-client/rest/orders';
 import { OrdersAction, OrdersActionTypes } from '../../types/orderTypes';
 
 /**

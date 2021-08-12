@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import { postNewsletterSignup } from '../../api/rest/signup';
+import { postNewsletterSignup } from '../../fetch-client/rest/signup';
 import { UserSignupInfo } from '../../types';
 import { UserAction, UserActionTypes } from '../../types/userReduxTypes';
 
