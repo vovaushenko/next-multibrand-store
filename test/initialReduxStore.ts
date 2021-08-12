@@ -2,6 +2,7 @@ import { Product } from '../types';
 import { LocalRootState } from './../store/reducers/index';
 export const initialReduxStore: LocalRootState = {
   admin: {
+    newsletterSignups: [],
     isLoading: false,
     error: null,
     isDeleted: false,

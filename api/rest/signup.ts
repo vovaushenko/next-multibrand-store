@@ -15,7 +15,7 @@ const getAllNewsletterSignups = (): Promise<
   AxiosResponse<{ success: boolean; allSignups: UserSignupInfoAPIResponse[] }>
 > => {
   return makeRequest({
-    url: '/api/signup',
+    url: '/api/signup/',
     method: 'GET',
   });
 };
