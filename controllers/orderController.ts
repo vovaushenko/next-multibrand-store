@@ -3,6 +3,7 @@ import catchErrorsFrom from '../middleware/catchErrorsFrom';
 import Order, { IOrder } from '../models/order';
 import { NextApiRequestWithAuth } from '../types/authTypes';
 import { APIfeatures } from '../utils/apiFeatures';
+import { StatusCodes } from 'http-status-codes';
 
 /**
  * Create new order
@@ -31,7 +32,7 @@ const createNewOrder = async (
     deliveryStatus,
   });
 
-  res.status(200).json({
+  res.status(StatusCodes.CREATED).json({
     success: true,
     newOrder,
   });
@@ -59,7 +60,7 @@ const getAllCustomerOrders = async (
 
   const allCustomerOrders = await features.query;
 
-  res.status(200).json({
+  res.status(StatusCodes.OK).json({
     success: true,
     orders: allCustomerOrders,
   });
@@ -85,7 +86,7 @@ const getAllOrders = catchErrorsFrom(
 
     const orders = await features.query;
 
-    res.status(200).json({
+    res.status(StatusCodes.OK).json({
       success: true,
       count: orders.length,
       orders,

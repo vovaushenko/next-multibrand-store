@@ -4,6 +4,7 @@ import { User as UserType } from 'next-auth';
 import catchErrorsFrom from '../middleware/catchErrorsFrom';
 import User, { IUser } from '../models/user';
 import { NextApiRequestWithAuth } from '../types/authTypes';
+import { StatusCodes } from 'http-status-codes';
 
 export {
   registerUser,
@@ -51,7 +52,7 @@ const registerUser = catchErrorsFrom(
       },
     });
 
-    res.status(200).json({
+    res.status(StatusCodes.CREATED).json({
       success: true,
       message: 'Account was successfully created',
     });
@@ -72,7 +73,7 @@ const getCurrentUserProfile = async (
 ): Promise<void> => {
   const user = await User.findById(req.user._id);
 
-  res.status(200).json({
+  res.status(StatusCodes.OK).json({
     success: true,
     user,
   });
@@ -126,7 +127,7 @@ const updateUserProfile = async (
 
   await user.save();
 
-  res.status(200).json({
+  res.status(StatusCodes.OK).json({
     success: true,
   });
 };
@@ -150,7 +151,7 @@ const getAllClients = async (
 ): Promise<void> => {
   const allClients = await User.find({});
 
-  res.status(200).json({
+  res.status(StatusCodes.OK).json({
     success: true,
     clients: allClients,
   });

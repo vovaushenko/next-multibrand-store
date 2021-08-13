@@ -3,6 +3,7 @@ import catchErrorsFrom from '../middleware/catchErrorsFrom';
 import Review, { IReview } from '../models/review';
 import { APIfeatures } from '../utils/apiFeatures';
 import ErrorHandler from '../utils/errorHandler';
+import { StatusCodes } from 'http-status-codes';
 
 /**
  * @EXPORTS
@@ -39,7 +40,7 @@ const createNewReview = catchErrorsFrom(
       isReviewed: false,
     });
 
-    res.status(200).json({
+    res.status(StatusCodes.OK).json({
       success: true,
       newReview,
     });
@@ -70,7 +71,7 @@ const getAllProductReviews = async (
   if (!allProductReviews) {
     return new ErrorHandler(
       `Product Reviews with the id ${req.query.id} do not exist`,
-      404
+      StatusCodes.NOT_FOUND
     );
   }
 
@@ -103,7 +104,7 @@ const getAllReviews = async (
 
   const allProductReviews = await features.query;
 
-  res.status(200).json({
+  res.status(StatusCodes.OK).json({
     success: true,
     reviewCount: allProductReviews.length,
     reviews: allProductReviews,
@@ -131,7 +132,7 @@ const moderateReview = async (
 
   await foundReview.save();
 
-  res.status(200).json({
+  res.status(StatusCodes.OK).json({
     success: true,
   });
 };
@@ -152,13 +153,13 @@ const deleteCustomerReview = catchErrorsFrom(
     if (!foundReview) {
       return new ErrorHandler(
         `Review with the id ${req.query.id} does not exist`,
-        404
+        StatusCodes.NOT_FOUND
       );
     }
 
     await foundReview.remove();
 
-    res.status(204).json({
+    res.status(StatusCodes.OK).json({
       success: true,
     });
   }

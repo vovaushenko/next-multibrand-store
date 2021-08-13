@@ -4,6 +4,7 @@ import catchErrorsFrom from '../middleware/catchErrorsFrom';
 import Products, { IProduct } from '../models/products';
 import { APIfeatures } from '../utils/apiFeatures';
 import ErrorHandler from '../utils/errorHandler';
+import { StatusCodes } from 'http-status-codes';
 
 /**
  *Cloudinary image CDN configuration
@@ -39,7 +40,7 @@ export const getAllProducts = catchErrorsFrom(
 
     const allProducts: IProduct[] = await features.query;
 
-    res.status(200).json({
+    res.status(StatusCodes.OK).json({
       success: true,
       count: allProducts.length,
       allProducts,
@@ -77,7 +78,7 @@ export const addNewProduct = catchErrorsFrom(
 
     const newProduct = await Products.create(req.body);
 
-    res.status(200).json({
+    res.status(StatusCodes.OK).json({
       success: true,
       newProduct,
     });
@@ -99,11 +100,11 @@ export const getSingleProduct = catchErrorsFrom(
     if (!foundProduct) {
       return new ErrorHandler(
         `Product with the id ${req.query.id} does not exist`,
-        404
+        StatusCodes.NOT_FOUND
       );
     }
 
-    res.status(200).json({
+    res.status(StatusCodes.OK).json({
       success: true,
       product: foundProduct,
     });
@@ -125,7 +126,7 @@ export const updateSingleProduct = catchErrorsFrom(
     if (!foundProduct) {
       return new ErrorHandler(
         `Product with the id ${req.query.id} does not exist`,
-        404
+        StatusCodes.NOT_FOUND
       );
     }
 
@@ -158,7 +159,7 @@ export const updateSingleProduct = catchErrorsFrom(
       useFindAndModify: false,
     });
 
-    res.status(200).json({
+    res.status(StatusCodes.OK).json({
       success: true,
       product: foundProduct,
     });
@@ -181,7 +182,7 @@ export const deleteSingleProduct = catchErrorsFrom(
     if (!foundProduct) {
       return new ErrorHandler(
         `Product with the id ${req.query.id} does not exist`,
-        404
+        StatusCodes.NOT_FOUND
       );
     }
     //* Will delete images associated with the room from the CDN
@@ -191,6 +192,6 @@ export const deleteSingleProduct = catchErrorsFrom(
 
     foundProduct = await foundProduct.remove();
 
-    res.status(204).json({ success: true, data: null });
+    res.status(StatusCodes.OK).json({ success: true, data: null });
   }
 );
