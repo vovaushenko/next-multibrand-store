@@ -10,5 +10,9 @@ export default {
 const Template: Story<Props> = (args) => <Skeleton {...args} />;
 export const ProductDetailsPageSkeleton = Template.bind({});
 ProductDetailsPageSkeleton.args = { variant: 'productDetails' };
+
 export const AllProductsPageSkeleton = Template.bind({});
 AllProductsPageSkeleton.args = { variant: 'allProducts' };
+
+export const WhatsHotSection = Template.bind({});
+WhatsHotSection.args = { variant: 'whatsHot' };
