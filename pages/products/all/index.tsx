@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Layout from '../../../components/Layout/Layout';
-import SneakerLoader from '../../../components/SneakerLoader/SneakerLoader';
+import Skeleton from '../../../components/Skeleton/Skeleton';
 import { useActions } from '../../../hooks/useActions';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import AllProducts from '../../../screens/AllProducts/AllProducts';
@@ -11,27 +11,23 @@ import AllProducts from '../../../screens/AllProducts/AllProducts';
  */
 export default function AllProductsPage(): JSX.Element {
   const { loadAllProducts, addFilterOption } = useActions();
-  const { isLoading, filteredProducts } = useTypedSelector(
+  const { isLoading, filteredProducts, products } = useTypedSelector(
     (state) => state.products
   );
-
   useEffect(() => {
-    // here we will firstly load all products from DB
-    // then we add empty 'brand' filter option, just to instantiate filteredProducts in global state (otherwise they will be empty [])
-    const instantiateGlobalProducts = async () => {
-      await loadAllProducts();
-      await addFilterOption({ filterName: 'brand', filterValue: '' });
-    };
-
-    instantiateGlobalProducts();
+    loadAllProducts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  // We will pass filteredProducts from global state to <AllProducts/>
+  useEffect(() => {
+    addFilterOption({ filterName: 'brand', filterValue: '' });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [products]);
+
   // When new filters will be applied inside of <AllProducts/> will get new data
   return (
-    <Layout title={'Shop All Products'}>
+    <Layout title="Shop All Products">
       {isLoading ? (
-        <SneakerLoader />
+        <Skeleton variant="allProducts" />
       ) : (
         <AllProducts products={filteredProducts} />
       )}

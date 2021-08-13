@@ -1,7 +1,7 @@
 import { useRouter } from 'next/dist/client/router';
 import React, { useEffect } from 'react';
 import Layout from '../../../components/Layout/Layout';
-import SneakerLoader from '../../../components/SneakerLoader/SneakerLoader';
+import Skeleton from '../../../components/Skeleton/Skeleton';
 import { useActions } from '../../../hooks/useActions';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import AllProducts from '../../../screens/AllProducts/AllProducts';
@@ -14,31 +14,30 @@ import AllProducts from '../../../screens/AllProducts/AllProducts';
 export default function AllProductsSlugPage(): JSX.Element {
   const router = useRouter();
   const { loadAllProducts, addFilterOption } = useActions();
-  const { isLoading, filteredProducts } = useTypedSelector(
+  const { isLoading, filteredProducts, products } = useTypedSelector(
     (state) => state.products
   );
   // we will get filterValue for department from slug -> /products/all/kid, /products/all/men, /products/all/women
   const { slug } = router.query;
 
   useEffect(() => {
-    const instantiateGlobalProducts = async () => {
-      await loadAllProducts();
-      await addFilterOption({
-        filterName: 'department',
-        filterValue: slug as string,
-      });
-    };
-
-    instantiateGlobalProducts();
-
+    loadAllProducts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [slug]);
+  }, []);
+
+  useEffect(() => {
+    addFilterOption({
+      filterName: 'department',
+      filterValue: slug as string,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slug, products]);
 
   // We will pass filteredProducts from global state to <AllProductsSlugPage/>
   return (
     <Layout title={'Shop All Products'}>
       {isLoading || slug === undefined ? (
-        <SneakerLoader />
+        <Skeleton variant="allProducts" />
       ) : (
         <>
           <AllProducts products={filteredProducts} />

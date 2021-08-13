@@ -1,7 +1,7 @@
 import { useRouter } from 'next/dist/client/router';
 import React, { useEffect } from 'react';
 import Layout from '../../../components/Layout/Layout';
-import SneakerLoader from '../../../components/SneakerLoader/SneakerLoader';
+import Skeleton from '../../../components/Skeleton/Skeleton';
 import { useActions } from '../../../hooks/useActions';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import AllProducts from '../../../screens/AllProducts/AllProducts';
@@ -15,37 +15,37 @@ export default function MostWantedProductsPage(): JSX.Element {
   const router = useRouter();
 
   const { loadAllProducts, addFilterOption } = useActions();
-  const { isLoading, filteredProducts } = useTypedSelector(
+  const { isLoading, products, filteredProducts } = useTypedSelector(
     (state) => state.products
   );
 
   const { slug } = router.query;
 
   useEffect(() => {
-    const instantiateGlobalProducts = async () => {
-      await loadAllProducts();
-      if (slug !== undefined) {
-        await addFilterOption({
-          filterName: 'department',
-          filterValue: slug[0] as string,
-        });
-        await addFilterOption({
-          filterName: 'brand',
-          filterValue: slug[1] as string,
-        });
-      }
-    };
-
-    instantiateGlobalProducts();
-
+    loadAllProducts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [slug]);
+  }, []);
+
+  useEffect(() => {
+    if (slug !== undefined) {
+      addFilterOption({
+        filterName: 'department',
+        filterValue: slug[0] as string,
+      });
+
+      addFilterOption({
+        filterName: 'brand',
+        filterValue: slug[1] as string,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slug, products]);
 
   // We will pass filteredProducts from global state to <AllProductsSlugPage/>
   return (
     <Layout title={'Shop All Products'}>
       {isLoading || slug === undefined ? (
-        <SneakerLoader />
+        <Skeleton variant="allProducts" />
       ) : (
         <>
           <AllProducts products={filteredProducts} />
