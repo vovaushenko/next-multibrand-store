@@ -3,11 +3,11 @@ import React from 'react';
 import Filters from '../../components/Filters/Filters';
 import GridControl from '../../components/GridControl/GridControl';
 import ProductGrid from '../../components/ProductsGrid/ProductsGrid';
-import { dummyProduct } from '../../dev-data/product';
 import AllProducts from './AllProducts';
+import { mockProduct } from '../../test/initialReduxStore';
 
 describe('Footer contact/reward links Section', () => {
-  const wrap = shallow(<AllProducts products={[dummyProduct]} />);
+  const wrap = shallow(<AllProducts products={[mockProduct]} />);
 
   it('should render without throwing an error', () => {
     expect(wrap);

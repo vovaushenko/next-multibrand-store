@@ -9,7 +9,7 @@ export { processCustomerOrder, getAllClientOrders };
 /**
  *@api will make POST request to /api/orders
  *@function processCustomerOrder
- *@param {object} product - product to be saved in DB
+ *@param {object} order - order to be saved in DB
  *@returns {object} - promise with success status
  */
 const processCustomerOrder = (

@@ -4,15 +4,15 @@
  * APIfeatures class, enhances mongoose query with additional filtering, sorting, limiting and pagination functionality
  * @class APIfeatures
  * @param  {queryString} query in NextApiRequest
- * @param  {mongooseQuery} query
- * @returns {mongooseQuery} - filtered, sorted , limited aor  paginated query. If this will be specified in URL
+ * @param  {query} query
+ * @returns {query} - filtered, sorted , limited aor  paginated query. If this will be specified in URL
  */
-
 export class APIfeatures {
   queryString: {
     [key: string]: string;
   };
   query: any;
+
   constructor(
     query: any,
     queryString: {

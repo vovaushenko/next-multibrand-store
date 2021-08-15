@@ -21,7 +21,7 @@ export {
  * @POST /api/reviews
  * @function createNewReview
  * @param {NextApiRequest} req  Next API request
- * @param {Next.Response} res  Next API response
+ * @param {NextApiResponse} res  Next API response
  * @return {undefined}
  */
 const createNewReview = catchErrorsFrom(
@@ -52,7 +52,7 @@ const createNewReview = catchErrorsFrom(
  * @GET /api/reviews/:productID
  * @function getAllProductReviews
  * @param {NextApiRequest} req  Next API request
- * @param {Next.Response} res  Next API response
+ * @param {NextApiResponse} res  Next API response
  * @return {undefined}
  */
 const getAllProductReviews = async (
@@ -88,7 +88,7 @@ const getAllProductReviews = async (
  * @GET /api/reviews/
  * @function getAllReviews
  * @param {NextApiRequest} req  Next API request
- * @param {Next.Response} res  Next API response
+ * @param {NextApiResponse} res  Next API response
  * @return {undefined}
  */
 const getAllReviews = async (
@@ -116,8 +116,8 @@ const getAllReviews = async (
  * Moderate a review
  * @PUT /api/reviews/
  * @function updateUserProfile
- * @param {NextApiResponseWithAuth} req  Next API request with user info
- * @param {Next.Response} res The Next response
+ * @param {NextApiRequest} req  Next API request with user info
+ * @param {NextApiResponse} res The Next response
  * @return {undefined}
  */
 const moderateReview = async (
@@ -143,7 +143,7 @@ const moderateReview = async (
  * @DELETE /api/reviews/:id
  * @function deleteCustomerReview
  * @param {NextApiRequest} req  Next API request with user info
- * @param {Next.Response} res The Next response
+ * @param {NextApiResponse} res The Next response
  * @return {undefined}
  */
 const deleteCustomerReview = catchErrorsFrom(

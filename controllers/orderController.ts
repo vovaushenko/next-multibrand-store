@@ -10,7 +10,7 @@ import { StatusCodes } from 'http-status-codes';
  * @POST /api/orders
  * @function createNewOrder
  * @param {NextApiRequestWithAuth} req  Next API request with authenticated user
- * @param {Next.Response} res  Next API response
+ * @param {NextApiResponse} res  Next API response
  * @return {undefined}
  */
 
@@ -43,7 +43,7 @@ const createNewOrder = async (
  * @GET /api/orders/
  * @function registerUser
  * @param {NextApiRequestWithAuth} req  Next API request with authenticated user
- * @param {Next.Response} res  Next API response
+ * @param {NextApiResponse} res  Next API response
  * @return {undefined}
  */
 
@@ -71,8 +71,8 @@ const getAllCustomerOrders = async (
  * Get all orders
  * @GET /api/admin/orders
  * @function getAllOrders
- * @param {Next.Request} req  The Next request
- * @param {Next.Response} res The Next response
+ * @param {NextApiRequest} req  The Next request
+ * @param {NextApiResponse} res The Next response
  * @return {undefined}
  */
 const getAllOrders = catchErrorsFrom(

@@ -1,7 +1,7 @@
 import { Story } from '@storybook/react';
 import React from 'react';
-import { dummyProduct } from '../../dev-data/product';
 import ProductsGrid, { Props } from './ProductsGrid';
+import { mockProduct } from '../../test/initialReduxStore';
 
 export default {
   title: 'Products/Products Grid',
@@ -12,28 +12,28 @@ const Template: Story<Props> = (args) => <ProductsGrid {...args} />;
 export const Grid = Template.bind({});
 Grid.args = {
   products: [
-    dummyProduct,
-    dummyProduct,
-    dummyProduct,
-    dummyProduct,
-    dummyProduct,
-    dummyProduct,
-    dummyProduct,
-    dummyProduct,
+    mockProduct,
+    mockProduct,
+    mockProduct,
+    mockProduct,
+    mockProduct,
+    mockProduct,
+    mockProduct,
+    mockProduct,
   ],
   layoutType: 'grid',
 };
 export const Vertical = Template.bind({});
 Vertical.args = {
   products: [
-    dummyProduct,
-    dummyProduct,
-    dummyProduct,
-    dummyProduct,
-    dummyProduct,
-    dummyProduct,
-    dummyProduct,
-    dummyProduct,
+    mockProduct,
+    mockProduct,
+    mockProduct,
+    mockProduct,
+    mockProduct,
+    mockProduct,
+    mockProduct,
+    mockProduct,
   ],
   layoutType: 'vertical',
 };

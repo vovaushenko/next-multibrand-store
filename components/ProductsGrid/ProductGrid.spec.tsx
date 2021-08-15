@@ -1,13 +1,13 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import { dummyProduct } from '../../dev-data/product';
 import ProductCard from '../ProductCard/ProductCard';
 import ProductsGrid from './ProductsGrid';
+import { mockProduct } from '../../test/initialReduxStore';
 
 describe('Footer contact/reward links Section', () => {
   const wrap = shallow(
     <ProductsGrid
-      products={[dummyProduct, dummyProduct, dummyProduct]}
+      products={[mockProduct, mockProduct, mockProduct]}
       layoutType="grid"
     />
   );

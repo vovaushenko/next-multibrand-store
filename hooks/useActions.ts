@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { CombinedActionCreators } from './../store/action-creators/index';
+import { CombinedActionCreators } from '../store/action-creators';
 
 /**
  * custom hook that turns an object whose values are action creators, into an object with the
@@ -12,7 +12,6 @@ import { CombinedActionCreators } from './../store/action-creators/index';
  *creator wrapped into the `dispatch` call. If you passed a function as
  *`actionCreator`, the return value will also be a single function.
  */
-
 export const useActions = () => {
   const dispatch = useDispatch();
   return bindActionCreators(CombinedActionCreators, dispatch);

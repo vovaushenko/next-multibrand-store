@@ -3,8 +3,7 @@ import { Provider } from 'react-redux';
 import { AnyAction, applyMiddleware, createStore, Store } from 'redux';
 import thunk from 'redux-thunk';
 import { ThemeProvider } from 'styled-components';
-import { reducer } from '../store/reducers';
-import { LocalRootState } from '../store/reducers';
+import { LocalRootState, reducer } from '../store/reducers';
 import { mainTheme } from '../styles/mainTheme';
 import { initialReduxStore } from './initialReduxStore';
 

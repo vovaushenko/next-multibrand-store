@@ -20,11 +20,10 @@ cloudinary.v2.config({
  * Get all products route controller
  * @GET /api/products
  * @function
- * @param {Next.Request} req  The Next request
- * @param {Next.Response} res The Next response
+ * @param {NextApiRequest} req  The Next request
+ * @param {NextApiResponse} res The Next response
  * @return {undefined}
  */
-
 export const getAllProducts = catchErrorsFrom(
   async (req: NextApiRequest, res: NextApiResponse) => {
     const features = new APIfeatures(
@@ -52,11 +51,10 @@ export const getAllProducts = catchErrorsFrom(
  * Create new product route controller
  * @POST /api/products
  * @function
- * @param {Next.Request} req  The Next request
- * @param {Next.Response} res The Next response
+ * @param {NextApiRequest} req  The Next request
+ * @param {NextApiResponse} res The Next response
  * @return {undefined}
  */
-
 export const addNewProduct = catchErrorsFrom(
   async (req: NextApiRequest, res: NextApiResponse) => {
     //*images will be stored in Cloudinary CDN
@@ -89,8 +87,8 @@ export const addNewProduct = catchErrorsFrom(
  * Get single product by ID
  * @GET /api/products/:id
  * @function
- * @param {Next.Request} req  The Next request
- * @param {Next.Response} res The Next response
+ * @param {NextApiRequest} req  The Next request
+ * @param {NextApiResponse} res The Next response
  * @return {undefined}
  */
 export const getSingleProduct = catchErrorsFrom(
@@ -115,8 +113,8 @@ export const getSingleProduct = catchErrorsFrom(
  * Update single product by ID
  * @PUT /api/products/:id
  * @function
- * @param {Next.Request} req  The Next request
- * @param {Next.Response} res The Next response
+ * @param {NextApiRequest} req  The Next request
+ * @param {NextApiResponse} res The Next response
  * @return {undefined}
  */
 export const updateSingleProduct = catchErrorsFrom(
@@ -170,8 +168,8 @@ export const updateSingleProduct = catchErrorsFrom(
  * Delete single product by ID and associated images in CDN
  * @DELETE /api/products/:id
  * @function
- * @param {Next.Request} req  The Next request
- * @param {Next.Response} res The Next response
+ * @param {NextApiRequest} req  The Next request
+ * @param {NextApiResponse} res The Next response
  * @return {undefined}
  */
 

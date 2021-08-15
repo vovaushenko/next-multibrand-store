@@ -1,5 +1,5 @@
 import mongoose, { Date as MongooseDate, Document, Schema } from 'mongoose';
-import { Purchase, UserShippingInfo } from './../types/index';
+import { Purchase, UserShippingInfo } from '../types';
 import { IUser } from './user';
 
 interface PaymentInfo {

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 /**
- * Function to instantiate connection with database
+ * Function to instantiate connection with MongoDB
  *@function
  *@instantiates connection with MongoDB
  */
@@ -18,6 +18,6 @@ const connectWithDB = (): void => {
       useFindAndModify: true,
       useCreateIndex: true,
     })
-    .then(() => console.log('♻️Connected to DB♻️'));
+    .then(() => console.log('Connected to DB'));
 };
 export default connectWithDB;

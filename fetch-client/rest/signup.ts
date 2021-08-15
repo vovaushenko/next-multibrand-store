@@ -21,9 +21,9 @@ const getAllNewsletterSignups = (): Promise<
 };
 
 /**
- *@api will make POST request to /api/products/
- *@function postNewProduct
- *@param {object} product - product to be saved in DB
+ *@api will make POST request to /api/signup/
+ *@function postNewsletterSignup
+ *@param {object} signupInfo - new newsletter signup to be saved in DB
  *@returns {object} - promise with success status
  */
 const postNewsletterSignup = (

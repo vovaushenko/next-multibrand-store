@@ -29,7 +29,7 @@ const getAllSubmittedReviews = (): Promise<
 /**
  *@api will make GET request to /api/reviews/:id
  *@function getProductReviews
- *@param {string} id - productID
+ *@param {string} productID - productID
  *@returns {object} - promise with success and product fields
  */
 const getProductReviews = (
@@ -61,7 +61,7 @@ const uploadNewReview = (
 /**
  *@api will make PUT request to /api/reviews
  *@function moderateCustomerReview
- *@param {string} id - review ID
+ *@param {string} reviewID - review ID
  *@returns {object} - promise with success status
  */
 const moderateCustomerReview = (

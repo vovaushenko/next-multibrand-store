@@ -1,17 +1,16 @@
 import { NextApiResponse } from 'next';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { getSession } from 'next-auth/client';
-import { Role } from '../types/authTypes';
+import { NextApiRequestWithAuth, Role } from '../types/authTypes';
 import ErrorHandler from '../utils/errorHandler';
-import { NextApiRequestWithAuth } from './../types/authTypes';
 import { catchAsyncErrors } from './catchAsyncErrors';
 
 /**
  * @function isAuthenticatedUser
  * @middleware function to check whether the user is authenticated
- * @param  {NextApiRequest} req
+ * @param  {NextApiRequestWithAuth} req
  * @param  {NextApiResponse} res
- * @param  {Next} next
+ * @param  {any} next
  * @returns {undefined}
  */
 const isAuthenticatedUser = catchAsyncErrors(
@@ -30,9 +29,7 @@ const isAuthenticatedUser = catchAsyncErrors(
 /**
  * @function authorizedRoles
  * @middleware function to check authorization role of a user
- * @param  {NextApiRequestWithAuth} req
- * @param  {NextApiResponse} res
- * @param  {Next} next
+ * @param  {Role[]} roles - users eligible to use a service
  * @returns {undefined}
  */
 const authorizedRoles = (...roles: Role[]) => {

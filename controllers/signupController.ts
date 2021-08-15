@@ -14,7 +14,7 @@ export { createNewSignup, getAllSignups };
  * @POST /api/signup
  * @function createNewSignup
  * @param {NextApiRequest} req  Next API request
- * @param {Next.Response} res  Next API response
+ * @param {NextApiResponse} res  Next API response
  * @return {undefined}
  */
 const createNewSignup = catchErrorsFrom(
@@ -33,7 +33,7 @@ const createNewSignup = catchErrorsFrom(
  * @GET /api/signup
  * @function getAllSignups
  * @param {NextApiRequest} req  Next API request
- * @param {Next.Response} res  Next API response
+ * @param {NextApiResponse} res  Next API response
  * @return {undefined}
  */
 const getAllSignups = catchErrorsFrom(

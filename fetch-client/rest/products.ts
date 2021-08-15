@@ -30,7 +30,7 @@ const getProductDetails = (
 /**
  *@api will make GET request to /api/products/
  *@function getAllProducts
- *@param {queryParams} string - query params to be added to query, for instance ?isFeatured=true, ?sort=-price. See more in API docs
+ *@param {string} queryParams - query params to be added to query, for instance ?isFeatured=true, ?sort=-price. See more in API docs
  *@returns {object} - promise with success and product fields
  */
 const getAllProducts = (
@@ -77,9 +77,10 @@ const deleteOneProduct = (
 };
 
 /**
- *@api will make DELETE request to /api/products/:id
+ *@api will make PUT request to /api/products/:id
  *@function postNewProduct
- *@param {string} id - product id
+ *@param {string} productId - product id
+ *@param {UploadProduct} updatedProduct - updated produc
  *@returns {object} - promise with success status
  */
 const updateProductDetails = (

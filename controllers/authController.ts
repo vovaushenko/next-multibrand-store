@@ -25,7 +25,7 @@ cloudinary.v2.config({
  * @POST /api/auth/register
  * @function registerUser
  * @param {NextApiRequest} req  Next API request
- * @param {Next.Response} res  Next API response
+ * @param {NextApiResponse} res  Next API response
  * @return {undefined}
  */
 const registerUser = catchErrorsFrom(
@@ -63,8 +63,8 @@ const registerUser = catchErrorsFrom(
  * Get user account details
  * @GET /api/me
  * @function getCurrentUserProfile
- * @param {NextApiResponseWithAuth} req  Next API request with user info
- * @param {Next.Response} res The Next response
+ * @param {NextApiRequestWithAuth} req  Next API request with user info
+ * @param {NextApiResponse} res The Next response
  * @return {undefined}
  */
 const getCurrentUserProfile = async (
@@ -84,8 +84,8 @@ const getCurrentUserProfile = async (
  * @params name, email, password, avatar will be in request and will be used to update current user profile
  * @PUT /api/me/update
  * @function updateUserProfile
- * @param {NextApiResponseWithAuth} req  Next API request with user info
- * @param {Next.Response} res The Next response
+ * @param {NextApiRequestWithAuth} req  Next API request with user info
+ * @param {NextApiResponse} res The Next response
  * @return {undefined}
  */
 const updateUserProfile = async (
@@ -141,8 +141,8 @@ type Response = {
  * Get all clients
  * @GET /api/admin/clients
  * @function getAllClients
- * @param {NextApiResponseWithAuth} req  Next API request with user info
- * @param {Next.Response} res The Next response
+ * @param {NextApiRequestWithAuth} req  Next API request with user info
+ * @param {NextApiResponse} res The Next response
  * @return {undefined}
  */
 const getAllClients = async (
