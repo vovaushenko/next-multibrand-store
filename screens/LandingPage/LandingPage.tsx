@@ -4,11 +4,13 @@ import Skeleton from '../../components/Skeleton/Skeleton';
 import WhatsHot from '../../components/WhatsHotSection/WhatsHotSection';
 import { Product } from '../../types';
 import { highlightedSneakers } from './landingPageData';
+import MobileProducts from '../../components/MobileProducts/MobileProducts';
 
 export interface Props {
   products: Product[];
   areProductsLoading: boolean;
 }
+
 /**
  *@function LandingPage
  *@param {Product[]} products - array of highlighted products to be displayed in WhatsHot section
@@ -24,6 +26,25 @@ const LandingPage = ({ products, areProductsLoading }: Props): JSX.Element => {
       ) : (
         <WhatsHot products={products} />
       )}
+      <MobileProducts
+        products={products}
+        brandName={'Jordan'}
+        brandImage="/images/brands/Jordan.svg"
+        logoParams={{ height: 100, width: 150 }}
+      />
+      <MobileProducts
+        products={products}
+        brandName={'Nike'}
+        brandImage="/images/brands/Nike.svg"
+        logoParams={{ height: 100, width: 100 }}
+      />
+
+      <MobileProducts
+        products={products}
+        brandName={'Adidas'}
+        brandImage="/images/brands/Adidas.svg"
+        logoParams={{ height: 100, width: 100 }}
+      />
     </>
   );
 };

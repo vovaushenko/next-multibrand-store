@@ -1,5 +1,6 @@
 import { Product } from '../types';
-import { LocalRootState } from './../store/reducers/index';
+import { LocalRootState } from '../store/reducers';
+
 export const initialReduxStore: LocalRootState = {
   admin: {
     newsletterSignups: [],
@@ -799,7 +800,7 @@ export const mockProduct: Product = {
     {
       _id: '60ec4b0d182a728b9d356c35',
       public_id: 'sneaker-maniacs/products/cummusiuf80rolweuzjs',
-      url: '/public/images/og-travis.png',
+      url: '/images/og-travis.png',
     },
   ],
   model: 'VII (7) Retro',
