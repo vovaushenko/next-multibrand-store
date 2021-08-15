@@ -4,13 +4,13 @@ import { AnyAction, applyMiddleware, createStore, Store } from 'redux';
 import thunk from 'redux-thunk';
 import { ThemeProvider } from 'styled-components';
 import { reducer } from '../store/reducers';
-import { LocalRootState } from '../store/reducers/index';
+import { LocalRootState } from '../store/reducers';
 import { mainTheme } from '../styles/mainTheme';
 import { initialReduxStore } from './initialReduxStore';
 
 /**
  * Create a testing store with imported reducers, middleware, and initial state
- *@param {object} initialStore - Initial store for store
+ *@param {object} initialState - Initial store for store
  *@function storeFactory
  *@returns {Store} - Redux store
  */

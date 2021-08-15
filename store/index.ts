@@ -5,7 +5,8 @@ import thunk, { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { reducer, RootState } from './reducers';
 
 /***
- *@interface extended interface of the Dispatch of redux
+ *@interface
+ *extended interface of the Dispatch of redux
  *Extend the Dispatch interface with a ThunkDispatch *overload signature using Declaration Merging, in order to be able to dispatch actions through store.dispatch() in integration and unit tests
  *
  */
