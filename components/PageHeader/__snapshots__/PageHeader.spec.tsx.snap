@@ -8,6 +8,12 @@ exports[`Button should match snapshot 1`] = `
   margin: 1rem 0;
 }
 
+@media (max-width:768px) {
+  .c0 {
+    font-size: 1.25rem;
+  }
+}
+
 <h2
   className="c0"
 >

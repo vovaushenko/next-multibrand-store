@@ -13,7 +13,7 @@ export const CardContainer = styled.figure`
 
   cursor: pointer;
   border-radius: ${({ theme }) => theme.borderRadius};
-  background-color: ${({ theme }) => theme.dashboardGrayCard};
+  background-color: ${({ theme }) => theme.secondaryBg};
 
   &:hover {
     box-shadow: ${({ theme }) => theme.selectedOutline};
@@ -24,11 +24,11 @@ export const CardContainer = styled.figure`
 `;
 
 export const LinkContent = styled.a`
-  visibility: hidden;
   height: 1px;
   width: 1px;
 
-  :after {
+  :before {
+    content: '';
     position: absolute;
     top: 0;
     bottom: 0;

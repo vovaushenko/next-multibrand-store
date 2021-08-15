@@ -20,6 +20,9 @@ const StyledHeader = styled.h2`
   text-transform: capitalize;
   font-weight: 700;
   margin: 1rem 0;
+  @media ${({ theme }) => theme.media.tablet} {
+    font-size: 1.25rem;
+  }
 `;
 
 export default PageHeader;

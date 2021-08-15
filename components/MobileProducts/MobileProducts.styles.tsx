@@ -24,22 +24,22 @@ export const UL = styled.ul`
   height: auto;
 
   /* Hide horizontal scrollbar on mobile devices */
-  @media ${({ theme }) => theme.media.tablet} {
-    overflow-x: scroll;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* Internet Explorer 10+ */
-    ::-webkit-scrollbar {
-      /* WebKit */
-      width: 0;
-      height: 0;
-    }
+
+  overflow-x: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+
+  ::-webkit-scrollbar {
+    /* WebKit */
+    width: 0;
+    height: 0;
   }
 `;
 
 export const LI = styled.li``;
 
-export const BrandLogo = styled.figure`
-  width: 100px;
+export const BrandLogo = styled.a`
+  width: 70px;
   display: flex;
   align-items: center;
   justify-content: center;

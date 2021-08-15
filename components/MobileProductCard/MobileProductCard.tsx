@@ -32,7 +32,7 @@ const MobileProductCard = ({ product }: Props): JSX.Element => {
       />
 
       <Link href={`/products/${product._id}`} passHref>
-        <Styled.LinkContent>{product.model}</Styled.LinkContent>
+        <Styled.LinkContent>{}</Styled.LinkContent>
       </Link>
     </Styled.CardContainer>
   );

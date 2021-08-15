@@ -29,7 +29,7 @@ const MobileProducts = ({
   return (
     <Styled.Container>
       <Styled.UL>
-        <Styled.BrandLogo>
+        <Styled.BrandLogo href={`products/shoes/men/${brandName}`}>
           <Image
             src={brandImage}
             alt={brandName}

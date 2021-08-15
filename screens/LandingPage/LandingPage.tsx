@@ -5,6 +5,8 @@ import WhatsHot from '../../components/WhatsHotSection/WhatsHotSection';
 import { Product } from '../../types';
 import { highlightedSneakers } from './landingPageData';
 import MobileProducts from '../../components/MobileProducts/MobileProducts';
+import * as Styled from './LandingPage.styles';
+import PageHeader from '../../components/PageHeader/PageHeader';
 
 export interface Props {
   products: Product[];
@@ -19,33 +21,37 @@ export interface Props {
  */
 const LandingPage = ({ products, areProductsLoading }: Props): JSX.Element => {
   return (
-    <>
+    <Styled.Container>
       <Hero highlightedSneakers={highlightedSneakers} />
       {areProductsLoading ? (
         <Skeleton variant="whatsHot" />
       ) : (
         <WhatsHot products={products} />
       )}
-      <MobileProducts
-        products={products}
-        brandName={'Jordan'}
-        brandImage="/images/brands/Jordan.svg"
-        logoParams={{ height: 100, width: 150 }}
-      />
-      <MobileProducts
-        products={products}
-        brandName={'Nike'}
-        brandImage="/images/brands/Nike.svg"
-        logoParams={{ height: 100, width: 100 }}
-      />
 
-      <MobileProducts
-        products={products}
-        brandName={'Adidas'}
-        brandImage="/images/brands/Adidas.svg"
-        logoParams={{ height: 100, width: 100 }}
-      />
-    </>
+      <Styled.ProductsSection>
+        <PageHeader headerText={`Shop by brand 💣`} />
+        <MobileProducts
+          products={products}
+          brandName={'air jordan'}
+          brandImage="/images/brands/jordan-3.png"
+          logoParams={{ height: 100, width: 100 }}
+        />
+        <MobileProducts
+          products={products}
+          brandName={'nike'}
+          brandImage="/images/brands/Nike.svg"
+          logoParams={{ height: 100, width: 100 }}
+        />
+
+        <MobileProducts
+          products={products}
+          brandName={'adidas'}
+          brandImage="/images/brands/Adidas.svg"
+          logoParams={{ height: 100, width: 100 }}
+        />
+      </Styled.ProductsSection>
+    </Styled.Container>
   );
 };
 
