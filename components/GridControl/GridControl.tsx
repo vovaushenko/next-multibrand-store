@@ -10,6 +10,7 @@ export interface Props {
   productAmount: number;
   changeLayout: (val: 'grid' | 'vertical') => void;
 }
+
 /**
  * Responsible for sorting products, changing layout mode, showing quantity of products and products per page on <AllProductsPage/>
  *@function GridControl
@@ -45,6 +46,7 @@ const GridControl = ({
           modalWidth="180px"
           right="-4rem"
           top="3rem"
+          animationVariant={'slideIn'}
           modalContent={<SortingOptions setSortType={setSortType} />}
         />
       </Styled.SortWrapper>

@@ -67,6 +67,7 @@ const NavCart = (): JSX.Element => {
         modalWidth={modalWidth}
         top={modalTop}
         right={modalRight}
+        animationVariant={'slideIn'}
         modalContent={
           <Styled.ModalContentWrap ref={modalRef}>
             <CartContent

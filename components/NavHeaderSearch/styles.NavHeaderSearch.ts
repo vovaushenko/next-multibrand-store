@@ -14,11 +14,13 @@ export const Input = styled.input`
   padding: 0.5rem 1rem;
   border: none;
   appearance: none;
+
   &::placeholder {
     color: ${({ theme }) =>
       theme.mode === 'dark' ? theme.primaryBg : theme.primaryWhite};
     font-size: 1rem;
   }
+
   border-radius: 0.5rem 0 0 0.5rem;
 `;
 
@@ -43,6 +45,11 @@ export const ModalContent = styled.div`
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
+
+  h3 {
+    text-align: center;
+  }
+
   @media ${({ theme }) => theme.media.phone} {
     padding: 0.25rem;
   }

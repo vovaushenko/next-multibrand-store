@@ -7,7 +7,9 @@ export interface Props {
   modalWidth: string;
   top: string;
   right: string;
+  animationVariant: 'slideIn' | 'slideInTop';
 }
+
 /**
  * Wrapper for Navbar Dropdowns with User account/cart info
  * @function NavMiniModal
@@ -24,6 +26,7 @@ const NavMiniModal: FC<Props> = ({
   modalWidth,
   top,
   right,
+  animationVariant,
 }) => {
   return (
     <Styled.Container
@@ -31,6 +34,7 @@ const NavMiniModal: FC<Props> = ({
       modalWidth={modalWidth}
       top={top}
       right={right}
+      animationVariant={animationVariant}
     >
       {modalContent}
     </Styled.Container>

@@ -86,6 +86,7 @@ const NavUserAccount = (): JSX.Element => {
         modalWidth={modalWidth}
         top={modalTop}
         right={modalRight}
+        animationVariant={'slideIn'}
       />
     </Styled.Container>
   );

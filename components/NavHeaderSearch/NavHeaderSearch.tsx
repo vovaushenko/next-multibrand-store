@@ -6,6 +6,7 @@ import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import NavMiniModal from '../NavMiniModal/NavMiniModal';
 import * as Styled from './styles.NavHeaderSearch';
+import CardHeader from '../CardHeader/CardHeader';
 
 /**
  * Renders Navbar Search Component
@@ -14,8 +15,8 @@ import * as Styled from './styles.NavHeaderSearch';
  */
 const NavHeaderSearch = (): JSX.Element => {
   const router = useRouter();
-  const modalRef = useRef<HTMLDivElement>(null);
   // modal config
+  const modalRef = useRef<HTMLDivElement>(null);
   const modalWidth = '100%';
   const modalTop = '2.5rem';
   const modalRight = '0rem';
@@ -29,6 +30,10 @@ const NavHeaderSearch = (): JSX.Element => {
     if (!products.length) {
       loadAllProducts();
     }
+    const areSearchResultsOnScreen = () => {
+      if (term !== '') return setIsModalOpen(true);
+      setIsModalOpen(false);
+    };
     areSearchResultsOnScreen();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [term]);
@@ -82,41 +87,37 @@ const NavHeaderSearch = (): JSX.Element => {
 
   const modalContent = () => (
     <Styled.ModalContent ref={modalRef}>
-      {foundProducts.map((prod) => (
-        <Styled.Product
-          key={prod._id}
-          onClick={() => redirectToProductPage(prod._id)}
-        >
-          <figure>
-            <Image
-              src={prod.images[0].url}
-              alt={`${prod.brand} ${prod.model}`}
-              height={50}
-              width={50}
-              objectFit="contain"
-            />
-          </figure>
+      {foundProducts.length > 0 ? (
+        foundProducts.map((prod) => (
+          <Styled.Product
+            key={prod._id}
+            onClick={() => redirectToProductPage(prod._id)}
+          >
+            <figure>
+              <Image
+                src={prod.images[0].url}
+                alt={`${prod.brand} ${prod.model}`}
+                height={50}
+                width={50}
+                objectFit="contain"
+              />
+            </figure>
 
-          <div>
-            <p>
-              {prod.brand} {prod.model}
-            </p>
-            <p>${prod.price}</p>
-          </div>
-        </Styled.Product>
-      ))}
+            <div>
+              <p>
+                {prod.brand} {prod.model}
+              </p>
+              <p>${prod.price}</p>
+            </div>
+          </Styled.Product>
+        ))
+      ) : (
+        <>
+          <CardHeader headerText={'No results match 💥'} />
+        </>
+      )}
     </Styled.ModalContent>
   );
-
-  //TODO: Move areSearchResultsOnScreen to utils
-  /**
-   *@function areSearchResultsOnScreen
-   *@returns {void} - setIsModalOpen open to true if there is some found products by searchTerm and search term is not empty(otherwise there will always be products). Otherwise setIsModalOpen to false
-   */
-  const areSearchResultsOnScreen = () => {
-    if (foundProducts.length > 0 && term !== '') return setIsModalOpen(true);
-    setIsModalOpen(false);
-  };
 
   return (
     <Styled.Container>
@@ -138,9 +139,9 @@ const NavHeaderSearch = (): JSX.Element => {
         modalWidth={modalWidth}
         top={modalTop}
         right={modalRight}
+        animationVariant={'slideInTop'}
       />
     </Styled.Container>
   );
 };
-
 export default NavHeaderSearch;
