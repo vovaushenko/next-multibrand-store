@@ -1,9 +1,9 @@
-import { Review } from '../types';
+import { Product, Review } from '../types';
 
 /**
  * @EXPORTS
  */
-export { getAverageRating };
+export { getAverageRating, getDropdownItems };
 
 /**
  * @method getAverageRating
@@ -18,4 +18,30 @@ const getAverageRating = (productReviews: Review[]): number => {
     0
   );
   return Math.round(totalRating / productReviews.length);
+};
+
+/**
+ *@method getDropdownItems
+ *@param {Product[]} products - array of all products in which search will be performed
+ *@param {string} searchTerm - search term typed in a search bar
+ *@returns {Product[]} - Array of products, with name or model that include specified "searchTerm"
+ */
+const getDropdownItems = (
+  searchTerm: string,
+  products: Product[]
+): Product[] => {
+  searchTerm = searchTerm.toLowerCase();
+  let allProducts = [...products];
+
+  if (searchTerm !== undefined) {
+    allProducts = allProducts.filter(
+      (product) =>
+        product.brand.toLowerCase().includes(searchTerm) ||
+        product.model.toLowerCase().includes(searchTerm)
+    );
+
+    return allProducts.slice(0, 4);
+  }
+
+  return [];
 };

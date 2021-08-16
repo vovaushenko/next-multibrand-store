@@ -7,6 +7,7 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import NavMiniModal from '../NavMiniModal/NavMiniModal';
 import * as Styled from './styles.NavHeaderSearch';
 import CardHeader from '../CardHeader/CardHeader';
+import { getDropdownItems } from '../../utils/helperFunctions';
 
 /**
  * Renders Navbar Search Component
@@ -24,6 +25,7 @@ const NavHeaderSearch = (): JSX.Element => {
   const [term, setTerm] = useState<string>('');
   const { loadAllProducts } = useActions();
   const { products } = useTypedSelector((state) => state.products);
+  const dropdownItems = getDropdownItems(term, products);
 
   // this useEffect is responsible for loading products for further search and filtering, also for opening/closing modal. Function areSearchResultsOnScreen() open set modal to open if there are some found products
   useEffect(() => {
@@ -57,38 +59,13 @@ const NavHeaderSearch = (): JSX.Element => {
     };
   }, [isModalOpen]);
 
-  //TODO: Move filterProducts to utils
-  /**
-   *@function filteredProducts
-   *@param {string} searchTerm - search input typed in search bar
-   *@returns {Product[]} - Array of products, with name or model that include typed "searchTerm"
-   */
-  const filteredProducts = (searchTerm: string) => {
-    searchTerm = searchTerm.toLowerCase();
-    let allProducts = [...products];
-
-    if (searchTerm !== undefined) {
-      allProducts = allProducts.filter(
-        (product) =>
-          product.brand.toLowerCase().includes(searchTerm) ||
-          product.model.toLowerCase().includes(searchTerm)
-      );
-
-      return allProducts.slice(0, 4);
-    }
-
-    return [];
-  };
-
-  const foundProducts = filteredProducts(term);
-
   const redirectToProductPage = (productID: string) =>
     router.push(`/products/${productID}`);
 
   const modalContent = () => (
     <Styled.ModalContent ref={modalRef}>
-      {foundProducts.length > 0 ? (
-        foundProducts.map((prod) => (
+      {dropdownItems.length > 0 ? (
+        dropdownItems.map((prod) => (
           <Styled.Product
             key={prod._id}
             onClick={() => redirectToProductPage(prod._id)}

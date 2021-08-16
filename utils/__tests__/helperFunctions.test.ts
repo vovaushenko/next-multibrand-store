@@ -1,5 +1,6 @@
 import { Review } from '../../types';
-import { getAverageRating } from '../helperFunctions';
+import { getAverageRating, getDropdownItems } from '../helperFunctions';
+import { mockProduct } from '../../test/initialReduxStore';
 
 describe('getAverageRating', () => {
   const mockReview: Review = {
@@ -37,5 +38,19 @@ describe('getAverageRating', () => {
     ]);
 
     expect(calculatedAvgRating).toBe(avgDummyRating);
+  });
+});
+
+describe('getDropdownItems', () => {
+  const mockProducts = [mockProduct];
+
+  test('returns empty array for no-match', () => {
+    const foundProducts = getDropdownItems('random', mockProducts);
+    expect(foundProducts.length).toBe(0);
+  });
+
+  test('find product by correct search term', () => {
+    const foundProducts = getDropdownItems('jordan', mockProducts);
+    expect(foundProducts).toEqual([mockProduct]);
   });
 });
