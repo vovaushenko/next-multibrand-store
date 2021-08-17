@@ -7,6 +7,7 @@ import { highlightedSneakers } from './landingPageData';
 import MobileProducts from '../../components/MobileProducts/MobileProducts';
 import * as Styled from './LandingPage.styles';
 import PageHeader from '../../components/PageHeader/PageHeader';
+import { getDataForLandingPageSections } from '../../utils/helperFunctions';
 
 export interface Props {
   products: Product[];
@@ -20,32 +21,35 @@ export interface Props {
  *@returns {JSX.Element} - Rendered LandingPage component
  */
 const LandingPage = ({ products, areProductsLoading }: Props): JSX.Element => {
+  const { hotProducts, jordanSneakers, adidasSneakers, nikeSneakers } =
+    getDataForLandingPageSections(products);
+
   return (
     <Styled.Container>
       <Hero highlightedSneakers={highlightedSneakers} />
       {areProductsLoading ? (
         <Skeleton variant="whatsHot" />
       ) : (
-        <WhatsHot products={products} />
+        <WhatsHot products={hotProducts} />
       )}
 
       <Styled.ProductsSection>
         <PageHeader headerText={`Shop by brand 💣`} />
         <MobileProducts
-          products={products}
+          products={jordanSneakers}
           brandName={'air jordan'}
           brandImage="/images/brands/jordan-3.png"
           logoParams={{ height: 100, width: 100 }}
         />
         <MobileProducts
-          products={products}
+          products={nikeSneakers}
           brandName={'nike'}
           brandImage="/images/brands/Nike.svg"
           logoParams={{ height: 100, width: 100 }}
         />
 
         <MobileProducts
-          products={products}
+          products={adidasSneakers}
           brandName={'adidas'}
           brandImage="/images/brands/Adidas.svg"
           logoParams={{ height: 100, width: 100 }}

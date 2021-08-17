@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+
 /**
  * Cloudinary image interface
  *@interface
@@ -19,7 +20,7 @@ export type Department = 'men' | 'women' | 'kid';
  */
 export interface Product {
   _id: string;
-  brand: string;
+  brand: SneakerBrand;
   colors: string[];
   department: Department;
   description: string;
@@ -28,7 +29,9 @@ export interface Product {
   price: number;
   size: string[];
   styleCode: string;
+  isFeatured: boolean;
 }
+
 /**
  * Product Object that will be stored in DB
  *@interface
@@ -179,6 +182,7 @@ export interface ProductFilters {
   department: string;
   size: string;
 }
+
 /**
  * All available sorting options
  *@type
@@ -228,6 +232,7 @@ export interface PaymentInfo {
   paymentID: string;
   status: string;
 }
+
 /**
  * User Order Information
  *@interface
@@ -279,6 +284,7 @@ export interface UserLocation {
 export interface UserSignupInfo extends UserLocation {
   email: string;
 }
+
 export interface UserSignupInfoAPIResponse extends UserSignupInfo {
   _id: string;
   createdAt: string;

@@ -3,7 +3,7 @@ import { Product, Review } from '../types';
 /**
  * @EXPORTS
  */
-export { getAverageRating, getDropdownItems };
+export { getAverageRating, getDropdownItems, getDataForLandingPageSections };
 
 /**
  * @method getAverageRating
@@ -44,4 +44,37 @@ const getDropdownItems = (
   }
 
   return [];
+};
+
+/**
+ *@method getDataForLandingPageSections
+ *@param {Product[]} products - array of all products in which search will be performed
+ *@returns {object} - object with adidas, nike, jordan and highlighted sneakers
+ */
+const getDataForLandingPageSections = (
+  products: Product[]
+): {
+  hotProducts: Product[];
+  adidasSneakers: Product[];
+  nikeSneakers: Product[];
+  jordanSneakers: Product[];
+} => {
+  const hotProducts = [];
+  const adidasSneakers = [];
+  const nikeSneakers = [];
+  const jordanSneakers = [];
+
+  for (const product of products) {
+    if (product.isFeatured) hotProducts.push(product);
+    if (product.brand === 'Adidas') adidasSneakers.push(product);
+    if (product.brand === 'Air Jordan') jordanSneakers.push(product);
+    if (product.brand === 'Nike') nikeSneakers.push(product);
+  }
+
+  return {
+    hotProducts,
+    adidasSneakers,
+    nikeSneakers,
+    jordanSneakers,
+  };
 };
