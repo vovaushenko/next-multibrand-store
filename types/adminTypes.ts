@@ -57,66 +57,80 @@ export enum AdminActionTypes {
 interface UploadProductRequestAction {
   type: AdminActionTypes.UPLOAD_PRODUCT;
 }
+
 interface UploadProductSuccessAction {
   type: AdminActionTypes.PRODUCT_DID_UPLOAD;
   payload: boolean;
 }
+
 interface UploadProductFailAction {
   type: AdminActionTypes.PRODUCT_UPLOAD_ERROR;
   payload: string;
 }
+
 /**
  * Admin DELETE action interfaces
  */
 interface DeleteProductRequestAction {
   type: AdminActionTypes.DELETE_PRODUCT;
 }
+
 interface DeleteProductSuccessAction {
   type: AdminActionTypes.PRODUCT_WAS_DELETED;
   payload: boolean;
 }
+
 interface DeleteProductFailAction {
   type: AdminActionTypes.PRODUCT_DELETE_ERROR;
   payload: string;
 }
+
 /**
  * Admin UPDATE action interfaces
  */
 interface UpdateProductRequestAction {
   type: AdminActionTypes.UPDATE_PRODUCT;
 }
+
 interface UpdateProductSuccessAction {
   type: AdminActionTypes.PRODUCT_WAS_UPDATED;
   payload: boolean;
 }
+
 interface UpdateProductFailAction {
   type: AdminActionTypes.PRODUCT_UPDATE_ERROR;
   payload: string;
 }
+
 /**
  * Admin LOAD USERS action interfaces
  */
 interface LoadUsersRequestAction {
   type: AdminActionTypes.LOAD_USERS;
 }
+
 interface LoadUsersSuccessAction {
   type: AdminActionTypes.USERS_WERE_LOADED;
   payload: User[];
 }
+
 interface LoadUsersFailAction {
   type: AdminActionTypes.USERS_LOAD_ERROR;
   payload: string;
 }
+
 /**
  * Admin MODERATE REVIEW action interfaces
  */
 interface ModerateReviewRequestAction {
   type: AdminActionTypes.MODERATE_REVIEW;
 }
+
 interface ModerateReviewSuccessAction {
   type: AdminActionTypes.REVIEW_WAS_MODERATED;
   payload: boolean;
 }
+
 interface ModerateReviewFailAction {
   type: AdminActionTypes.REVIEW_MODERATION_ERROR;
   payload: string;
@@ -125,10 +139,12 @@ interface ModerateReviewFailAction {
 interface DeleteReviewRequestAction {
   type: AdminActionTypes.DELETE_REVIEW;
 }
+
 interface DeleteReviewSuccessAction {
   type: AdminActionTypes.REVIEW_WAS_DELETED;
   payload: boolean;
 }
+
 interface DeleteReviewFailAction {
   type: AdminActionTypes.REVIEW_DELETE_ERROR;
   payload: string;
@@ -140,10 +156,12 @@ interface DeleteReviewFailAction {
 interface LoadNewsletterSignupsRequestAction {
   type: AdminActionTypes.LOAD_NEWSLETTER_SIGNUPS;
 }
+
 interface LoadNewsletterSignupsSuccessAction {
   type: AdminActionTypes.NEWSLETTER_SIGNUPS_DID_LOAD;
   payload: UserSignupInfoAPIResponse[];
 }
+
 interface LoadNewsletterSignupsFailAction {
   type: AdminActionTypes.NEWSLETTER_SIGNUPS_LOAD_ERROR;
   payload: string;
