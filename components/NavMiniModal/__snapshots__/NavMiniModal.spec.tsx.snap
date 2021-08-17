@@ -1,35 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`it apply specified styles for open/close states it applies default styles 1`] = `
-.c0 {
-  visibility: visible;
-  opacity: 1;
-  z-index: 6;
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  min-width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-  border: 1px solid rgba(143,143,143,0.1);
-  border-radius: 0.5rem;
-  background: #151515;
-  padding: 1.25rem;
-  -webkit-animation: dfiLNz 0.5s cubic-bezier(0.25,0.46,0.45,0.94) both;
-  animation: dfiLNz 0.5s cubic-bezier(0.25,0.46,0.45,0.94) both;
-}
-
-@media (max-width:768px) {
-  .c0 {
-    padding: 0.75rem;
-  }
-}
-
-<div
-  className="c0"
-/>
-`;
-
 exports[`it apply specified styles for open/close states it applies default styles for open modal 1`] = `
 .c0 {
   visibility: visible;

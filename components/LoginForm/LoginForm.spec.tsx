@@ -4,9 +4,9 @@ import React from 'react';
 import { withReduxAndStyledProviders } from '../../test/testUtils';
 import Button from '../Button/Button';
 import CardHeader from '../CardHeader/CardHeader';
-import FormTextField from '../FormTextField/FormTextField';
 import LoginForm from './LoginForm';
 import * as Styled from './styles.LoginForm';
+import FormikTextField from '../FormikTextField/FormikTextField';
 
 /**
  * Setup function for the component
@@ -32,10 +32,10 @@ describe('LoginForm component', () => {
   });
 
   it('should render two text form with two text fields', () => {
-    const form = wrap.find(Styled.Form);
+    const form = wrap.find('form');
     expect(form.length).toBe(1);
 
-    const formInputs = form.find(FormTextField);
+    const formInputs = form.find(FormikTextField);
     expect(formInputs.length).toBe(2);
   });
 

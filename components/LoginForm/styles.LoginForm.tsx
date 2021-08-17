@@ -29,33 +29,27 @@ export const Container = styled.section`
     background: linear-gradient(40deg, #ffc130 22%, #383838 70%, #000000 89%);
     border-radius: 50%;
   }
-`;
 
-export const Form = styled.form`
-  position: absolute;
-  z-index: 5;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  top: 20%;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: ${({ theme }) => `${parseInt(theme.maxWidth) / 2.1}px`};
-  width: 95%;
-  padding: 2rem;
-  border-radius: ${({ theme }) => theme.borderRadius};
-  margin: 0 auto;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  form {
+    position: absolute;
+    z-index: 5;
+    left: 0;
+    right: 0;
+    top: 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 2.25rem;
+    max-width: ${({ theme }) => `${parseInt(theme.maxWidth) / 2.1}px`};
+    width: 95%;
+    padding: 2rem 3rem;
+    border-radius: ${({ theme }) => theme.borderRadius};
+    margin: 0 auto;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
 
-  h3 {
-    margin: 0;
+    h3 {
+      margin: 0;
+    }
   }
-`;
-
-export const FormControl = styled.fieldset`
-  border: 0;
 `;

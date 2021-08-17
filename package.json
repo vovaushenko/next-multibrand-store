@@ -19,6 +19,7 @@
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.26.3",
+    "formik": "^2.2.9",
     "http-status-codes": "^2.1.4",
     "mongoose": "^5.13.7",
     "next": "11.0.1",
@@ -35,7 +36,8 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.3.0",
-    "validator": "^13.6.0"
+    "validator": "^13.6.0",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",

@@ -9,7 +9,7 @@ export const mainTheme: DefaultTheme = {
   primaryGolden: '#ffc130',
   secondaryGolden: '#ffa500',
   primaryWhite: '#ffffff',
-  primaryRed: '#ff0000',
+  primaryRed: '#e83535',
   darkGray: '#8f8f8f',
   lightGray: '#9a9696',
   lightestGray: '#d0d0d0',
