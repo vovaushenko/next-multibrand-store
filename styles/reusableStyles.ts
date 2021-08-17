@@ -27,11 +27,31 @@ export const slideInKeyframes = keyframes`
  */
 export const slideOutKeyframes = keyframes`
   0% {
-    transform: translateZ(0);
+    transform: translateZ(0) rotateX(0);
+    opacity: 1;
+  }
+  54% {
+    transform: translateZ(-160px) rotateX(87deg);
     opacity: 1;
   }
   100% {
-    transform: translateZ(-1100px);
+    transform: translateZ(-800px) rotateX(90deg);
     opacity: 0;
+  }
+`;
+
+/**
+ * @keyframes slideInTop
+ * @returns {keyframes} - keyframes for element's appearance animations
+ * @example animation: ${slideInTop} 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+ */
+export const slideInTop = keyframes`
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
 `;

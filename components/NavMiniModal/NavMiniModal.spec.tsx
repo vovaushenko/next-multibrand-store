@@ -4,6 +4,9 @@ import React from 'react';
 import { withReduxAndStyledProviders } from '../../test/testUtils';
 import NavMiniModal from './NavMiniModal';
 import * as Styled from './styles.NavMiniModal';
+import renderer from 'react-test-renderer';
+import { ThemeProvider } from 'styled-components';
+import { mainTheme } from '../../styles/mainTheme';
 
 /**
  * Setup function for the component
@@ -36,12 +39,22 @@ describe('Navbar Modal Dropdown', () => {
     expect(modal.prop('top')).toBe('1rem');
     expect(modal.prop('right')).toBe('1rem');
   });
+});
 
-  describe('closed modal', () => {
-    const wrap = setup(false);
-    it('should not render modal in closed state', () => {
-      const modal = wrap.find(Styled.Container);
-      expect(modal.length).toBe(1);
-    });
+describe('it apply specified styles for open/close states', () => {
+  test('it applies default styles for open modal', () => {
+    const tree = renderer
+      .create(<ThemeProvider theme={mainTheme}>{setup(true)}</ThemeProvider>)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+    expect(tree).toHaveStyleRule('visibility', 'visible');
+  });
+
+  test('it does not shoul modal when it is closed', () => {
+    const tree = renderer
+      .create(<ThemeProvider theme={mainTheme}>{setup(false)}</ThemeProvider>)
+      .toJSON();
+
+    expect(tree).toHaveStyleRule('visibility', 'hidden');
   });
 });
