@@ -67,7 +67,7 @@ const PaymentSection = (): JSX.Element => {
         </Styled.CreditCardProviders>
       </Styled.FormControl>
       {isCreditCardSelected && (
-        <>
+        <Styled.CreditCardSection>
           <FormTextField
             name="card__number"
             placeholder="Card Number"
@@ -102,7 +102,7 @@ const PaymentSection = (): JSX.Element => {
               required={true}
             />
           </Styled.FormTextControl>
-        </>
+        </Styled.CreditCardSection>
       )}
 
       <Styled.FormControl>
@@ -122,10 +122,10 @@ const PaymentSection = (): JSX.Element => {
       {isPayPalSelected && (
         <Styled.PaymentContainer>
           <Image
-            src="/images/payment-icons/credit-card.png"
+            src="/images/payment-methods/PayPal-Logo.wine.svg"
             alt="Pay with PayPal service"
-            height={140}
-            width={170}
+            height={160}
+            width={200}
             objectFit="cover"
             quality={100}
           />
@@ -145,20 +145,20 @@ const PaymentSection = (): JSX.Element => {
         />
 
         <Image
-          src="/images/payment-icons/amazon-pay.svg"
+          src="/images/payment-methods/Amazon_Pay-Logo.wine.svg"
           alt="amazon-pay"
-          height={60}
-          width={80}
+          height={70}
+          width={90}
           className="amazon__pay"
         />
       </Styled.FormControl>
       {isAmazonSelected && (
         <Styled.PaymentContainer>
           <Image
-            src="/images/payment-icons/credit-card.png"
+            src="/images/payment-methods/Amazon_Pay-Logo.wine.svg"
             alt="Pay with Amazon service"
-            height={140}
-            width={170}
+            height={180}
+            width={210}
             objectFit="cover"
             quality={100}
           />

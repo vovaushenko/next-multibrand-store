@@ -9,7 +9,11 @@ const backgroundAndPadding = css`
 export const Container = styled.main`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.75rem;
+
+  h3 {
+    margin: 1.5rem 0;
+  }
 `;
 
 export const ShippingInfo = styled.form`
@@ -32,10 +36,10 @@ export const Content = styled.p``;
 
 export const ButtonWrap = styled.footer`
   display: flex;
-  gap: 1rem;
+  gap: 1.75rem;
   align-items: center;
-  ${backgroundAndPadding}
 
+  ${backgroundAndPadding}
   button {
     color: ${({ theme }) => theme.dashboardGrayBg};
   }

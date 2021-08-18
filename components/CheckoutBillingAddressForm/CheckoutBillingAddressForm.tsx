@@ -1,35 +1,25 @@
-import { useSession } from 'next-auth/client';
-import { useRouter } from 'next/dist/client/router';
 import React from 'react';
 import { toast } from 'react-toastify';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { UserShippingInfo } from '../../types';
-import * as Styled from './styles.CheckoutShippingInfo';
+import * as Styled from './CheckoutBillingAddressForm.styles';
 import * as yup from 'yup';
 import { Form, Formik } from 'formik';
 import FormikTextField from '../FormikTextField/FormikTextField';
-import Link from 'next/link';
 import Button from '../Button/Button';
 
 /**
  *Renders form to collect user shipping information
  *@function CheckoutShippingInfo
- *@returns {JSX.Element} - Rendered CheckoutShippingInfo component
+ *@returns {JSX.Element} - Rendered CheckoutBillingAddressForm component
  */
 
-const CheckoutShippingInfo = (): JSX.Element => {
-  const router = useRouter();
-  const [session] = useSession();
-
-  const { collectCustomerShippingInfo } = useActions();
+const CheckoutBillingAddressForm = (): JSX.Element => {
   const { isLoading, isShippingInfoCollected } = useTypedSelector(
     (state) => state.checkout
   );
-
-  const proceedToShipping = () => {
-    router.push('/checkout/shipping');
-  };
+  const { collectCustomerShippingInfo } = useActions();
 
   return (
     <Styled.Container>
@@ -47,13 +37,11 @@ const CheckoutShippingInfo = (): JSX.Element => {
         }}
         validationSchema={validationSchema}
         onSubmit={(data) => {
-          // in user is authenticated, get email from session, otherwise get email from from local state
-          const userEmail = session !== null ? session.user.email : data.email;
           // connect all data into userShippingInformation
           const userShippingInformation: UserShippingInfo = {
             firstName: data.firstName,
             lastName: data.lastName,
-            email: userEmail,
+            email: data.email,
             city: data.city,
             address: data.address,
             country: data.country,
@@ -67,9 +55,6 @@ const CheckoutShippingInfo = (): JSX.Element => {
 
           // if everything is correct, proceed to shipping stage
           toast.success('🎉 Shipping information is saved 🎉');
-          setTimeout(() => {
-            proceedToShipping();
-          }, 1000);
         }}
       >
         <Form>
@@ -86,10 +71,8 @@ const CheckoutShippingInfo = (): JSX.Element => {
               placeholder="Last Name"
             />
           </Styled.FormControl>
-          {/* EMAIL - will be shown only to unauthorized users, if user is logged-in. Data will be received through session */}
-          {session === null && (
-            <FormikTextField type="email" name="email" placeholder="Email" />
-          )}
+          {/*EMAIL*/}
+          <FormikTextField type="email" name="email" placeholder="Email" />
           {/* ADDRESS */}
           <FormikTextField type="text" name="address" placeholder="Address" />
           {/* CITY */}
@@ -107,17 +90,16 @@ const CheckoutShippingInfo = (): JSX.Element => {
           {/* PHONE */}
           <FormikTextField type="tel" name="phone" placeholder="Phone" />
 
-          <Styled.ButtonWrap>
-            <Button
-              text="Continue to shipping"
-              isCompleted={isShippingInfoCollected}
-              isLoading={isLoading}
-              type="submit"
-            />
-            <Link href="/cart" passHref>
-              <Styled.ReturnToCart>Return to cart</Styled.ReturnToCart>
-            </Link>
-          </Styled.ButtonWrap>
+          <Button
+            text={
+              isShippingInfoCollected
+                ? 'Billing Address Was Updated'
+                : 'Update Billing Address'
+            }
+            isCompleted={isShippingInfoCollected}
+            isLoading={isLoading}
+            type="submit"
+          />
         </Form>
       </Formik>
     </Styled.Container>
@@ -135,11 +117,11 @@ const validationSchema = yup.object({
     .required('Please add last name')
     .max(25, 'Last name cannot exceed 25 symbols'),
 
-  // email: yup
-  //   .string()
-  //   .email('Email is incorrect')
-  //   .required('Please add email')
-  //   .max(35, 'Email cannot exceed 35 symbols'),
+  email: yup
+    .string()
+    .email('Email is incorrect')
+    .required('Please add email')
+    .max(35, 'Email cannot exceed 35 symbols'),
 
   address: yup
     .string()
@@ -166,11 +148,10 @@ const validationSchema = yup.object({
     .required('Please add zip code')
     .max(15, 'Zip code cannot exceed 15 symbols'),
 
-  // phone: yup.string().matches(phoneRegExp, 'Phone number is not valid'),
   phone: yup
     .string()
     .required('Please add phone number')
     .max(25, 'Phone number cannot exceed 15 symbols'),
 });
 
-export default CheckoutShippingInfo;
+export default CheckoutBillingAddressForm;

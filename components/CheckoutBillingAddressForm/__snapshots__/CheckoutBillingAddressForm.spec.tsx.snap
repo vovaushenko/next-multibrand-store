@@ -1,0 +1,406 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkout Billing Address form component it applies default styles and matches snapshot 1`] = `
+<section
+  className="CheckoutBillingAddressFormstyles__Container-sc-ml5ma3-0 czUgzW"
+>
+  <form
+    action="#"
+    onReset={[Function]}
+    onSubmit={[Function]}
+  >
+    <fieldset
+      className="CheckoutBillingAddressFormstyles__FormControl-sc-ml5ma3-1 jSvROU"
+    >
+      <fieldset
+        className="FormikTextFieldstyles__Container-sc-j5e6g8-0 gfHFLG"
+      >
+        <input
+          className="FormikTextFieldstyles__Input-sc-j5e6g8-2 hLUiqp"
+          name="firstName"
+          onBlur={[Function]}
+          onChange={[Function]}
+          type="text"
+          value=""
+        />
+        <label
+          className="FormikTextFieldstyles__Label-sc-j5e6g8-1 fMQMhn"
+          htmlFor="firstName"
+        >
+          First Name
+        </label>
+        <div
+          className="FormikTextFieldstyles__Error-sc-j5e6g8-3 frNgMi"
+        >
+          <svg
+            className="icon"
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              Object {
+                "color": undefined,
+              }
+            }
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"
+            />
+          </svg>
+          
+        </div>
+      </fieldset>
+      <fieldset
+        className="FormikTextFieldstyles__Container-sc-j5e6g8-0 gfHFLG"
+      >
+        <input
+          className="FormikTextFieldstyles__Input-sc-j5e6g8-2 hLUiqp"
+          name="lastName"
+          onBlur={[Function]}
+          onChange={[Function]}
+          type="text"
+          value=""
+        />
+        <label
+          className="FormikTextFieldstyles__Label-sc-j5e6g8-1 fMQMhn"
+          htmlFor="lastName"
+        >
+          Last Name
+        </label>
+        <div
+          className="FormikTextFieldstyles__Error-sc-j5e6g8-3 frNgMi"
+        >
+          <svg
+            className="icon"
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              Object {
+                "color": undefined,
+              }
+            }
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"
+            />
+          </svg>
+          
+        </div>
+      </fieldset>
+    </fieldset>
+    <fieldset
+      className="FormikTextFieldstyles__Container-sc-j5e6g8-0 gfHFLG"
+    >
+      <input
+        className="FormikTextFieldstyles__Input-sc-j5e6g8-2 hLUiqp"
+        name="email"
+        onBlur={[Function]}
+        onChange={[Function]}
+        type="email"
+        value=""
+      />
+      <label
+        className="FormikTextFieldstyles__Label-sc-j5e6g8-1 fMQMhn"
+        htmlFor="email"
+      >
+        Email
+      </label>
+      <div
+        className="FormikTextFieldstyles__Error-sc-j5e6g8-3 frNgMi"
+      >
+        <svg
+          className="icon"
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"
+          />
+        </svg>
+        
+      </div>
+    </fieldset>
+    <fieldset
+      className="FormikTextFieldstyles__Container-sc-j5e6g8-0 gfHFLG"
+    >
+      <input
+        className="FormikTextFieldstyles__Input-sc-j5e6g8-2 hLUiqp"
+        name="address"
+        onBlur={[Function]}
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+      <label
+        className="FormikTextFieldstyles__Label-sc-j5e6g8-1 fMQMhn"
+        htmlFor="address"
+      >
+        Address
+      </label>
+      <div
+        className="FormikTextFieldstyles__Error-sc-j5e6g8-3 frNgMi"
+      >
+        <svg
+          className="icon"
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"
+          />
+        </svg>
+        
+      </div>
+    </fieldset>
+    <fieldset
+      className="FormikTextFieldstyles__Container-sc-j5e6g8-0 gfHFLG"
+    >
+      <input
+        className="FormikTextFieldstyles__Input-sc-j5e6g8-2 hLUiqp"
+        name="city"
+        onBlur={[Function]}
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+      <label
+        className="FormikTextFieldstyles__Label-sc-j5e6g8-1 fMQMhn"
+        htmlFor="city"
+      >
+        City
+      </label>
+      <div
+        className="FormikTextFieldstyles__Error-sc-j5e6g8-3 frNgMi"
+      >
+        <svg
+          className="icon"
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"
+          />
+        </svg>
+        
+      </div>
+    </fieldset>
+    <fieldset
+      className="CheckoutBillingAddressFormstyles__FormControl-sc-ml5ma3-1 jSvROU"
+    >
+      <fieldset
+        className="FormikTextFieldstyles__Container-sc-j5e6g8-0 gfHFLG"
+      >
+        <input
+          className="FormikTextFieldstyles__Input-sc-j5e6g8-2 hLUiqp"
+          name="country"
+          onBlur={[Function]}
+          onChange={[Function]}
+          type="text"
+          value=""
+        />
+        <label
+          className="FormikTextFieldstyles__Label-sc-j5e6g8-1 fMQMhn"
+          htmlFor="country"
+        >
+          Country
+        </label>
+        <div
+          className="FormikTextFieldstyles__Error-sc-j5e6g8-3 frNgMi"
+        >
+          <svg
+            className="icon"
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              Object {
+                "color": undefined,
+              }
+            }
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"
+            />
+          </svg>
+          
+        </div>
+      </fieldset>
+      <fieldset
+        className="FormikTextFieldstyles__Container-sc-j5e6g8-0 gfHFLG"
+      >
+        <input
+          className="FormikTextFieldstyles__Input-sc-j5e6g8-2 hLUiqp"
+          name="state"
+          onBlur={[Function]}
+          onChange={[Function]}
+          type="text"
+          value=""
+        />
+        <label
+          className="FormikTextFieldstyles__Label-sc-j5e6g8-1 fMQMhn"
+          htmlFor="state"
+        >
+          State
+        </label>
+        <div
+          className="FormikTextFieldstyles__Error-sc-j5e6g8-3 frNgMi"
+        >
+          <svg
+            className="icon"
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              Object {
+                "color": undefined,
+              }
+            }
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"
+            />
+          </svg>
+          
+        </div>
+      </fieldset>
+      <fieldset
+        className="FormikTextFieldstyles__Container-sc-j5e6g8-0 gfHFLG"
+      >
+        <input
+          className="FormikTextFieldstyles__Input-sc-j5e6g8-2 hLUiqp"
+          name="zipCode"
+          onBlur={[Function]}
+          onChange={[Function]}
+          type="text"
+          value=""
+        />
+        <label
+          className="FormikTextFieldstyles__Label-sc-j5e6g8-1 fMQMhn"
+          htmlFor="zipCode"
+        >
+          ZIP Code
+        </label>
+        <div
+          className="FormikTextFieldstyles__Error-sc-j5e6g8-3 frNgMi"
+        >
+          <svg
+            className="icon"
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              Object {
+                "color": undefined,
+              }
+            }
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"
+            />
+          </svg>
+          
+        </div>
+      </fieldset>
+    </fieldset>
+    <fieldset
+      className="FormikTextFieldstyles__Container-sc-j5e6g8-0 gfHFLG"
+    >
+      <input
+        className="FormikTextFieldstyles__Input-sc-j5e6g8-2 hLUiqp"
+        name="phone"
+        onBlur={[Function]}
+        onChange={[Function]}
+        type="tel"
+        value=""
+      />
+      <label
+        className="FormikTextFieldstyles__Label-sc-j5e6g8-1 fMQMhn"
+        htmlFor="phone"
+      >
+        Phone
+      </label>
+      <div
+        className="FormikTextFieldstyles__Error-sc-j5e6g8-3 frNgMi"
+      >
+        <svg
+          className="icon"
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"
+          />
+        </svg>
+        
+      </div>
+    </fieldset>
+    <button
+      className="styles__StyledButton-sc-fh9flx-0 zUcJK btn"
+      type="submit"
+    >
+      Update Billing Address
+    </button>
+  </form>
+</section>
+`;

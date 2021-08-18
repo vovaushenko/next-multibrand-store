@@ -10,6 +10,7 @@ import CardHeader from '../CardHeader/CardHeader';
 import FormCheckboxField from '../FormCheckboxField/FormCheckboxField';
 import PaymentSection from '../PaymentSection/PaymentSection';
 import * as Styled from './styles.CheckoutPayment';
+import CheckoutBillingAddressForm from '../CheckoutBillingAddressForm/CheckoutBillingAddressForm';
 
 /**
  *Shipping stage of checkout process
@@ -19,7 +20,10 @@ import * as Styled from './styles.CheckoutPayment';
 const CheckoutPayment = (): JSX.Element => {
   const router = useRouter();
   const [useShippingAddress, setUseShippingAddress] = useState<boolean>(true);
-  const [useAnotherAddress, setUseAnotherAddress] = useState<boolean>(false);
+  const [
+    userSelectedAlternativeBillingAddress,
+    setUserSelectedAlternativeBillingAddress,
+  ] = useState<boolean>(false);
   const [shouldRememberCustomerInfo, setShouldRememberCustomerInfo] =
     useState<boolean>(true);
 
@@ -48,10 +52,10 @@ const CheckoutPayment = (): JSX.Element => {
   const handleSetShippingInfo = useCallback(() => {
     if (useShippingAddress) {
       setUseShippingAddress(false);
-      setUseAnotherAddress(true);
+      setUserSelectedAlternativeBillingAddress(true);
     } else {
       setUseShippingAddress(true);
-      setUseAnotherAddress(false);
+      setUserSelectedAlternativeBillingAddress(false);
     }
   }, [useShippingAddress]);
 
@@ -140,17 +144,21 @@ const CheckoutPayment = (): JSX.Element => {
           labelText="Same as shipping address"
         />
       </Styled.ShippingInfo>
+
       <Styled.ShippingInfo>
         <FormCheckboxField
-          checked={useAnotherAddress}
+          checked={userSelectedAlternativeBillingAddress}
           setChecked={handleSetShippingInfo}
           name="different"
           labelText="Use a different billing address"
         />
       </Styled.ShippingInfo>
+      {/*If user selected to use alternative billing address, the below form will be rendered*/}
+      {userSelectedAlternativeBillingAddress === true && (
+        <CheckoutBillingAddressForm />
+      )}
 
       {/* Remember User */}
-
       <CardHeader headerText="Remember me" />
       <Styled.ShippingInfo>
         <FormCheckboxField
@@ -187,5 +195,4 @@ const CheckoutPayment = (): JSX.Element => {
     </Styled.Container>
   );
 };
-
 export default CheckoutPayment;

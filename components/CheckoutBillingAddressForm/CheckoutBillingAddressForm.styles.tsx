@@ -1,6 +1,9 @@
 import styled from 'styled-components';
+import { slideInTop } from '../../styles/reusableStyles';
 
 export const Container = styled.section`
+  animation: ${slideInTop} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+
   form {
     display: flex;
     flex-direction: column;
@@ -26,25 +29,4 @@ export const FormControl = styled.fieldset`
   @media ${({ theme }) => theme.media.tablet} {
     flex-direction: column;
   }
-`;
-
-export const ButtonWrap = styled.footer`
-  display: flex;
-  gap: 1.75rem;
-  align-items: center;
-  padding: 1rem;
-  border-radius: ${({ theme }) => theme.borderRadius};
-  background-color: ${({ theme }) => theme.dashboardGrayBg};
-
-  &:hover {
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.secondaryGolden};
-  }
-
-  button {
-    color: ${({ theme }) => theme.dashboardGrayBg};
-  }
-`;
-
-export const ReturnToCart = styled.a`
-  color: ${({ theme }) => theme.primaryGolden};
 `;

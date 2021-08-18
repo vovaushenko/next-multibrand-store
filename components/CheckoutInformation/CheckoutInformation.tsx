@@ -5,13 +5,16 @@ import CardHeader from '../CardHeader/CardHeader';
 import CheckoutShippingInfo from '../CheckoutShippingInfo/CheckoutShippingInfo';
 import ExpressCheckout from '../ExpressCheckout/ExpressCheckout';
 import * as Styled from './styles.CheckoutInformation';
+
 /**
+ *Renders first step in checkout process - get user shipping address information
  *@function CheckoutInformation
  *@returns {JSX.Element} - Rendered CheckoutInformation component
  */
 const CheckoutInformation = (): JSX.Element => {
   const [session] = useSession();
   const handleSignOut = () => signOut();
+
   return (
     <Styled.Container>
       <CardHeader headerText="Express Checkout" />
