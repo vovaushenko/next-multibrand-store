@@ -6,6 +6,8 @@ import { mainTheme } from '../../styles/mainTheme';
 import { mockReduxStore } from '../../test/mockReduxStore';
 import { storeFactory } from '../../test/testUtils';
 import CheckoutShippingInfo from './CheckoutShippingInfo';
+import FormikTextField from '../FormikTextField/FormikTextField';
+import Button from '../Button/Button';
 
 /**
  * Setup function for the component
@@ -29,5 +31,14 @@ describe('Checkout Shipping info component', () => {
   it('should render without throwing an error', () => {
     expect(wrap);
     expect(wrap.length).toBe(1);
+  });
+
+  it('should render all input text controls', () => {
+    const inputControl = wrap.find(FormikTextField);
+    expect(inputControl.length).toBe(8);
+  });
+  it('should render submit button', () => {
+    const submitBtn = wrap.find(Button);
+    expect(submitBtn.length).toBe(1);
   });
 });

@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const Container = styled.main``;
+export const Container = styled.section`
+  h3 {
+    margin: 2rem 0;
+  }
+`;
 
 export const UserInformation = styled.section`
   display: flex;

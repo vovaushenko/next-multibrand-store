@@ -1,13 +1,19 @@
 import styled from 'styled-components';
 
-export const Container = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+export const Container = styled.section`
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
 
-  div {
-    margin: 0;
-    padding: 0;
+    input {
+      background-color: ${({ theme }) => theme.dashboardGrayBg};
+    }
+
+    div {
+      margin: 0;
+      padding: 0;
+    }
   }
 `;
 
@@ -29,6 +35,7 @@ export const ButtonWrap = styled.footer`
   padding: 1rem;
   border-radius: ${({ theme }) => theme.borderRadius};
   background-color: ${({ theme }) => theme.dashboardGrayBg};
+
   &:hover {
     box-shadow: 0 0 0 2px ${({ theme }) => theme.secondaryGolden};
   }
