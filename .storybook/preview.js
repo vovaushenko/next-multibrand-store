@@ -5,7 +5,7 @@ import { withThemesProvider } from 'storybook-addon-styled-component-theme';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from '../styles/globalStyle';
 import { mainTheme } from '../styles/mainTheme';
-import { initialReduxStore } from '../test/initialReduxStore';
+import { mockReduxStore } from '../test/mockReduxStore';
 import { storeFactory } from '../test/testUtils';
 
 Object.defineProperty(nextImage, 'default', {
@@ -17,7 +17,7 @@ const themes = [mainTheme];
 
 addDecorator(withThemesProvider(themes), ThemeProvider);
 
-const store = storeFactory(initialReduxStore);
+const store = storeFactory(mockReduxStore);
 addDecorator((story) => (
   <ThemeProvider theme={mainTheme}>
     <Provider store={store}>

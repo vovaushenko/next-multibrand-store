@@ -1,6 +1,6 @@
 import { Review } from '../../types';
 import { getAverageRating, getDropdownItems } from '../helperFunctions';
-import { mockProduct } from '../../test/initialReduxStore';
+import { mockProduct } from '../../test/mockReduxStore';
 
 describe('getAverageRating', () => {
   const mockReview: Review = {

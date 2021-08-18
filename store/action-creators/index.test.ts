@@ -1,5 +1,5 @@
 import moxios from 'moxios';
-import { initialReduxStore, mockProduct } from '../../test/initialReduxStore';
+import { mockProduct, mockReduxStore } from '../../test/mockReduxStore';
 import { storeFactory } from './../../test/testUtils';
 import { loadAllProducts } from './productActionCreators';
 
@@ -13,7 +13,7 @@ describe('load all products', () => {
   });
 
   test('products are loaded', () => {
-    const store = storeFactory(initialReduxStore);
+    const store = storeFactory(mockReduxStore);
     moxios.wait(async () => {
       const request = moxios.requests.mostRecent();
 

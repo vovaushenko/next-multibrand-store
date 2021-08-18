@@ -1,4 +1,4 @@
-import { initialReduxStore } from '../../../test/initialReduxStore';
+import { mockReduxStore } from '../../../test/mockReduxStore';
 import { storeFactory } from '../../../test/testUtils';
 import { LocalRootState } from '../../reducers';
 import { loadAllProducts, loadProductDetails } from '../productActionCreators';
@@ -7,14 +7,14 @@ import { loadAllProducts, loadProductDetails } from '../productActionCreators';
  * Mocked redux store
  *@returns {store} - redux store of the app
  */
-const store = storeFactory(initialReduxStore);
+const store = storeFactory(mockReduxStore);
 
 describe('Products action creators', () => {
   test('correctly calculate totals', () => {
     store.dispatch(loadAllProducts());
     const newState = store.getState();
     const expectedState: LocalRootState = {
-      ...initialReduxStore,
+      ...mockReduxStore,
     };
 
     expect(newState).toEqual(expectedState);
@@ -24,7 +24,7 @@ describe('Products action creators', () => {
     store.dispatch(loadProductDetails('test'));
     const newState = store.getState();
     const expectedState: LocalRootState = {
-      ...initialReduxStore,
+      ...mockReduxStore,
     };
 
     expect(newState).toEqual(expectedState);

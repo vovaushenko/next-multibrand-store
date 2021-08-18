@@ -1,7 +1,7 @@
 import { Story } from '@storybook/react';
 import React from 'react';
 import MobileProductCard, { Props } from './MobileProductCard';
-import { mockProduct } from '../../test/initialReduxStore';
+import { mockProduct } from '../../test/mockReduxStore';
 
 export default {
   title: 'utility/cards/mobile-product-card',

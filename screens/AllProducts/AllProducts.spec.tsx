@@ -4,7 +4,7 @@ import Filters from '../../components/Filters/Filters';
 import GridControl from '../../components/GridControl/GridControl';
 import ProductGrid from '../../components/ProductsGrid/ProductsGrid';
 import AllProducts from './AllProducts';
-import { mockProduct } from '../../test/initialReduxStore';
+import { mockProduct } from '../../test/mockReduxStore';
 
 describe('Footer contact/reward links Section', () => {
   const wrap = shallow(<AllProducts products={[mockProduct]} />);

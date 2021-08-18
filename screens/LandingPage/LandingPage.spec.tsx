@@ -3,7 +3,7 @@ import React from 'react';
 import Hero from '../../components/Hero/Hero';
 import Skeleton from '../../components/Skeleton/Skeleton';
 import WhatsHot from '../../components/WhatsHotSection/WhatsHotSection';
-import { mockProduct } from '../../test/initialReduxStore';
+import { mockProduct } from '../../test/mockReduxStore';
 import LandingPage, { Props } from './LandingPage';
 
 /**

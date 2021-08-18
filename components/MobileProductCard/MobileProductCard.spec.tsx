@@ -3,7 +3,7 @@ import 'jest-styled-components';
 import React from 'react';
 import MobileProductCard from './MobileProductCard';
 import * as Styled from './MobileProductCard.styles';
-import { mockProduct } from '../../test/initialReduxStore';
+import { mockProduct } from '../../test/mockReduxStore';
 import Link from 'next/link';
 
 describe('Mobile Product Card', () => {

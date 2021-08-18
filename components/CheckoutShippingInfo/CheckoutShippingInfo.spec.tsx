@@ -3,7 +3,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { mainTheme } from '../../styles/mainTheme';
-import { initialReduxStore } from '../../test/initialReduxStore';
+import { mockReduxStore } from '../../test/mockReduxStore';
 import { storeFactory } from '../../test/testUtils';
 import CheckoutShippingInfo from './CheckoutShippingInfo';
 
@@ -12,7 +12,7 @@ import CheckoutShippingInfo from './CheckoutShippingInfo';
  * @returns {mountWrapper}
  */
 const setup = () => {
-  const store = storeFactory(initialReduxStore);
+  const store = storeFactory(mockReduxStore);
 
   return mount(
     <ThemeProvider theme={mainTheme}>

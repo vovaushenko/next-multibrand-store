@@ -1,4 +1,4 @@
-import { mockProduct } from '../../../test/initialReduxStore';
+import { mockProduct } from '../../../test/mockReduxStore';
 import { Product } from '../../../types';
 import {
   ProductActionTypes,

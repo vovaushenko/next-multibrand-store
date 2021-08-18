@@ -2,7 +2,7 @@ import { shallow } from 'enzyme';
 import React from 'react';
 import ProductCard from '../ProductCard/ProductCard';
 import ProductsGrid from './ProductsGrid';
-import { mockProduct } from '../../test/initialReduxStore';
+import { mockProduct } from '../../test/mockReduxStore';
 
 describe('Footer contact/reward links Section', () => {
   const wrap = shallow(

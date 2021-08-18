@@ -1,7 +1,7 @@
 import { mount } from 'enzyme';
 import React from 'react';
 import { Provider } from 'react-redux';
-import { initialReduxStore } from '../../test/initialReduxStore';
+import { mockReduxStore } from '../../test/mockReduxStore';
 import {
   storeFactory,
   withReduxAndStyledProviders,
@@ -15,7 +15,7 @@ import * as Styled from './styles.AdminAllClients';
  * @returns {ShallowWrapper}
  */
 const setup = () => {
-  const state = storeFactory(initialReduxStore);
+  const state = storeFactory(mockReduxStore);
   return mount(
     withReduxAndStyledProviders(
       <Provider store={state}>

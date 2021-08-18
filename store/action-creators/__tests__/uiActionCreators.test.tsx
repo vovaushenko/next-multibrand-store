@@ -1,5 +1,5 @@
 import React from 'react';
-import { initialReduxStore } from '../../../test/initialReduxStore';
+import { mockReduxStore } from '../../../test/mockReduxStore';
 import { storeFactory } from '../../../test/testUtils';
 import { LocalRootState } from '../../reducers';
 import { changeTheme, closeModal, openModal } from '../uiActionCreators';
@@ -8,7 +8,7 @@ import { changeTheme, closeModal, openModal } from '../uiActionCreators';
  * Mocked redux store
  *@returns {store} - redux store of the app
  */
-const store = storeFactory(initialReduxStore);
+const store = storeFactory(mockReduxStore);
 
 describe('closeModal action creator', () => {
   describe('Modal action creators', () => {
@@ -23,7 +23,7 @@ describe('closeModal action creator', () => {
 
       const newState = store.getState();
       const expectedState: LocalRootState = {
-        ...initialReduxStore,
+        ...mockReduxStore,
         ui: {
           isModalOpen: true,
           modalContent: <DummyModalContent />,
@@ -38,7 +38,7 @@ describe('closeModal action creator', () => {
       store.dispatch(closeModal());
       const newState = store.getState();
       const expectedState: LocalRootState = {
-        ...initialReduxStore,
+        ...mockReduxStore,
         ui: {
           isModalOpen: false,
           modalContent: <DummyModalContent />,
@@ -56,7 +56,7 @@ describe('Change theme action creator', () => {
   store.dispatch(changeTheme());
   const newState = store.getState();
   const expectedState: LocalRootState = {
-    ...initialReduxStore,
+    ...mockReduxStore,
     ui: {
       isModalOpen: false,
       modalContent: null,

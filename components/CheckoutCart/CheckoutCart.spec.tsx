@@ -1,6 +1,6 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import { initialReduxStore } from '../../test/initialReduxStore';
+import { mockReduxStore } from '../../test/mockReduxStore';
 import {
   storeFactory,
   withReduxAndStyledProviders,
@@ -19,7 +19,7 @@ const setup = () => {
 
 describe('Checkout Cart content component', () => {
   const wrap = setup();
-  const store = storeFactory(initialReduxStore);
+  const store = storeFactory(mockReduxStore);
 
   it('should render without throwing an error', () => {
     expect(wrap);

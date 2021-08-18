@@ -1,6 +1,6 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import { initialReduxStore } from '../../test/initialReduxStore';
+import { mockReduxStore } from '../../test/mockReduxStore';
 import {
   storeFactory,
   withReduxAndStyledProviders,
@@ -19,7 +19,7 @@ const setup = () => {
 
 describe('AdminAllOrders Component', () => {
   const wrap = setup();
-  const state = storeFactory(initialReduxStore);
+  const state = storeFactory(mockReduxStore);
 
   it('should render without throwing an error', () => {
     expect(wrap);

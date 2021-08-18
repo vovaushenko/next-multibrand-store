@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import { ThemeProvider } from 'styled-components';
 import { LocalRootState, reducer } from '../store/reducers';
 import { mainTheme } from '../styles/mainTheme';
-import { initialReduxStore } from './initialReduxStore';
+import { mockReduxStore } from './mockReduxStore';
 
 /**
  * Create a testing store with imported reducers, middleware, and initial state
@@ -29,7 +29,7 @@ export const storeFactory = (
 export const withReduxAndStyledProviders = (
   component: JSX.Element
 ): JSX.Element => {
-  const store = storeFactory(initialReduxStore);
+  const store = storeFactory(mockReduxStore);
 
   return (
     <ThemeProvider theme={mainTheme}>
