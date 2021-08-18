@@ -5,10 +5,12 @@ import Image from 'next/image';
 import { CartItem } from '../../types/cartReduxTypes';
 import Button from '../Button/Button';
 import { useRouter } from 'next/dist/client/router';
+import { UiAction } from '../../types/uiTypes';
 
 export interface Props {
   cart: CartItem[];
   orderID: string;
+  closeModal: () => UiAction;
 }
 
 /**
@@ -17,11 +19,21 @@ export interface Props {
  *@returns {JSX.Element} - Rendered CardContent component
  */
 
-const OrderCongratulations = ({ cart, orderID }: Props): JSX.Element => {
+const OrderCongratulations = ({
+  cart,
+  orderID,
+  closeModal,
+}: Props): JSX.Element => {
   const router = useRouter();
 
-  const proceedToOrderDetails = () => router.push('/account');
-  const proceedToShopping = () => router.push('/products/all/men');
+  const proceedToOrderDetails = () => {
+    router.push('/account');
+    closeModal();
+  };
+  const proceedToShopping = () => {
+    router.push('/products/all/men');
+    closeModal();
+  };
 
   return (
     <Styled.Container>

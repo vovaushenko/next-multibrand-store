@@ -16,9 +16,7 @@ import Button from '../Button/Button';
  */
 
 const CheckoutBillingAddressForm = (): JSX.Element => {
-  const { isLoading, isShippingInfoCollected } = useTypedSelector(
-    (state) => state.checkout
-  );
+  const { isLoading } = useTypedSelector((state) => state.checkout);
   const { collectCustomerShippingInfo } = useActions();
 
   return (
@@ -91,12 +89,7 @@ const CheckoutBillingAddressForm = (): JSX.Element => {
           <FormikTextField type="tel" name="phone" placeholder="Phone" />
 
           <Button
-            text={
-              isShippingInfoCollected
-                ? 'Billing Address Was Updated'
-                : 'Update Billing Address'
-            }
-            isCompleted={isShippingInfoCollected}
+            text={'Update Billing Address'}
             isLoading={isLoading}
             type="submit"
           />

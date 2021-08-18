@@ -1,4 +1,3 @@
-import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
 import React, { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
@@ -11,6 +10,7 @@ import FormCheckboxField from '../FormCheckboxField/FormCheckboxField';
 import PaymentSection from '../PaymentSection/PaymentSection';
 import * as Styled from './styles.CheckoutPayment';
 import CheckoutBillingAddressForm from '../CheckoutBillingAddressForm/CheckoutBillingAddressForm';
+import OrderCongratulations from '../OrderCongratulations/OrderCongratulations';
 
 /**
  *Shipping stage of checkout process
@@ -18,7 +18,6 @@ import CheckoutBillingAddressForm from '../CheckoutBillingAddressForm/CheckoutBi
  *@returns {JSX.Element} - Rendered CheckoutShipping component
  */
 const CheckoutPayment = (): JSX.Element => {
-  const router = useRouter();
   const [useShippingAddress, setUseShippingAddress] = useState<boolean>(true);
   const [
     userSelectedAlternativeBillingAddress,
@@ -26,13 +25,11 @@ const CheckoutPayment = (): JSX.Element => {
   ] = useState<boolean>(false);
   const [shouldRememberCustomerInfo, setShouldRememberCustomerInfo] =
     useState<boolean>(true);
-
-  const { rememberCustomerInfo, processPayment } = useActions();
-
-  const { isLoading, userShippingInfo, shippingMethod, isPaid, error } =
+  const { userShippingInfo, shippingMethod, isPaid, error, isLoading } =
     useTypedSelector((state) => state.checkout);
-
   const { total, cart } = useTypedSelector((state) => state.cart);
+  const { rememberCustomerInfo, processPayment, openModal, closeModal } =
+    useActions();
 
   const getUserAddress = () => {
     if (userShippingInfo)
@@ -40,12 +37,12 @@ const CheckoutPayment = (): JSX.Element => {
 
     return 'Not specified';
   };
+
   const getPaymentMethod = () => {
     if (shippingMethod)
       return shippingMethod === 'free'
         ? 'FREE Shipping · Free'
         : 'EXPRESS Shipping · $4.99';
-
     return 'Not specified';
   };
 
@@ -70,7 +67,6 @@ const CheckoutPayment = (): JSX.Element => {
   const handleProcessPayment = () => {
     // if customer has specified that he wants to store shippingInfo for future use
     if (shouldRememberCustomerInfo) {
-      console.log('remembered');
       if (userShippingInfo) rememberCustomerInfo(userShippingInfo);
     }
 
@@ -89,12 +85,18 @@ const CheckoutPayment = (): JSX.Element => {
         })),
       };
 
-      processPayment(order);
-
-      //redirect to account/orders
-
-      setTimeout(() => {
-        router.push('/account');
+      setTimeout(async () => {
+        await processPayment(order);
+        await openModal({
+          modalYposition: window.scrollY,
+          modalContent: (
+            <OrderCongratulations
+              cart={cart}
+              orderID={'12415'}
+              closeModal={closeModal}
+            />
+          ),
+        });
       }, 1500);
     }
   };

@@ -45,11 +45,13 @@ export const RouterLink = styled.a`
 
 export const ButtonWrap = styled.footer`
   display: flex;
-  gap: 1rem;
+  gap: 1.75rem;
   align-items: center;
 
   ${backgroundAndPadding}
   button {
     color: ${({ theme }) => theme.dashboardGrayBg};
+    background-color: ${({ theme }) => theme.primaryGreen};
+    width: 50%;
   }
 `;
