@@ -2,9 +2,8 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  flex: 0.5;
-  flex-direction: column;
-  align-items: flex-start;
+
+  align-items: center;
 
   @media ${({ theme }) => theme.media.tablet} {
     flex-direction: row;
@@ -25,8 +24,13 @@ export const AccountButton = styled.button`
   font-weight: 600;
 
   .account-icon {
-    margin-left: 0.5rem;
+    margin-left: 0.25rem;
   }
+
+  p {
+    margin-left: 0.25rem;
+  }
+
   @media ${({ theme }) => theme.media.tablet} {
     .account-icon {
       margin-left: 0.25rem;

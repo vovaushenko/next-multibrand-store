@@ -42,8 +42,10 @@ const SignIn = (): JSX.Element => {
 
   return (
     <Styled.Form onSubmit={handleUserSignIn}>
-      <CardHeader headerText="Sign in to your account" />
-      <Styled.Text>Enter your email and password:</Styled.Text>
+      <div>
+        <CardHeader headerText="Sign in to your account" />
+        <Styled.Text>Enter your email and password:</Styled.Text>
+      </div>
       <Input
         type="email"
         name="email"

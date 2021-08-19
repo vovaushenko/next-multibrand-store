@@ -8,7 +8,6 @@ import * as Styled from './styles.NavbarHeader';
  * Navbar header - contains MainLogo, Search Input and Action List with Cart and Log In/Out,
  * Will be hidden on mobile width's
  *@function NavbarHeader
- *@param {object} props - React.props
  *@returns {JSX.Element} - Rendered NavbarHeader
  */
 const NavbarHeader = (): JSX.Element => {
