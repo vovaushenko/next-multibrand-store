@@ -4,6 +4,7 @@ import Skeleton from '../../../components/Skeleton/Skeleton';
 import { useActions } from '../../../hooks/useActions';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import AllProducts from '../../../screens/AllProducts/AllProducts';
+
 /**
  * Page where product data is mapped into AllProductsPage
  *@function AllProductsPage
@@ -24,6 +25,7 @@ export default function AllProductsPage(): JSX.Element {
   }, [products]);
 
   // When new filters will be applied inside of <AllProducts/> will get new data
+
   return (
     <Layout title="Shop All Products">
       {isLoading ? (
