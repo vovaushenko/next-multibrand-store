@@ -6,6 +6,7 @@ import {
   default as FilterTextOption,
 } from '../FilterColorOption/FilterColorOption';
 import Filters from './Filters';
+import renderer from 'react-test-renderer';
 
 /**
  * Setup function for the component
@@ -31,5 +32,13 @@ describe('All Filters Component', () => {
     const colorFilter = wrap.find(FilterColorsOption);
 
     expect(colorFilter.length).toBe(1);
+  });
+  describe('SNAPSHOT', () => {
+    test('it applies default styles', () => {
+      const tree = renderer
+        .create(withReduxAndStyledProviders(<Filters />))
+        .toJSON();
+      expect(tree).toMatchSnapshot();
+    });
   });
 });

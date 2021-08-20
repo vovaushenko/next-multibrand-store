@@ -14,7 +14,7 @@ import {
 import * as Styled from './styles.Filters';
 
 /**
- *This component is responsible for global filtering
+ *Renders Filters list in AllProducts page
  *@function Filters
  *@returns {JSX.Element} - Rendered  Filters component
  */

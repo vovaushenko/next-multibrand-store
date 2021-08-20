@@ -3,9 +3,14 @@ import React from 'react';
 import { filterBrands } from '../Filters/filterOptions';
 import FilterTextOption from './FilterTextOption';
 import * as Styled from './styles.FilterTextOption';
+
 describe('Filter Text Option', () => {
   const wrap = shallow(
-    <FilterTextOption filterBy="brand" filterOptions={filterBrands} />
+    <FilterTextOption
+      filterBy="brand"
+      filterOptions={filterBrands}
+      setFilter={() => console.log('boom')}
+    />
   );
 
   it('should render without throwing an error', () => {

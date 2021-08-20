@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { slideInTop } from '../../styles/reusableStyles';
 
 export const Container = styled.div`
   padding: 0.25rem;
@@ -38,4 +39,5 @@ export const FilterButton = styled.button<Props>`
   background: ${({ bgColor }) => bgColor};
   ${({ bgColor }) => bgColor === 'multi' && rainbowGradient}
   margin: 0;
+  animation: ${slideInTop} 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
 `;

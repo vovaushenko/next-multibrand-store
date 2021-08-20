@@ -11,7 +11,6 @@ export const Container = styled.aside`
   background: ${({ theme }) => theme.secondaryBg};
   border: 1px solid ${({ theme }) => theme.borderGrayColor};
   border-radius: ${({ theme }) => theme.borderRadius};
-
   @media ${({ theme }) => theme.media.tablet} {
     width: 100%;
   }

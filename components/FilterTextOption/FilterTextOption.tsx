@@ -13,6 +13,7 @@ export interface Props<T> {
  *@function FilterTextOption
  *@param {string} filterBy - Filter by this parameter
  *@param {string} filterOptions - List of available filtering options, such as product brand, size and department
+ *@param {function} setFilter - callback that sets current filter
  *@returns {JSX.Element} - Rendered FilterTextOption component
  */
 const FilterTextOption = ({

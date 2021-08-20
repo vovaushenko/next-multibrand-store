@@ -4,6 +4,7 @@ import { slideInKeyframes } from '../../styles/reusableStyles';
 interface ModalOverlayProps {
   positionY: number;
 }
+
 export const ModalOverlay = styled.div<ModalOverlayProps>`
   z-index: 1000;
   position: absolute;
@@ -42,7 +43,7 @@ export const CloseModalBtn = styled.button`
 
 export const Modal = styled.section`
   width: 90%;
-  max-width: 800px;
+  max-width: 1100px;
   margin: 0 auto;
 
   animation: ${slideInKeyframes} 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;

@@ -6,7 +6,11 @@ import * as Styled from './styles.FilterColorOptions';
 
 describe('Filter Color Option', () => {
   const wrap = shallow(
-    <FilterColorOption filterBy="color" filterOptions={filterColors} />
+    <FilterColorOption
+      filterBy="color"
+      filterOptions={filterColors}
+      setFilter={() => console.log('boom')}
+    />
   );
 
   it('should render without throwing an error', () => {
