@@ -4,15 +4,23 @@ export const Container = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem;
+  padding: 1rem 2rem;
   margin-bottom: 1rem;
   background: ${({ theme }) => theme.secondaryBg};
   border: 1px solid ${({ theme }) => theme.borderGrayColor};
   border-radius: ${({ theme }) => theme.borderRadius};
 
+  h3 {
+    margin: 0;
+  }
+
+  p {
+    color: ${({ theme }) => theme.lightGray};
+  }
+
   @media ${({ theme }) => theme.media.tablet} {
     padding: 1rem 2rem;
-    h2 {
+    h3 {
       display: none;
     }
   }
@@ -20,6 +28,7 @@ export const Container = styled.header`
     .product__amount {
       display: none;
     }
+
     .items__per__page {
       display: none;
     }
@@ -28,6 +37,18 @@ export const Container = styled.header`
 
 export const SortWrapper = styled.div`
   position: relative;
+  color: ${({ theme }) => theme.lightGray};
+  cursor: pointer;
+
+  &:hover {
+    color: ${({ theme }) => theme.secondaryGolden};
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    span {
+      display: none;
+    }
+  }
 `;
 
 export const IconContainer = styled.div`
@@ -37,9 +58,14 @@ export const IconContainer = styled.div`
 
   .icon {
     cursor: pointer;
-    font-size: 1.25rem;
+    font-size: 1.3rem;
+
     &:hover {
       color: ${({ theme }) => theme.secondaryGolden};
     }
+  }
+
+  .icon-list {
+    font-size: 1.55rem;
   }
 `;

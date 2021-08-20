@@ -10,6 +10,7 @@ const verticalLayout = css`
   article {
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 
     .product-column {
       display: flex;
@@ -23,6 +24,12 @@ const verticalLayout = css`
       flex-direction: column;
       align-items: center;
       justify-content: center;
+    }
+
+    @media ${({ theme }) => theme.media.phone} {
+      button {
+        display: none;
+      }
     }
   }
 `;
@@ -42,6 +49,5 @@ export const Container = styled.section<Props>`
   background: ${({ theme }) => theme.dashboardGrayBg};
   border: 1px solid ${({ theme }) => theme.borderGrayColor};
   border-radius: ${({ theme }) => theme.borderRadius};
-
   min-width: 100%;
 `;

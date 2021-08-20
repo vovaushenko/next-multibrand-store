@@ -1,0 +1,405 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`All Filters Component SNAPSHOT it applies default styles 1`] = `
+<aside
+  className="stylesFilters__Container-sc-1wcbpf8-0 hClXvr"
+>
+  <h3
+    className="CardHeader__StyledHeader-sc-fpyt0y-0 ezAfQK"
+  >
+    Filters
+  </h3>
+  
+  
+  
+  
+  <div
+    className="stylesFilterTextOption__Container-sc-9ak2es-0 jeogpl"
+  >
+    <details
+      className="stylesFilterTextOption__FilterOption-sc-9ak2es-1"
+    >
+      <summary>
+        Brand
+      </summary>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        Adidas
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        Air Jordan
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        Asics
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        Diadora
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        Converse
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        Native
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        Yeezy
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        Supreme
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        Timberland
+      </button>
+    </details>
+  </div>
+  <div
+    className="stylesFilterColorOptions__Container-sc-ka1lzr-0 bXWAim"
+  >
+    <details
+      className="stylesFilterColorOptions__FilterOption-sc-ka1lzr-1"
+    >
+      <summary>
+        Color
+      </summary>
+      <div
+        className="stylesFilterColorOptions__ColorsGrid-sc-ka1lzr-2 gPvYhI"
+      >
+        <button
+          className="stylesFilterColorOptions__FilterButton-sc-ka1lzr-3 hCLZtM"
+          onClick={[Function]}
+        />
+        <button
+          className="stylesFilterColorOptions__FilterButton-sc-ka1lzr-3 iIkYjf"
+          onClick={[Function]}
+        />
+        <button
+          className="stylesFilterColorOptions__FilterButton-sc-ka1lzr-3 jEaXJu"
+          onClick={[Function]}
+        />
+        <button
+          className="stylesFilterColorOptions__FilterButton-sc-ka1lzr-3 eRZsnu"
+          onClick={[Function]}
+        />
+        <button
+          className="stylesFilterColorOptions__FilterButton-sc-ka1lzr-3 jszyzk"
+          onClick={[Function]}
+        />
+        <button
+          className="stylesFilterColorOptions__FilterButton-sc-ka1lzr-3 UZPjb"
+          onClick={[Function]}
+        />
+        <button
+          className="stylesFilterColorOptions__FilterButton-sc-ka1lzr-3 dNdEuh"
+          onClick={[Function]}
+        />
+        <button
+          className="stylesFilterColorOptions__FilterButton-sc-ka1lzr-3 gpCxmL"
+          onClick={[Function]}
+        />
+        <button
+          className="stylesFilterColorOptions__FilterButton-sc-ka1lzr-3 VhVRP"
+          onClick={[Function]}
+        />
+        <button
+          className="stylesFilterColorOptions__FilterButton-sc-ka1lzr-3 djgifk"
+          onClick={[Function]}
+        />
+        <button
+          className="stylesFilterColorOptions__FilterButton-sc-ka1lzr-3 gXNoJM"
+          onClick={[Function]}
+        />
+        <button
+          className="stylesFilterColorOptions__FilterButton-sc-ka1lzr-3 migfm"
+          onClick={[Function]}
+        />
+        <button
+          className="stylesFilterColorOptions__FilterButton-sc-ka1lzr-3 bPmVSn"
+          onClick={[Function]}
+        />
+        <button
+          className="stylesFilterColorOptions__FilterButton-sc-ka1lzr-3 bnYwBn"
+          onClick={[Function]}
+        />
+        <button
+          className="stylesFilterColorOptions__FilterButton-sc-ka1lzr-3 bqLyMH"
+          onClick={[Function]}
+        />
+        <button
+          className="stylesFilterColorOptions__FilterButton-sc-ka1lzr-3 epQCIs"
+          onClick={[Function]}
+        />
+      </div>
+    </details>
+  </div>
+  <div
+    className="stylesFilterTextOption__Container-sc-9ak2es-0 jeogpl"
+  >
+    <details
+      className="stylesFilterTextOption__FilterOption-sc-9ak2es-1"
+    >
+      <summary>
+        Department
+      </summary>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        kid
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        men
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        women
+      </button>
+    </details>
+  </div>
+  <div
+    className="stylesFilterTextOption__Container-sc-9ak2es-0 jeogpl"
+  >
+    <details
+      className="stylesFilterTextOption__FilterOption-sc-9ak2es-1"
+    >
+      <summary>
+        Size
+      </summary>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        1
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        1.5
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        2
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        2.5
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        3
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        3.5
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        4
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        4.5
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        5
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        5.5
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        6
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        6.5
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        7
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        7.5
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        8
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        8.5
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        9
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        9.5
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        10
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        10.5
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        11
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        11.5
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        12
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        13
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        14
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        15
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        onesize
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        MISC
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        s
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        m
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        l
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        xl
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        xxl
+      </button>
+      <button
+        className="stylesFilterTextOption__FilterButton-sc-9ak2es-2 lihCeO"
+        onClick={[Function]}
+      >
+        xs
+      </button>
+    </details>
+  </div>
+</aside>
+`;

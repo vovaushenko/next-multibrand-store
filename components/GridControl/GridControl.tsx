@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { BsGrid3X3GapFill, BsListUl } from 'react-icons/bs';
 import NavMiniModal from '../NavMiniModal/NavMiniModal';
-import PageHeader from '../PageHeader/PageHeader';
 import SortingOptions from '../SortingOptions/SortingOptions';
 import * as Styled from './styles.GridControl';
+import { MdFormatListBulleted, MdGridOn } from 'react-icons/md';
+import CardHeader from '../CardHeader/CardHeader';
 
 export interface Props {
   header: string;
@@ -34,13 +34,11 @@ const GridControl = ({
 
   return (
     <Styled.Container>
-      <PageHeader headerText={header} />
+      <CardHeader headerText={header} />
       <p className="product__amount">Showing {productAmount} products</p>
-      {/* TODO:PAGINATION */}
-      <p className="items__per__page">Display 24 per page</p>
 
       <Styled.SortWrapper onClick={toggleSortModal} className="sort">
-        Sort by: {sortType}
+        Sort by: <span>{sortType}</span> ▼
         <NavMiniModal
           isOpen={isModalOpen}
           modalWidth="180px"
@@ -53,11 +51,11 @@ const GridControl = ({
 
       <Styled.IconContainer>
         <p>View</p>
-        <BsGrid3X3GapFill
-          className="icon"
-          onClick={() => changeLayout('grid')}
+        <MdGridOn className="icon" onClick={() => changeLayout('grid')} />
+        <MdFormatListBulleted
+          className="icon icon-list"
+          onClick={() => changeLayout('vertical')}
         />
-        <BsListUl className="icon" onClick={() => changeLayout('vertical')} />
       </Styled.IconContainer>
     </Styled.Container>
   );

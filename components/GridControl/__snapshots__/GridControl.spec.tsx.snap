@@ -1,0 +1,662 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar Header Search SNAPSHOT it applies default styles 1`] = `
+.c1 {
+  font-size: 1.25rem;
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+}
+
+.c4 {
+  padding: 0.25rem;
+}
+
+.c5 {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 0.5rem;
+}
+
+.c6 {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  height: 2.25rem;
+  width: 2.25rem;
+  background: beige;
+  margin: 0;
+  -webkit-animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+  animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+}
+
+.c7 {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  height: 2.25rem;
+  width: 2.25rem;
+  background: black;
+  margin: 0;
+  -webkit-animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+  animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+}
+
+.c8 {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  height: 2.25rem;
+  width: 2.25rem;
+  background: blue;
+  margin: 0;
+  -webkit-animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+  animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+}
+
+.c9 {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  height: 2.25rem;
+  width: 2.25rem;
+  background: brown;
+  margin: 0;
+  -webkit-animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+  animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+}
+
+.c10 {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  height: 2.25rem;
+  width: 2.25rem;
+  background: gold;
+  margin: 0;
+  -webkit-animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+  animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+}
+
+.c11 {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  height: 2.25rem;
+  width: 2.25rem;
+  background: green;
+  margin: 0;
+  -webkit-animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+  animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+}
+
+.c12 {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  height: 2.25rem;
+  width: 2.25rem;
+  background: grey;
+  margin: 0;
+  -webkit-animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+  animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+}
+
+.c13 {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  height: 2.25rem;
+  width: 2.25rem;
+  background: ivory;
+  margin: 0;
+  -webkit-animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+  animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+}
+
+.c14 {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  height: 2.25rem;
+  width: 2.25rem;
+  background: multi;
+  background: linear-gradient( to right,red,orange,yellow,green,blue,indigo,violet );
+  margin: 0;
+  -webkit-animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+  animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+}
+
+.c15 {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  height: 2.25rem;
+  width: 2.25rem;
+  background: orange;
+  margin: 0;
+  -webkit-animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+  animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+}
+
+.c16 {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  height: 2.25rem;
+  width: 2.25rem;
+  background: pink;
+  margin: 0;
+  -webkit-animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+  animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+}
+
+.c17 {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  height: 2.25rem;
+  width: 2.25rem;
+  background: purple;
+  margin: 0;
+  -webkit-animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+  animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+}
+
+.c18 {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  height: 2.25rem;
+  width: 2.25rem;
+  background: red;
+  margin: 0;
+  -webkit-animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+  animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+}
+
+.c19 {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  height: 2.25rem;
+  width: 2.25rem;
+  background: silver;
+  margin: 0;
+  -webkit-animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+  animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+}
+
+.c20 {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  height: 2.25rem;
+  width: 2.25rem;
+  background: white;
+  margin: 0;
+  -webkit-animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+  animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+}
+
+.c21 {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  height: 2.25rem;
+  width: 2.25rem;
+  background: yellow;
+  margin: 0;
+  -webkit-animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+  animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+}
+
+.c2 {
+  padding: 0.25rem;
+}
+
+.c3 {
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid rgba(143,143,143,0.1);
+  border-radius: 0.5rem;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  margin: 0.25rem;
+  -webkit-animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+  animation: dfiLNz 0.6s cubic-bezier(0.23,1,0.32,1) both;
+}
+
+.c3:hover {
+  color: #ffc130;
+  background-color: #1b1b1b;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 20%;
+  height: 35%;
+  padding: 1.25rem;
+  overflow: hidden;
+  background: #151515;
+  border: 1px solid rgba(143,143,143,0.1);
+  border-radius: 0.5rem;
+}
+
+@media (max-width:768px) {
+  .c0 {
+    width: 100%;
+  }
+}
+
+<aside
+  className="c0"
+>
+  <h3
+    className="c1"
+  >
+    Filters
+  </h3>
+  
+  
+  
+  
+  <div
+    className="c2"
+  >
+    <details
+      className="stylesFilterTextOption__FilterOption-sc-9ak2es-1"
+    >
+      <summary>
+        Brand
+      </summary>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        Adidas
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        Air Jordan
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        Asics
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        Diadora
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        Converse
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        Native
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        Yeezy
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        Supreme
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        Timberland
+      </button>
+    </details>
+  </div>
+  <div
+    className="c4"
+  >
+    <details
+      className="stylesFilterColorOptions__FilterOption-sc-ka1lzr-1"
+    >
+      <summary>
+        Color
+      </summary>
+      <div
+        className="c5"
+      >
+        <button
+          className="c6"
+          onClick={[Function]}
+        />
+        <button
+          className="c7"
+          onClick={[Function]}
+        />
+        <button
+          className="c8"
+          onClick={[Function]}
+        />
+        <button
+          className="c9"
+          onClick={[Function]}
+        />
+        <button
+          className="c10"
+          onClick={[Function]}
+        />
+        <button
+          className="c11"
+          onClick={[Function]}
+        />
+        <button
+          className="c12"
+          onClick={[Function]}
+        />
+        <button
+          className="c13"
+          onClick={[Function]}
+        />
+        <button
+          className="c14"
+          onClick={[Function]}
+        />
+        <button
+          className="c15"
+          onClick={[Function]}
+        />
+        <button
+          className="c16"
+          onClick={[Function]}
+        />
+        <button
+          className="c17"
+          onClick={[Function]}
+        />
+        <button
+          className="c18"
+          onClick={[Function]}
+        />
+        <button
+          className="c19"
+          onClick={[Function]}
+        />
+        <button
+          className="c20"
+          onClick={[Function]}
+        />
+        <button
+          className="c21"
+          onClick={[Function]}
+        />
+      </div>
+    </details>
+  </div>
+  <div
+    className="c2"
+  >
+    <details
+      className="stylesFilterTextOption__FilterOption-sc-9ak2es-1"
+    >
+      <summary>
+        Department
+      </summary>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        kid
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        men
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        women
+      </button>
+    </details>
+  </div>
+  <div
+    className="c2"
+  >
+    <details
+      className="stylesFilterTextOption__FilterOption-sc-9ak2es-1"
+    >
+      <summary>
+        Size
+      </summary>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        1
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        1.5
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        2
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        2.5
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        3
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        3.5
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        4
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        4.5
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        5
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        5.5
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        6
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        6.5
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        7
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        7.5
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        8
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        8.5
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        9
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        9.5
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        10
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        10.5
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        11
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        11.5
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        12
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        13
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        14
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        15
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        onesize
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        MISC
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        s
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        m
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        l
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        xl
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        xxl
+      </button>
+      <button
+        className="c3"
+        onClick={[Function]}
+      >
+        xs
+      </button>
+    </details>
+  </div>
+</aside>
+`;

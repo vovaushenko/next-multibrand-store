@@ -1,9 +1,12 @@
 import { shallow } from 'enzyme';
 import 'jest-styled-components';
 import React from 'react';
-import PageHeader from '../PageHeader/PageHeader';
 import GridControl from './GridControl';
 import * as Styled from './styles.GridControl';
+import CardHeader from '../CardHeader/CardHeader';
+import renderer from 'react-test-renderer';
+import { withReduxAndStyledProviders } from '../../test/testUtils';
+import Filters from '../Filters/Filters';
 
 describe('Navbar Header Search', () => {
   const wrapper = shallow(
@@ -25,7 +28,16 @@ describe('Navbar Header Search', () => {
     expect(productAmount.first().text()).toBe('Showing 25 products');
   });
   it('should render correct header text', () => {
-    const header = wrapper.find(PageHeader);
+    const header = wrapper.find(CardHeader);
     expect(header.length).toBe(1);
+  });
+
+  describe('SNAPSHOT', () => {
+    test('it applies default styles', () => {
+      const tree = renderer
+        .create(withReduxAndStyledProviders(<Filters />))
+        .toJSON();
+      expect(tree).toMatchSnapshot();
+    });
   });
 });
