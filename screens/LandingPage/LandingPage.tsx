@@ -9,6 +9,7 @@ import * as Styled from './LandingPage.styles';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import { getDataForLandingPageSections } from '../../utils/helperFunctions';
 import WaveDivider from '../../components/WaveDivider/WaveDivider';
+import Carousel from '../../components/Carousel/Carousel';
 
 export interface Props {
   products: Product[];
@@ -39,6 +40,11 @@ const LandingPage = ({ products, areProductsLoading }: Props): JSX.Element => {
           />
         </>
       )}
+
+      <Carousel
+        carouselHeader={'The Latest And Greatest 🔥'}
+        carouselItems={products}
+      />
 
       <Styled.ProductsSection>
         <PageHeader headerText={`Shop by brand 💣`} />

@@ -67,7 +67,7 @@ export const GlobalStyles = createGlobalStyle`
 
   ::-webkit-scrollbar {
     width: 5px;
-
+    height: 7px;
   }
 
   ::-webkit-scrollbar-track {

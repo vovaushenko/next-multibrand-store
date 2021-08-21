@@ -1,4 +1,4 @@
-import { keyframes } from 'styled-components';
+import { css, keyframes } from 'styled-components';
 
 /**
  * @keyframes Main animation appearance for modals, popups and hidden components
@@ -54,4 +54,21 @@ export const slideInTop = keyframes`
     transform: translateY(0);
     opacity: 1;
   }
+`;
+
+/**
+ * @css hideScrollbar
+ * @returns {css} - css styles to hide horizontal scrollbar in horizontally-scrollable containers
+ */
+export const hideScrollbar = css`
+  /* Hide horizontal scrollbar */
+
+  overflow-x: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+
+  ::-webkit-scrollbar {
+    /* WebKit */
+    width: 0;
+    height: 0;
 `;
