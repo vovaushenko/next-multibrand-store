@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.main`
-  margin: 4rem 0 2rem 0;
+  width: 95%;
+  max-width: ${({ theme }) => theme.maxWidth};
+  margin: 3rem auto;
+
   display: flex;
   gap: 1rem;
 

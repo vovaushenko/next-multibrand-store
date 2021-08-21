@@ -36,7 +36,7 @@ const LandingPage = ({ products, areProductsLoading }: Props): JSX.Element => {
           <WhatsHot products={hotProducts} />
           <WaveDivider
             waveImg={'/images/blobs/4.svg'}
-            dividerHeight={'150px'}
+            dividerHeight={'200px'}
           />
         </>
       )}
@@ -45,7 +45,6 @@ const LandingPage = ({ products, areProductsLoading }: Props): JSX.Element => {
         carouselHeader={'The Latest And Greatest 🔥'}
         carouselItems={products}
       />
-
       <Styled.ProductsSection>
         <PageHeader headerText={`Shop by brand 💣`} />
         <MobileProducts
@@ -68,6 +67,11 @@ const LandingPage = ({ products, areProductsLoading }: Props): JSX.Element => {
           logoParams={{ height: 100, width: 100 }}
         />
       </Styled.ProductsSection>
+      <WaveDivider
+        waveImg={'/images/blobs/opposite-blob-1.svg'}
+        dividerHeight={'150px'}
+        margin={'1rem 0 0 0'}
+      />
     </Styled.Container>
   );
 };

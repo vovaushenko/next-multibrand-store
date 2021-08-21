@@ -5,7 +5,7 @@ export const SignUP = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 3rem 0;
+  //margin: 3rem 0;
 
   h2 {
     margin: 1rem 0;

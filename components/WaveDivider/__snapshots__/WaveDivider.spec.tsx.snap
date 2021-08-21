@@ -7,8 +7,12 @@ exports[`WaveDivider it applies specified style params 1`] = `
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  -webkit-filter: drop-shadow(0px 10px 5px rgba(255 255 255 / 30%));
-  filter: drop-shadow(0px 10px 5px rgba(255 255 255 / 30%));
+}
+
+@media (max-width:500px) {
+  .c0 {
+    height: 120px;
+  }
 }
 
 <div

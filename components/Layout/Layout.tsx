@@ -5,13 +5,15 @@ import MobileBottomNavigation from '../MobileBottomNavigation/MobileBottomNaviga
 import Navbar from '../Navbar/Navbar';
 import NewsletterSignUp from '../NewsletterSignUp/NewsletterSignUp';
 import SettingsControl from '../SettingsControl/SettingsControl';
+import styled from 'styled-components';
 
 interface Props {
   children: ReactNode;
   title: string;
+  showBottomGradient?: boolean;
 }
 
-const Layout: FC<Props> = ({ children, title }) => {
+const Layout: FC<Props> = ({ children, title, showBottomGradient }) => {
   return (
     <>
       <Head>
@@ -26,12 +28,22 @@ const Layout: FC<Props> = ({ children, title }) => {
       <Navbar />
       <SettingsControl />
       <MobileBottomNavigation />
-
       {children}
-      <NewsletterSignUp />
-      <Footer />
+      <GradientColorWrapper showBottomGradient={showBottomGradient}>
+        <NewsletterSignUp />
+        <Footer />
+      </GradientColorWrapper>
     </>
   );
 };
+
+interface GradientProps {
+  showBottomGradient?: boolean;
+}
+
+const GradientColorWrapper = styled.section<GradientProps>`
+  background-image: ${({ theme, showBottomGradient }) =>
+    showBottomGradient && theme.grayToBlackGradient};
+`;
 
 export default Layout;

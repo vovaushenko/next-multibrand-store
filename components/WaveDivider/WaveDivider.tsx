@@ -4,6 +4,7 @@ import * as Styled from './WaveDivider.styles';
 export interface Props {
   waveImg: string;
   dividerHeight: string;
+  margin?: string;
 }
 
 /**
@@ -11,12 +12,21 @@ export interface Props {
  *@function WaveDivider
  *@param {string} waveImg - image src for curved svg (wave)
  *@param {string} dividerHeight - height of the curved wave
+ *@param {string} margin - margin to be applied to the divider
  *@returns {JSX.Element} - Rendered WaveDivider component
  */
-const WaveDivider = ({ waveImg, dividerHeight }: Props): JSX.Element => {
+const WaveDivider = ({
+  waveImg,
+  dividerHeight,
+  margin,
+}: Props): JSX.Element => {
   return (
     <Styled.Container>
-      <Styled.Wave waveImg={waveImg} dividerHeight={dividerHeight} />
+      <Styled.Wave
+        waveImg={waveImg}
+        dividerHeight={dividerHeight}
+        margin={margin}
+      />
     </Styled.Container>
   );
 };

@@ -5,6 +5,8 @@ export const Container = styled.section`
   width: 95%;
   max-width: ${({ theme }) => theme.maxWidth};
   margin: 0 auto;
+  //fixed min-height to prevent layout shift after rendering scrollbar on hover in UL
+  min-height: 550px;
 
   @media ${({ theme }) => theme.media.phone} {
     //carousel only on desktop and tablet

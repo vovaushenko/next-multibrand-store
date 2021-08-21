@@ -19,6 +19,7 @@ export default function Home(): JSX.Element {
   return (
     <Layout
       title={'Shop The Hottest Sneakers | Nike | Jordan | Adidas | Puma '}
+      showBottomGradient
     >
       <LandingPage products={products} areProductsLoading={isLoading} />
     </Layout>
