@@ -36,6 +36,8 @@ const WrappedApp: FC<AppProps> = ({ Component, pageProps }): JSX.Element => {
       if (html !== null) html.style.height = `${cachedPageHeight.pop()}px`;
       return true;
     });
+
+    if (html !== null) html.style.height = '100%';
   }, [router]);
 
   return (

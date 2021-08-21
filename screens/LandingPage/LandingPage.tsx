@@ -8,6 +8,7 @@ import MobileProducts from '../../components/MobileProducts/MobileProducts';
 import * as Styled from './LandingPage.styles';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import { getDataForLandingPageSections } from '../../utils/helperFunctions';
+import WaveDivider from '../../components/WaveDivider/WaveDivider';
 
 export interface Props {
   products: Product[];
@@ -30,7 +31,13 @@ const LandingPage = ({ products, areProductsLoading }: Props): JSX.Element => {
       {areProductsLoading ? (
         <Skeleton variant="whatsHot" />
       ) : (
-        <WhatsHot products={hotProducts} />
+        <>
+          <WhatsHot products={hotProducts} />
+          <WaveDivider
+            waveImg={'/images/blobs/4.svg'}
+            dividerHeight={'150px'}
+          />
+        </>
       )}
 
       <Styled.ProductsSection>

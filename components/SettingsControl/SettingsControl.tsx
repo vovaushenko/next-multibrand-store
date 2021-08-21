@@ -4,8 +4,8 @@ import { BiCog } from 'react-icons/bi';
 import {
   MdAccountCircle,
   MdBrightness6,
+  MdShopTwo,
   MdSms,
-  MdWbSunny,
 } from 'react-icons/md';
 import { useActions } from '../../hooks/useActions';
 import ContactUs from '../ContactUs/ContactUs';
@@ -48,8 +48,10 @@ const SettingsControl = (): JSX.Element => {
           <Styled.SettingsOption title="Change Theme" onClick={toggleTheme}>
             <MdBrightness6 className="icon" />
           </Styled.SettingsOption>
-          <Styled.SettingsOption>
-            <MdWbSunny className="icon" />
+          <Styled.SettingsOption title="Shop">
+            <Link href="/products/all/men" passHref>
+              <MdShopTwo className="icon" />
+            </Link>
           </Styled.SettingsOption>
           <Styled.SettingsOption title="Contact us" onClick={handleContactUs}>
             <MdSms className="icon" />

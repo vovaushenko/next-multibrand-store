@@ -26,13 +26,14 @@ export const Container = styled.aside`
   z-index: 6;
   left: calc(100% - 4rem);
   /* Shared Styles */
-  ${sharedContainerStyles}
 
+  ${sharedContainerStyles}
   .icon {
     transition: all 3s cubic-bezier(0.075, 0.82, 0.165, 1);
     font-size: 2rem;
     color: ${({ theme }) => theme.primaryWhite};
   }
+
   &:hover {
     .icon {
       transform: rotate(360deg);
@@ -57,15 +58,18 @@ export const SettingsContainer = styled.nav`
 
 export const SettingsOption = styled.div`
   /* shared styles */
+
   ${sharedContainerStyles}
   /* rotation and shape */
-
-  
   .icon {
     transform: rotateZ(-20deg);
     transition: all 3s cubic-bezier(0.075, 0.82, 0.165, 1);
     font-size: 2rem;
     color: ${({ theme }) => theme.primaryWhite};
+
+    &:hover {
+      color: ${({ theme }) => theme.primaryGolden};
+    }
   }
 
   @keyframes scale-in-ver-center {
