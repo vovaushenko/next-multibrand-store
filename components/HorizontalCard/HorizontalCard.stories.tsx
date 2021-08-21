@@ -3,7 +3,7 @@ import React from 'react';
 import HorizontalCard, { Props } from './HorizontalCard';
 
 export default {
-  title: 'utility/Card',
+  title: 'utility/cards/Horizontal Card',
   component: HorizontalCard,
 };
 

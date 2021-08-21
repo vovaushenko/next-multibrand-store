@@ -3,7 +3,7 @@ import React from 'react';
 import ProductDetailsCard, { Props } from './ProductDetailsCard';
 
 export default {
-  title: 'utility/Product Details Card',
+  title: 'utility/cards/Product Details Card',
   component: ProductDetailsCard,
 };
 
