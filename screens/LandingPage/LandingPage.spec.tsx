@@ -1,17 +1,19 @@
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import React from 'react';
+import '../../components/__mocks__/matchMediaMock';
 import Hero from '../../components/Hero/Hero';
 import Skeleton from '../../components/Skeleton/Skeleton';
 import WhatsHot from '../../components/WhatsHotSection/WhatsHotSection';
 import { mockProduct } from '../../test/mockReduxStore';
 import LandingPage, { Props } from './LandingPage';
+import { withReduxAndStyledProviders } from '../../test/testUtils';
 
 /**
  * Setup function for the component
  * @returns {ShallowWrapper}
  */
 const setup = (props: Props) => {
-  return shallow(<LandingPage {...props} />);
+  return mount(withReduxAndStyledProviders(<LandingPage {...props} />));
 };
 
 describe('Landing page', () => {
@@ -41,7 +43,7 @@ describe('Landing page', () => {
 
   describe('loaded state', () => {
     const wrap = setup({ areProductsLoading: false, products: [mockProduct] });
-    it('should NOT render Sekeleton when loaded', () => {
+    it('should NOT render Skeleton when loaded', () => {
       const skeleton = wrap.find(Skeleton);
       expect(skeleton.length).toBe(0);
     });

@@ -17,6 +17,7 @@ declare module 'styled-components' {
     secondaryGolden: string;
     primaryWhite: string;
     primaryRed: string;
+    primaryGray: string;
     darkGray: string;
     lightGray: string;
     lightestGray: string;

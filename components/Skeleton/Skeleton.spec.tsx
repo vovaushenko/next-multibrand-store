@@ -1,16 +1,17 @@
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import React from 'react';
 import Skeleton, { Props } from './Skeleton';
 import '../__mocks__/matchMediaMock';
 import ContentLoader from 'react-content-loader';
 import PageHeader from '../PageHeader/PageHeader';
+import { withReduxAndStyledProviders } from '../../test/testUtils';
 
 /**
  * Setup function for the component
  * @returns {JSX.Element} ShallowWrapper
  */
 const setup = (props: Props) => {
-  return shallow(<Skeleton {...props} />);
+  return mount(withReduxAndStyledProviders(<Skeleton {...props} />));
 };
 
 describe('Skeleton component', () => {
@@ -23,8 +24,8 @@ describe('Skeleton component', () => {
     });
     it('should skeleton with specified params', () => {
       const skeleton = wrap.find(ContentLoader);
-      expect(skeleton.prop('height')).toBe(576);
-      expect(skeleton.prop('width')).toBe(1500);
+      expect(skeleton.prop('height')).toBe(window.innerHeight);
+      expect(skeleton.prop('width')).toBe(window.innerWidth);
     });
   });
 
@@ -37,8 +38,8 @@ describe('Skeleton component', () => {
     });
     it('should skeleton with specified params', () => {
       const skeleton = wrap.find(ContentLoader);
-      expect(skeleton.prop('height')).toBe(576);
-      expect(skeleton.prop('width')).toBe(1500);
+      expect(skeleton.prop('height')).toBe(window.innerHeight);
+      expect(skeleton.prop('width')).toBe(window.innerWidth);
     });
   });
   describe('Whats hot section skeleton', () => {
@@ -55,8 +56,8 @@ describe('Skeleton component', () => {
     });
     it('should skeleton with specified params', () => {
       const skeleton = wrap.find(ContentLoader);
-      expect(skeleton.prop('height')).toBe(576);
-      expect(skeleton.prop('width')).toBe(1500);
+      expect(skeleton.prop('height')).toBe(window.innerHeight);
+      expect(skeleton.prop('width')).toBe(window.innerWidth);
     });
   });
 });

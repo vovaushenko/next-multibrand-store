@@ -6,6 +6,7 @@ import CheckoutCart from '../CheckoutCart/CheckoutCart';
 import CheckoutProgress from '../CheckoutProgress/CheckoutProgress';
 import NavbarHeaderLogo from '../NavbarHeaderLogo/NavbarHeaderLogo';
 import * as Styled from './styles.CheckoutLayout';
+import SettingsControl from '../SettingsControl/SettingsControl';
 
 interface Props {
   children: ReactNode;
@@ -46,6 +47,8 @@ const CheckoutLayout = ({ children, title }: Props): JSX.Element => {
             <CheckoutCart />
           )}
         </Styled.RightColumn>
+
+        <SettingsControl />
       </Styled.Container>
     </>
   );

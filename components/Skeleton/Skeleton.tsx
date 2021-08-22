@@ -3,6 +3,7 @@ import ContentLoader from 'react-content-loader';
 import * as Styled from './styles.Skeleton';
 import { useMediaQuery } from '@react-hook/media-query';
 import PageHeader from '../PageHeader/PageHeader';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 export interface Props {
   variant: 'productDetails' | 'allProducts' | 'whatsHot';
@@ -20,6 +21,9 @@ const Skeleton = ({ variant }: Props): JSX.Element => {
   const [fullWidth, setFullWidth] = useState(1500);
   const [fullHeight, setFullHeight] = useState(576);
   const viewBoxParams = `0 0 ${fullWidth} ${fullHeight}`;
+  const { theme } = useTypedSelector((state) => state.ui);
+
+  const backgroundColor = theme === 'dark' ? '#151515' : '#ffffff';
 
   useEffect(() => {
     setFullWidth(window.innerWidth);
@@ -39,7 +43,7 @@ const Skeleton = ({ variant }: Props): JSX.Element => {
           width={window.innerWidth}
           height={window.innerHeight}
           viewBox={viewBoxParams}
-          backgroundColor="#151515"
+          backgroundColor={backgroundColor}
           foregroundColor="#312f2f"
         >
           <rect
@@ -68,7 +72,7 @@ const Skeleton = ({ variant }: Props): JSX.Element => {
           width={fullWidth}
           height={fullHeight}
           viewBox={viewBoxParams}
-          backgroundColor="#151515"
+          backgroundColor={backgroundColor}
           foregroundColor="#312f2f"
         >
           <rect
@@ -111,7 +115,7 @@ const Skeleton = ({ variant }: Props): JSX.Element => {
           width={fullWidth}
           height={fullHeight}
           viewBox={viewBoxParams}
-          backgroundColor="#151515"
+          backgroundColor={backgroundColor}
           foregroundColor="#312f2f"
         >
           <rect
@@ -140,7 +144,7 @@ const Skeleton = ({ variant }: Props): JSX.Element => {
           width={fullWidth}
           height={fullHeight}
           viewBox={viewBoxParams}
-          backgroundColor="#151515"
+          backgroundColor={backgroundColor}
           foregroundColor="#312f2f"
         >
           <rect x="20" y="0" rx="8" ry="8" width="233" height="207" />
@@ -161,7 +165,7 @@ const Skeleton = ({ variant }: Props): JSX.Element => {
         width={fullWidth}
         height={fullHeight}
         viewBox={viewBoxParams}
-        backgroundColor="#151515"
+        backgroundColor={backgroundColor}
         foregroundColor="#312f2f"
       >
         <rect

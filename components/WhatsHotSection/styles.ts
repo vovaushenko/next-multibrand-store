@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.section`
   // background-image: ${({ theme }) => theme.grayToBlackGradient};
-  background-color: #383838;
+  background-color: ${({ theme }) => theme.primaryGray};
 
   h2 {
     margin-top: 0;

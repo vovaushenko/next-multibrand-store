@@ -10,6 +10,7 @@ export const mainTheme: DefaultTheme = {
   secondaryGolden: '#ffa500',
   primaryWhite: '#ffffff',
   primaryRed: '#e83535',
+  primaryGray: '#383838',
   darkGray: '#8f8f8f',
   lightGray: '#9a9696',
   lightestGray: '#d0d0d0',
@@ -53,6 +54,7 @@ export const secondaryTheme: DefaultTheme = {
   secondaryGolden: '#ffa500',
   primaryWhite: '#343239',
   primaryRed: '#ff0000',
+  primaryGray: '#ffffff',
   darkGray: '#8f8f8f',
   lightGray: '#343239',
   lightestGray: '#d0d0d0',
@@ -66,8 +68,8 @@ export const secondaryTheme: DefaultTheme = {
 
   blackToGrayGradient: `linear-gradient(
     180deg,
-    #9a9696 35.5%,
-    #d0d0d0 50%,
+    #f4f4f8 35.5%,
+    #f4f4f8 50%,
     rgba(255, 255, 255, 0.9) 78.6%
   )`,
 

@@ -10,6 +10,7 @@ import PageHeader from '../../components/PageHeader/PageHeader';
 import { getDataForLandingPageSections } from '../../utils/helperFunctions';
 import WaveDivider from '../../components/WaveDivider/WaveDivider';
 import Carousel from '../../components/Carousel/Carousel';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 export interface Props {
   products: Product[];
@@ -26,6 +27,17 @@ const LandingPage = ({ products, areProductsLoading }: Props): JSX.Element => {
   const { hotProducts, jordanSneakers, adidasSneakers, nikeSneakers } =
     getDataForLandingPageSections(products);
 
+  const { theme } = useTypedSelector((state) => state.ui);
+
+  const topWaveSVG =
+    theme === 'dark'
+      ? '/images/blobs/dark-wave-top.svg'
+      : '/images/blobs/light-wave-top.svg';
+  const bottomWaveSVG =
+    theme === 'dark'
+      ? '/images/blobs/dark-wave-bottom.svg'
+      : '/images/blobs/light-wave-bottom.svg';
+
   return (
     <Styled.Container>
       <Hero highlightedSneakers={highlightedSneakers} />
@@ -34,10 +46,7 @@ const LandingPage = ({ products, areProductsLoading }: Props): JSX.Element => {
       ) : (
         <>
           <WhatsHot products={hotProducts} />
-          <WaveDivider
-            waveImg={'/images/blobs/4.svg'}
-            dividerHeight={'200px'}
-          />
+          <WaveDivider waveImg={topWaveSVG} dividerHeight={'200px'} />
         </>
       )}
 
@@ -68,7 +77,7 @@ const LandingPage = ({ products, areProductsLoading }: Props): JSX.Element => {
         />
       </Styled.ProductsSection>
       <WaveDivider
-        waveImg={'/images/blobs/opposite-blob-1.svg'}
+        waveImg={bottomWaveSVG}
         dividerHeight={'150px'}
         margin={'1rem 0 0 0'}
       />
