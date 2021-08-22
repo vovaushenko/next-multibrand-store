@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.section`
-  // background-image: ${({ theme }) => theme.grayToBlackGradient};
   background-color: ${({ theme }) => theme.primaryGray};
 
   h2 {
@@ -11,10 +10,9 @@ export const Wrapper = styled.section`
 
 export const GridContainer = styled.section`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
   gap: 1px;
   overflow: hidden;
-
-  background-image: ${({ theme }) => theme.blackToGrayGradient};
+  background-color: ${({ theme }) => theme.secondaryBg};
   border-radius: ${({ theme }) => theme.borderRadius};
 `;

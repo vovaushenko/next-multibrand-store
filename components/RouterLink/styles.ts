@@ -4,10 +4,11 @@ interface StyledProps {
   fontSize: string;
 }
 
-export const StyledRouterLink = styled.div<StyledProps>`
+export const StyledRouterLink = styled.a<StyledProps>`
   cursor: pointer;
   color: ${({ theme }) => theme.primaryWhite};
   font-size: ${({ fontSize }) => fontSize};
+
   &:hover {
     color: ${({ theme }) => theme.secondaryGolden};
   }

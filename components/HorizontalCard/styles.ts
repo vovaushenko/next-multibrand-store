@@ -1,16 +1,11 @@
 import styled from 'styled-components';
 
 export const CardContainer = styled.article`
+  position: relative;
   display: flex;
   padding: 1rem;
-  background: ${({ theme }) => theme.secondaryBg};
   background-color: rgba(255, 255, 255, 0.1);
   gap: 1rem;
-  backdrop-filter: blur(10px);
-
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-  }
 `;
 
 export const CardImage = styled.figure`
@@ -32,4 +27,36 @@ export const CardText = styled.aside`
 export const Price = styled.p`
   color: ${({ theme }) => theme.primaryGolden};
   margin-top: 0.5rem;
+`;
+
+export const A = styled.a`
+  cursor: pointer;
+  color: ${({ theme }) => theme.primaryWhite};
+
+  &:hover {
+    color: ${({ theme }) => theme.secondaryGolden};
+  }
+
+  :focus-visible {
+    outline: none;
+    box-shadow: none;
+  }
+
+  :focus-visible::before {
+    box-shadow: 0 0 0 3px ${({ theme }) => theme.secondaryGolden};
+    border-radius: ${({ theme }) => theme.borderRadius};
+  }
+
+  :before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  @media ${({ theme }) => theme.media.phone} {
+    font-size: 0.75rem;
+  }
 `;

@@ -2,8 +2,8 @@ import NextImage from 'next/image';
 import React, { useRef } from 'react';
 import useHover from '../../hooks/useHover';
 import { Image } from '../../types';
-import RouterLink from '../RouterLink/RouterLink';
 import * as Styled from './styles';
+import Link from 'next/link';
 
 export interface Props {
   productID: string;
@@ -12,6 +12,7 @@ export interface Props {
   productPrice: string;
   images: Image[];
 }
+
 /**
  *@function HorizontalCard
  *@param {string} brandName - displayed product brand
@@ -40,22 +41,20 @@ const HorizontalCard = ({
   return (
     <Styled.CardContainer>
       <Styled.CardImage ref={imageRef}>
-        <RouterLink href={`/products/${productID}`}>
-          <NextImage
-            src={isHovering ? firstImage : secondImage}
-            alt={`${brandName} ${productModel}`}
-            height={140}
-            width={150}
-            objectFit="contain"
-            className="card-img"
-          />
-        </RouterLink>
+        <NextImage
+          src={isHovering ? firstImage : secondImage}
+          alt={`${brandName} ${productModel}`}
+          height={140}
+          width={150}
+          objectFit="contain"
+          className="card-img"
+        />
       </Styled.CardImage>
 
       <Styled.CardText>
-        <RouterLink href={`/products/${productID}`}>
-          {brandName} {productModel}
-        </RouterLink>
+        <Link href={`/products/${productID}`} passHref>
+          <Styled.A>{`${brandName} ${productModel}`}</Styled.A>
+        </Link>
 
         <Styled.Price>${productPrice}</Styled.Price>
       </Styled.CardText>
