@@ -1,4 +1,17 @@
 import styled, { css } from 'styled-components';
+import { slideOutKeyframes } from '../../styles/reusableStyles';
+
+const isOpenStyle = css`
+  visibility: visible;
+  opacity: 1;
+`;
+
+const isClosedStyle = css`
+  visibility: hidden;
+  transition: visibility 0.3s,
+    opacity 0.3s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  opacity: 0;
+`;
 
 const sharedContainerStyles = css`
   /* Center Icon */
@@ -25,6 +38,7 @@ export const Container = styled.aside`
   top: 85%;
   z-index: 6;
   left: calc(100% - 4rem);
+
   /* Shared Styles */
 
   ${sharedContainerStyles}
@@ -41,7 +55,8 @@ export const Container = styled.aside`
   }
 `;
 
-export const SettingsContainer = styled.nav`
+export const SettingsContainer = styled.nav<Props>`
+  ${({ isSettingsShown }) => (isSettingsShown ? isOpenStyle : isClosedStyle)};
   /* positioning */
   position: fixed;
   top: 66%;
@@ -50,13 +65,19 @@ export const SettingsContainer = styled.nav`
   /* display */
   display: flex;
   flex-direction: column;
-  transform: rotateZ(20deg);
-
   gap: 0.3rem;
   padding: 1rem;
+  transform: rotateZ(20deg);
 `;
 
-export const SettingsOption = styled.div`
+interface Props {
+  isSettingsShown: boolean;
+}
+
+const slideOutAnimation = css`
+  animation: ${slideOutKeyframes} 0.5s ease-in both;
+`;
+export const SettingsOption = styled.div<Props>`
   /* shared styles */
 
   ${sharedContainerStyles}
@@ -72,6 +93,7 @@ export const SettingsOption = styled.div`
     }
   }
 
+  /* appearance animation */
   @keyframes scale-in-ver-center {
     0% {
       transform: scale(0);
@@ -83,4 +105,6 @@ export const SettingsOption = styled.div`
     }
   }
   animation: scale-in-ver-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  /* dis-appearance animation */
+  ${({ isSettingsShown }) => isSettingsShown === false && slideOutAnimation};
 `;

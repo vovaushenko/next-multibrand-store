@@ -36,33 +36,42 @@ const SettingsControl = (): JSX.Element => {
       modalYposition: window.scrollY,
       modalContent: <ContactUs />,
     });
-  }, []);
+  }, [openModal]);
 
   return (
     <>
       <Styled.Container onClick={handleShowSettings} title="Settings">
         <BiCog className="icon" />
       </Styled.Container>
-      {isSettingsShown && (
-        <Styled.SettingsContainer>
-          <Styled.SettingsOption title="Change Theme" onClick={toggleTheme}>
-            <MdBrightness6 className="icon" />
-          </Styled.SettingsOption>
-          <Styled.SettingsOption title="Shop">
-            <Link href="/products/all/men" passHref>
-              <MdShopTwo className="icon" />
-            </Link>
-          </Styled.SettingsOption>
-          <Styled.SettingsOption title="Contact us" onClick={handleContactUs}>
-            <MdSms className="icon" />
-          </Styled.SettingsOption>
-          <Styled.SettingsOption title="Account">
-            <Link href="/account" passHref>
-              <MdAccountCircle className="icon" />
-            </Link>
-          </Styled.SettingsOption>
-        </Styled.SettingsContainer>
-      )}
+      <Styled.SettingsContainer isSettingsShown={isSettingsShown}>
+        <Styled.SettingsOption
+          title="Change Theme"
+          onClick={toggleTheme}
+          isSettingsShown={isSettingsShown}
+        >
+          <MdBrightness6 className="icon" />
+        </Styled.SettingsOption>
+        <Styled.SettingsOption title="Shop" isSettingsShown={isSettingsShown}>
+          <Link href="/products/all/men" passHref>
+            <MdShopTwo className="icon" />
+          </Link>
+        </Styled.SettingsOption>
+        <Styled.SettingsOption
+          title="Contact us"
+          onClick={handleContactUs}
+          isSettingsShown={isSettingsShown}
+        >
+          <MdSms className="icon" />
+        </Styled.SettingsOption>
+        <Styled.SettingsOption
+          title="Account"
+          isSettingsShown={isSettingsShown}
+        >
+          <Link href="/account" passHref>
+            <MdAccountCircle className="icon" />
+          </Link>
+        </Styled.SettingsOption>
+      </Styled.SettingsContainer>
     </>
   );
 };
