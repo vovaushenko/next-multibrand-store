@@ -34,14 +34,18 @@ const NavigationDropdown = ({
         {sectionTitles.map((section) => (
           <Styled.ListItem key={section}>
             <SectionHeader headerText={section + `'s`} />
-            {dropdownContent[mapSectionToContent(section)].map((brand, id) => (
-              <RouterLink
-                key={id}
-                href={`/products/${sectionName}/${section.toLowerCase()}/${brand.toLowerCase()}`}
-              >
-                {brand}
-              </RouterLink>
-            ))}
+            <Styled.LinksWrapper>
+              {dropdownContent[mapSectionToContent(section)].map(
+                (brand, id) => (
+                  <RouterLink
+                    key={id}
+                    href={`/products/${sectionName}/${section.toLowerCase()}/${brand.toLowerCase()}`}
+                  >
+                    {brand}
+                  </RouterLink>
+                )
+              )}
+            </Styled.LinksWrapper>
           </Styled.ListItem>
         ))}
       </Styled.List>

@@ -1,12 +1,11 @@
-import React, { FC, ReactNode } from 'react';
-import { StyledButton } from './styles';
+import React, { FC } from 'react';
+import * as Styled from './Button.styles';
 
-export interface Props {
+export interface Props extends React.ComponentPropsWithoutRef<'button'> {
   isLoading?: boolean;
   isCompleted?: boolean;
   disabled?: boolean;
   text?: string;
-  children?: ReactNode;
 }
 
 /**
@@ -19,15 +18,15 @@ export interface Props {
  *@param {children} ReactNode - set button children
  *@returns {JSX.Element} - rendered button
  */
-const Button: FC<
-  React.DetailedHTMLProps<
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  > &
-    Props
-> = ({ children, isLoading, isCompleted, text, ...rest }: Props) => {
+const Button: FC<Props> = ({
+  children,
+  isLoading,
+  isCompleted,
+  text,
+  ...rest
+}) => {
   return (
-    <StyledButton
+    <Styled.BTN
       isLoading={isLoading}
       isCompleted={isCompleted}
       {...rest}
@@ -35,7 +34,7 @@ const Button: FC<
     >
       {children}
       {text && text}
-    </StyledButton>
+    </Styled.BTN>
   );
 };
 
